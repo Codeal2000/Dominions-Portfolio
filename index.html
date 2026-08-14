@@ -1,695 +1,788 @@
 <!DOCTYPE html>
-<html lang="en" class="dark scroll-smooth">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DOMINION IGE | 3D Animator & Visual Artist</title>
-  <meta name="description" content="Portfolio of Dominion Ige — 3D Animator & Visual Artist specializing in product animation, footwear visualization, and character mechanics." />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google-site-verification" content="P7RHXUT2PxFNodFLhMnYBNHiipeA6gmp6KHkdikQPME">
+<title>Ige Dominion | Visual Storyteller, 3D Animator & Motion Designer</title>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;0,700;1,300;1,600&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@700;800&display=swap" rel="stylesheet">
+
+<!-- GSAP and ScrollTrigger CDN for Smooth Animations -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<!-- Google Model Viewer CDN -->
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --white:#FFFFFF;
+  --white-soft:#F5F5F7;
+  --light-gray:#E5E5EA;
+  --dark:#050505;
+  --dark2:#0D0D0D;
+  --dark3:#141414;
+  --dark4:#1C1C1E;
+  --text:#F5F5F7;
+  --muted:#8E8E93;
+  --muted2:#B0B0B5;
+  --border:#242426;
+  --border-light:rgba(255,255,255,0.16);
+  --border-focus:rgba(255,255,255,0.4);
+}
+html{scroll-behavior:smooth}
+body{background:var(--dark);color:var(--text);font-family:'Barlow',sans-serif;font-weight:300;overflow-x:hidden;cursor:none}
+
+/* ── CURSOR */
+#cur{position:fixed;width:9px;height:9px;background:var(--white);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s}
+#cur-ring{position:fixed;width:34px;height:34px;border:1px solid rgba(255,255,255,.35);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .2s,height .2s,left .12s ease,top .12s ease}
+
+/* ── NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:22px 56px;background:linear-gradient(to bottom,rgba(5,5,5,.97),transparent)}
+.nav-logo{font-family:'Barlow Condensed',sans-serif;font-size:1.35rem;letter-spacing:4px;color:var(--white);text-decoration:none;font-weight:700}
+.nav-links{display:flex;gap:36px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.7rem;letter-spacing:3px;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:var(--white)}
+.nav-cta{background:var(--white);color:var(--dark);padding:9px 22px;font-size:.65rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;text-decoration:none;transition:background .2s,transform .2s}
+.nav-cta:hover{background:var(--light-gray);transform:translateY(-1px)}
+
+/* ── HERO */
+.hero{min-height:100vh;display:grid;place-items:center;text-align:center;position:relative;overflow:hidden;padding:120px 24px 80px}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(255,255,255,.04) 0%,transparent 70%)}
+.hero-lines{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.hero-lines::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:900px;height:900px;border:1px solid rgba(255,255,255,.03);border-radius:50%;animation:breathe 8s ease-in-out infinite}
+.hero-lines::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;border:1px solid rgba(255,255,255,.05);border-radius:50%;animation:breathe 8s ease-in-out infinite .5s}
+@keyframes breathe{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.04)}}
+.hero-inner{position:relative;z-index:2;max-width:900px}
+.hero-tag{display:inline-flex;align-items:center;gap:12px;margin-bottom:36px;opacity:0;animation:fadeUp .8s .2s forwards}
+.hero-tag-line{width:32px;height:1px;background:var(--white-soft);opacity:.4}
+.hero-tag-text{font-size:.65rem;letter-spacing:6px;text-transform:uppercase;color:var(--muted2)}
+h1.hero-name{font-family:'Barlow Condensed',sans-serif;font-size:clamp(5rem,13vw,11rem);font-weight:800;line-height:.9;letter-spacing:-1px;color:var(--text);opacity:0;animation:fadeUp .9s .35s forwards}
+h1.hero-name em{font-style:normal;color:var(--white);display:block;letter-spacing:2px}
+.hero-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.1rem,2vw,1.5rem);color:var(--muted2);margin-top:28px;line-height:1.6;opacity:0;animation:fadeUp .9s .5s forwards}
+.hero-roles{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:32px;opacity:0;animation:fadeUp .9s .6s forwards}
+.role-chip, .skill-badge, .software-badge{
+  background:rgba(255,255,255,.03);
+  border:1px solid var(--border-light);
+  color:var(--text);
+  font-size:.65rem;
+  letter-spacing:2.5px;
+  text-transform:uppercase;
+  padding:8px 18px;
+  position:relative;
+  transition:transform .3s ease,border-color .3s ease,background .3s ease,color .3s ease;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+}
+.role-chip.badge-in-view, .skill-badge.badge-in-view, .software-badge.badge-in-view{
+  border-color:rgba(255,255,255,.3);
+  background:rgba(255,255,255,.06);
+}
+.role-chip:hover, .skill-badge:hover, .software-badge:hover{
+  transform:translateY(-2px) !important;
+  border-color:var(--white) !important;
+  background:rgba(255,255,255,.12) !important;
+  color:var(--white) !important;
+}
+
+.skills-stack-wrap{margin-top:48px;padding-top:40px;border-top:1px solid var(--border)}
+.skills-stack-title{font-size:.65rem;letter-spacing:4px;text-transform:uppercase;color:var(--white);margin-bottom:20px;display:flex;align-items:center;gap:12px}
+.skills-stack-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.skills-badges-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:768px){.skills-badges-grid{grid-template-columns:1fr}}
+.tool-card{background:var(--dark3);border:1px solid var(--border);padding:24px 22px;transition:border-color .3s ease,transform .3s ease;position:relative}
+.tool-card:hover{border-color:var(--border-focus);transform:translateY(-2px)}
+.tool-card-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.tool-card-name{font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;font-weight:700;letter-spacing:1px;color:var(--white)}
+.tool-card-badge{font-size:.55rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);padding:3px 8px}
+.tool-card-desc{font-size:.82rem;color:var(--muted2);line-height:1.7}
+
+.hero-btns{display:flex;justify-content:center;gap:16px;margin-top:44px;flex-wrap:wrap;opacity:0;animation:fadeUp .9s .75s forwards}
+.btn-white{background:var(--white);color:var(--dark);padding:14px 40px;font-size:.7rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;text-decoration:none;display:inline-block;transition:background .2s,transform .2s;cursor:none}
+.btn-white:hover{background:var(--light-gray);transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border-light);padding:14px 40px;font-size:.7rem;letter-spacing:3px;text-transform:uppercase;text-decoration:none;display:inline-block;transition:border-color .2s,color .2s,transform .2s;cursor:none}
+.btn-ghost:hover{border-color:var(--white);color:var(--white);transform:translateY(-2px)}
+.hero-scroll{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fadeIn 1s 1.4s forwards}
+.scroll-dot{width:5px;height:5px;border-radius:50%;background:var(--white);animation:scrollBounce 2s infinite}
+.scroll-label{font-size:.55rem;letter-spacing:4px;text-transform:uppercase;color:var(--muted);writing-mode:vertical-lr}
+@keyframes scrollBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+
+/* ── SECTION COMMONS */
+section{padding:100px 56px}
+.s-label{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.s-label-line{width:32px;height:1px;background:var(--white);opacity:.4}
+.s-label-text{font-size:.62rem;letter-spacing:6px;text-transform:uppercase;color:var(--muted2)}
+.s-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(2.8rem,6vw,5.5rem);font-weight:800;line-height:.95;color:var(--text);margin-bottom:60px}
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+
+/* ── ABOUT */
+.about{background:var(--dark2)}
+.about-grid{display:grid;grid-template-columns:1fr 2fr;gap:80px;align-items:start}
+.about-left{position:sticky;top:120px}
+.about-img-frame{position:relative;aspect-ratio:3/4;background:var(--dark3);border:1px solid var(--border);overflow:hidden}
+.about-img-frame::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.04),transparent 60%);z-index:2;pointer-events:none}
+.about-img-corner{position:absolute;top:16px;left:16px;width:28px;height:28px;border-top:2px solid var(--white);border-left:2px solid var(--white);z-index:3}
+.about-img-corner2{position:absolute;bottom:16px;right:16px;width:28px;height:28px;border-bottom:2px solid var(--white);border-right:2px solid var(--white);z-index:3}
+.about-img-inner{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--muted)}
+.about-img-photo{width:100%;height:100%;object-fit:cover;object-position:center top;filter:grayscale(10%) contrast(105%);transition:filter .4s ease,transform .4s ease}
+.about-img-frame:hover .about-img-photo{filter:grayscale(0%) contrast(105%);transform:scale(1.03)}
+.about-img-icon{font-size:2rem}
+.about-img-text{font-size:.6rem;letter-spacing:3px;text-transform:uppercase}
+.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:2px}
+.stat-box{background:var(--dark3);border:1px solid var(--border);padding:18px 16px;text-align:center}
+.stat-num{font-family:'Barlow Condensed',sans-serif;font-size:2.4rem;font-weight:800;color:var(--white);line-height:1}
+.stat-lbl{font-size:.55rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.about-text p{font-size:1rem;color:var(--muted2);line-height:1.95;margin-bottom:20px}
+.about-text strong{color:var(--text);font-weight:500}
+.about-quote{border-left:2px solid var(--white);padding-left:22px;margin-top:36px}
+.about-quote p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.2rem;color:var(--white-soft);line-height:1.7}
+
+/* ── SKILLS */
+.skills{background:var(--dark)}
+.skills-list{display:flex;flex-direction:column;gap:0}
+.skill-row{display:flex;align-items:center;gap:32px;padding:28px 0;border-bottom:1px solid var(--border);position:relative;overflow:hidden;cursor:none;transition:background .3s}
+.skill-row::before{content:'';position:absolute;left:0;top:0;bottom:0;width:0;background:rgba(255,255,255,.03);transition:width .4s ease}
+.skill-row:hover::before{width:100%}
+.skill-row:hover .skill-num{color:var(--white)}
+.skill-row:hover .skill-icon-wrap{border-color:rgba(255,255,255,.4)}
+.skill-num{font-family:'Barlow Condensed',sans-serif;font-size:3.5rem;font-weight:800;color:var(--dark4);line-height:1;width:80px;flex-shrink:0;transition:color .3s}
+.skill-icon-wrap{width:56px;height:56px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;transition:border-color .3s}
+.skill-info{flex:1}
+.skill-name{font-family:'Barlow Condensed',sans-serif;font-size:2rem;font-weight:700;letter-spacing:1px;color:var(--text);margin-bottom:4px}
+.skill-desc{font-size:.82rem;color:var(--muted2);line-height:1.7}
+.skill-arrow{font-size:1.5rem;color:var(--border);transition:color .3s,transform .3s;flex-shrink:0}
+.skill-row:hover .skill-arrow{color:var(--white);transform:translateX(6px)}
+
+/* ── 3D MODEL SHOWCASE (INTERACTIVE) */
+.showcase-3d{background:var(--dark);border-top:1px solid var(--border);border-bottom:1px solid var(--border);position:relative}
+.showcase-3d-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.showcase-3d-viewer-wrap{position:relative;border:1px solid var(--border);background:var(--dark3);overflow:hidden}
+.showcase-3d-corner{position:absolute;top:12px;left:12px;width:20px;height:20px;border-top:2px solid var(--white);border-left:2px solid var(--white);z-index:5;pointer-events:none}
+.showcase-3d-corner2{position:absolute;bottom:12px;right:12px;width:20px;height:20px;border-bottom:2px solid var(--white);border-right:2px solid var(--white);z-index:5;pointer-events:none}
+.showcase-3d-hint{position:absolute;bottom:14px;left:14px;background:rgba(5,5,5,.88);border:1px solid var(--border);padding:6px 14px;font-size:.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--white);z-index:5;pointer-events:none}
+.showcase-3d-info p{font-size:1rem;color:var(--muted2);line-height:1.9;margin-bottom:24px}
+.showcase-3d-specs{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:28px}
+.showcase-spec-box{background:var(--dark2);border:1px solid var(--border);padding:18px 16px}
+.showcase-spec-title{font-size:.58rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.showcase-spec-val{font-family:'Barlow Condensed',sans-serif;font-size:1.15rem;font-weight:700;color:var(--white)}
+
+/* ── PROJECTS */
+.projects{background:var(--dark2)}
+.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.project-card{background:var(--dark3);border:1px solid var(--border);overflow:hidden;position:relative;transition:border-color .3s}
+.project-card:hover{border-color:var(--border-light)}
+.project-thumb{aspect-ratio:16/10;background:var(--dark4);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.project-thumb-bg{position:absolute;inset:0;opacity:0;background:rgba(255,255,255,.04);transition:opacity .3s}
+.project-card:hover .project-thumb-bg{opacity:1}
+.project-thumb-icon{font-size:2.5rem;position:relative;z-index:1;opacity:.25;transition:opacity .3s}
+.project-card:hover .project-thumb-icon{opacity:.7}
+.project-tag-strip{position:absolute;top:0;left:0;right:0;height:2px;background:var(--white)}
+.project-badge{position:absolute;top:14px;left:14px;background:var(--white);color:var(--dark);font-size:.55rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:4px 10px}
+.project-body{padding:26px 22px}
+.project-num{font-family:'Barlow Condensed',sans-serif;font-size:.75rem;letter-spacing:4px;color:var(--muted2);opacity:.7;margin-bottom:6px}
+.project-name{font-family:'Barlow Condensed',sans-serif;font-size:1.6rem;font-weight:700;color:var(--text);margin-bottom:10px;letter-spacing:.5px}
+.project-desc{font-size:.8rem;color:var(--muted2);line-height:1.8}
+.project-client{display:flex;align-items:center;gap:8px;margin-top:18px;padding-top:18px;border-top:1px solid var(--border)}
+.project-client-dot{width:5px;height:5px;border-radius:50%;background:var(--white);flex-shrink:0}
+.project-client-text{font-size:.65rem;letter-spacing:1px;color:var(--muted2)}
+
+/* ── TESTIMONIALS */
+.testimonials{background:var(--dark)}
+.t-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.t-featured{grid-column:span 2;background:var(--dark3);border:1px solid var(--border);border-top:2px solid var(--white);padding:48px 44px;position:relative;transition:border-color .3s}
+.t-featured:hover{border-color:var(--border-light)}
+.t-card{background:var(--dark2);border:1px solid var(--border);border-top:2px solid rgba(255,255,255,.3);padding:38px 34px;position:relative;transition:border-color .3s}
+.t-card:hover{border-color:var(--border-light)}
+.t-mark{font-family:'Cormorant Garamond',serif;font-size:5rem;color:rgba(255,255,255,.12);line-height:.7;margin-bottom:12px}
+.t-stars{color:var(--white);font-size:.8rem;letter-spacing:3px;margin-bottom:20px;opacity:.9}
+.t-quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;color:var(--text);line-height:1.9;margin-bottom:30px;opacity:.95}
+.t-featured .t-quote{font-size:1.15rem}
+.t-author{display:flex;align-items:center;gap:14px}
+.t-avatar{width:46px;height:46px;border-radius:50%;background:var(--dark4);border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;color:var(--white);flex-shrink:0}
+.t-name{font-size:.9rem;font-weight:500;color:var(--text)}
+.t-role{font-size:.65rem;color:var(--muted2);letter-spacing:1px;margin-top:2px}
+.t-stars-right{margin-left:auto;color:var(--white);font-size:.75rem;letter-spacing:2px;align-self:flex-start;opacity:.9}
+
+/* ── CONTACT */
+.contact{background:var(--dark2)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.contact-left p{font-size:1rem;color:var(--muted2);line-height:1.9;margin-bottom:40px}
+.contact-links{display:flex;flex-direction:column;gap:2px}
+.contact-link{display:flex;align-items:center;gap:18px;background:var(--dark3);border:1px solid var(--border);padding:18px 22px;text-decoration:none;color:var(--muted2);transition:border-color .2s,color .2s,background .2s;cursor:none}
+.contact-link:hover{border-color:var(--border-light);color:var(--white);background:rgba(255,255,255,.03)}
+.contact-link-icon{font-size:1rem;width:20px;text-align:center;flex-shrink:0}
+.contact-link-label{font-size:.6rem;letter-spacing:3px;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:2px}
+.contact-link-val{font-size:.85rem}
+.contact-link-arrow{margin-left:auto;color:var(--border);transition:color .2s,transform .2s;flex-shrink:0}
+.contact-link:hover .contact-link-arrow{color:var(--white);transform:translateX(4px)}
+.contact-cta-box{background:var(--dark3);border:1px solid rgba(255,255,255,.15);padding:48px 40px;text-align:center;margin-top:2px}
+.contact-cta-box h3{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.8rem;color:var(--white);margin-bottom:12px}
+.contact-cta-box p{font-size:.85rem;color:var(--muted2);line-height:1.8;margin-bottom:28px}
+
+/* ── FOOTER */
+footer{background:var(--dark);border-top:1px solid var(--border);padding:36px 56px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.footer-logo{font-family:'Barlow Condensed',sans-serif;font-size:1.2rem;font-weight:800;letter-spacing:4px;color:var(--white)}
+.footer-copy{font-size:.65rem;color:var(--muted);letter-spacing:1px}
+.footer-links{display:flex;gap:24px}
+.footer-links a{font-size:.65rem;color:var(--muted);text-decoration:none;letter-spacing:1px;transition:color .2s}
+.footer-links a:hover{color:var(--white)}
+
+/* ── ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+/* ── PAGE LOADER */
+.loader{position:fixed;inset:0;background:var(--dark);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;transition:opacity .6s,visibility .6s}
+.loader.done{opacity:0;visibility:hidden}
+.loader-name{font-family:'Barlow Condensed',sans-serif;font-size:2rem;font-weight:800;letter-spacing:8px;color:var(--white)}
+.loader-bar-wrap{width:160px;height:1px;background:var(--border)}
+.loader-bar{height:100%;background:var(--white);width:0;animation:load 1.2s ease forwards}
+@keyframes load{to{width:100%}}
+
+/* ── RESPONSIVE */
+@media(max-width:1024px){
+  nav{padding:18px 28px}
+  .nav-links{display:none}
+  section{padding:70px 28px}
+  .about-grid{grid-template-columns:1fr}
+  .about-left{position:static}
+  .showcase-3d-grid{grid-template-columns:1fr}
+  .projects-grid{grid-template-columns:1fr 1fr}
+  .contact-grid{grid-template-columns:1fr}
+  footer{flex-direction:column;text-align:center}
+}
+@media(max-width:640px){
+  .projects-grid{grid-template-columns:1fr}
+  .t-grid{grid-template-columns:1fr}
+  .t-featured{grid-column:span 1}
+}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div class="loader done" id="loader">
+  <div class="loader-name">IGE DOMINION</div>
+  <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
+</div>
+
+<!-- CURSOR -->
+<div id="cur"></div>
+<div id="cur-ring"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">IGE · DOMINION</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#3d-showcase">3D Model</a></li>
+    <li><a href="#projects">Work</a></li>
+    <li><a href="#testimonials">Testimonials</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="mailto:igedominion09@gmail.com?subject=Project%20Enquiry" class="nav-cta">Hire Me</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-lines"></div>
+  <div class="hero-inner">
+    <div class="hero-tag">
+      <span class="hero-tag-line"></span>
+      <span class="hero-tag-text">Visual Storyteller &amp; 3D Animator</span>
+      <span class="hero-tag-line"></span>
+    </div>
+    <h1 class="hero-name">IGE<em>DOMINION</em></h1>
+    <p class="hero-sub">"Crafting cinematic worlds through the lens,<br>light, and limitless imagination."</p>
+    <div class="hero-roles">
+      <span class="role-chip">Cinematographer</span>
+      <span class="role-chip">Video Editor</span>
+      <span class="role-chip">3D Animator</span>
+      <span class="role-chip">Motion Graphics</span>
+      <span class="role-chip">VFX Artist</span>
+    </div>
+    <div class="hero-btns">
+      <a href="#3d-showcase" class="btn-white">Interactive 3D Model</a>
+      <a href="#projects" class="btn-ghost">View Selected Work</a>
+      <a href="#contact" class="btn-ghost">Get In Touch</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span class="scroll-label">Scroll</span>
+    <span class="scroll-dot"></span>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-left reveal in">
+      <div class="about-img-frame">
+        <img src="dominion_portrait_1786703205408.jpg.jpg" alt="Ige Dominion" class="about-img-photo" onerror="this.src='dominion_real_photo.jpg'; this.onerror=function(){this.src='1773726310414.jpg';};">
+        <div class="about-img-inner" style="display:none;">
+          <span class="about-img-icon">📷</span>
+          <span class="about-img-text">Ige Dominion</span>
+        </div>
+        <div class="about-img-corner"></div>
+        <div class="about-img-corner2"></div>
+      </div>
+      <div class="about-stats">
+        <div class="stat-box"><div class="stat-num">5+</div><div class="stat-lbl">Years</div></div>
+        <div class="stat-box"><div class="stat-num">30+</div><div class="stat-lbl">Projects</div></div>
+        <div class="stat-box"><div class="stat-num">3</div><div class="stat-lbl">Primary Tools</div></div>
+        <div class="stat-box"><div class="stat-num">100%</div><div class="stat-lbl">Dedication</div></div>
+      </div>
+    </div>
+    <div class="about-text reveal in">
+      <div class="s-label"><div class="s-label-line"></div><span class="s-label-text">About Me</span></div>
+      <h2 class="s-title">The Eye<br>Behind<br><span style="color:var(--white)">The Frame</span></h2>
+      <p>I am <strong>Ige Dominion</strong>, a visual artist, 3D animator, and motion designer based in <strong>Abuja, Nigeria</strong>. My craft centers on telling captivating stories through 3D worldbuilding, physics-accurate character animation, dynamic motion graphics, and cinematic video production.</p>
+      <p>My production workflow is specialized and laser-focused on <strong>Blender 3D</strong>, <strong>Adobe After Effects</strong>, and <strong>Cascadeur</strong> — allowing me to deliver industry-grade 3D assets, physics-driven character rigs, and polished motion compositing with exceptional speed and visual precision.</p>
+      <p>Whether creating high-impact brand commercials, complex 3D product animations, or training aspiring creatives — the standard is always uncompromising quality.</p>
+      <div class="about-quote">
+        <p>"Every frame is a statement. Every edit is an emotion. Every animation is a world."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills" id="skills">
+  <div class="reveal in">
+    <div class="s-label"><div class="s-label-line"></div><span class="s-label-text">What I Do</span></div>
+    <h2 class="s-title">Core Skills</h2>
+  </div>
+  <div class="skills-list reveal in">
+    <div class="skill-row">
+      <span class="skill-num">01</span>
+      <div class="skill-icon-wrap">🎬</div>
+      <div class="skill-info">
+        <div class="skill-name">Cinematography</div>
+        <div class="skill-desc">Expert camera operation, lighting design, and visual framing that turns every scene into a cinematic masterpiece. From concept to final shot.</div>
+      </div>
+      <span class="skill-arrow">→</span>
+    </div>
+    <div class="skill-row">
+      <span class="skill-num">02</span>
+      <div class="skill-icon-wrap">✂️</div>
+      <div class="skill-info">
+        <div class="skill-name">Video Editing</div>
+        <div class="skill-desc">Precision editing, colour grading, and narrative pacing that creates seamless, emotionally compelling stories audiences remember.</div>
+      </div>
+      <span class="skill-arrow">→</span>
+    </div>
+    <div class="skill-row">
+      <span class="skill-num">03</span>
+      <div class="skill-icon-wrap">🌟</div>
+      <div class="skill-info">
+        <div class="skill-name">3D Animation</div>
+        <div class="skill-desc">Full 3D pipeline in Blender &amp; Cascadeur — modeling, texturing, physics-based posing, rigging, and photoreal rendering.</div>
+      </div>
+      <span class="skill-arrow">→</span>
+    </div>
+    <div class="skill-row">
+      <span class="skill-num">04</span>
+      <div class="skill-icon-wrap">✨</div>
+      <div class="skill-info">
+        <div class="skill-name">Motion Graphics</div>
+        <div class="skill-desc">Dynamic animated typography, brand motion packages, title design, and promotional motion sequences in Adobe After Effects.</div>
+      </div>
+      <span class="skill-arrow">→</span>
+    </div>
+    <div class="skill-row" style="border-bottom:none">
+      <span class="skill-num">05</span>
+      <div class="skill-icon-wrap">🌀</div>
+      <div class="skill-info">
+        <div class="skill-name">VFX &amp; Compositing</div>
+        <div class="skill-desc">Seamless multi-layer compositing, visual effects, tracking, and post-production polish integrating live-action with 3D elements.</div>
+      </div>
+      <span class="skill-arrow">→</span>
+    </div>
+  </div>
+
+  <!-- Software & Pipeline Skill Badges -->
+  <div class="skills-stack-wrap reveal in">
+    <div class="skills-stack-title">
+      <span>Dedicated Production Suite</span>
+    </div>
+    <div class="skills-badges-grid">
+      <!-- Tool 1: Blender -->
+      <div class="tool-card software-badge">
+        <div class="tool-card-head">
+          <span class="tool-card-name">Blender 3D</span>
+          <span class="tool-card-badge">Core 3D</span>
+        </div>
+        <p class="tool-card-desc">3D Modeling, Quad Topology, UV Unwrapping, Procedural Shading, Cycles &amp; Eevee Photoreal Rendering.</p>
+      </div>
+
+      <!-- Tool 2: Adobe After Effects -->
+      <div class="tool-card software-badge">
+        <div class="tool-card-head">
+          <span class="tool-card-name">Adobe After Effects</span>
+          <span class="tool-card-badge">Motion &amp; VFX</span>
+        </div>
+        <p class="tool-card-desc">Kinetic Typography, Motion Graphics, Visual Effects Compositing, Color Grading &amp; Broadcast Packaging.</p>
+      </div>
+
+      <!-- Tool 3: Cascadeur -->
+      <div class="tool-card software-badge">
+        <div class="tool-card-head">
+          <span class="tool-card-name">Cascadeur</span>
+          <span class="tool-card-badge">Physics Animation</span>
+        </div>
+        <p class="tool-card-desc">AI-assisted Physics-based Character Animation, AutoPosing, Rigging, Center of Mass Tracking &amp; Keyframing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERACTIVE 3D MODEL SHOWCASE (Dedicated Section before Projects) -->
+<section class="showcase-3d" id="3d-showcase">
+  <div class="reveal in">
+    <div class="s-label"><div class="s-label-line"></div><span class="s-label-text">Interactive Experience</span></div>
+    <h2 class="s-title">Interactive 3D<br><span style="color:var(--white)">Model Showcase</span></h2>
+  </div>
+
+  <div class="showcase-3d-grid reveal in">
+    <!-- Left: 3D Model Viewer Container -->
+    <div class="showcase-3d-viewer-wrap">
+      <div class="showcase-3d-corner"></div>
+      <div class="showcase-3d-corner2"></div>
+
+      <model-viewer 
+        src="shoe_model.glb" 
+        alt="3D Shoe Model - Buddy Green Spark Initiative" 
+        auto-rotate 
+        camera-controls 
+        shadow-intensity="1" 
+        style="width: 100%; height: 500px; background-color: #0d0d0d; border: 1px solid #242426;">
+      </model-viewer>
+
+      <div class="showcase-3d-hint">
+        <span>🖱️ Drag to orbit 360° • Pinch / Scroll to zoom</span>
+      </div>
+    </div>
+
+    <!-- Right: Technical Details & Description -->
+    <div class="showcase-3d-info">
+      <p>Explore this high-fidelity 3D footwear asset created for the <strong>Buddy Green Spark Initiative</strong>. Dissect the precise quad topology, PBR materials, and dynamic silhouette rendered in real-time WebGL.</p>
+      <p style="font-size:0.95rem;color:var(--white-soft);">Click and drag with your cursor to orbit <strong>360°</strong> around the entire model, zoom in on stitch details, or pan across the geometry in full 3D space.</p>
+      
+      <div class="showcase-3d-specs">
+        <div class="showcase-spec-box">
+          <div class="showcase-spec-title">Asset Source</div>
+          <div class="showcase-spec-val">shoe_model.glb</div>
+        </div>
+        <div class="showcase-spec-box">
+          <div class="showcase-spec-title">Workflow Suite</div>
+          <div class="showcase-spec-val">Blender 3D</div>
+        </div>
+        <div class="showcase-spec-box">
+          <div class="showcase-spec-title">Topology</div>
+          <div class="showcase-spec-val">Clean Sub-D Quad</div>
+        </div>
+        <div class="showcase-spec-box">
+          <div class="showcase-spec-title">Interaction</div>
+          <div class="showcase-spec-val">360° Real-Time Orbit</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects" id="projects">
+  <div class="reveal in">
+    <div class="s-label"><div class="s-label-line"></div><span class="s-label-text">Portfolio</span></div>
+    <h2 class="s-title">Selected Work</h2>
+  </div>
+  <div class="projects-grid reveal in">
+    <div class="project-card">
+      <div class="project-thumb">
+        <img src="owlup_motion_still_1786701566178.jpg" alt="Jabbok Radio Promo" style="width:100%;height:100%;object-fit:cover;opacity:0.65;transition:opacity 0.3s, transform 0.4s;" onmouseover="this.style.opacity='0.9';this.style.transform='scale(1.05)';" onmouseout="this.style.opacity='0.65';this.style.transform='scale(1)';" onerror="this.style.display='none';">
+        <div class="project-thumb-bg"></div>
+        <div class="project-tag-strip"></div>
+        <div class="project-badge">Cinematography</div>
+      </div>
+      <div class="project-body">
+        <div class="project-num">01</div>
+        <div class="project-name">Jabbok Radio Promo</div>
+        <p class="project-desc">Full-service cinematography and video production for Jabbok Radio. A high-energy broadcast promotional campaign with compelling visuals and dynamic storytelling that elevated the station's on-screen brand.</p>
+        <div class="project-client"><div class="project-client-dot"></div><span class="project-client-text">Client: Oluwaseyi Ige — Owner, Jabbok Radio</span></div>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-thumb">
+        <img src="shoe_animation_still_1786701546110.jpg" alt="Buddy Greenspark Brand" style="width:100%;height:100%;object-fit:cover;opacity:0.65;transition:opacity 0.3s, transform 0.4s;" onmouseover="this.style.opacity='0.9';this.style.transform='scale(1.05)';" onmouseout="this.style.opacity='0.65';this.style.transform='scale(1)';" onerror="this.style.display='none';">
+        <div class="project-thumb-bg"></div>
+        <div class="project-tag-strip"></div>
+        <div class="project-badge">3D &amp; Motion</div>
+      </div>
+      <div class="project-body">
+        <div class="project-num">02</div>
+        <div class="project-name">Buddy Greenspark Brand</div>
+        <p class="project-desc">Complete visual identity in motion — 3D footwear visualization in Blender, animated brand assets in After Effects, and promotional video content designed to elevate audience engagement.</p>
+        <div class="project-client"><div class="project-client-dot"></div><span class="project-client-text">Client: Chima Okoli — Owner, Buddy Greenspark</span></div>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-thumb">
+        <img src="character_rig_still_1786701578188.jpg" alt="GSS Kubwa Masterclass" style="width:100%;height:100%;object-fit:cover;opacity:0.65;transition:opacity 0.3s, transform 0.4s;" onmouseover="this.style.opacity='0.9';this.style.transform='scale(1.05)';" onmouseout="this.style.opacity='0.65';this.style.transform='scale(1)';" onerror="this.style.display='none';">
+        <div class="project-thumb-bg"></div>
+        <div class="project-tag-strip"></div>
+        <div class="project-badge">Training &amp; Animation</div>
+      </div>
+      <div class="project-body">
+        <div class="project-num">03</div>
+        <div class="project-name">GSS Kubwa Masterclass</div>
+        <p class="project-desc">One-week intensive cinematography and animation training programme delivered to students of GSS Kubwa — equipping the next generation of visual storytellers with professional camera and 3D skills.</p>
+        <div class="project-client"><div class="project-client-dot"></div><span class="project-client-text">Client: GSS Kubwa — Abuja, Nigeria</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="reveal in">
+    <div class="s-label"><div class="s-label-line"></div><span class="s-label-text">Client Words</span></div>
+    <h2 class="s-title">Testimonials</h2>
+  </div>
+  <div class="t-grid reveal in">
+    <!-- Featured -->
+    <div class="t-featured">
+      <div class="t-mark">"</div>
+      <div class="t-stars">★★★★★</div>
+      <p class="t-quote">Working with Dominion was an absolute game-changer for Jabbok Radio. His ability to translate our vision into a compelling visual story was extraordinary. The production quality, attention to detail, and professionalism he brought to every session set a new standard for what we now expect from creative partners. I wholeheartedly recommend him to any organisation looking for top-tier cinematography and video production.</p>
+      <div class="t-author">
+        <div class="t-avatar">OI</div>
+        <div><div class="t-name">Oluwaseyi Ige</div><div class="t-role">Owner, Jabbok Radio</div></div>
+        <div class="t-stars-right">★★★★★</div>
+      </div>
+    </div>
+    <!-- Card 2 -->
+    <div class="t-card">
+      <div class="t-mark">"</div>
+      <div class="t-stars">★★★★★</div>
+      <p class="t-quote">Dominion brought our brand to life in ways we didn't think were possible. His motion graphics work for Buddy Greenspark elevated our entire visual identity. Creative, fast, and deeply talented — he is the kind of professional every growing business needs on their team.</p>
+      <div class="t-author">
+        <div class="t-avatar">CO</div>
+        <div><div class="t-name">Chima Okoli</div><div class="t-role">Owner, Buddy Greenspark</div></div>
+      </div>
+    </div>
+    <!-- Card 3 -->
+    <div class="t-card">
+      <div class="t-mark">"</div>
+      <div class="t-stars">★★★★★</div>
+      <p class="t-quote">Dominion is not just skilled — he is a patient and gifted teacher. He taught me video editing with clarity and passion. Because of him I now create professionally. Truly an exceptional mentor and a genuine inspiration to anyone learning this craft.</p>
+      <div class="t-author">
+        <div class="t-avatar">EG</div>
+        <div><div class="t-name">Enokela Godwin</div><div class="t-role">Video Editing Student</div></div>
+      </div>
+    </div>
+    <!-- Card 4 – full width -->
+    <div class="t-featured" style="grid-column:span 2;border-top-color:rgba(255,255,255,.3)">
+      <div class="t-mark">"</div>
+      <div class="t-stars">★★★★★</div>
+      <p class="t-quote">The one-week cinematography training by Ige Dominion was the best creative experience our students have ever had. He was engaging, knowledgeable, and incredibly inspiring. Students left with real, applicable skills in camera work and visual storytelling. We hope to have him back very soon.</p>
+      <div class="t-author">
+        <div class="t-avatar" style="font-size:.65rem">GSS</div>
+        <div><div class="t-name">Students &amp; Staff — GSS Kubwa</div><div class="t-role">One-Week Cinematography Training Programme · Abuja</div></div>
+        <div class="t-stars-right">★★★★★</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-grid">
+    <div class="contact-left reveal">
+      <div class="s-label"><div class="s-label-line"></div><span class="s-label-text">Let's Work Together</span></div>
+      <h2 class="s-title">Get In<br>Touch</h2>
+      <p>Have a project in mind? Looking for a creative partner to bring your vision to life through the power of cinematography, animation, or VFX? Reach out directly — let's create something extraordinary together.</p>
+      <div class="contact-links">
+        <a href="mailto:igedominion09@gmail.com" class="contact-link">
+          <span class="contact-link-icon">✉️</span>
+          <div><span class="contact-link-label">Email</span><span class="contact-link-val">igedominion09@gmail.com</span></div>
+          <span class="contact-link-arrow">→</span>
+        </a>
+        <a href="https://wa.me/2349126055946" target="_blank" rel="noopener noreferrer" class="contact-link">
+          <span class="contact-link-icon">💬</span>
+          <div><span class="contact-link-label">WhatsApp / Phone</span><span class="contact-link-val">+234 912 605 5946</span></div>
+          <span class="contact-link-arrow">→</span>
+        </a>
+        <div class="contact-link">
+          <span class="contact-link-icon">📍</span>
+          <div><span class="contact-link-label">Location</span><span class="contact-link-val">Abuja, Nigeria</span></div>
+        </div>
+        <div class="contact-link">
+          <span class="contact-link-icon">📱</span>
+          <div><span class="contact-link-label">Social</span><span class="contact-link-val">@igedominion</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="contact-cta-box">
+        <h3>Ready to create something extraordinary?</h3>
+        <p>Whether it's a brand commercial, a 3D animation sequence in Blender &amp; Cascadeur, or motion graphics in After Effects — I bring full creative vision and professional execution to every brief.</p>
+        <a href="mailto:igedominion09@gmail.com?subject=Project%20Enquiry%20from%20Portfolio&amp;body=Hi%20Dominion%2C%20I%20found%20your%20portfolio%20and%20would%20love%20to%20discuss%20a%20project." class="btn-white" style="display:inline-block">Send Me a Message →</a>
+      </div>
+      <!-- Decorative number grid -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:2px">
+        <div style="background:var(--dark3);border:1px solid var(--border);padding:28px 24px;text-align:center">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:3rem;font-weight:800;color:var(--white);line-height:1">5+</div>
+          <div style="font-size:.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:6px">Years Active</div>
+        </div>
+        <div style="background:var(--dark3);border:1px solid var(--border);padding:28px 24px;text-align:center">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:3rem;font-weight:800;color:var(--white);line-height:1">30+</div>
+          <div style="font-size:.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:6px">Projects Done</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">IGE · DOMINION</div>
+  <p class="footer-copy">© 2024 Ige Dominion · Abuja, Nigeria · All Rights Reserved</p>
+  <div class="footer-links">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#3d-showcase">3D Model</a>
+    <a href="#projects">Work</a>
+    <a href="#testimonials">Reviews</a>
+    <a href="#contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+// Loader
+window.addEventListener('load',()=>{
+  setTimeout(()=>document.getElementById('loader').classList.add('done'),1400)
+})
+
+// Custom cursor
+const cur=document.getElementById('cur'), ring=document.getElementById('cur-ring')
+let mx=0,my=0,rx=0,ry=0
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY})
+function animCursor(){
+  cur.style.left=mx+'px';cur.style.top=my+'px'
+  rx+=(mx-rx)*.13;ry+=(my-ry)*.13
+  ring.style.left=rx+'px';ring.style.top=ry+'px'
+  requestAnimationFrame(animCursor)
+}
+animCursor()
+document.querySelectorAll('a,button,model-viewer,.skill-row,.project-card,.t-featured,.t-card,.showcase-3d-viewer-wrap,.tool-card').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.width='16px';cur.style.height='16px';ring.style.width='48px';ring.style.height='48px'})
+  el.addEventListener('mouseleave',()=>{cur.style.width='9px';cur.style.height='9px';ring.style.width='34px';ring.style.height='34px'})
+})
+
+// Scroll reveal
+const obs=new IntersectionObserver((entries)=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting) setTimeout(()=>e.target.classList.add('in'),i*60)
+  })
+},{threshold:.1})
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el))
+
+// GSAP + ScrollTrigger for Skill Badges (refined subtle entrance transition, no harsh glow)
+function initSkillBadgeAnimations(){
+  const badges = document.querySelectorAll('.role-chip, .tool-card')
   
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              black: '#09090b',
-              dark: '#121215',
-              card: '#18181b',
-              border: '#27272a',
-              muted: '#71717a',
-              accent: '#38bdf8',
-            }
-          },
-          fontFamily: {
-            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+  if (window.gsap && window.ScrollTrigger) {
+    gsap.registerPlugin(ScrollTrigger)
+    
+    // Animate Hero role chips
+    gsap.utils.toArray('.hero-roles .role-chip').forEach((badge, idx) => {
+      gsap.fromTo(badge, 
+        { scale: 0.92, opacity: 0, y: 12 },
+        {
+          scale: 1,
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          delay: 0.5 + idx * 0.06,
+          ease: 'power2.out',
+          onComplete: () => badge.classList.add('badge-in-view')
+        }
+      )
+    })
+
+    // Animate tool stack cards when scrolling into view
+    gsap.utils.toArray('.skills-badges-grid .tool-card').forEach((card, idx) => {
+      gsap.fromTo(card,
+        { 
+          y: 20,
+          opacity: 0,
+          scale: 0.96
+        },
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 0.6,
+          delay: idx * 0.1,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: card,
+            start: 'top 88%',
+            toggleActions: 'play none none reverse',
+            onEnter: () => card.classList.add('badge-in-view'),
+            onLeaveBack: () => card.classList.remove('badge-in-view')
           }
         }
-      }
-    }
-  </script>
-
-  <!-- Google Inter Font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
-
-  <!-- Google <model-viewer> CDN -->
-  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
-
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #09090b;
-      color: #f4f4f5;
-    }
-    model-viewer {
-      width: 100%;
-      height: 100%;
-      background-color: transparent;
-      --poster-color: transparent;
-    }
-    .custom-scrollbar::-webkit-scrollbar {
-      width: 6px;
-    }
-    .custom-scrollbar::-webkit-scrollbar-track {
-      background: #09090b;
-    }
-    .custom-scrollbar::-webkit-scrollbar-thumb {
-      background: #27272a;
-      border-radius: 3px;
-    }
-  </style>
-</head>
-<body class="bg-[#09090b] text-zinc-100 antialiased selection:bg-zinc-700 selection:text-white custom-scrollbar">
-
-  <!-- Navigation Bar -->
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-[#09090b]/80 backdrop-blur-md border-b border-zinc-800/80">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-      <a href="#" class="flex items-center gap-2 font-bold text-sm tracking-wider uppercase text-zinc-100 hover:text-white transition">
-        <span class="w-2.5 h-2.5 bg-zinc-100 rounded-sm"></span>
-        <span>Dominion Ige</span>
-      </a>
-
-      <!-- Nav Links -->
-      <div class="hidden md:flex items-center gap-8 text-xs uppercase font-semibold tracking-wider text-zinc-400">
-        <a href="#showreel" class="hover:text-zinc-100 transition">Showreel</a>
-        <a href="#model-3d" class="hover:text-zinc-100 transition">3D Model</a>
-        <a href="#experience" class="hover:text-zinc-100 transition">Experience</a>
-        <a href="#skills" class="hover:text-zinc-100 transition">Skills</a>
-        <a href="#contact" class="hover:text-zinc-100 transition">Contact</a>
-      </div>
-
-      <a href="#contact" class="px-4 py-2 bg-zinc-100 hover:bg-white text-zinc-900 text-xs font-bold uppercase tracking-wider rounded-md transition shadow-sm">
-        Get in Touch
-      </a>
-    </div>
-  </nav>
-
-  <!-- Hero Section -->
-  <header class="relative pt-32 pb-20 sm:pt-40 sm:pb-28 px-4 sm:px-6 border-b border-zinc-800">
-    <div class="max-w-4xl mx-auto text-center">
-      
-      <!-- Status Badge -->
-      <div class="inline-flex items-center gap-2 px-3 py-1 bg-zinc-900 border border-zinc-800 rounded-full text-zinc-400 text-xs font-medium mb-6">
-        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-        <span>Available for Commercial Freelance & Contract</span>
-      </div>
-
-      <!-- Main Title -->
-      <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white uppercase leading-tight mb-4">
-        DOMINION IGE
-      </h1>
-      
-      <!-- Sub-headline -->
-      <p class="text-lg sm:text-xl md:text-2xl text-zinc-400 font-medium tracking-wide mb-6">
-        3D Animator & Visual Artist
-      </p>
-
-      <!-- Description -->
-      <p class="max-w-2xl mx-auto text-sm sm:text-base text-zinc-400 leading-relaxed mb-10">
-        Specializing in cinematic 3D product animation, footwear visualization, commercial keyframing, and physics-driven character mechanics in Blender & Cascadeur.
-      </p>
-
-      <!-- Direct CTA Buttons -->
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="#showreel" class="w-full sm:w-auto px-7 py-3.5 bg-zinc-100 hover:bg-white text-zinc-950 text-xs font-bold uppercase tracking-wider rounded-md transition flex items-center justify-center gap-2">
-          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-          <span>View Showreel</span>
-        </a>
-        <a href="#model-3d" class="w-full sm:w-auto px-7 py-3.5 bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 text-zinc-200 hover:text-white text-xs font-bold uppercase tracking-wider rounded-md transition flex items-center justify-center gap-2">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"/></svg>
-          <span>Interactive 3D Model</span>
-        </a>
-      </div>
-
-      <!-- Quick Metrics -->
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-16 pt-10 border-t border-zinc-800/80 text-left">
-        <div>
-          <div class="text-xs text-zinc-500 uppercase tracking-wider font-semibold">Specialization</div>
-          <div class="text-sm font-bold text-zinc-200 mt-1">Product & Footwear</div>
-        </div>
-        <div>
-          <div class="text-xs text-zinc-500 uppercase tracking-wider font-semibold">Primary Suite</div>
-          <div class="text-sm font-bold text-zinc-200 mt-1">Blender & Cascadeur</div>
-        </div>
-        <div>
-          <div class="text-xs text-zinc-500 uppercase tracking-wider font-semibold">Output Quality</div>
-          <div class="text-sm font-bold text-zinc-200 mt-1">4K UHD / 60 FPS</div>
-        </div>
-        <div>
-          <div class="text-xs text-zinc-500 uppercase tracking-wider font-semibold">Turnaround</div>
-          <div class="text-sm font-bold text-zinc-200 mt-1">Fast & Broadcast Ready</div>
-        </div>
-      </div>
-
-    </div>
-  </header>
-
-  <!-- Interactive 3D Shoe Section (Google <model-viewer>) -->
-  <section id="model-3d" class="py-20 px-4 sm:px-6 border-b border-zinc-800 bg-[#0c0c0e]">
-    <div class="max-w-5xl mx-auto">
-      
-      <!-- Section Header -->
-      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
-        <div>
-          <div class="text-xs font-bold uppercase tracking-widest text-zinc-500 mb-1">Interactive WebGL Viewport</div>
-          <h2 class="text-2xl sm:text-3xl font-bold text-white uppercase tracking-tight">
-            Interactive 3D Shoe
-          </h2>
-        </div>
-        <p class="text-xs text-zinc-400 max-w-md">
-          Dissect 3D topology and materials directly in the browser with Google's native model-viewer engine. Rotate 360°, pan, or inspect quad surfaces.
-        </p>
-      </div>
-
-      <!-- Clean 3D Card Container -->
-      <div class="relative bg-zinc-900/90 border border-zinc-800 rounded-xl overflow-hidden shadow-2xl">
-        
-        <!-- Top Toolbar -->
-        <div class="p-3.5 bg-zinc-950 border-b border-zinc-800 flex items-center justify-between">
-          <div class="flex items-center gap-2">
-            <span class="w-2.5 h-2.5 rounded-full bg-zinc-700"></span>
-            <span class="w-2.5 h-2.5 rounded-full bg-zinc-700"></span>
-            <span class="w-2.5 h-2.5 rounded-full bg-zinc-700"></span>
-            <span class="text-xs font-mono text-zinc-400 ml-2">shoe_model.glb</span>
-          </div>
-
-          <!-- Controls -->
-          <div class="flex items-center gap-2">
-            <button id="toggle-rotate-btn" onclick="toggleAutoRotate()" class="px-3 py-1 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white text-xs font-medium rounded transition">
-              Toggle Auto-Rotate
-            </button>
-            <button onclick="resetCamera()" class="px-3 py-1 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white text-xs font-medium rounded transition">
-              Reset View
-            </button>
-          </div>
-        </div>
-
-        <!-- 3D Viewport Frame -->
-        <div class="relative w-full h-[420px] sm:h-[500px] flex items-center justify-center bg-[#0d0d10]">
-          
-          <model-viewer
-            id="shoe-viewer"
-            src="shoe_model.glb"
-            alt="Dominion Ige - 3D Footwear Model"
-            camera-controls
-            auto-rotate
-            rotation-per-second="25deg"
-            shadow-intensity="1.5"
-            shadow-softness="0.8"
-            exposure="1.0"
-            ar
-            ar-modes="webxr scene-viewer quick-look"
-            loading="lazy"
-            class="w-full h-full"
-          >
-            <!-- Fallback Poster / Loading Message if model is loading or not yet provided -->
-            <div slot="poster" class="flex flex-col items-center justify-center h-full text-center p-6">
-              <div class="w-10 h-10 border-2 border-zinc-600 border-t-zinc-200 rounded-full animate-spin mb-4"></div>
-              <p class="text-xs font-mono text-zinc-400">Loading 3D Shoe Model (shoe_model.glb)...</p>
-            </div>
-          </model-viewer>
-
-          <!-- Interaction Hint Overlay -->
-          <div class="absolute bottom-4 left-4 pointer-events-none px-3 py-1.5 bg-zinc-950/80 backdrop-blur border border-zinc-800 rounded text-[11px] text-zinc-400">
-            🖱️ Drag to rotate • Pinch / Scroll to zoom
-          </div>
-
-          <!-- Source Model Switcher / Local Model Helper -->
-          <div class="absolute bottom-4 right-4 flex items-center gap-2">
-            <button onclick="loadSampleModel()" class="px-2.5 py-1 bg-zinc-950/90 border border-zinc-700 text-zinc-400 hover:text-zinc-200 text-[10px] uppercase font-mono rounded transition">
-              Load Sample GLB
-            </button>
-            <button onclick="loadDefaultModel()" class="px-2.5 py-1 bg-zinc-950/90 border border-zinc-700 text-zinc-400 hover:text-zinc-200 text-[10px] uppercase font-mono rounded transition">
-              Load shoe_model.glb
-            </button>
-          </div>
-        </div>
-
-        <!-- Technical Footwear Specs -->
-        <div class="p-4 bg-zinc-950 border-t border-zinc-800 grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs">
-          <div>
-            <span class="text-zinc-500">Geometry:</span>
-            <span class="font-mono text-zinc-300 ml-1">Sub-D Clean Quad</span>
-          </div>
-          <div>
-            <span class="text-zinc-500">Shaders:</span>
-            <span class="font-mono text-zinc-300 ml-1">PBR Metallic / Roughness</span>
-          </div>
-          <div>
-            <span class="text-zinc-500">Format:</span>
-            <span class="font-mono text-zinc-300 ml-1">GLTF / GLB 2.0</span>
-          </div>
-          <div>
-            <span class="text-zinc-500">Render Engine:</span>
-            <span class="font-mono text-zinc-300 ml-1">Google Model Viewer</span>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Showreel Section -->
-  <section id="showreel" class="py-20 px-4 sm:px-6 border-b border-zinc-800">
-    <div class="max-w-5xl mx-auto">
-      
-      <!-- Section Header -->
-      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
-        <div>
-          <div class="text-xs font-bold uppercase tracking-widest text-zinc-500 mb-1">Featured Video Motion</div>
-          <h2 class="text-2xl sm:text-3xl font-bold text-white uppercase tracking-tight">
-            Commercial Showreel
-          </h2>
-        </div>
-        <p class="text-xs text-zinc-400 max-w-md">
-          A showcase of 3D motion design, camera velocity, dynamic weight distribution, and commercial product sequences.
-        </p>
-      </div>
-
-      <!-- Responsive Video Player Container -->
-      <div class="relative bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden shadow-2xl">
-        
-        <!-- Video Viewport -->
-        <div class="relative w-full aspect-video bg-black">
-          <iframe
-            id="showreel-iframe"
-            class="w-full h-full"
-            src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?rel=0&modestbranding=1"
-            title="Dominion Ige 3D Animation Showreel"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-          ></iframe>
-        </div>
-
-        <!-- Custom Video Link Replacer Bar -->
-        <div class="p-4 bg-zinc-950 border-t border-zinc-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <div class="flex items-center gap-3">
-            <div class="px-2.5 py-1 bg-zinc-900 border border-zinc-800 text-zinc-300 text-[11px] font-mono rounded">
-              4K UHD 60FPS
-            </div>
-            <span class="text-xs text-zinc-400 font-medium">Dominion Ige • 3D Animation Master Reel</span>
-          </div>
-
-          <!-- Direct URL Embed Input -->
-          <div class="flex items-center gap-2 w-full sm:w-auto">
-            <input
-              id="embed-url-input"
-              type="text"
-              placeholder="Paste YouTube/Vimeo embed URL..."
-              class="px-3 py-1.5 bg-zinc-900 border border-zinc-700 rounded text-xs text-zinc-200 placeholder-zinc-500 focus:outline-none focus:border-zinc-400 w-full sm:w-64"
-            />
-            <button
-              onclick="updateShowreelUrl()"
-              class="px-3 py-1.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-200 text-xs font-semibold rounded transition shrink-0"
-            >
-              Update Video
-            </button>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Work Experience Section -->
-  <section id="experience" class="py-20 px-4 sm:px-6 border-b border-zinc-800 bg-[#0c0c0e]">
-    <div class="max-w-5xl mx-auto">
-      
-      <!-- Section Header -->
-      <div class="mb-12">
-        <div class="text-xs font-bold uppercase tracking-widest text-zinc-500 mb-1">Commercial Track Record</div>
-        <h2 class="text-2xl sm:text-3xl font-bold text-white uppercase tracking-tight">
-          Work Experience & Clients
-        </h2>
-        <p class="text-xs sm:text-sm text-zinc-400 mt-2 max-w-xl">
-          Proudly collaborated with dynamic brands, studios, and agencies to deliver cutting-edge 3D animations and visual media.
-        </p>
-      </div>
-
-      <!-- Simple Grid Cards -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-        <!-- 1. Buddy Green Spark Initiative -->
-        <div class="p-6 bg-zinc-900/80 border border-zinc-800 rounded-xl flex flex-col justify-between hover:border-zinc-700 transition">
-          <div>
-            <div class="flex items-center justify-between text-xs text-zinc-500 mb-3">
-              <span class="font-mono">Environmental / NGO</span>
-              <span class="px-2 py-0.5 bg-zinc-950 border border-zinc-800 rounded">2024</span>
-            </div>
-            <h3 class="text-base font-bold text-white mb-1">Buddy Green Spark Initiative</h3>
-            <p class="text-xs font-medium text-zinc-400 mb-3">Lead 3D Environmental & Character Animator</p>
-            <p class="text-xs text-zinc-400 leading-relaxed">
-              Designed sustainability campaign visualizations, character motion for ecological awareness films, and clean solar-tech 3D model presentations.
-            </p>
-          </div>
-          <div class="mt-5 pt-4 border-t border-zinc-800 flex flex-wrap gap-1.5">
-            <span class="px-2 py-0.5 bg-zinc-950 text-zinc-400 text-[10px] font-mono rounded">Blender</span>
-            <span class="px-2 py-0.5 bg-zinc-950 text-zinc-400 text-[10px] font-mono rounded">Cycles</span>
-            <span class="px-2 py-0.5 bg-zinc-950 text-zinc-400 text-[10px] font-mono rounded">Substance</span>
-          </div>
-        </div>
-
-        <!-- 2. Valued Tasty Foods -->
-        <div class="p-6 bg-zinc-900/80 border border-zinc-800 rounded-xl flex flex-col justify-between hover:border-zinc-700 transition">
-          <div>
-            <div class="flex items-center justify-between text-xs text-zinc-500 mb-3">
-              <span class="font-mono">FMCG / Commercial</span>
-              <span class="px-2 py-0.5 bg-zinc-950 border border-zinc-800 rounded">2024</span>
-            </div>
-            <h3 class="text-base font-bold text-white mb-1">Valued Tasty Foods</h3>
-            <p class="text-xs font-medium text-zinc-400 mb-3">3D Commercial & Product Animator</p>
-            <p class="text-xs text-zinc-400 leading-relaxed">
-              Created mouthwatering 3D food packaging reveals, photorealistic product lighting, and broadcast social video spots for retail rollout.
-            </p>
-          </div>
-          <div class="mt-5 pt-4 border-t border-zinc-800 flex flex-wrap gap-1.5">
-            <span class="px-2 py-0.5 bg-zinc-950 text-zinc-400 text-[10px] font-mono rounded">Product 3D</span>
-            <span class="px-2 py-0.5 bg-zinc-950 text-zinc-400 text-[10px] font-mono rounded">Lighting</span>
-            <span class="px-2 py-0.5 bg-zinc-950 text-zinc-400 text-[10px] font-mono rounded">DaVinci</span>
-          </div>
-        </div>
-
-        <!-- 3. OwlUp -->
-        <div class="p-6 bg-zinc-900/80 border border-zinc-800 rounded-xl flex flex-col justify-between hover:border-zinc-700 transition">
-          <div>
-            <div class="flex items-center justify-between text-xs text-zinc-500 mb-3">
-              <span class="font-mono">Fintech & Tech</span>
-              <span class="px-2 py-0.5 bg-zinc-950 border border-zinc-800 rounded">2023 - 2024</span>
-            </div>
-            <h3 class="text-base font-bold text-white mb-1">OwlUp</h3>
-            <p class="text-xs font-medium text-zinc-400 mb-3">3D Motion Designer & Brand Animator</p>
-            <p class="text-xs text-zinc-400 leading-relaxed">
-              Produced high-energy kinetic 3D app trailers, digital card animations, and UI motion graphics for fintech product launches.
-            </p>
-          </div>
-          <div class="mt-5 pt-4 border-t border-zinc-800 flex flex-wrap gap-1.5">
-            <span class="px-2 py-0.5 bg-zinc-950 text-zinc-400 text-[10px] font-mono rounded">Kinetic Motion</span>
-            <span class="px-2 py-0.5 bg-zinc-950 text-zinc-400 text-[10px] font-mono rounded">UI 3D</span>
-            <span class="px-2 py-0.5 bg-zinc-950 text-zinc-400 text-[10px] font-mono rounded">Blender</span>
-          </div>
-        </div>
-
-        <!-- 4. Jabbok Media -->
-        <div class="p-6 bg-zinc-900/80 border border-zinc-800 rounded-xl flex flex-col justify-between hover:border-zinc-700 transition">
-          <div>
-            <div class="flex items-center justify-between text-xs text-zinc-500 mb-3">
-              <span class="font-mono">Agency / Broadcast</span>
-              <span class="px-2 py-0.5 bg-zinc-950 border border-zinc-800 rounded">2023</span>
-            </div>
-            <h3 class="text-base font-bold text-white mb-1">Jabbok Media</h3>
-            <p class="text-xs font-medium text-zinc-400 mb-3">Senior 3D Generalist & Visual Artist</p>
-            <p class="text-xs text-zinc-400 leading-relaxed">
-              Executed broadcast visual effects, dynamic motion branding, broadcast title sequences, and stage visuals for corporate clients.
-            </p>
-          </div>
-          <div class="mt-5 pt-4 border-t border-zinc-800 flex flex-wrap gap-1.5">
-            <span class="px-2 py-0.5 bg-zinc-950 text-zinc-400 text-[10px] font-mono rounded">Broadcast VFX</span>
-            <span class="px-2 py-0.5 bg-zinc-950 text-zinc-400 text-[10px] font-mono rounded">Shading</span>
-            <span class="px-2 py-0.5 bg-zinc-950 text-zinc-400 text-[10px] font-mono rounded">Post-Prod</span>
-          </div>
-        </div>
-
-        <!-- 5. YAPPI -->
-        <div class="p-6 bg-zinc-900/80 border border-zinc-800 rounded-xl flex flex-col justify-between hover:border-zinc-700 transition md:col-span-2 lg:col-span-2">
-          <div>
-            <div class="flex items-center justify-between text-xs text-zinc-500 mb-3">
-              <span class="font-mono">Animation & Production Initiative</span>
-              <span class="px-2 py-0.5 bg-zinc-950 border border-zinc-800 rounded">2023 - Present</span>
-            </div>
-            <h3 class="text-base font-bold text-white mb-1">YAPPI (Youth Alternative Programs / Production Initiative)</h3>
-            <p class="text-xs font-medium text-zinc-400 mb-3">3D Character Rigging & Animation Specialist</p>
-            <p class="text-xs text-zinc-400 leading-relaxed">
-              Spearheaded character animation workflows using Cascadeur for natural center-of-mass physics. Facilitated production pipelines and mentored emerging 3D animators on commercial industry standards.
-            </p>
-          </div>
-          <div class="mt-5 pt-4 border-t border-zinc-800 flex flex-wrap gap-1.5">
-            <span class="px-2 py-0.5 bg-zinc-950 text-zinc-400 text-[10px] font-mono rounded">Cascadeur</span>
-            <span class="px-2 py-0.5 bg-zinc-950 text-zinc-400 text-[10px] font-mono rounded">Rigging</span>
-            <span class="px-2 py-0.5 bg-zinc-950 text-zinc-400 text-[10px] font-mono rounded">Physics Mechanics</span>
-            <span class="px-2 py-0.5 bg-zinc-950 text-zinc-400 text-[10px] font-mono rounded">Mentorship</span>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Skills & Software Pipeline Section -->
-  <section id="skills" class="py-20 px-4 sm:px-6 border-b border-zinc-800">
-    <div class="max-w-5xl mx-auto">
-      
-      <div class="mb-12 text-center">
-        <div class="text-xs font-bold uppercase tracking-widest text-zinc-500 mb-1">Technical Stack</div>
-        <h2 class="text-2xl sm:text-3xl font-bold text-white uppercase tracking-tight">
-          Tools & Production Pipeline
-        </h2>
-      </div>
-
-      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 text-center">
-        <div class="p-4 bg-zinc-900 border border-zinc-800 rounded-lg">
-          <div class="font-bold text-sm text-white">Blender 4.x</div>
-          <div class="text-[11px] text-zinc-400 mt-1">Modeling & Cycles</div>
-        </div>
-        <div class="p-4 bg-zinc-900 border border-zinc-800 rounded-lg">
-          <div class="font-bold text-sm text-white">Cascadeur</div>
-          <div class="text-[11px] text-zinc-400 mt-1">Physics Keyframing</div>
-        </div>
-        <div class="p-4 bg-zinc-900 border border-zinc-800 rounded-lg">
-          <div class="font-bold text-sm text-white">Substance 3D</div>
-          <div class="text-[11px] text-zinc-400 mt-1">PBR Texturing</div>
-        </div>
-        <div class="p-4 bg-zinc-900 border border-zinc-800 rounded-lg">
-          <div class="font-bold text-sm text-white">Marvelous</div>
-          <div class="text-[11px] text-zinc-400 mt-1">Cloth Simulation</div>
-        </div>
-        <div class="p-4 bg-zinc-900 border border-zinc-800 rounded-lg">
-          <div class="font-bold text-sm text-white">Unreal Engine</div>
-          <div class="text-[11px] text-zinc-400 mt-1">Realtime Lighting</div>
-        </div>
-        <div class="p-4 bg-zinc-900 border border-zinc-800 rounded-lg">
-          <div class="font-bold text-sm text-white">DaVinci / AE</div>
-          <div class="text-[11px] text-zinc-400 mt-1">Color & Comp</div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Contact & Brief Section -->
-  <section id="contact" class="py-20 px-4 sm:px-6 bg-[#0c0c0e]">
-    <div class="max-w-4xl mx-auto">
-      
-      <div class="text-center mb-12">
-        <div class="text-xs font-bold uppercase tracking-widest text-zinc-500 mb-1">Get in Touch</div>
-        <h2 class="text-2xl sm:text-4xl font-bold text-white uppercase tracking-tight">
-          Let's Create Your Next 3D Asset
-        </h2>
-        <p class="text-xs sm:text-sm text-zinc-400 mt-2">
-          Available for commercial 3D projects, character animation commissions, and product visualizations.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        
-        <!-- Left: Direct Info -->
-        <div class="p-6 bg-zinc-900 border border-zinc-800 rounded-xl flex flex-col justify-between">
-          <div>
-            <h3 class="text-base font-bold text-white mb-4">Direct Contact</h3>
-            
-            <div class="space-y-4 text-xs">
-              <div>
-                <div class="text-zinc-500 uppercase tracking-wider font-medium">Email Address</div>
-                <a href="mailto:igedominion09@gmail.com" class="text-sm font-bold text-zinc-200 hover:text-white underline mt-0.5 block">
-                  igedominion09@gmail.com
-                </a>
-              </div>
-
-              <div>
-                <div class="text-zinc-500 uppercase tracking-wider font-medium">Location & Timezone</div>
-                <div class="text-zinc-300 font-medium mt-0.5">Available Worldwide (Remote / CET / UTC)</div>
-              </div>
-
-              <div>
-                <div class="text-zinc-500 uppercase tracking-wider font-medium">Typical Response Time</div>
-                <div class="text-zinc-300 font-medium mt-0.5">Within 24 Hours</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="mt-8 pt-6 border-t border-zinc-800">
-            <button
-              onclick="copyEmail()"
-              id="copy-email-btn"
-              class="w-full py-2.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-200 text-xs font-semibold rounded transition flex items-center justify-center gap-2"
-            >
-              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
-              <span id="copy-text">Copy Email to Clipboard</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- Right: Instant Brief Form -->
-        <div class="p-6 bg-zinc-900 border border-zinc-800 rounded-xl">
-          <h3 class="text-base font-bold text-white mb-4">Send an Inquiry Brief</h3>
-          
-          <form onsubmit="handleInquirySubmit(event)" class="space-y-4 text-xs">
-            <div>
-              <label class="block text-zinc-400 mb-1 font-medium">Your Name / Company</label>
-              <input
-                id="client-name"
-                type="text"
-                required
-                placeholder="e.g. Acme Studio"
-                class="w-full px-3 py-2 bg-zinc-950 border border-zinc-800 rounded text-zinc-200 focus:outline-none focus:border-zinc-500"
-              />
-            </div>
-
-            <div>
-              <label class="block text-zinc-400 mb-1 font-medium">Project Category</label>
-              <select
-                id="project-type"
-                class="w-full px-3 py-2 bg-zinc-950 border border-zinc-800 rounded text-zinc-200 focus:outline-none focus:border-zinc-500"
-              >
-                <option value="Footwear & Product 3D Animation">Footwear & Product 3D Animation</option>
-                <option value="Character Keyframing / Cascadeur Motion">Character Keyframing / Cascadeur Motion</option>
-                <option value="Commercial 3D Broadcast Video">Commercial 3D Broadcast Video</option>
-                <option value="Interactive 3D WebGL / GLB Model">Interactive 3D WebGL / GLB Model</option>
-              </select>
-            </div>
-
-            <div>
-              <label class="block text-zinc-400 mb-1 font-medium">Project Scope & References</label>
-              <textarea
-                id="project-details"
-                rows="3"
-                required
-                placeholder="Describe your product, timeline, reference links..."
-                class="w-full px-3 py-2 bg-zinc-950 border border-zinc-800 rounded text-zinc-200 focus:outline-none focus:border-zinc-500 resize-none"
-              ></textarea>
-            </div>
-
-            <button
-              type="submit"
-              class="w-full py-2.5 bg-zinc-100 hover:bg-white text-zinc-900 font-bold uppercase tracking-wider text-xs rounded transition"
-            >
-              Draft Email Brief
-            </button>
-          </form>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="py-8 px-4 sm:px-6 border-t border-zinc-800/80 text-xs text-zinc-500">
-    <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div>
-        © <span id="year"></span> <strong class="text-zinc-300">DOMINION IGE</strong>. All rights reserved.
-      </div>
-      <div class="flex items-center gap-6">
-        <a href="#showreel" class="hover:text-zinc-300 transition">Showreel</a>
-        <a href="#model-3d" class="hover:text-zinc-300 transition">3D Model</a>
-        <a href="#experience" class="hover:text-zinc-300 transition">Experience</a>
-        <a href="#contact" class="hover:text-zinc-300 transition">Contact</a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Inline Lightweight Interactivity Script -->
-  <script>
-    // Update footer year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Toggle 3D auto-rotate
-    function toggleAutoRotate() {
-      const viewer = document.getElementById('shoe-viewer');
-      if (viewer.hasAttribute('auto-rotate')) {
-        viewer.removeAttribute('auto-rotate');
-      } else {
-        viewer.setAttribute('auto-rotate', '');
-      }
-    }
-
-    // Reset 3D camera
-    function resetCamera() {
-      const viewer = document.getElementById('shoe-viewer');
-      if (viewer) {
-        viewer.cameraOrbit = '0deg 75deg 105%';
-        viewer.cameraTarget = 'auto auto auto';
-      }
-    }
-
-    // Fallback sample model for preview testing
-    function loadSampleModel() {
-      const viewer = document.getElementById('shoe-viewer');
-      if (viewer) {
-        viewer.src = 'https://modelviewer.dev/shared-assets/models/Astronaut.glb';
-      }
-    }
-
-    // Reload default shoe_model.glb
-    function loadDefaultModel() {
-      const viewer = document.getElementById('shoe-viewer');
-      if (viewer) {
-        viewer.src = 'shoe_model.glb';
-      }
-    }
-
-    // Update showreel iframe
-    function updateShowreelUrl() {
-      const input = document.getElementById('embed-url-input');
-      const iframe = document.getElementById('showreel-iframe');
-      if (input && input.value.trim() && iframe) {
-        let url = input.value.trim();
-        // Simple helper to convert standard YouTube watch URL to embed URL
-        if (url.includes('youtube.com/watch?v=')) {
-          const videoId = url.split('v=')[1].split('&')[0];
-          url = `https://www.youtube.com/embed/${videoId}`;
-        } else if (url.includes('youtu.be/')) {
-          const videoId = url.split('youtu.be/')[1].split('?')[0];
-          url = `https://www.youtube.com/embed/${videoId}`;
-        }
-        iframe.src = url;
-      }
-    }
-
-    // Copy email helper
-    function copyEmail() {
-      const email = 'igedominion09@gmail.com';
-      navigator.clipboard.writeText(email).then(() => {
-        const textSpan = document.getElementById('copy-text');
-        if (textSpan) {
-          textSpan.textContent = 'Copied to Clipboard!';
+      )
+    })
+  } else {
+    // Fallback IntersectionObserver
+    const badgeObs = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
           setTimeout(() => {
-            textSpan.textContent = 'Copy Email to Clipboard';
-          }, 2500);
+            entry.target.classList.add('badge-in-view')
+          }, i * 80)
         }
-      });
-    }
+      })
+    }, { threshold: 0.15 })
+    badges.forEach(b => badgeObs.observe(b))
+  }
+}
 
-    // Handle Inquiry Submit
-    function handleInquirySubmit(e) {
-      e.preventDefault();
-      const name = document.getElementById('client-name').value;
-      const type = document.getElementById('project-type').value;
-      const details = document.getElementById('project-details').value;
-      
-      const subject = encodeURIComponent(`3D Project Inquiry: ${type} - ${name}`);
-      const body = encodeURIComponent(`Hi Dominion,\n\nI would like to inquire about a 3D animation project.\n\nClient/Studio: ${name}\nCategory: ${type}\n\nProject Scope & Details:\n${details}\n\nLooking forward to hearing from you!`);
-      
-      window.location.href = `mailto:igedominion09@gmail.com?subject=${subject}&body=${body}`;
-    }
-  </script>
+// Initialise animations
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initSkillBadgeAnimations)
+} else {
+  initSkillBadgeAnimations()
+}
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault()
+    const t=document.querySelector(a.getAttribute('href'))
+    if(t) t.scrollIntoView({behavior:'smooth'})
+  })
+})
+
+// Model-viewer safety handlers
+const mv = document.querySelector('model-viewer')
+if (mv) {
+  mv.addEventListener('error', (event) => {
+    console.warn('3D Model loading warning:', event)
+  })
+}
+</script>
 
 </body>
 </html>
