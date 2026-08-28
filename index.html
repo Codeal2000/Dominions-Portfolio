@@ -6,6 +6,26 @@
 <meta name="google-site-verification" content="P7RHXUT2PxFNodFLhMnYBNHiipeA6gmp6KHkdikQPME">
 <title>Ige Dominion | Visual Storyteller, 3D Animator & Motion Designer</title>
 
+<script>
+// Error resilience shield for third-party CDNs and iframe fetch calls
+window.addEventListener('unhandledrejection', function(event) {
+  if (event && event.reason && (
+    event.reason.message === 'Failed to fetch' ||
+    (typeof event.reason === 'string' && event.reason.includes('fetch')) ||
+    event.reason.name === 'TypeError'
+  )) {
+    event.preventDefault();
+    console.warn('Handled external resource fetch:', event.reason);
+  }
+});
+window.addEventListener('error', function(event) {
+  if (event && event.message && event.message.includes('Failed to fetch')) {
+    event.preventDefault();
+    return true;
+  }
+});
+</script>
+
 <!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -173,8 +193,80 @@ section{padding:100px 56px}
 .showcase-spec-title{font-size:.58rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
 .showcase-spec-val{font-family:'Barlow Condensed',sans-serif;font-size:1.15rem;font-weight:700;color:var(--white)}
 
-/* ── PROJECTS */
+/* ── PROJECTS & VIDEO SHOWCASE */
 .projects{background:var(--dark2)}
+.video-showcase-card{
+  background:var(--dark3);
+  border:1px solid var(--border);
+  display:grid;
+  grid-template-columns:1.1fr 1fr;
+  gap:40px;
+  align-items:center;
+  padding:36px;
+  margin-bottom:32px;
+  position:relative;
+}
+.video-frame-wrap{
+  position:relative;
+  width:100%;
+  max-width:380px;
+  margin:0 auto;
+  aspect-ratio:9/16;
+  background:#000000;
+  border:1px solid var(--border-light);
+  overflow:hidden;
+}
+.video-frame-wrap iframe{
+  width:100%;
+  height:100%;
+  border:none;
+  display:block;
+}
+.video-showcase-info h3{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:2.4rem;
+  font-weight:800;
+  letter-spacing:1px;
+  color:var(--white);
+  line-height:1.1;
+  margin-bottom:14px;
+}
+.video-tag{
+  display:inline-block;
+  background:var(--white);
+  color:var(--dark);
+  font-size:.6rem;
+  font-weight:700;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  padding:4px 12px;
+  margin-bottom:16px;
+}
+.video-meta-list{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin:24px 0;
+}
+.video-meta-item{
+  background:var(--dark2);
+  border:1px solid var(--border);
+  padding:14px 16px;
+}
+.video-meta-label{
+  font-size:.55rem;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:4px;
+}
+.video-meta-val{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:1.1rem;
+  font-weight:700;
+  color:var(--white);
+}
+
 .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
 .project-card{background:var(--dark3);border:1px solid var(--border);overflow:hidden;position:relative;transition:border-color .3s}
 .project-card:hover{border-color:var(--border-light)}
@@ -184,7 +276,7 @@ section{padding:100px 56px}
 .project-thumb-icon{font-size:2.5rem;position:relative;z-index:1;opacity:.25;transition:opacity .3s}
 .project-card:hover .project-thumb-icon{opacity:.7}
 .project-tag-strip{position:absolute;top:0;left:0;right:0;height:2px;background:var(--white)}
-.project-badge{position:absolute;top:14px;left:14px;background:var(--white);color:var(--dark);font-size:.55rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:4px 10px}
+.project-badge{position:absolute;top:14px;left:14px;background:var(--white);color:var(--dark);font-size:.55rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:4px 10px;z-index:2}
 .project-body{padding:26px 22px}
 .project-num{font-family:'Barlow Condensed',sans-serif;font-size:.75rem;letter-spacing:4px;color:var(--muted2);opacity:.7;margin-bottom:6px}
 .project-name{font-family:'Barlow Condensed',sans-serif;font-size:1.6rem;font-weight:700;color:var(--text);margin-bottom:10px;letter-spacing:.5px}
@@ -254,6 +346,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:36px 56
   .about-grid{grid-template-columns:1fr}
   .about-left{position:static}
   .showcase-3d-grid{grid-template-columns:1fr}
+  .video-showcase-card{grid-template-columns:1fr;gap:28px;padding:24px;}
   .projects-grid{grid-template-columns:1fr 1fr}
   .contact-grid{grid-template-columns:1fr}
   footer{flex-direction:column;text-align:center}
@@ -336,8 +429,8 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:36px 56
         <div class="about-img-corner2"></div>
       </div>
       <div class="about-stats">
-        <div class="stat-box"><div class="stat-num">5+</div><div class="stat-lbl">Years</div></div>
-        <div class="stat-box"><div class="stat-num">30+</div><div class="stat-lbl">Projects</div></div>
+        <div class="stat-box"><div class="stat-num">3+</div><div class="stat-lbl">Years Active</div></div>
+        <div class="stat-box"><div class="stat-num">7+</div><div class="stat-lbl">Projects</div></div>
         <div class="stat-box"><div class="stat-num">3</div><div class="stat-lbl">Primary Tools</div></div>
         <div class="stat-box"><div class="stat-num">100%</div><div class="stat-lbl">Dedication</div></div>
       </div>
@@ -459,11 +552,13 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:36px 56
       <div class="showcase-3d-corner2"></div>
 
       <model-viewer 
-        src="shoe_model.glb" 
+        src="./shoe_model.glb" 
         alt="3D Shoe Model - Buddy Green Spark Initiative" 
         auto-rotate 
         camera-controls 
         shadow-intensity="1" 
+        loading="lazy"
+        reveal="auto"
         style="width: 100%; height: 500px; background-color: #0d0d0d; border: 1px solid #242426;">
       </model-viewer>
 
@@ -502,49 +597,124 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:36px 56
 <!-- PROJECTS -->
 <section class="projects" id="projects">
   <div class="reveal in">
-    <div class="s-label"><div class="s-label-line"></div><span class="s-label-text">Portfolio</span></div>
-    <h2 class="s-title">Selected Work</h2>
+    <div class="s-label"><div class="s-label-line"></div><span class="s-label-text">Featured Production</span></div>
+    <h2 class="s-title">3D Animation &amp;<br><span style="color:var(--white)">Selected Work</span></h2>
   </div>
+
+  <!-- Featured Video Showcase: Direct Embedded Player -->
+  <div class="video-showcase-card reveal in">
+    <div class="video-frame-wrap">
+      <iframe 
+        src="https://www.youtube-nocookie.com/embed/PyTLJwkbYds?rel=0&amp;modestbranding=1&amp;playsinline=1" 
+        title="Night Encounter 3D Animation Reel - Ige Dominion" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <div class="video-showcase-info">
+      <span class="video-tag">Featured Video Animation</span>
+      <h3>Night Alley 3D Narrative Sequence</h3>
+      <p style="font-size:0.95rem;color:var(--muted2);line-height:1.85;margin-bottom:16px;">
+        A high-stakes cinematic narrative sequence set in an atmospheric urban alleyway. Created with custom character modeling, African print garment texturing, and physics-driven multi-character choreography.
+      </p>
+
+      <div class="video-meta-list">
+        <div class="video-meta-item">
+          <div class="video-meta-label">Animation Physics</div>
+          <div class="video-meta-val">Cascadeur 3D</div>
+        </div>
+        <div class="video-meta-item">
+          <div class="video-meta-label">Shading &amp; Lighting</div>
+          <div class="video-meta-val">Blender Cycles</div>
+        </div>
+        <div class="video-meta-item">
+          <div class="video-meta-label">Compositing</div>
+          <div class="video-meta-val">After Effects</div>
+        </div>
+        <div class="video-meta-item">
+          <div class="video-meta-label">Format</div>
+          <div class="video-meta-val">9:16 Vertical Reel</div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
+        <a href="https://www.youtube.com/shorts/PyTLJwkbYds" target="_blank" rel="noopener noreferrer" class="btn-white" style="padding:12px 28px;font-size:0.65rem;">
+          Watch on YouTube ↗
+        </a>
+        <a href="#3d-showcase" class="btn-ghost" style="padding:12px 28px;font-size:0.65rem;">
+          Explore 3D Model ↓
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Additional Project Cards (No AI Thumbnails, purely real assets & typography) -->
   <div class="projects-grid reveal in">
+    <!-- Project 1: Atmospheric 3D Environment -->
     <div class="project-card">
-      <div class="project-thumb">
-        <img src="owlup_motion_still_1786701566178.jpg" alt="Jabbok Radio Promo" style="width:100%;height:100%;object-fit:cover;opacity:0.65;transition:opacity 0.3s, transform 0.4s;" onmouseover="this.style.opacity='0.9';this.style.transform='scale(1.05)';" onmouseout="this.style.opacity='0.65';this.style.transform='scale(1)';" onerror="this.style.display='none';">
+      <div class="project-thumb" style="background:#0a0a0c;display:flex;flex-direction:column;gap:8px;">
         <div class="project-thumb-bg"></div>
         <div class="project-tag-strip"></div>
-        <div class="project-badge">Cinematography</div>
+        <div class="project-badge">3D Environment</div>
+        <div style="font-size:2.2rem;opacity:0.6;">🏛️</div>
+        <div style="font-size:0.6rem;letter-spacing:2px;color:var(--muted);text-transform:uppercase;">Desert Outpost Staging</div>
       </div>
       <div class="project-body">
         <div class="project-num">01</div>
-        <div class="project-name">Jabbok Radio Promo</div>
-        <p class="project-desc">Full-service cinematography and video production for Jabbok Radio. A high-energy broadcast promotional campaign with compelling visuals and dynamic storytelling that elevated the station's on-screen brand.</p>
-        <div class="project-client"><div class="project-client-dot"></div><span class="project-client-text">Client: Oluwaseyi Ige — Owner, Jabbok Radio</span></div>
+        <div class="project-name">The Watcher Outpost</div>
+        <p class="project-desc">Atmospheric desert worldbuilding and architectural compound featuring dramatic horizon lighting, custom masonry textures, and cinematic character staging in Blender Cycles.</p>
+        <div class="project-client"><div class="project-client-dot"></div><span class="project-client-text">Tools: Blender 3D &amp; After Effects</span></div>
       </div>
     </div>
+
+    <!-- Project 2: Footwear 3D & Brand -->
     <div class="project-card">
-      <div class="project-thumb">
-        <img src="shoe_animation_still_1786701546110.jpg" alt="Buddy Greenspark Brand" style="width:100%;height:100%;object-fit:cover;opacity:0.65;transition:opacity 0.3s, transform 0.4s;" onmouseover="this.style.opacity='0.9';this.style.transform='scale(1.05)';" onmouseout="this.style.opacity='0.65';this.style.transform='scale(1)';" onerror="this.style.display='none';">
+      <div class="project-thumb" style="background:#0a0a0c;display:flex;flex-direction:column;gap:8px;">
         <div class="project-thumb-bg"></div>
         <div class="project-tag-strip"></div>
-        <div class="project-badge">3D &amp; Motion</div>
+        <div class="project-badge">Interactive 3D</div>
+        <div style="font-size:2.2rem;opacity:0.6;">👟</div>
+        <div style="font-size:0.6rem;letter-spacing:2px;color:var(--muted);text-transform:uppercase;">Real-Time WebGL Asset</div>
       </div>
       <div class="project-body">
         <div class="project-num">02</div>
         <div class="project-name">Buddy Greenspark Brand</div>
-        <p class="project-desc">Complete visual identity in motion — 3D footwear visualization in Blender, animated brand assets in After Effects, and promotional video content designed to elevate audience engagement.</p>
+        <p class="project-desc">Complete visual identity in motion — 3D footwear visualization in Blender, interactive 3D model asset, and promotional motion content designed to elevate customer engagement.</p>
         <div class="project-client"><div class="project-client-dot"></div><span class="project-client-text">Client: Chima Okoli — Owner, Buddy Greenspark</span></div>
       </div>
     </div>
+
+    <!-- Project 3: Jabbok Radio -->
     <div class="project-card">
-      <div class="project-thumb">
-        <img src="character_rig_still_1786701578188.jpg" alt="GSS Kubwa Masterclass" style="width:100%;height:100%;object-fit:cover;opacity:0.65;transition:opacity 0.3s, transform 0.4s;" onmouseover="this.style.opacity='0.9';this.style.transform='scale(1.05)';" onmouseout="this.style.opacity='0.65';this.style.transform='scale(1)';" onerror="this.style.display='none';">
+      <div class="project-thumb" style="background:#0a0a0c;display:flex;flex-direction:column;gap:8px;">
         <div class="project-thumb-bg"></div>
         <div class="project-tag-strip"></div>
-        <div class="project-badge">Training &amp; Animation</div>
+        <div class="project-badge">Cinematography</div>
+        <div style="font-size:2.2rem;opacity:0.6;">🎙️</div>
+        <div style="font-size:0.6rem;letter-spacing:2px;color:var(--muted);text-transform:uppercase;">Broadcast Commercial</div>
       </div>
       <div class="project-body">
         <div class="project-num">03</div>
+        <div class="project-name">Jabbok Radio Promo</div>
+        <p class="project-desc">Full-service cinematography and video production for Jabbok Radio. A high-energy broadcast promotional campaign with compelling visuals that elevated the station's on-screen brand.</p>
+        <div class="project-client"><div class="project-client-dot"></div><span class="project-client-text">Client: Oluwaseyi Ige — Owner, Jabbok Radio</span></div>
+      </div>
+    </div>
+
+    <!-- Project 4: GSS Kubwa Training -->
+    <div class="project-card">
+      <div class="project-thumb" style="background:#0a0a0c;display:flex;flex-direction:column;gap:8px;">
+        <div class="project-thumb-bg"></div>
+        <div class="project-tag-strip"></div>
+        <div class="project-badge">Training &amp; Mentorship</div>
+        <div style="font-size:2.2rem;opacity:0.6;">🎓</div>
+        <div style="font-size:0.6rem;letter-spacing:2px;color:var(--muted);text-transform:uppercase;">1-Week Intensive Masterclass</div>
+      </div>
+      <div class="project-body">
+        <div class="project-num">04</div>
         <div class="project-name">GSS Kubwa Masterclass</div>
-        <p class="project-desc">One-week intensive cinematography and animation training programme delivered to students of GSS Kubwa — equipping the next generation of visual storytellers with professional camera and 3D skills.</p>
+        <p class="project-desc">One-week intensive cinematography and animation training programme delivered to students of GSS Kubwa — equipping the next generation of visual storytellers with camera and 3D skills.</p>
         <div class="project-client"><div class="project-client-dot"></div><span class="project-client-text">Client: GSS Kubwa — Abuja, Nigeria</span></div>
       </div>
     </div>
@@ -640,11 +810,11 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:36px 56
       <!-- Decorative number grid -->
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:2px">
         <div style="background:var(--dark3);border:1px solid var(--border);padding:28px 24px;text-align:center">
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:3rem;font-weight:800;color:var(--white);line-height:1">5+</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:3rem;font-weight:800;color:var(--white);line-height:1">3+</div>
           <div style="font-size:.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:6px">Years Active</div>
         </div>
         <div style="background:var(--dark3);border:1px solid var(--border);padding:28px 24px;text-align:center">
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:3rem;font-weight:800;color:var(--white);line-height:1">30+</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:3rem;font-weight:800;color:var(--white);line-height:1">7+</div>
           <div style="font-size:.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:6px">Projects Done</div>
         </div>
       </div>
@@ -655,7 +825,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:36px 56
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">IGE · DOMINION</div>
-  <p class="footer-copy">© 2024 Ige Dominion · Abuja, Nigeria · All Rights Reserved</p>
+  <p class="footer-copy">© 2026 Ige Dominion · Abuja, Nigeria · All Rights Reserved</p>
   <div class="footer-links">
     <a href="#about">About</a>
     <a href="#skills">Skills</a>
