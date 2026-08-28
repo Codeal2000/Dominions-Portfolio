@@ -56,11 +56,11 @@ window.addEventListener('error', function(event) {
   --border-focus:rgba(255,255,255,0.4);
 }
 html{scroll-behavior:smooth}
-body{background:var(--dark);color:var(--text);font-family:'Barlow',sans-serif;font-weight:300;overflow-x:hidden;cursor:none}
+body{background:var(--dark);color:var(--text);font-family:'Barlow',sans-serif;font-weight:300;overflow-x:hidden}
 
 /* ── CURSOR */
-#cur{position:fixed;width:9px;height:9px;background:var(--white);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s}
-#cur-ring{position:fixed;width:34px;height:34px;border:1px solid rgba(255,255,255,.35);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .2s,height .2s,left .12s ease,top .12s ease}
+#cur{position:fixed;width:8px;height:8px;background:var(--white);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s;opacity:0.85}
+#cur-ring{position:fixed;width:32px;height:32px;border:1px solid rgba(255,255,255,.35);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .2s,height .2s,left .12s ease,top .12s ease}
 
 /* ── NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:22px 56px;background:linear-gradient(to bottom,rgba(5,5,5,.97),transparent)}
@@ -139,7 +139,7 @@ section{padding:100px 56px}
 .s-label-line{width:32px;height:1px;background:var(--white);opacity:.4}
 .s-label-text{font-size:.62rem;letter-spacing:6px;text-transform:uppercase;color:var(--muted2)}
 .s-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(2.8rem,6vw,5.5rem);font-weight:800;line-height:.95;color:var(--text);margin-bottom:60px}
-.reveal{opacity:0;transform:translateY(36px);transition:opacity .8s ease,transform .8s ease}
+.reveal{opacity:1;transform:translateY(0);transition:opacity .6s ease,transform .6s ease}
 .reveal.in{opacity:1;transform:translateY(0)}
 
 /* ── ABOUT */
@@ -331,12 +331,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:36px 56
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 
 /* ── PAGE LOADER */
-.loader{position:fixed;inset:0;background:var(--dark);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;transition:opacity .6s,visibility .6s}
-.loader.done{opacity:0;visibility:hidden}
-.loader-name{font-family:'Barlow Condensed',sans-serif;font-size:2rem;font-weight:800;letter-spacing:8px;color:var(--white)}
-.loader-bar-wrap{width:160px;height:1px;background:var(--border)}
-.loader-bar{height:100%;background:var(--white);width:0;animation:load 1.2s ease forwards}
-@keyframes load{to{width:100%}}
+.loader{display:none !important;visibility:hidden !important;pointer-events:none !important}
 
 /* ── RESPONSIVE */
 @media(max-width:1024px){
@@ -776,7 +771,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:36px 56
 <!-- CONTACT -->
 <section class="contact" id="contact">
   <div class="contact-grid">
-    <div class="contact-left reveal">
+    <div class="contact-left reveal in">
       <div class="s-label"><div class="s-label-line"></div><span class="s-label-text">Let's Work Together</span></div>
       <h2 class="s-title">Get In<br>Touch</h2>
       <p>Have a project in mind? Looking for a creative partner to bring your vision to life through the power of cinematography, animation, or VFX? Reach out directly — let's create something extraordinary together.</p>
@@ -801,7 +796,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:36px 56
         </div>
       </div>
     </div>
-    <div class="reveal">
+    <div class="reveal in">
       <div class="contact-cta-box">
         <h3>Ready to create something extraordinary?</h3>
         <p>Whether it's a brand commercial, a 3D animation sequence in Blender &amp; Cascadeur, or motion graphics in After Effects — I bring full creative vision and professional execution to every brief.</p>
