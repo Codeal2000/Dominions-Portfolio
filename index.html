@@ -2,7 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#050505">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="format-detection" content="telephone=no">
 <meta name="google-site-verification" content="P7RHXUT2PxFNodFLhMnYBNHiipeA6gmp6KHkdikQPME">
 <title>Ige Dominion | Visual Storyteller, 3D Animator & Motion Designer</title>
 
@@ -79,13 +84,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .hero-lines::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;border:1px solid rgba(255,255,255,.05);border-radius:50%;animation:breathe 8s ease-in-out infinite .5s}
 @keyframes breathe{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.04)}}
 .hero-inner{position:relative;z-index:2;max-width:900px}
-.hero-tag{display:inline-flex;align-items:center;gap:12px;margin-bottom:36px;opacity:0;animation:fadeUp .8s .2s forwards}
+.hero-tag{display:inline-flex;align-items:center;gap:12px;margin-bottom:36px;opacity:1;animation:fadeUp .8s .2s forwards}
 .hero-tag-line{width:32px;height:1px;background:var(--white-soft);opacity:.4}
 .hero-tag-text{font-size:.65rem;letter-spacing:6px;text-transform:uppercase;color:var(--muted2)}
-h1.hero-name{font-family:'Barlow Condensed',sans-serif;font-size:clamp(5rem,13vw,11rem);font-weight:800;line-height:.9;letter-spacing:-1px;color:var(--text);opacity:0;animation:fadeUp .9s .35s forwards}
+h1.hero-name{font-family:'Barlow Condensed',sans-serif;font-size:clamp(5rem,13vw,11rem);font-weight:800;line-height:.9;letter-spacing:-1px;color:var(--text);opacity:1;animation:fadeUp .9s .35s forwards}
 h1.hero-name em{font-style:normal;color:var(--white);display:block;letter-spacing:2px}
-.hero-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.1rem,2vw,1.5rem);color:var(--muted2);margin-top:28px;line-height:1.6;opacity:0;animation:fadeUp .9s .5s forwards}
-.hero-roles{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:32px;opacity:0;animation:fadeUp .9s .6s forwards}
+.hero-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.1rem,2vw,1.5rem);color:var(--muted2);margin-top:28px;line-height:1.6;opacity:1;animation:fadeUp .9s .5s forwards}
+.hero-roles{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:32px;opacity:1;animation:fadeUp .9s .6s forwards}
 .role-chip, .skill-badge, .software-badge{
   background:rgba(255,255,255,.03);
   border:1px solid var(--border-light);
@@ -123,12 +128,12 @@ h1.hero-name em{font-style:normal;color:var(--white);display:block;letter-spacin
 .tool-card-badge{font-size:.55rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);padding:3px 8px}
 .tool-card-desc{font-size:.82rem;color:var(--muted2);line-height:1.7}
 
-.hero-btns{display:flex;justify-content:center;gap:16px;margin-top:44px;flex-wrap:wrap;opacity:0;animation:fadeUp .9s .75s forwards}
-.btn-white{background:var(--white);color:var(--dark);padding:14px 40px;font-size:.7rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;text-decoration:none;display:inline-block;transition:background .2s,transform .2s;cursor:none}
+.hero-btns{display:flex;justify-content:center;gap:16px;margin-top:44px;flex-wrap:wrap;opacity:1;animation:fadeUp .9s .75s forwards}
+.btn-white{background:var(--white);color:var(--dark);padding:14px 40px;font-size:.7rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;text-decoration:none;display:inline-block;transition:background .2s,transform .2s;cursor:pointer}
 .btn-white:hover{background:var(--light-gray);transform:translateY(-2px)}
-.btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border-light);padding:14px 40px;font-size:.7rem;letter-spacing:3px;text-transform:uppercase;text-decoration:none;display:inline-block;transition:border-color .2s,color .2s,transform .2s;cursor:none}
+.btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border-light);padding:14px 40px;font-size:.7rem;letter-spacing:3px;text-transform:uppercase;text-decoration:none;display:inline-block;transition:border-color .2s,color .2s,transform .2s;cursor:pointer}
 .btn-ghost:hover{border-color:var(--white);color:var(--white);transform:translateY(-2px)}
-.hero-scroll{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fadeIn 1s 1.4s forwards}
+.hero-scroll{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;opacity:1;animation:fadeIn 1s 1.4s forwards}
 .scroll-dot{width:5px;height:5px;border-radius:50%;background:var(--white);animation:scrollBounce 2s infinite}
 .scroll-label{font-size:.55rem;letter-spacing:4px;text-transform:uppercase;color:var(--muted);writing-mode:vertical-lr}
 @keyframes scrollBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
@@ -206,6 +211,9 @@ section{padding:100px 56px}
   margin-bottom:32px;
   position:relative;
 }
+.video-media-switch{display:flex;gap:6px;margin-bottom:12px;justify-content:center}
+.video-tab-btn{background:rgba(255,255,255,.06);border:1px solid var(--border);color:var(--muted2);padding:6px 14px;font-size:.62rem;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all .2s ease}
+.video-tab-btn.active,.video-tab-btn:hover{background:var(--white);color:var(--dark);border-color:var(--white)}
 .video-frame-wrap{
   position:relative;
   width:100%;
@@ -220,6 +228,19 @@ section{padding:100px 56px}
   width:100%;
   height:100%;
   border:none;
+  display:block;
+}
+.video-still-wrap{
+  position:relative;
+  width:100%;
+  height:100%;
+  background:#050505;
+  display:none;
+}
+.video-still-wrap img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
   display:block;
 }
 .video-showcase-info h3{
@@ -267,23 +288,431 @@ section{padding:100px 56px}
   color:var(--white);
 }
 
-.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
-.project-card{background:var(--dark3);border:1px solid var(--border);overflow:hidden;position:relative;transition:border-color .3s}
-.project-card:hover{border-color:var(--border-light)}
-.project-thumb{aspect-ratio:16/10;background:var(--dark4);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-.project-thumb-bg{position:absolute;inset:0;opacity:0;background:rgba(255,255,255,.04);transition:opacity .3s}
-.project-card:hover .project-thumb-bg{opacity:1}
-.project-thumb-icon{font-size:2.5rem;position:relative;z-index:1;opacity:.25;transition:opacity .3s}
-.project-card:hover .project-thumb-icon{opacity:.7}
-.project-tag-strip{position:absolute;top:0;left:0;right:0;height:2px;background:var(--white)}
-.project-badge{position:absolute;top:14px;left:14px;background:var(--white);color:var(--dark);font-size:.55rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:4px 10px;z-index:2}
-.project-body{padding:26px 22px}
-.project-num{font-family:'Barlow Condensed',sans-serif;font-size:.75rem;letter-spacing:4px;color:var(--muted2);opacity:.7;margin-bottom:6px}
-.project-name{font-family:'Barlow Condensed',sans-serif;font-size:1.6rem;font-weight:700;color:var(--text);margin-bottom:10px;letter-spacing:.5px}
-.project-desc{font-size:.8rem;color:var(--muted2);line-height:1.8}
-.project-client{display:flex;align-items:center;gap:8px;margin-top:18px;padding-top:18px;border-top:1px solid var(--border)}
-.project-client-dot{width:5px;height:5px;border-radius:50%;background:var(--white);flex-shrink:0}
-.project-client-text{font-size:.65rem;letter-spacing:1px;color:var(--muted2)}
+/* ── INTERACTIVE WORKS GALLERY & SHOWCASE */
+.works-toolbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:16px;
+  margin-bottom:28px;
+  padding-bottom:18px;
+  border-bottom:1px solid var(--border);
+}
+.works-filters{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+.filter-btn{
+  background:var(--dark3);
+  border:1px solid var(--border);
+  color:var(--muted2);
+  padding:8px 16px;
+  font-size:.65rem;
+  font-weight:600;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:all .2s ease;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+}
+.filter-btn:hover{
+  border-color:var(--border-light);
+  color:var(--white);
+}
+.filter-btn.active{
+  background:var(--white);
+  color:var(--dark);
+  border-color:var(--white);
+  font-weight:700;
+}
+.filter-count{
+  font-size:.6rem;
+  opacity:.7;
+  padding:1px 6px;
+  border-radius:10px;
+  background:rgba(255,255,255,.1);
+}
+.filter-btn.active .filter-count{
+  background:rgba(0,0,0,.15);
+  color:var(--dark);
+}
+.works-view-switch{
+  display:flex;
+  gap:4px;
+  background:var(--dark3);
+  border:1px solid var(--border);
+  padding:3px;
+}
+.view-btn{
+  background:transparent;
+  border:none;
+  color:var(--muted2);
+  padding:6px 12px;
+  font-size:.62rem;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:all .2s ease;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+}
+.view-btn.active, .view-btn:hover{
+  background:rgba(255,255,255,.08);
+  color:var(--white);
+}
+.view-btn.active{
+  background:var(--dark4);
+  color:var(--white);
+  border:1px solid rgba(255,255,255,.12);
+}
+
+.projects-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
+}
+.projects-grid.masonry-mode{
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+.project-card{
+  background:var(--dark3);
+  border:1px solid var(--border);
+  overflow:hidden;
+  position:relative;
+  transition:all .3s ease;
+  display:flex;
+  flex-direction:column;
+}
+.project-card:hover{
+  border-color:var(--border-light);
+  transform:translateY(-3px);
+  box-shadow:0 12px 30px rgba(0,0,0,0.5);
+}
+.project-thumb{
+  aspect-ratio:16/10;
+  background:#050505;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  overflow:hidden;
+  cursor:pointer;
+}
+.masonry-mode .project-thumb{
+  aspect-ratio:16/11;
+}
+.project-thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transition:transform .5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.project-card:hover .project-thumb img{
+  transform:scale(1.05);
+}
+.project-thumb-bg{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.4) 100%);
+  opacity:.6;
+  transition:opacity .3s ease;
+}
+.project-card:hover .project-thumb-bg{
+  opacity:.85;
+}
+.project-badge{
+  position:absolute;
+  top:14px;
+  left:14px;
+  background:var(--white);
+  color:var(--dark);
+  font-size:.55rem;
+  font-weight:700;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  padding:4px 10px;
+  z-index:2;
+}
+.project-badge.reel-badge{
+  background:#e50914;
+  color:#ffffff;
+}
+.project-badge.model-badge{
+  background:#00d2ff;
+  color:#000000;
+}
+.project-play-icon{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%) scale(0.9);
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  background:rgba(255,255,255,0.9);
+  color:var(--dark);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:1.1rem;
+  z-index:2;
+  transition:all .3s ease;
+  box-shadow:0 4px 16px rgba(0,0,0,0.4);
+}
+.project-card:hover .project-play-icon{
+  transform:translate(-50%,-50%) scale(1.08);
+  background:var(--white);
+}
+.project-zoom-icon{
+  position:absolute;
+  bottom:14px;
+  right:14px;
+  background:rgba(0,0,0,0.7);
+  border:1px solid rgba(255,255,255,0.2);
+  color:var(--white);
+  font-size:.65rem;
+  letter-spacing:1px;
+  padding:4px 8px;
+  text-transform:uppercase;
+  z-index:2;
+  opacity:0;
+  transition:opacity .3s ease;
+}
+.project-card:hover .project-zoom-icon{
+  opacity:1;
+}
+.project-body{
+  padding:22px 20px;
+  display:flex;
+  flex-direction:column;
+  flex-grow:1;
+}
+.project-num{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:.75rem;
+  letter-spacing:4px;
+  color:var(--muted2);
+  opacity:.7;
+  margin-bottom:6px;
+}
+.project-name{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:1.55rem;
+  font-weight:700;
+  color:var(--text);
+  margin-bottom:8px;
+  letter-spacing:.5px;
+  line-height:1.2;
+}
+.project-desc{
+  font-size:.82rem;
+  color:var(--muted2);
+  line-height:1.75;
+  margin-bottom:14px;
+  flex-grow:1;
+}
+.project-tags-row{
+  display:flex;
+  gap:6px;
+  flex-wrap:wrap;
+  margin-bottom:16px;
+}
+.project-tag-pill{
+  font-size:.58rem;
+  background:rgba(255,255,255,.05);
+  border:1px solid var(--border);
+  color:var(--muted2);
+  padding:3px 8px;
+  letter-spacing:0.5px;
+  text-transform:uppercase;
+}
+.project-actions-row{
+  display:flex;
+  gap:8px;
+  align-items:center;
+  margin-top:auto;
+  padding-top:14px;
+  border-top:1px solid var(--border);
+}
+.project-action-btn{
+  background:transparent;
+  border:1px solid var(--border);
+  color:var(--muted2);
+  font-size:.62rem;
+  font-weight:600;
+  letter-spacing:1.2px;
+  text-transform:uppercase;
+  padding:7px 12px;
+  cursor:pointer;
+  transition:all .2s ease;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  text-decoration:none;
+}
+.project-action-btn:hover{
+  background:var(--white);
+  color:var(--dark);
+  border-color:var(--white);
+}
+.project-action-btn.btn-accent{
+  background:rgba(255,255,255,.08);
+  border-color:rgba(255,255,255,.2);
+  color:var(--white);
+}
+.project-action-btn.btn-accent:hover{
+  background:var(--white);
+  color:var(--dark);
+  border-color:var(--white);
+}
+
+/* ── LIGHTBOX THEATER MODAL */
+.lightbox-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.94);
+  backdrop-filter:blur(10px);
+  z-index:9999;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+  opacity:0;
+  transition:opacity .3s ease;
+}
+.lightbox-modal.open{
+  display:flex;
+  opacity:1;
+}
+.lightbox-container{
+  width:100%;
+  max-width:1160px;
+  max-height:92vh;
+  background:var(--dark3);
+  border:1px solid var(--border-light);
+  display:grid;
+  grid-template-columns:1.7fr 1fr;
+  overflow:hidden;
+  position:relative;
+  box-shadow:0 24px 60px rgba(0,0,0,0.8);
+}
+.lightbox-media-wrap{
+  background:#050505;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  overflow:hidden;
+  min-height:380px;
+}
+.lightbox-media-wrap img{
+  max-width:100%;
+  max-height:85vh;
+  object-fit:contain;
+  display:block;
+}
+.lightbox-media-wrap iframe{
+  width:100%;
+  height:100%;
+  min-height:550px;
+  border:none;
+}
+.lightbox-media-wrap model-viewer{
+  width:100%;
+  height:100%;
+  min-height:480px;
+}
+.lightbox-content{
+  padding:36px 32px;
+  display:flex;
+  flex-direction:column;
+  overflow-y:auto;
+  background:var(--dark2);
+}
+.lightbox-close-btn{
+  position:absolute;
+  top:16px;
+  right:16px;
+  background:rgba(255,255,255,0.08);
+  border:1px solid var(--border);
+  color:var(--white);
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  cursor:pointer;
+  font-size:1.1rem;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:10;
+  transition:all .2s ease;
+}
+.lightbox-close-btn:hover{
+  background:var(--white);
+  color:var(--dark);
+}
+.lightbox-nav-btn{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:rgba(0,0,0,0.6);
+  border:1px solid rgba(255,255,255,0.2);
+  color:var(--white);
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:1.2rem;
+  z-index:10;
+  transition:all .2s ease;
+}
+.lightbox-nav-btn:hover{
+  background:var(--white);
+  color:var(--dark);
+}
+.lightbox-nav-btn.prev{left:14px;}
+.lightbox-nav-btn.next{right:14px;}
+
+@media(max-width:960px){
+  .lightbox-container{
+    grid-template-columns:1fr;
+    max-height:94vh;
+    overflow-y:auto;
+  }
+  .lightbox-media-wrap{
+    min-height:280px;
+  }
+  .lightbox-media-wrap iframe{
+    min-height:360px;
+  }
+  .projects-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+@media(max-width:640px){
+  .projects-grid{
+    grid-template-columns:1fr;
+  }
+  .works-toolbar{
+    flex-direction:column;
+    align-items:stretch;
+  }
+  .works-filters{
+    overflow-x:auto;
+    padding-bottom:6px;
+  }
+}
 
 /* ── TESTIMONIALS */
 .testimonials{background:var(--dark)}
@@ -330,40 +759,737 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:36px 56
 @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 
-/* ── PAGE LOADER */
-.loader{display:none !important;visibility:hidden !important;pointer-events:none !important}
-
-/* ── RESPONSIVE */
-@media(max-width:1024px){
-  nav{padding:18px 28px}
-  .nav-links{display:none}
-  section{padding:70px 28px}
-  .about-grid{grid-template-columns:1fr}
-  .about-left{position:static}
-  .showcase-3d-grid{grid-template-columns:1fr}
-  .video-showcase-card{grid-template-columns:1fr;gap:28px;padding:24px;}
-  .projects-grid{grid-template-columns:1fr 1fr}
-  .contact-grid{grid-template-columns:1fr}
-  footer{flex-direction:column;text-align:center}
+/* ── NAV ACTIONS & MOBILE MENU BUTTON */
+.nav-actions{
+  display:flex;
+  align-items:center;
+  gap:12px;
 }
-@media(max-width:640px){
-  .projects-grid{grid-template-columns:1fr}
-  .t-grid{grid-template-columns:1fr}
-  .t-featured{grid-column:span 1}
+.mobile-menu-btn{
+  display:none;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:5px;
+  width:44px;
+  height:44px;
+  background:rgba(255,255,255,0.06);
+  border:1px solid var(--border-light);
+  border-radius:2px;
+  cursor:pointer;
+  padding:10px;
+  transition:all .2s ease;
+  -webkit-tap-highlight-color:transparent;
+}
+.mobile-menu-btn .menu-bar{
+  width:20px;
+  height:2px;
+  background:var(--white);
+  transition:all .2s ease;
+  display:block;
+}
+.mobile-menu-btn:hover, .mobile-menu-btn:active{
+  background:rgba(255,255,255,0.15);
+  border-color:var(--white);
+}
+
+/* ── FULL-SCREEN MOBILE NAV DRAWER (ANDROID & SMARTPHONES) */
+.mobile-nav-drawer{
+  position:fixed;
+  inset:0;
+  background:rgba(5,5,5,0.98);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  z-index:10000;
+  display:flex;
+  flex-direction:column;
+  padding:24px 20px;
+  transform:translateY(-100%);
+  opacity:0;
+  visibility:hidden;
+  transition:transform .35s cubic-bezier(0.16,1,0.3,1),opacity .3s ease,visibility .35s;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+}
+.mobile-nav-drawer.open{
+  transform:translateY(0);
+  opacity:1;
+  visibility:visible;
+}
+.mobile-nav-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding-bottom:18px;
+  border-bottom:1px solid var(--border);
+}
+.mobile-nav-brand{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:1.25rem;
+  font-weight:700;
+  letter-spacing:3px;
+  color:var(--white);
+}
+.mobile-nav-close{
+  width:44px;
+  height:44px;
+  background:rgba(255,255,255,0.08);
+  border:1px solid var(--border);
+  color:var(--white);
+  border-radius:50%;
+  font-size:1.2rem;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  transition:background .2s;
+}
+.mobile-nav-close:active{
+  background:var(--white);
+  color:var(--dark);
+}
+.mobile-nav-tag{
+  font-size:0.6rem;
+  letter-spacing:3px;
+  color:var(--muted);
+  text-transform:uppercase;
+  margin:20px 0 10px;
+}
+.mobile-nav-list{
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  margin:10px 0 24px;
+}
+.mobile-nav-list a{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  padding:15px 12px;
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:1.45rem;
+  font-weight:700;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  color:var(--text);
+  text-decoration:none;
+  border-bottom:1px solid rgba(255,255,255,0.05);
+  transition:all .2s ease;
+  min-height:50px;
+}
+.mobile-nav-list a span{
+  font-size:0.75rem;
+  font-weight:400;
+  letter-spacing:2px;
+  color:var(--muted);
+}
+.mobile-nav-list a:active{
+  color:var(--white);
+  background:rgba(255,255,255,0.06);
+  padding-left:18px;
+}
+.mobile-nav-footer{
+  margin-top:auto;
+  padding-top:20px;
+  border-top:1px solid var(--border);
+}
+.mobile-nav-cta{
+  width:100%;
+  text-align:center;
+  justify-content:center;
+  min-height:48px;
+  display:inline-flex;
+  align-items:center;
+}
+.mobile-nav-info{
+  font-size:0.62rem;
+  letter-spacing:1.5px;
+  color:var(--muted);
+  text-align:center;
+  margin-top:14px;
+  text-transform:uppercase;
+}
+
+/* ── ANDROID & TOUCH SCREENS OPTIMIZATIONS ── */
+@media (hover: none) and (pointer: coarse), (max-width: 1024px) {
+  #cur, #cur-ring {
+    display: none !important;
+  }
+  *, html, body, a, button, .skill-row, .contact-link {
+    cursor: auto !important;
+  }
+}
+
+/* ── RESPONSIVE ADAPTATIONS (TABLETS & ANDROID DEVICES) */
+@media(max-width:1024px){
+  nav{padding:16px 24px}
+  .nav-links{display:none}
+  .mobile-menu-btn{display:flex}
+  section{padding:72px 24px}
+  .about-grid{grid-template-columns:1fr;gap:48px}
+  .about-left{position:static}
+  .showcase-3d-grid{grid-template-columns:1fr;gap:36px}
+  .video-showcase-card{grid-template-columns:1fr;gap:28px;padding:24px}
+  .projects-grid{grid-template-columns:1fr 1fr}
+  .contact-grid{grid-template-columns:1fr;gap:48px}
+  footer{flex-direction:column;text-align:center;padding:32px 24px}
+}
+
+@media(max-width:768px){
+  nav{padding:14px 18px}
+  .nav-logo{font-size:1.15rem;letter-spacing:2px}
+  .nav-cta{padding:8px 14px;font-size:0.6rem;letter-spacing:1.5px}
+
+  section{padding:56px 18px}
+  .hero{padding:96px 16px 50px;min-height:auto}
+  .hero-tag{margin-bottom:24px}
+  .hero-tag-text{font-size:0.58rem;letter-spacing:4px}
+  .hero-sub{font-size:1.1rem;margin-top:20px;line-height:1.5}
+  
+  .hero-roles{gap:6px;margin-top:24px}
+  .role-chip{font-size:0.6rem;letter-spacing:1.5px;padding:7px 12px;min-height:38px}
+
+  .hero-btns{flex-direction:column;width:100%;max-width:320px;margin:32px auto 0;gap:10px}
+  .btn-white, .btn-ghost{width:100%;text-align:center;justify-content:center;min-height:48px;padding:12px 20px;display:inline-flex;align-items:center}
+  
+  .s-label{margin-bottom:10px}
+  .s-title{font-size:clamp(2.2rem,8.5vw,3.6rem);margin-bottom:36px;line-height:1.02}
+
+  .about-img-frame{max-height:420px}
+  .about-quote{margin-top:24px;padding-left:16px}
+  .about-quote p{font-size:1.05rem}
+  .about-stats{margin-top:2px}
+  .stat-box{padding:14px 12px}
+  .stat-num{font-size:2rem}
+
+  .skill-row{gap:18px;padding:20px 0}
+  .skill-num{font-size:2.5rem;width:56px}
+  .skill-icon-wrap{width:46px;height:46px;font-size:1.25rem}
+  .skill-name{font-size:1.6rem}
+
+  .skills-badges-grid{grid-template-columns:1fr;gap:12px}
+
+  .showcase-3d-viewer-wrap model-viewer{height:380px !important}
+  .showcase-3d-hint{font-size:0.55rem;padding:6px 10px;letter-spacing:1px}
+  .showcase-3d-specs{grid-template-columns:1fr;gap:2px}
+
+  .video-showcase-card{padding:20px 14px}
+  .video-frame-wrap{max-width:100%}
+  .video-tab-btn{min-height:44px;padding:8px 14px;font-size:0.62rem}
+
+  .works-toolbar{flex-direction:column;align-items:stretch;gap:14px}
+  .works-filters{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:8px;scrollbar-width:none}
+  .works-filters::-webkit-scrollbar{display:none}
+  .works-filter-btn{flex-shrink:0;min-height:44px;padding:10px 16px;font-size:0.65rem}
+
+  .projects-grid{grid-template-columns:1fr;gap:16px}
+  .project-actions-row{flex-direction:column;gap:8px}
+  .project-action-btn{width:100%;justify-content:center;min-height:44px}
+
+  .t-grid{grid-template-columns:1fr;gap:2px}
+  .t-featured{grid-column:span 1;padding:32px 20px}
+  .t-card{padding:28px 20px}
+  .t-mark{font-size:3.5rem;margin-bottom:6px}
+
+  .contact-links{gap:2px}
+  .contact-link{padding:16px 14px;min-height:48px}
+  .contact-cta-box{padding:32px 18px}
+  .contact-cta-box h3{font-size:1.5rem}
+
+  /* Lightbox on mobile/Android touch screens */
+  .lightbox-modal{padding:8px}
+  .lightbox-container{max-height:95vh;border-radius:4px;grid-template-columns:1fr}
+  .lightbox-media-wrap{min-height:220px;max-height:44vh}
+  .lightbox-media-wrap iframe{min-height:260px}
+  .lightbox-content{padding:20px 16px}
+  .lightbox-close-btn{top:8px;right:8px;width:44px;height:44px;background:rgba(0,0,0,0.8);font-size:1.2rem}
+  .lightbox-nav-btn{width:44px;height:44px;background:rgba(0,0,0,0.75)}
+  .lightbox-nav-btn.prev{left:8px}
+  .lightbox-nav-btn.next{right:8px}
+}
+
+@media(max-width:480px){
+  h1.hero-name{font-size:clamp(3.1rem,15.5vw,4.5rem);line-height:0.92}
+  h1.hero-name em{letter-spacing:1px}
+  section{padding:50px 16px}
+  .about-stats{grid-template-columns:1fr 1fr}
+}
+
+/* ── DYNAMIC FLUID SCROLL PROGRESS (TOP) */
+.fluid-scroll-progress-top{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  height:3px;
+  background:rgba(255,255,255,0.06);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  z-index:10001;
+  pointer-events:none;
+}
+.fluid-scroll-fill{
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.95) 100%);
+  box-shadow:0 0 12px rgba(255,255,255,0.8), 0 0 4px #ffffff;
+  transition:width 0.08s linear;
+}
+
+/* ── DYNAMIC SCROLL TRACKER WIDGET (FLOATING PILL WITH DESCENDING ARROW & BLURRED PROGRESS BAR) */
+.dynamic-scroll-widget{
+  position:fixed;
+  bottom:24px;
+  right:24px;
+  z-index:9990;
+  background:rgba(13,13,13,0.84);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,0.16);
+  border-radius:9999px;
+  padding:8px 16px 10px;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  cursor:pointer;
+  box-shadow:0 12px 36px rgba(0,0,0,0.65), 0 0 0 1px rgba(255,255,255,0.05);
+  user-select:none;
+  -webkit-tap-highlight-color:transparent;
+  transition:transform 0.2s ease,border-color 0.2s ease,background 0.2s ease,box-shadow 0.2s ease;
+  min-width:140px;
+}
+.dynamic-scroll-widget:hover{
+  transform:translateY(-3px);
+  border-color:rgba(255,255,255,0.4);
+  background:rgba(20,20,20,0.92);
+  box-shadow:0 16px 40px rgba(0,0,0,0.75), 0 0 16px rgba(255,255,255,0.15);
+}
+.dynamic-scroll-widget:active{
+  transform:translateY(-1px) scale(0.98);
+}
+.dynamic-scroll-inner{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.dynamic-scroll-arrow-box{
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.18);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--white);
+  flex-shrink:0;
+  transition:background 0.2s ease,transform 0.25s cubic-bezier(0.34,1.56,0.64,1);
+}
+.dynamic-scroll-widget:hover .dynamic-scroll-arrow-box{
+  background:var(--white);
+  color:var(--dark);
+}
+.dynamic-scroll-arrow{
+  display:block;
+  transition:transform 0.25s cubic-bezier(0.34,1.56,0.64,1);
+}
+.dynamic-scroll-meta{
+  display:flex;
+  flex-direction:column;
+  line-height:1.1;
+  flex-grow:1;
+}
+.dynamic-scroll-section{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:0.8rem;
+  font-weight:700;
+  letter-spacing:1.5px;
+  color:var(--white);
+  text-transform:uppercase;
+}
+.dynamic-scroll-pct{
+  font-size:0.65rem;
+  color:var(--muted2);
+  letter-spacing:1px;
+  font-weight:500;
+}
+.dynamic-scroll-bar-wrap{
+  width:100%;
+  height:4px;
+  background:rgba(255,255,255,0.08);
+  border-radius:9999px;
+  overflow:hidden;
+  position:relative;
+}
+.dynamic-scroll-bar-fill{
+  height:100%;
+  width:0%;
+  border-radius:9999px;
+  background:linear-gradient(90deg, rgba(255,255,255,0.4), #FFFFFF);
+  box-shadow:0 0 10px rgba(255,255,255,0.7);
+  transition:width 0.1s linear;
+}
+
+/* Hero scroll arrow wrap */
+.scroll-arrow-wrap{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:4px;
+}
+.hero-scroll-arrow{
+  color:var(--white);
+  animation:scrollBounce 2s infinite;
+}
+
+@media(max-width:768px){
+  .dynamic-scroll-widget{
+    bottom:16px;
+    right:14px;
+    padding:6px 12px 8px;
+    min-width:120px;
+  }
+  .dynamic-scroll-arrow-box{
+    width:24px;
+    height:24px;
+  }
+  .dynamic-scroll-arrow{
+    width:13px;
+    height:13px;
+  }
+  .dynamic-scroll-section{
+    font-size:0.72rem;
+  }
+  .dynamic-scroll-pct{
+    font-size:0.58rem;
+  }
+}
+
+/* ── NAV ADMIN BUTTON */
+.nav-admin-btn{
+  background:rgba(255,255,255,0.06);
+  border:1px solid var(--border-light);
+  color:var(--white);
+  padding:7px 12px;
+  font-size:.65rem;
+  font-weight:600;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  cursor:pointer;
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  border-radius:2px;
+  transition:all .2s ease;
+  min-height:36px;
+  user-select:none;
+}
+.nav-admin-btn:hover{
+  background:rgba(255,255,255,0.16);
+  border-color:var(--white);
+  color:var(--white);
+}
+
+/* ── ADMIN CREATOR STUDIO MODAL */
+.admin-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.85);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  z-index:10005;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:16px;
+  opacity:0;
+  transition:opacity 0.25s ease;
+}
+.admin-modal.open{
+  display:flex;
+  opacity:1;
+}
+.admin-dialog{
+  background:#0d0d0d;
+  border:1px solid rgba(255,255,255,0.18);
+  width:100%;
+  max-width:920px;
+  max-height:90vh;
+  display:flex;
+  flex-direction:column;
+  box-shadow:0 30px 90px rgba(0,0,0,0.95), 0 0 0 1px rgba(255,255,255,0.06);
+  border-radius:4px;
+  position:relative;
+  overflow:hidden;
+}
+.admin-dialog-header{
+  padding:18px 24px;
+  background:#141414;
+  border-bottom:1px solid var(--border);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-shrink:0;
+}
+.admin-dialog-title-wrap{
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+}
+.admin-dialog-title{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:1.3rem;
+  font-weight:700;
+  letter-spacing:2.5px;
+  color:var(--white);
+  text-transform:uppercase;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.admin-dialog-sub{
+  font-size:0.7rem;
+  color:var(--muted2);
+  letter-spacing:1px;
+}
+.admin-dialog-close{
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  background:rgba(255,255,255,0.06);
+  border:1px solid var(--border);
+  color:var(--white);
+  font-size:1.1rem;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  transition:all .2s;
+}
+.admin-dialog-close:hover{
+  background:var(--white);
+  color:var(--dark);
+}
+.admin-dialog-body{
+  padding:20px 24px;
+  overflow-y:auto;
+  flex-grow:1;
+  -webkit-overflow-scrolling:touch;
+}
+
+/* Tabs */
+.admin-nav-tabs{
+  display:flex;
+  gap:6px;
+  border-bottom:1px solid var(--border);
+  margin-bottom:20px;
+  overflow-x:auto;
+  scrollbar-width:none;
+}
+.admin-nav-tabs::-webkit-scrollbar{display:none;}
+.admin-tab-btn{
+  background:transparent;
+  border:none;
+  border-bottom:2px solid transparent;
+  color:var(--muted);
+  font-size:0.72rem;
+  font-weight:600;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  padding:10px 14px;
+  cursor:pointer;
+  transition:all .2s;
+  white-space:nowrap;
+}
+.admin-tab-btn.active{
+  color:var(--white);
+  border-bottom-color:var(--white);
+  background:rgba(255,255,255,0.03);
+}
+
+/* Auth View */
+.admin-auth-card{
+  max-width:440px;
+  margin:20px auto;
+  background:#141414;
+  border:1px solid rgba(255,255,255,0.15);
+  padding:32px 28px;
+  border-radius:4px;
+  text-align:center;
+}
+.admin-auth-tabs{
+  display:flex;
+  border:1px solid var(--border);
+  border-radius:2px;
+  margin-bottom:20px;
+  overflow:hidden;
+}
+.admin-auth-tab{
+  flex:1;
+  padding:10px;
+  font-size:0.7rem;
+  font-weight:600;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  background:transparent;
+  border:none;
+  color:var(--muted);
+  cursor:pointer;
+  transition:all .2s;
+}
+.admin-auth-tab.active{
+  background:var(--white);
+  color:var(--dark);
+}
+
+/* Form inputs */
+.admin-form-group{
+  margin-bottom:16px;
+  text-align:left;
+}
+.admin-label{
+  display:block;
+  font-size:0.68rem;
+  letter-spacing:1.5px;
+  color:var(--muted2);
+  text-transform:uppercase;
+  margin-bottom:6px;
+  font-weight:600;
+}
+.admin-input, .admin-textarea, .admin-select{
+  width:100%;
+  background:#090909;
+  border:1px solid var(--border);
+  color:var(--white);
+  padding:10px 12px;
+  font-family:'Barlow',sans-serif;
+  font-size:0.85rem;
+  border-radius:2px;
+  outline:none;
+  box-sizing:border-box;
+  transition:border-color .2s;
+}
+.admin-input:focus, .admin-textarea:focus, .admin-select:focus{
+  border-color:var(--white);
+}
+
+/* Buttons */
+.admin-btn{
+  padding:10px 18px;
+  font-size:0.72rem;
+  font-weight:700;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  cursor:pointer;
+  border-radius:2px;
+  transition:all .2s;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  border:none;
+}
+.admin-btn-primary{
+  background:var(--white);
+  color:var(--dark);
+}
+.admin-btn-primary:hover{
+  background:#e5e5e5;
+  transform:translateY(-1px);
+}
+.admin-btn-secondary{
+  background:rgba(255,255,255,0.08);
+  border:1px solid var(--border);
+  color:var(--white);
+}
+.admin-btn-secondary:hover{
+  background:rgba(255,255,255,0.15);
+  border-color:var(--white);
+}
+.admin-btn-danger{
+  background:rgba(220,53,69,0.15);
+  border:1px solid rgba(220,53,69,0.4);
+  color:#ff6b6b;
+}
+.admin-btn-danger:hover{
+  background:rgba(220,53,69,0.3);
+}
+
+/* Dropzone */
+.admin-dropzone{
+  border:2px dashed rgba(255,255,255,0.22);
+  border-radius:4px;
+  padding:24px 16px;
+  text-align:center;
+  background:rgba(255,255,255,0.02);
+  cursor:pointer;
+  transition:all .2s;
+  position:relative;
+  margin-bottom:14px;
+}
+.admin-dropzone:hover, .admin-dropzone.dragover{
+  border-color:var(--white);
+  background:rgba(255,255,255,0.06);
+}
+
+/* Project Card in Manager */
+.admin-project-item{
+  background:#121212;
+  border:1px solid var(--border);
+  padding:16px;
+  margin-bottom:14px;
+  border-radius:2px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  transition:border-color .2s;
+}
+.admin-project-item:hover{
+  border-color:rgba(255,255,255,0.3);
+}
+.admin-project-header{
+  display:flex;
+  gap:16px;
+  align-items:flex-start;
+}
+.admin-project-thumb-preview{
+  width:110px;
+  height:75px;
+  background:#000;
+  border:1px solid var(--border);
+  object-fit:cover;
+  border-radius:2px;
+  flex-shrink:0;
+}
+.admin-toast{
+  position:fixed;
+  top:24px;
+  right:24px;
+  background:#1a1a1a;
+  border:1px solid rgba(255,255,255,0.3);
+  color:var(--white);
+  padding:12px 20px;
+  border-radius:3px;
+  font-size:0.8rem;
+  letter-spacing:1px;
+  z-index:10010;
+  display:none;
+  box-shadow:0 12px 30px rgba(0,0,0,0.8);
+  animation:fadeUp 0.3s ease;
 }
 </style>
 </head>
 <body>
 
-<!-- LOADER -->
-<div class="loader done" id="loader">
-  <div class="loader-name">IGE DOMINION</div>
-  <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
-</div>
-
 <!-- CURSOR -->
 <div id="cur"></div>
 <div id="cur-ring"></div>
+
+<!-- DYNAMIC TOP FLUID SCROLL PROGRESS (BLURRED LOADING TRACK) -->
+<div id="fluid-scroll-progress-top" class="fluid-scroll-progress-top" aria-hidden="true">
+  <div id="fluid-scroll-fill" class="fluid-scroll-fill"></div>
+</div>
 
 <!-- NAV -->
 <nav>
@@ -376,8 +1502,44 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:36px 56
     <li><a href="#testimonials">Testimonials</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a href="mailto:igedominion09@gmail.com?subject=Project%20Enquiry" class="nav-cta">Hire Me</a>
+  <div class="nav-actions">
+    <button type="button" class="nav-admin-btn" onclick="openAdminModal()" title="Admin Studio: Upload Renders & Edit Content">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="3"></circle>
+        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+      </svg>
+      Admin
+    </button>
+    <a href="mailto:igedominion09@gmail.com?subject=Project%20Enquiry" class="nav-cta">Hire Me</a>
+    <button type="button" id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Open Navigation Menu" onclick="toggleMobileNav()">
+      <span class="menu-bar"></span>
+      <span class="menu-bar"></span>
+      <span class="menu-bar"></span>
+    </button>
+  </div>
 </nav>
+
+<!-- MOBILE NAVIGATION DRAWER (FOR ANDROID & MOBILE) -->
+<div id="mobile-nav-drawer" class="mobile-nav-drawer" aria-hidden="true">
+  <div class="mobile-nav-header">
+    <span class="mobile-nav-brand">IGE · DOMINION</span>
+    <button type="button" class="mobile-nav-close" aria-label="Close Navigation Menu" onclick="toggleMobileNav(false)">✕</button>
+  </div>
+  <div class="mobile-nav-tag">Visual Storyteller &amp; 3D Animator</div>
+  <ul class="mobile-nav-list">
+    <li><a href="#about" onclick="toggleMobileNav(false)"><span>01</span> About The Artist</a></li>
+    <li><a href="#skills" onclick="toggleMobileNav(false)"><span>02</span> Production Skills</a></li>
+    <li><a href="#3d-showcase" onclick="toggleMobileNav(false)"><span>03</span> Interactive 3D Model</a></li>
+    <li><a href="#projects" onclick="toggleMobileNav(false)"><span>04</span> Selected Works &amp; Reels</a></li>
+    <li><a href="#testimonials" onclick="toggleMobileNav(false)"><span>05</span> Client Testimonials</a></li>
+    <li><a href="#contact" onclick="toggleMobileNav(false)"><span>06</span> Contact &amp; Enquiries</a></li>
+    <li><a href="javascript:void(0)" onclick="toggleMobileNav(false); openAdminModal();" style="color:var(--white);border-top:1px solid rgba(255,255,255,0.15);margin-top:8px;padding-top:14px;"><span style="color:var(--white);">⚙️</span> Admin Studio (Uploads)</a></li>
+  </ul>
+  <div class="mobile-nav-footer">
+    <a href="mailto:igedominion09@gmail.com?subject=Project%20Enquiry" class="btn-white mobile-nav-cta">Hire Me • Send Email</a>
+    <div class="mobile-nav-info">Abuja, Nigeria • Available Worldwide</div>
+  </div>
+</div>
 
 <!-- HERO -->
 <section class="hero" id="home">
@@ -404,9 +1566,15 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:36px 56
       <a href="#contact" class="btn-ghost">Get In Touch</a>
     </div>
   </div>
-  <div class="hero-scroll">
+  <div class="hero-scroll" id="hero-scroll-indicator" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})" style="cursor:pointer;" title="Scroll to explore">
     <span class="scroll-label">Scroll</span>
-    <span class="scroll-dot"></span>
+    <div class="scroll-arrow-wrap">
+      <svg class="hero-scroll-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <line x1="12" y1="4" x2="12" y2="18"></line>
+        <polyline points="18 12 12 18 6 12"></polyline>
+      </svg>
+      <span class="scroll-dot"></span>
+    </div>
   </div>
 </section>
 
@@ -415,7 +1583,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:36px 56
   <div class="about-grid">
     <div class="about-left reveal in">
       <div class="about-img-frame">
-        <img src="dominion_portrait_1786703205408.jpg.jpg" alt="Ige Dominion" class="about-img-photo" onerror="this.src='dominion_real_photo.jpg'; this.onerror=function(){this.src='1773726310414.jpg';};">
+        <img id="about-portrait-photo" src="dominion_portrait_mask.jpg" alt="Ige Dominion - The eye behind the mask" class="about-img-photo" onerror="this.src='dominion_portrait_1786703205408,jpg-1.jpg'; this.onerror=function(){this.src='dominion_real_photo.jpg';};">
         <div class="about-img-inner" style="display:none;">
           <span class="about-img-icon">📷</span>
           <span class="about-img-text">Ige Dominion</span>
@@ -432,8 +1600,8 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:36px 56
     </div>
     <div class="about-text reveal in">
       <div class="s-label"><div class="s-label-line"></div><span class="s-label-text">About Me</span></div>
-      <h2 class="s-title">The Eye<br>Behind<br><span style="color:var(--white)">The Frame</span></h2>
-      <p>I am <strong>Ige Dominion</strong>, a visual artist, 3D animator, and motion designer based in <strong>Abuja, Nigeria</strong>. My craft centers on telling captivating stories through 3D worldbuilding, physics-accurate character animation, dynamic motion graphics, and cinematic video production.</p>
+      <h2 class="s-title">The Eye<br>Behind<br><span style="color:var(--white)">The Mask</span></h2>
+      <p>I am <strong>Ige Dominion</strong> — <em>the eye behind the mask</em> — a visual artist, 3D animator, and motion designer based in <strong>Abuja, Nigeria</strong>. My craft centers on telling captivating stories through 3D worldbuilding, physics-accurate character animation, dynamic motion graphics, and cinematic video production.</p>
       <p>My production workflow is specialized and laser-focused on <strong>Blender 3D</strong>, <strong>Adobe After Effects</strong>, and <strong>Cascadeur</strong> — allowing me to deliver industry-grade 3D assets, physics-driven character rigs, and polished motion compositing with exceptional speed and visual precision.</p>
       <p>Whether creating high-impact brand commercials, complex 3D product animations, or training aspiring creatives — the standard is always uncompromising quality.</p>
       <div class="about-quote">
@@ -551,6 +1719,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:36px 56
         alt="3D Shoe Model - Buddy Green Spark Initiative" 
         auto-rotate 
         camera-controls 
+        touch-action="pan-y"
         shadow-intensity="1" 
         loading="lazy"
         reveal="auto"
@@ -558,7 +1727,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:36px 56
       </model-viewer>
 
       <div class="showcase-3d-hint">
-        <span>🖱️ Drag to orbit 360° • Pinch / Scroll to zoom</span>
+        <span>🖱️ Drag to orbit 360° • 📱 Swipe to scroll • 2 fingers to rotate</span>
       </div>
     </div>
 
@@ -589,30 +1758,35 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:36px 56
   </div>
 </section>
 
-<!-- PROJECTS -->
+<!-- PROJECTS & WORKS GALLERY -->
 <section class="projects" id="projects">
   <div class="reveal in">
-    <div class="s-label"><div class="s-label-line"></div><span class="s-label-text">Featured Production</span></div>
-    <h2 class="s-title">3D Animation &amp;<br><span style="color:var(--white)">Selected Work</span></h2>
+    <div class="s-label"><div class="s-label-line"></div><span class="s-label-text">Featured Production &amp; Works</span></div>
+    <h2 class="s-title">3D Animations, Renders &amp;<br><span style="color:var(--white)">Selected Works</span></h2>
+    <p style="font-size:0.95rem;color:var(--muted2);max-width:680px;line-height:1.8;margin-top:8px;margin-bottom:28px;">
+      Explore authentic production 3D animations, physics-grounded character choreography, fluid simulations, and real-time WebGL assets created in Blender, Cascadeur, and After Effects.
+    </p>
   </div>
 
   <!-- Featured Video Showcase: Direct Embedded Player -->
   <div class="video-showcase-card reveal in">
-    <div class="video-frame-wrap">
-      <iframe 
-        src="https://www.youtube-nocookie.com/embed/PyTLJwkbYds?rel=0&amp;modestbranding=1&amp;playsinline=1" 
-        title="Night Encounter 3D Animation Reel - Ige Dominion" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-        allowfullscreen>
-      </iframe>
+    <div style="width:100%;max-width:380px;margin:0 auto;">
+      <div class="video-frame-wrap">
+        <div id="video-player-el" style="width:100%;height:100%;">
+          <iframe 
+            src="https://www.youtube-nocookie.com/embed/aH4QwrYtMQE?rel=0&amp;modestbranding=1&amp;playsinline=1" 
+            title="Night Alley 3D Narrative Sequence - Ige Dominion" 
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
     </div>
 
     <div class="video-showcase-info">
       <span class="video-tag">Featured Video Animation</span>
       <h3>Night Alley 3D Narrative Sequence</h3>
-      <p style="font-size:0.95rem;color:var(--muted2);line-height:1.85;margin-bottom:16px;">
-        A high-stakes cinematic narrative sequence set in an atmospheric urban alleyway. Created with custom character modeling, African print garment texturing, and physics-driven multi-character choreography.
-      </p>
 
       <div class="video-meta-list">
         <div class="video-meta-item">
@@ -634,85 +1808,167 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:36px 56
       </div>
 
       <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
-        <a href="https://www.youtube.com/shorts/PyTLJwkbYds" target="_blank" rel="noopener noreferrer" class="btn-white" style="padding:12px 28px;font-size:0.65rem;">
+        <button type="button" onclick="openLightbox(0)" class="btn-white" style="padding:12px 28px;font-size:0.65rem;">
+          🎬 Play Reel &amp; Inspect Render
+        </button>
+        <a href="https://youtube.com/shorts/aH4QwrYtMQE?si=Un02SImaXU-jiqBP" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="padding:12px 28px;font-size:0.65rem;">
           Watch on YouTube ↗
-        </a>
-        <a href="#3d-showcase" class="btn-ghost" style="padding:12px 28px;font-size:0.65rem;">
-          Explore 3D Model ↓
         </a>
       </div>
     </div>
   </div>
 
-  <!-- Additional Project Cards (No AI Thumbnails, purely real assets & typography) -->
-  <div class="projects-grid reveal in">
-    <!-- Project 1: Atmospheric 3D Environment -->
-    <div class="project-card">
-      <div class="project-thumb" style="background:#0a0a0c;display:flex;flex-direction:column;gap:8px;">
+  <!-- Interactive Toolbar: Category Filters + View Mode Switcher -->
+  <div class="works-toolbar reveal in">
+    <div class="works-filters">
+      <button type="button" class="filter-btn active" data-filter="all" onclick="filterWorks('all')">
+        All Works <span class="filter-count">5</span>
+      </button>
+      <button type="button" class="filter-btn" data-filter="renders" onclick="filterWorks('renders')">
+        🖼️ 3D Renders &amp; Stills <span class="filter-count">4</span>
+      </button>
+      <button type="button" class="filter-btn" data-filter="reels" onclick="filterWorks('reels')">
+        🎬 Animation Reels &amp; Videos <span class="filter-count">2</span>
+      </button>
+      <button type="button" class="filter-btn" data-filter="3d" onclick="filterWorks('3d')">
+        🌐 Interactive 3D Model <span class="filter-count">1</span>
+      </button>
+    </div>
+
+    <div class="works-view-switch">
+      <button type="button" id="btn-view-grid" class="view-btn active" onclick="switchWorksView('grid')">
+        ▦ Bento Grid
+      </button>
+      <button type="button" id="btn-view-masonry" class="view-btn" onclick="switchWorksView('masonry')">
+        ▤ Render Focus
+      </button>
+    </div>
+  </div>
+
+  <!-- Projects Grid: 100% Authentic Dominion Assets -->
+  <div class="projects-grid reveal in" id="projects-grid-container">
+
+    <!-- Work 01: Night Alley 3D Narrative Sequence -->
+    <div class="project-card work-card-item" data-category="renders reels" onclick="openLightbox(0)">
+      <div class="project-thumb">
+        <img id="work-thumb-0" src="https://img.youtube.com/vi/aH4QwrYtMQE/hqdefault.jpg" alt="Night Alley 3D Sequence - Ige Dominion" loading="lazy" decoding="async">
         <div class="project-thumb-bg"></div>
-        <div class="project-tag-strip"></div>
-        <div class="project-badge">3D Environment</div>
-        <div style="font-size:2.2rem;opacity:0.6;">🏛️</div>
-        <div style="font-size:0.6rem;letter-spacing:2px;color:var(--muted);text-transform:uppercase;">Desert Outpost Staging</div>
+        <div class="project-badge reel-badge">🎬 3D Narrative Reel</div>
+        <div class="project-play-icon">▶</div>
+        <span class="project-zoom-icon">Inspect ↗</span>
       </div>
       <div class="project-body">
-        <div class="project-num">01</div>
-        <div class="project-name">The Watcher Outpost</div>
-        <p class="project-desc">Atmospheric desert worldbuilding and architectural compound featuring dramatic horizon lighting, custom masonry textures, and cinematic character staging in Blender Cycles.</p>
-        <div class="project-client"><div class="project-client-dot"></div><span class="project-client-text">Tools: Blender 3D &amp; After Effects</span></div>
+        <div class="project-num">01 / ANIMATION REEL &amp; STAGING</div>
+        <div class="project-name" id="work-title-0">Night Alley 3D Sequence</div>
+        <div class="project-tags-row" id="work-tags-0">
+          <span class="project-tag-pill">Cascadeur 3D</span>
+          <span class="project-tag-pill">Blender Cycles</span>
+          <span class="project-tag-pill">After Effects</span>
+          <span class="project-tag-pill">9:16 Reel</span>
+        </div>
+        <div class="project-actions-row" onclick="event.stopPropagation()">
+          <button type="button" class="project-action-btn btn-accent" onclick="openLightbox(0)">🎬 Play Reel</button>
+          <a href="https://youtube.com/shorts/aH4QwrYtMQE?si=Un02SImaXU-jiqBP" target="_blank" rel="noopener noreferrer" class="project-action-btn">YouTube ↗</a>
+        </div>
       </div>
     </div>
 
-    <!-- Project 2: Footwear 3D & Brand -->
-    <div class="project-card">
-      <div class="project-thumb" style="background:#0a0a0c;display:flex;flex-direction:column;gap:8px;">
+    <!-- Work 02: Buddy Green Spark Initiative (Footwear) -->
+    <div class="project-card work-card-item" data-category="renders 3d" onclick="openLightbox(1)">
+      <div class="project-thumb">
+        <img id="work-thumb-1" src="shoe_animation_still.jpg" alt="Buddy Green Spark Footwear 3D Animation Still - Ige Dominion" loading="lazy" decoding="async" onerror="this.src='public/shoe_animation_still.jpg';">
         <div class="project-thumb-bg"></div>
-        <div class="project-tag-strip"></div>
-        <div class="project-badge">Interactive 3D</div>
-        <div style="font-size:2.2rem;opacity:0.6;">👟</div>
-        <div style="font-size:0.6rem;letter-spacing:2px;color:var(--muted);text-transform:uppercase;">Real-Time WebGL Asset</div>
+        <div class="project-badge model-badge">👟 3D Footwear &amp; Model</div>
+        <div class="project-play-icon" style="background:#00d2ff;color:#000;">🌐</div>
+        <span class="project-zoom-icon">360° View ↗</span>
       </div>
       <div class="project-body">
-        <div class="project-num">02</div>
-        <div class="project-name">Buddy Greenspark Brand</div>
-        <p class="project-desc">Complete visual identity in motion — 3D footwear visualization in Blender, interactive 3D model asset, and promotional motion content designed to elevate customer engagement.</p>
-        <div class="project-client"><div class="project-client-dot"></div><span class="project-client-text">Client: Chima Okoli — Owner, Buddy Greenspark</span></div>
+        <div class="project-num">02 / PRODUCT COMMERCIAL &amp; 3D ASSET</div>
+        <div class="project-name" id="work-title-1">Buddy Green Spark Initiative</div>
+        <div class="project-tags-row" id="work-tags-1">
+          <span class="project-tag-pill">Blender 4.2</span>
+          <span class="project-tag-pill">Cycles X</span>
+          <span class="project-tag-pill">Substance 3D</span>
+          <span class="project-tag-pill">Interactive GLB</span>
+        </div>
+        <div class="project-actions-row" onclick="event.stopPropagation()">
+          <button type="button" class="project-action-btn btn-accent" onclick="openLightbox(1)">🔍 Inspect Render</button>
+          <a href="#3d-showcase" class="project-action-btn">Orbit 3D Model ↓</a>
+        </div>
       </div>
     </div>
 
-    <!-- Project 3: Jabbok Radio -->
-    <div class="project-card">
-      <div class="project-thumb" style="background:#0a0a0c;display:flex;flex-direction:column;gap:8px;">
+    <!-- Work 03: YAPPI Character Animation & Rig -->
+    <div class="project-card work-card-item" data-category="renders reels" onclick="openLightbox(2)">
+      <div class="project-thumb">
+        <img id="work-thumb-2" src="character_rig_still.jpg" alt="YAPPI Character Rig & Physics Animation - Ige Dominion" loading="lazy" decoding="async" onerror="this.src='public/character_rig_still.jpg';">
         <div class="project-thumb-bg"></div>
-        <div class="project-tag-strip"></div>
-        <div class="project-badge">Cinematography</div>
-        <div style="font-size:2.2rem;opacity:0.6;">🎙️</div>
-        <div style="font-size:0.6rem;letter-spacing:2px;color:var(--muted);text-transform:uppercase;">Broadcast Commercial</div>
+        <div class="project-badge reel-badge">🏃 Action Rig Reel</div>
+        <div class="project-play-icon">▶</div>
+        <span class="project-zoom-icon">Inspect ↗</span>
       </div>
       <div class="project-body">
-        <div class="project-num">03</div>
-        <div class="project-name">Jabbok Radio Promo</div>
-        <p class="project-desc">Full-service cinematography and video production for Jabbok Radio. A high-energy broadcast promotional campaign with compelling visuals that elevated the station's on-screen brand.</p>
-        <div class="project-client"><div class="project-client-dot"></div><span class="project-client-text">Client: Oluwaseyi Ige — Owner, Jabbok Radio</span></div>
+        <div class="project-num">03 / PHYSICS RIGGING &amp; ACTION</div>
+        <div class="project-name" id="work-title-2">YAPPI Character Parkour Rig</div>
+        <div class="project-tags-row" id="work-tags-2">
+          <span class="project-tag-pill">Cascadeur</span>
+          <span class="project-tag-pill">Blender</span>
+          <span class="project-tag-pill">Mixamo</span>
+          <span class="project-tag-pill">Auto-Physics</span>
+        </div>
+        <div class="project-actions-row" onclick="event.stopPropagation()">
+          <button type="button" class="project-action-btn btn-accent" onclick="openLightbox(2)">▶ Watch Action</button>
+          <a href="https://youtube.com/shorts/PyTLJwkbYds" target="_blank" rel="noopener noreferrer" class="project-action-btn">YouTube ↗</a>
+        </div>
       </div>
     </div>
 
-    <!-- Project 4: GSS Kubwa Training -->
-    <div class="project-card">
-      <div class="project-thumb" style="background:#0a0a0c;display:flex;flex-direction:column;gap:8px;">
+    <!-- Work 04: Valued Tasty Foods Commercial -->
+    <div class="project-card work-card-item" data-category="renders" onclick="openLightbox(3)">
+      <div class="project-thumb">
+        <img id="work-thumb-3" src="food_product_still.jpg" alt="Valued Tasty Foods 3D Fluid Simulation - Ige Dominion" loading="lazy" decoding="async" onerror="this.src='public/food_product_still.jpg';">
         <div class="project-thumb-bg"></div>
-        <div class="project-tag-strip"></div>
-        <div class="project-badge">Training &amp; Mentorship</div>
-        <div style="font-size:2.2rem;opacity:0.6;">🎓</div>
-        <div style="font-size:0.6rem;letter-spacing:2px;color:var(--muted);text-transform:uppercase;">1-Week Intensive Masterclass</div>
+        <div class="project-badge">🍯 3D Fluid Simulation</div>
+        <span class="project-zoom-icon">Zoom Render ↗</span>
       </div>
       <div class="project-body">
-        <div class="project-num">04</div>
-        <div class="project-name">GSS Kubwa Masterclass</div>
-        <p class="project-desc">One-week intensive cinematography and animation training programme delivered to students of GSS Kubwa — equipping the next generation of visual storytellers with camera and 3D skills.</p>
-        <div class="project-client"><div class="project-client-dot"></div><span class="project-client-text">Client: GSS Kubwa — Abuja, Nigeria</span></div>
+        <div class="project-num">04 / COMMERCIAL &amp; FLUID VISUALIZATION</div>
+        <div class="project-name" id="work-title-3">Valued Tasty Foods Commercial</div>
+        <div class="project-tags-row" id="work-tags-3">
+          <span class="project-tag-pill">Blender</span>
+          <span class="project-tag-pill">FLIP Fluids</span>
+          <span class="project-tag-pill">Substance Painter</span>
+          <span class="project-tag-pill">Macro DOF</span>
+        </div>
+        <div class="project-actions-row" onclick="event.stopPropagation()">
+          <button type="button" class="project-action-btn btn-accent" onclick="openLightbox(3)">🔍 High-Res Render</button>
+        </div>
       </div>
     </div>
+
+    <!-- Work 05: OwlUp Tech Identity -->
+    <div class="project-card work-card-item" data-category="renders" onclick="openLightbox(4)">
+      <div class="project-thumb">
+        <img id="work-thumb-4" src="owlup_motion_still.jpg" alt="OwlUp Cybernetic Mech Owl 3D Motion - Ige Dominion" loading="lazy" decoding="async" onerror="this.src='public/owlup_motion_still.jpg';">
+        <div class="project-thumb-bg"></div>
+        <div class="project-badge">🤖 Mech Motion Design</div>
+        <span class="project-zoom-icon">Zoom Render ↗</span>
+      </div>
+      <div class="project-body">
+        <div class="project-num">05 / HARD-SURFACE MECH DESIGN</div>
+        <div class="project-name" id="work-title-4">OwlUp Cybernetic Mech Owl</div>
+        <div class="project-tags-row" id="work-tags-4">
+          <span class="project-tag-pill">Blender 4.1</span>
+          <span class="project-tag-pill">Eevee Next</span>
+          <span class="project-tag-pill">Cinema 4D</span>
+          <span class="project-tag-pill">Kinematic Rig</span>
+        </div>
+        <div class="project-actions-row" onclick="event.stopPropagation()">
+          <button type="button" class="project-action-btn btn-accent" onclick="openLightbox(4)">🔍 High-Res Render</button>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -828,30 +2084,72 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:36px 56
     <a href="#projects">Work</a>
     <a href="#testimonials">Reviews</a>
     <a href="#contact">Contact</a>
+    <a href="javascript:void(0)" onclick="openAdminModal()" style="color:var(--white);font-weight:600;">⚙️ Admin Studio</a>
   </div>
 </footer>
 
 <script>
-// Loader
-window.addEventListener('load',()=>{
-  setTimeout(()=>document.getElementById('loader').classList.add('done'),1400)
-})
-
-// Custom cursor
-const cur=document.getElementById('cur'), ring=document.getElementById('cur-ring')
-let mx=0,my=0,rx=0,ry=0
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY})
-function animCursor(){
-  cur.style.left=mx+'px';cur.style.top=my+'px'
-  rx+=(mx-rx)*.13;ry+=(my-ry)*.13
-  ring.style.left=rx+'px';ring.style.top=ry+'px'
-  requestAnimationFrame(animCursor)
+// Mobile Navigation Drawer Toggle (Android & Touch UX)
+function toggleMobileNav(forceState){
+  const drawer = document.getElementById('mobile-nav-drawer');
+  const btn = document.getElementById('mobile-menu-btn');
+  if(!drawer) return;
+  const isCurrentlyOpen = drawer.classList.contains('open');
+  const shouldOpen = forceState !== undefined ? forceState : !isCurrentlyOpen;
+  
+  if(shouldOpen){
+    drawer.classList.add('open');
+    drawer.setAttribute('aria-hidden', 'false');
+    if(btn) btn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  } else {
+    drawer.classList.remove('open');
+    drawer.setAttribute('aria-hidden', 'true');
+    if(btn) btn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
 }
-animCursor()
-document.querySelectorAll('a,button,model-viewer,.skill-row,.project-card,.t-featured,.t-card,.showcase-3d-viewer-wrap,.tool-card').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{cur.style.width='16px';cur.style.height='16px';ring.style.width='48px';ring.style.height='48px'})
-  el.addEventListener('mouseleave',()=>{cur.style.width='9px';cur.style.height='9px';ring.style.width='34px';ring.style.height='34px'})
-})
+
+// Video Showcase Media Switcher
+function switchMedia(type){
+  const vPlayer = document.getElementById('video-player-el');
+  const sViewer = document.getElementById('still-viewer-el');
+  const bV = document.getElementById('btn-show-reel');
+  const bS = document.getElementById('btn-show-still');
+  if(type === 'still'){
+    if(vPlayer) vPlayer.style.display = 'none';
+    if(sViewer) sViewer.style.display = 'block';
+    if(bV) bV.classList.remove('active');
+    if(bS) bS.classList.add('active');
+  } else {
+    if(vPlayer) vPlayer.style.display = 'block';
+    if(sViewer) sViewer.style.display = 'none';
+    if(bV) bV.classList.add('active');
+    if(bS) bS.classList.remove('active');
+  }
+}
+
+// Custom cursor (Disabled on touch devices & Android for performance & natural touch feel)
+const isTouchDevice = window.matchMedia('(hover: none) and (pointer: coarse)').matches || ('ontouchstart' in window);
+const cur = document.getElementById('cur'), ring = document.getElementById('cur-ring');
+if(cur && ring && !isTouchDevice){
+  let mx=window.innerWidth/2,my=window.innerHeight/2,rx=window.innerWidth/2,ry=window.innerHeight/2;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
+  function animCursor(){
+    cur.style.left=mx+'px';cur.style.top=my+'px';
+    rx+=(mx-rx)*.15;ry+=(my-ry)*.15;
+    ring.style.left=rx+'px';ring.style.top=ry+'px';
+    requestAnimationFrame(animCursor);
+  }
+  animCursor();
+  document.querySelectorAll('a,button,model-viewer,.skill-row,.project-card,.t-featured,.t-card,.showcase-3d-viewer-wrap,.tool-card').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{cur.style.width='16px';cur.style.height='16px';ring.style.width='48px';ring.style.height='48px'});
+    el.addEventListener('mouseleave',()=>{cur.style.width='8px';cur.style.height='8px';ring.style.width='32px';ring.style.height='32px'});
+  });
+} else if(cur && ring) {
+  cur.style.display = 'none';
+  ring.style.display = 'none';
+}
 
 // Scroll reveal
 const obs=new IntersectionObserver((entries)=>{
@@ -947,7 +2245,1334 @@ if (mv) {
     console.warn('3D Model loading warning:', event)
   })
 }
+
+// ── Interactive Works Showcase Data & Modal Engine
+const portfolioWorksData = [
+  {
+    id: 0,
+    title: "Night Alley 3D Narrative Sequence",
+    category: "3D Animation & Cinematic Reel",
+    type: "video",
+    videoId: "aH4QwrYtMQE",
+    youtubeUrl: "https://youtube.com/shorts/aH4QwrYtMQE?si=Un02SImaXU-jiqBP",
+    image: "https://img.youtube.com/vi/aH4QwrYtMQE/hqdefault.jpg",
+    tools: ["Cascadeur 3D", "Blender Cycles", "After Effects"],
+    role: "Visual Storyteller, Character Modeling, Physics & Lighting",
+    description: "A high-stakes cinematic narrative sequence set in an atmospheric urban alleyway. Created with custom character modeling, African print garment texturing, and physics-driven multi-character choreography.",
+    specs: {
+      "Physics Engine": "Cascadeur 3D Auto-Physics",
+      "Render Engine": "Blender Cycles X",
+      "Compositing": "Adobe After Effects",
+      "Format": "9:16 Vertical Reel"
+    }
+  },
+  {
+    id: 1,
+    title: "Buddy Green Spark Initiative",
+    category: "Footwear Commercial & 3D Asset",
+    type: "3d-model",
+    modelUrl: "./shoe_model.glb",
+    image: "shoe_animation_still.jpg",
+    tools: ["Blender 4.2", "Cycles X", "Substance 3D Painter"],
+    role: "Lead 3D Artist, Modeling, Texturing & Animation",
+    description: "Futuristic eco-footwear commercial sequence showcasing sustainable engineering, layered sole unit deconstruction, bioluminescent spark particle simulations, and real-time 360° asset inspection.",
+    specs: {
+      "Asset Format": "GLTF / GLB Real-time WebGL",
+      "Topology": "Clean Sub-D Quad Flow",
+      "Texturing": "Substance 3D PBR Materials",
+      "Client": "Chima Okoli — Buddy Greenspark"
+    }
+  },
+  {
+    id: 2,
+    title: "YAPPI Character Animation & Parkour Rig",
+    category: "Physics Rigging & Action Reel",
+    type: "video",
+    videoId: "PyTLJwkbYds",
+    youtubeUrl: "https://www.youtube.com/shorts/PyTLJwkbYds",
+    image: "character_rig_still.jpg",
+    tools: ["Cascadeur", "Blender", "Mixamo", "After Effects"],
+    role: "Character Animator & Physics Technical Director",
+    description: "High-octane character parkour choreography utilizing Cascadeur auto-physics, center-of-mass trajectory tracking, and expressive secondary muscle and clothing simulation.",
+    specs: {
+      "Physics Engine": "Cascadeur Center-of-Mass",
+      "Rig Type": "Custom Bipedal Action Rig",
+      "Platform": "YouTube Shorts Reel",
+      "Production": "YAPPI Training & Action Reel"
+    }
+  },
+  {
+    id: 3,
+    title: "Valued Tasty Foods Commercial",
+    category: "Commercial & Fluid Visualization",
+    type: "image",
+    image: "food_product_still.jpg",
+    tools: ["Blender", "FLIP Fluids", "Substance Painter"],
+    role: "Fluid Simulation, Shading & Lighting",
+    description: "Appetizing 3D product commercial featuring viscous golden honey ribbons, floating fresh organic ingredients colliding in ultra-slow motion, and macro condensation droplets on packaging.",
+    specs: {
+      "Simulation": "FLIP Fluids High-Viscosity Ribbons",
+      "Materials": "Translucent Subsurface Scattering",
+      "Render Engine": "Blender Cycles Macro DOF",
+      "Grade": "DaVinci Resolve"
+    }
+  },
+  {
+    id: 4,
+    title: "OwlUp Cybernetic Mech Owl",
+    category: "Hard-Surface Mech Motion",
+    type: "image",
+    image: "owlup_motion_still.jpg",
+    tools: ["Blender 4.1", "Eevee Next", "Cinema 4D"],
+    role: "Hard Surface Modeling & Kinematic Rigging",
+    description: "Intricate hard-surface mech character animation depicting an autonomous robotic owl taking flight with multi-segmented carbon-fiber feather articulation and glowing amber optical sensors.",
+    specs: {
+      "Geometry": "120+ Interlocking Mechanical Plates",
+      "Rigging": "Kinematic Feather Articulation",
+      "Lighting": "Emissive Amber Optical Sensors",
+      "Client": "OwlUp Technologies Brand Identity"
+    }
+  }
+];
+
+let activeLightboxIndex = 0;
+
+function filterWorks(category){
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  filterBtns.forEach(btn => {
+    if(btn.getAttribute('data-filter') === category){
+      btn.classList.add('active');
+    } else {
+      btn.classList.remove('active');
+    }
+  });
+
+  const cards = document.querySelectorAll('.work-card-item');
+  cards.forEach(card => {
+    const cardCat = card.getAttribute('data-category') || '';
+    if(category === 'all' || cardCat.includes(category)){
+      card.style.display = 'flex';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+
+function switchWorksView(mode){
+  const container = document.getElementById('projects-grid-container');
+  const btnGrid = document.getElementById('btn-view-grid');
+  const btnMasonry = document.getElementById('btn-view-masonry');
+  
+  if(mode === 'masonry'){
+    if(container) container.classList.add('masonry-mode');
+    if(btnMasonry) btnMasonry.classList.add('active');
+    if(btnGrid) btnGrid.classList.remove('active');
+  } else {
+    if(container) container.classList.remove('masonry-mode');
+    if(btnGrid) btnGrid.classList.add('active');
+    if(btnMasonry) btnMasonry.classList.remove('active');
+  }
+}
+
+function openLightbox(index){
+  activeLightboxIndex = index;
+  const work = portfolioWorksData[index];
+  if(!work) return;
+
+  const modal = document.getElementById('lightbox-theater-modal');
+  const mediaWrap = document.getElementById('lightbox-media-container');
+  const titleEl = document.getElementById('lightbox-title');
+  const categoryEl = document.getElementById('lightbox-category');
+  const roleEl = document.getElementById('lightbox-role');
+  const descEl = document.getElementById('lightbox-desc');
+  const tagsEl = document.getElementById('lightbox-tags');
+  const specsEl = document.getElementById('lightbox-specs');
+  const actionsEl = document.getElementById('lightbox-actions');
+
+  // Populate metadata
+  if(titleEl) titleEl.textContent = work.title;
+  if(categoryEl) categoryEl.textContent = work.category;
+  if(roleEl) roleEl.textContent = work.role;
+  if(descEl) descEl.textContent = work.description;
+
+  // Render tags
+  if(tagsEl){
+    tagsEl.innerHTML = work.tools.map(tool => `<span class="project-tag-pill">${tool}</span>`).join('');
+  }
+
+  // Render specs
+  if(specsEl){
+    specsEl.innerHTML = Object.entries(work.specs).map(([key, val]) => `
+      <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.06);font-size:0.75rem;">
+        <span style="color:var(--muted2);">${key}</span>
+        <span style="color:var(--white);font-weight:600;">${val}</span>
+      </div>
+    `).join('');
+  }
+
+  // Render actions
+  if(actionsEl){
+    let actHtml = '';
+    if(work.youtubeUrl){
+      actHtml += `<a href="${work.youtubeUrl}" target="_blank" rel="noopener noreferrer" class="btn-white" style="padding:10px 20px;font-size:0.65rem;">Watch on YouTube ↗</a>`;
+    }
+    if(work.type === '3d-model'){
+      actHtml += `<a href="#3d-showcase" onclick="closeLightbox()" class="btn-ghost" style="padding:10px 20px;font-size:0.65rem;">Explore in 3D Stage ↓</a>`;
+    }
+    actionsEl.innerHTML = actHtml;
+  }
+
+  // Populate media viewer
+  if(mediaWrap){
+    if(work.type === 'video' && work.videoId){
+      mediaWrap.innerHTML = `
+        <div style="width:100%;height:100%;min-height:500px;display:flex;align-items:center;justify-content:center;background:#000;">
+          <iframe 
+            src="https://www.youtube-nocookie.com/embed/${work.videoId}?autoplay=1&rel=0&modestbranding=1" 
+            title="${work.title}" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen 
+            style="width:100%;height:100%;min-height:500px;border:none;">
+          </iframe>
+        </div>
+      `;
+    } else if(work.type === '3d-model'){
+      mediaWrap.innerHTML = `
+        <div style="width:100%;height:100%;min-height:480px;background:#0d0d0d;position:relative;">
+          <model-viewer 
+            src="${work.modelUrl}" 
+            alt="${work.title}" 
+            auto-rotate 
+            camera-controls 
+            touch-action="pan-y"
+            shadow-intensity="1" 
+            style="width:100%;height:100%;min-height:360px;">
+          </model-viewer>
+          <div style="position:absolute;bottom:14px;left:14px;background:rgba(0,0,0,0.7);padding:6px 12px;font-size:0.65rem;color:var(--white);letter-spacing:1px;border:1px solid rgba(255,255,255,0.2);">
+            🖱️ 360° Drag Orbit • 📱 2 fingers rotate
+          </div>
+        </div>
+      `;
+    } else {
+      mediaWrap.innerHTML = `
+        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;padding:12px;background:#050505;">
+          <img src="${work.image}" alt="${work.title}" style="max-width:100%;max-height:80vh;object-fit:contain;border-radius:2px;">
+        </div>
+      `;
+    }
+  }
+
+  if(modal){
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function closeLightbox(){
+  const modal = document.getElementById('lightbox-theater-modal');
+  const mediaWrap = document.getElementById('lightbox-media-container');
+  if(modal){
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  // Clear media to stop any playing video
+  if(mediaWrap){
+    mediaWrap.innerHTML = '';
+  }
+}
+
+function navigateLightbox(dir){
+  let newIndex = activeLightboxIndex + dir;
+  if(newIndex < 0) newIndex = portfolioWorksData.length - 1;
+  if(newIndex >= portfolioWorksData.length) newIndex = 0;
+  openLightbox(newIndex);
+}
+
+// Keyboard shortcuts for modal
+document.addEventListener('keydown', (e) => {
+  const modal = document.getElementById('lightbox-theater-modal');
+  if(modal && modal.classList.contains('open')){
+    if(e.key === 'Escape') closeLightbox();
+    if(e.key === 'ArrowRight') navigateLightbox(1);
+    if(e.key === 'ArrowLeft') navigateLightbox(-1);
+  }
+});
+
+// Dynamic Fluid Scroll Engine
+const scrollSectionsList = ['home', 'about', 'skills', '3d-showcase', 'projects', 'testimonials', 'contact'];
+const scrollSectionLabels = {
+  'home': 'Home',
+  'about': 'About',
+  'skills': 'Skills',
+  '3d-showcase': '3D Model',
+  'projects': 'Works',
+  'testimonials': 'Reviews',
+  'contact': 'Contact'
+};
+
+let isScrollTicking = false;
+
+function updateFluidScrollProgress() {
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const scrollPct = docHeight > 0 ? Math.min(100, Math.max(0, Math.round((scrollTop / docHeight) * 100))) : 0;
+
+  // 1. Top progress bar
+  const topFill = document.getElementById('fluid-scroll-fill');
+  if (topFill) {
+    topFill.style.width = scrollPct + '%';
+  }
+
+  // 2. Widget bar & percentage
+  const barFill = document.getElementById('dynamic-scroll-bar-fill');
+  const pctText = document.getElementById('dynamic-scroll-pct');
+  const sectionText = document.getElementById('dynamic-scroll-section');
+  const arrow = document.getElementById('dynamic-scroll-arrow');
+
+  if (barFill) barFill.style.width = scrollPct + '%';
+  if (pctText) pctText.textContent = scrollPct + '%';
+
+  // Determine current active section
+  let currentSection = 'home';
+  scrollSectionsList.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) {
+      const rect = el.getBoundingClientRect();
+      if (rect.top <= window.innerHeight * 0.45) {
+        currentSection = id;
+      }
+    }
+  });
+
+  if (sectionText) {
+    sectionText.textContent = scrollSectionLabels[currentSection] || 'PORTFOLIO';
+  }
+
+  // Dynamic downward arrow motion as user scrolls/swipes down
+  if (arrow) {
+    if (scrollPct >= 94) {
+      // Near bottom: flip arrow up to signal "Back to top"
+      arrow.style.transform = 'rotate(180deg)';
+    } else {
+      // Fluid downward displacement linked to scroll offset
+      const pulse = Math.sin(scrollTop * 0.04) * 3.5;
+      arrow.style.transform = `translateY(${Math.max(0, pulse)}px) rotate(0deg)`;
+    }
+  }
+
+  // 3. Hero scroll indicator dynamic displacement & fade
+  const heroScroll = document.getElementById('hero-scroll-indicator');
+  if (heroScroll) {
+    if (scrollTop > 220) {
+      heroScroll.style.opacity = '0';
+      heroScroll.style.pointerEvents = 'none';
+    } else {
+      heroScroll.style.opacity = String(1 - scrollTop / 220);
+      heroScroll.style.transform = `translateX(-50%) translateY(${scrollTop * 0.35}px)`;
+      heroScroll.style.pointerEvents = 'auto';
+    }
+  }
+
+  isScrollTicking = false;
+}
+
+window.addEventListener('scroll', () => {
+  if (!isScrollTicking) {
+    window.requestAnimationFrame(updateFluidScrollProgress);
+    isScrollTicking = true;
+  }
+}, { passive: true });
+
+// Initial run
+window.addEventListener('DOMContentLoaded', () => {
+  updateFluidScrollProgress();
+});
+
+function handleDynamicScrollClick() {
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const scrollPct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+
+  if (scrollPct >= 94) {
+    // Scroll back to top smoothly
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    return;
+  }
+
+  // Find next section
+  const currentIdx = scrollSectionsList.findIndex(id => {
+    const el = document.getElementById(id);
+    if (!el) return false;
+    const rect = el.getBoundingClientRect();
+    return rect.top > 90;
+  });
+
+  if (currentIdx !== -1) {
+    const nextEl = document.getElementById(scrollSectionsList[currentIdx]);
+    if (nextEl) nextEl.scrollIntoView({ behavior: 'smooth' });
+  } else {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
+
+// ==========================================
+// DOMINION CREATOR STUDIO (ADMIN & UPLOADER)
+// ==========================================
+
+const DOMINION_DB_NAME = 'DominionStudioDB';
+const DOMINION_DB_VERSION = 1;
+let dominionDB = null;
+let currentAdminUser = null;
+let latestUploadedImageData = null;
+
+// Initialize IndexedDB
+function initDominionDB() {
+  return new Promise((resolve) => {
+    if (!window.indexedDB) {
+      console.warn('IndexedDB not supported in this browser environment.');
+      resolve(null);
+      return;
+    }
+    const request = indexedDB.open(DOMINION_DB_NAME, DOMINION_DB_VERSION);
+    request.onupgradeneeded = (e) => {
+      const db = e.target.result;
+      if (!db.objectStoreNames.contains('projects')) {
+        db.createObjectStore('projects', { keyPath: 'id' });
+      }
+      if (!db.objectStoreNames.contains('assets')) {
+        db.createObjectStore('assets', { keyPath: 'key' });
+      }
+      if (!db.objectStoreNames.contains('siteInfo')) {
+        db.createObjectStore('siteInfo', { keyPath: 'key' });
+      }
+      if (!db.objectStoreNames.contains('auth')) {
+        db.createObjectStore('auth', { keyPath: 'email' });
+      }
+    };
+    request.onsuccess = (e) => {
+      dominionDB = e.target.result;
+      resolve(dominionDB);
+    };
+    request.onerror = () => {
+      resolve(null);
+    };
+  });
+}
+
+// DB Helpers
+function dbPut(storeName, data) {
+  return new Promise((resolve) => {
+    if (!dominionDB) {
+      try {
+        localStorage.setItem(`dom_${storeName}_${data.id || data.key || data.email}`, JSON.stringify(data));
+      } catch(err){}
+      resolve(true);
+      return;
+    }
+    try {
+      const tx = dominionDB.transaction([storeName], 'readwrite');
+      const store = tx.objectStore(storeName);
+      store.put(data);
+      tx.oncomplete = () => resolve(true);
+      tx.onerror = () => resolve(false);
+    } catch(e) {
+      resolve(false);
+    }
+  });
+}
+
+function dbGet(storeName, key) {
+  return new Promise((resolve) => {
+    if (!dominionDB) {
+      try {
+        const item = localStorage.getItem(`dom_${storeName}_${key}`);
+        resolve(item ? JSON.parse(item) : null);
+      } catch(err){ resolve(null); }
+      return;
+    }
+    try {
+      const tx = dominionDB.transaction([storeName], 'readonly');
+      const store = tx.objectStore(storeName);
+      const req = store.get(key);
+      req.onsuccess = () => resolve(req.result || null);
+      req.onerror = () => resolve(null);
+    } catch(e) {
+      resolve(null);
+    }
+  });
+}
+
+function dbGetAll(storeName) {
+  return new Promise((resolve) => {
+    if (!dominionDB) {
+      resolve([]);
+      return;
+    }
+    try {
+      const tx = dominionDB.transaction([storeName], 'readonly');
+      const store = tx.objectStore(storeName);
+      const req = store.getAll();
+      req.onsuccess = () => resolve(req.result || []);
+      req.onerror = () => resolve([]);
+    } catch(e) {
+      resolve([]);
+    }
+  });
+}
+
+function dbClear(storeName) {
+  return new Promise((resolve) => {
+    if (!dominionDB) resolve(true);
+    try {
+      const tx = dominionDB.transaction([storeName], 'readwrite');
+      const store = tx.objectStore(storeName);
+      store.clear();
+      tx.oncomplete = () => resolve(true);
+      tx.onerror = () => resolve(false);
+    } catch(e) {
+      resolve(false);
+    }
+  });
+}
+
+// Toast
+function showAdminToast(msg) {
+  const toast = document.getElementById('admin-toast');
+  if (!toast) return;
+  toast.textContent = msg;
+  toast.style.display = 'block';
+  setTimeout(() => {
+    toast.style.display = 'none';
+  }, 3500);
+}
+
+// Modal open/close
+function openAdminModal() {
+  const modal = document.getElementById('admin-studio-modal');
+  if (!modal) return;
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  checkAdminSession();
+}
+
+function closeAdminModal() {
+  const modal = document.getElementById('admin-studio-modal');
+  if (!modal) return;
+  modal.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Auth State
+let currentAuthMode = 'signup';
+function switchAuthMode(mode) {
+  currentAuthMode = mode;
+  const tabSignup = document.getElementById('auth-tab-signup');
+  const tabSignin = document.getElementById('auth-tab-signin');
+  const submitBtn = document.getElementById('admin-auth-submit-btn');
+  if (mode === 'signup') {
+    if (tabSignup) tabSignup.classList.add('active');
+    if (tabSignin) tabSignin.classList.remove('active');
+    if (submitBtn) submitBtn.textContent = 'Create Admin Account & Enter';
+  } else {
+    if (tabSignin) tabSignin.classList.add('active');
+    if (tabSignup) tabSignup.classList.remove('active');
+    if (submitBtn) submitBtn.textContent = 'Sign In to Creator Studio';
+  }
+}
+
+async function handleAdminAuth(e) {
+  if (e) e.preventDefault();
+  const emailInput = document.getElementById('admin-auth-email');
+  const passInput = document.getElementById('admin-auth-password');
+  const email = emailInput ? emailInput.value.trim().toLowerCase() : '';
+  const password = passInput ? passInput.value : '';
+
+  if (!email || !password) {
+    showAdminToast('Please provide both email and password.');
+    return;
+  }
+
+  if (currentAuthMode === 'signup') {
+    const existing = await dbGet('auth', email);
+    if (existing) {
+      showAdminToast('Account already registered! Signing you in.');
+    } else {
+      await dbPut('auth', { email, password, createdAt: new Date().toISOString() });
+      showAdminToast('Admin account registered successfully!');
+    }
+  } else {
+    const user = await dbGet('auth', email);
+    if (user && user.password !== password) {
+      showAdminToast('Incorrect password. Please try again.');
+      return;
+    }
+    showAdminToast('Welcome back, Dominion!');
+  }
+
+  currentAdminUser = email;
+  localStorage.setItem('dom_current_admin', email);
+  renderAdminLoggedIn();
+}
+
+function handleQuickAdminAccess() {
+  const email = 'igedominion09@gmail.com';
+  currentAdminUser = email;
+  localStorage.setItem('dom_current_admin', email);
+  dbPut('auth', { email, role: 'owner', createdAt: new Date().toISOString() });
+  showAdminToast('Logged in as Dominion Ige');
+  renderAdminLoggedIn();
+}
+
+function handleAdminSignOut() {
+  currentAdminUser = null;
+  localStorage.removeItem('dom_current_admin');
+  document.getElementById('admin-auth-view').style.display = 'block';
+  document.getElementById('admin-dashboard-view').style.display = 'none';
+  showAdminToast('Signed out of Creator Studio.');
+}
+
+function checkAdminSession() {
+  const storedUser = localStorage.getItem('dom_current_admin');
+  if (storedUser) {
+    currentAdminUser = storedUser;
+    renderAdminLoggedIn();
+  } else {
+    document.getElementById('admin-auth-view').style.display = 'block';
+    document.getElementById('admin-dashboard-view').style.display = 'none';
+  }
+}
+
+function renderAdminLoggedIn() {
+  document.getElementById('admin-auth-view').style.display = 'none';
+  document.getElementById('admin-dashboard-view').style.display = 'block';
+  const displayEl = document.getElementById('admin-user-display');
+  if (displayEl) displayEl.textContent = currentAdminUser || 'igedominion09@gmail.com';
+  renderAdminProjectsList();
+}
+
+// Studio Tabs
+function switchStudioTab(tabId) {
+  const tabs = ['projects', 'quickupload', 'details', 'backup'];
+  tabs.forEach(t => {
+    const btn = document.getElementById(`tab-btn-${t}`);
+    const panel = document.getElementById(`studio-tab-${t}`);
+    if (btn) btn.classList.toggle('active', t === tabId);
+    if (panel) panel.style.display = t === tabId ? 'block' : 'none';
+  });
+}
+
+// Project Manager in Studio
+function renderAdminProjectsList() {
+  const listContainer = document.getElementById('admin-projects-list');
+  if (!listContainer) return;
+  listContainer.innerHTML = '';
+
+  portfolioWorksData.forEach((work, index) => {
+    const card = document.createElement('div');
+    card.className = 'admin-project-item';
+    card.innerHTML = `
+      <div class="admin-project-header">
+        <img src="${work.image}" alt="${work.title}" class="admin-project-thumb-preview" id="admin-thumb-preview-${work.id}">
+        <div style="flex-grow:1;">
+          <div style="font-size:0.65rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;">Work 0${index + 1} • ${work.category}</div>
+          <div style="font-size:1rem;color:var(--white);font-weight:700;margin:3px 0 8px;">${work.title}</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <label class="admin-btn admin-btn-secondary" style="font-size:0.65rem;cursor:pointer;padding:6px 12px;">
+              📤 Upload Render Image
+              <input type="file" accept="image/*" style="display:none;" onchange="handleWorkImageUpload(${work.id}, this)">
+            </label>
+            ${work.youtubeUrl ? `<a href="${work.youtubeUrl}" target="_blank" class="admin-btn admin-btn-secondary" style="font-size:0.65rem;padding:6px 12px;">▶ YouTube</a>` : ''}
+          </div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+        <div>
+          <label class="admin-label">Edit Title</label>
+          <input type="text" class="admin-input" id="edit-work-title-${work.id}" value="${work.title.replace(/"/g, '&quot;')}" onchange="updateWorkField(${work.id}, 'title', this.value)">
+        </div>
+        <div>
+          <label class="admin-label">Edit Category</label>
+          <input type="text" class="admin-input" id="edit-work-cat-${work.id}" value="${work.category.replace(/"/g, '&quot;')}" onchange="updateWorkField(${work.id}, 'category', this.value)">
+        </div>
+      </div>
+    `;
+    listContainer.appendChild(card);
+  });
+}
+
+function handleWorkImageUpload(workId, input) {
+  if (!input.files || !input.files[0]) return;
+  const file = input.files[0];
+  const reader = new FileReader();
+  reader.onload = async (e) => {
+    const dataUrl = e.target.result;
+    applyWorkImage(workId, dataUrl);
+    showAdminToast(`Updated render for Work 0${workId + 1}!`);
+  };
+  reader.readAsDataURL(file);
+}
+
+async function applyWorkImage(workId, dataUrl) {
+  // Update in array
+  const work = portfolioWorksData.find(w => w.id === workId);
+  if (work) {
+    work.image = dataUrl;
+    await dbPut('projects', work);
+  }
+
+  // Update in DOM card
+  const thumbEl = document.getElementById(`work-thumb-${workId}`);
+  if (thumbEl) {
+    thumbEl.src = dataUrl;
+  }
+  // Update in admin preview
+  const adminPreview = document.getElementById(`admin-thumb-preview-${workId}`);
+  if (adminPreview) {
+    adminPreview.src = dataUrl;
+  }
+}
+
+async function updateWorkField(workId, field, value) {
+  const work = portfolioWorksData.find(w => w.id === workId);
+  if (!work) return;
+  work[field] = value;
+  await dbPut('projects', work);
+
+  if (field === 'title') {
+    const titleEl = document.getElementById(`work-title-${workId}`);
+    if (titleEl) titleEl.textContent = value;
+  }
+  showAdminToast(`Saved changes to Work ${workId + 1}!`);
+}
+
+function toggleAddProjectForm(show) {
+  const box = document.getElementById('add-project-box');
+  if (!box) return;
+  box.style.display = (show === false || box.style.display === 'block') ? 'none' : 'block';
+}
+
+async function handleCreateProject() {
+  const title = document.getElementById('new-proj-title').value.trim();
+  const cat = document.getElementById('new-proj-cat').value;
+  const fileInput = document.getElementById('new-proj-file');
+  const yt = document.getElementById('new-proj-yt').value.trim();
+  const tools = document.getElementById('new-proj-tools').value.trim();
+  const desc = document.getElementById('new-proj-desc').value.trim();
+
+  if (!title) {
+    showAdminToast('Please enter a project title.');
+    return;
+  }
+
+  const newId = portfolioWorksData.length;
+  let imageUrl = 'https://img.youtube.com/vi/aH4QwrYtMQE/hqdefault.jpg';
+
+  if (fileInput.files && fileInput.files[0]) {
+    imageUrl = await new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.onload = (e) => resolve(e.target.result);
+      reader.readAsDataURL(fileInput.files[0]);
+    });
+  }
+
+  const newProject = {
+    id: newId,
+    title: title,
+    category: cat === 'reels' ? '3D Animation & Cinematic Reel' : (cat === 'renders' ? '3D Render & Still' : 'Commercial 3D Asset'),
+    type: yt ? 'video' : 'still',
+    videoId: yt.includes('shorts/') ? yt.split('shorts/')[1].split('?')[0] : '',
+    youtubeUrl: yt,
+    image: imageUrl,
+    tools: tools ? tools.split(',').map(s => s.trim()) : ['Blender', 'Cycles'],
+    role: 'Visual Storyteller & 3D Artist',
+    description: desc || 'Custom 3D narrative project crafted by Ige Dominion.',
+    specs: {
+      "Render Engine": "Blender Cycles X",
+      "Software": tools || "Blender 3D",
+      "Artist": "Ige Dominion"
+    }
+  };
+
+  portfolioWorksData.push(newProject);
+  await dbPut('projects', newProject);
+
+  // Append new card to grid in DOM
+  appendProjectCardToDOM(newProject);
+
+  // Re-render admin list
+  renderAdminProjectsList();
+  toggleAddProjectForm(false);
+  showAdminToast(`Project "${title}" added to portfolio!`);
+
+  // Clear inputs
+  document.getElementById('new-proj-title').value = '';
+  document.getElementById('new-proj-file').value = '';
+  document.getElementById('new-proj-yt').value = '';
+  document.getElementById('new-proj-tools').value = '';
+  document.getElementById('new-proj-desc').value = '';
+}
+
+function appendProjectCardToDOM(project) {
+  const container = document.getElementById('projects-grid-container');
+  if (!container) return;
+
+  const card = document.createElement('div');
+  card.className = 'project-card work-card-item';
+  card.setAttribute('data-category', project.type === 'video' ? 'renders reels' : 'renders');
+  card.setAttribute('onclick', `openLightbox(${project.id})`);
+
+  card.innerHTML = `
+    <div class="project-thumb">
+      <img id="work-thumb-${project.id}" src="${project.image}" alt="${project.title} - Ige Dominion" loading="lazy">
+      <div class="project-thumb-bg"></div>
+      <div class="project-badge">${project.type === 'video' ? '🎬 Reel' : '🖼️ 3D Render'}</div>
+      <div class="project-play-icon">▶</div>
+      <span class="project-zoom-icon">Inspect ↗</span>
+    </div>
+    <div class="project-body">
+      <div class="project-num">0${project.id + 1} / NEW PRODUCTION</div>
+      <div class="project-name" id="work-title-${project.id}">${project.title}</div>
+      <div class="project-tags-row">
+        ${project.tools.map(t => `<span class="project-tag-pill">${t}</span>`).join('')}
+      </div>
+      <div class="project-actions-row" onclick="event.stopPropagation()">
+        <button type="button" class="project-action-btn btn-accent" onclick="openLightbox(${project.id})">🔍 Inspect</button>
+        ${project.youtubeUrl ? `<a href="${project.youtubeUrl}" target="_blank" rel="noopener noreferrer" class="project-action-btn">YouTube ↗</a>` : ''}
+      </div>
+    </div>
+  `;
+  container.appendChild(card);
+}
+
+// Quick Uploader
+function handleDirectFileUpload(e) {
+  const file = e.target.files && e.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = (event) => {
+    latestUploadedImageData = event.target.result;
+    const box = document.getElementById('quick-preview-box');
+    const img = document.getElementById('quick-preview-img');
+    const info = document.getElementById('quick-preview-info');
+
+    if (box) box.style.display = 'block';
+    if (img) img.src = latestUploadedImageData;
+    if (info) info.textContent = `File: ${file.name} • ${(file.size / 1024).toFixed(1)} KB`;
+    showAdminToast('Image loaded! Choose where to assign it below.');
+  };
+  reader.readAsDataURL(file);
+}
+
+async function assignUploadedImageToTarget(target) {
+  if (!latestUploadedImageData) {
+    showAdminToast('Please upload an image first.');
+    return;
+  }
+
+  if (target === 'about-portrait') {
+    const portraitEl = document.getElementById('about-portrait-photo');
+    if (portraitEl) {
+      portraitEl.src = latestUploadedImageData;
+    }
+    await dbPut('assets', { key: 'about-portrait', data: latestUploadedImageData });
+    showAdminToast('Updated Dominion’s About Portrait photo!');
+  } else if (target.startsWith('work-')) {
+    const workIndex = parseInt(target.replace('work-', ''), 10);
+    await applyWorkImage(workIndex, latestUploadedImageData);
+    showAdminToast(`Assigned image to Work 0${workIndex + 1}!`);
+  }
+}
+
+// Edit Site Details
+async function handleSaveSiteDetails(e) {
+  if (e) e.preventDefault();
+  const artistName = document.getElementById('edit-artist-name').value.trim();
+  const artistTitle = document.getElementById('edit-artist-title').value.trim();
+  const contactEmail = document.getElementById('edit-contact-email').value.trim();
+  const contactPhone = document.getElementById('edit-contact-phone').value.trim();
+  const location = document.getElementById('edit-contact-location').value.trim();
+  const bioQuote = document.getElementById('edit-bio-quote').value.trim();
+
+  const siteData = {
+    key: 'current',
+    artistName,
+    artistTitle,
+    contactEmail,
+    contactPhone,
+    location,
+    bioQuote
+  };
+
+  await dbPut('siteInfo', siteData);
+  applySiteDetailsToDOM(siteData);
+  showAdminToast('Site details saved and applied live!');
+}
+
+function applySiteDetailsToDOM(site) {
+  if (!site) return;
+  if (site.artistName) {
+    document.querySelectorAll('.nav-logo, .footer-logo, .mobile-nav-brand').forEach(el => {
+      el.textContent = site.artistName;
+    });
+  }
+  if (site.artistTitle) {
+    document.querySelectorAll('.mobile-nav-tag, .hero-tag').forEach(el => {
+      el.textContent = site.artistTitle;
+    });
+  }
+}
+
+// Backup & Reset
+async function handleExportPortfolioData() {
+  const projects = await dbGetAll('projects');
+  const assets = await dbGetAll('assets');
+  const siteInfo = await dbGet('siteInfo', 'current');
+
+  const exportBlob = new Blob([JSON.stringify({
+    exportedAt: new Date().toISOString(),
+    artist: 'Ige Dominion',
+    projects: projects.length ? projects : portfolioWorksData,
+    assets,
+    siteInfo
+  }, null, 2)], { type: 'application/json' });
+
+  const url = URL.createObjectURL(exportBlob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `dominion_portfolio_backup_${new Date().toISOString().slice(0,10)}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+  showAdminToast('Portfolio backup file downloaded!');
+}
+
+function handleImportPortfolioData(e) {
+  const file = e.target.files && e.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = async (event) => {
+    try {
+      const data = JSON.parse(event.target.result);
+      if (data.projects && Array.isArray(data.projects)) {
+        for (const p of data.projects) {
+          await dbPut('projects', p);
+          const existing = portfolioWorksData.find(w => w.id === p.id);
+          if (existing) {
+            Object.assign(existing, p);
+            const thumb = document.getElementById(`work-thumb-${p.id}`);
+            if (thumb) thumb.src = p.image;
+            const titleEl = document.getElementById(`work-title-${p.id}`);
+            if (titleEl) titleEl.textContent = p.title;
+          }
+        }
+      }
+      if (data.assets && Array.isArray(data.assets)) {
+        for (const a of data.assets) {
+          await dbPut('assets', a);
+          if (a.key === 'about-portrait') {
+            const portrait = document.getElementById('about-portrait-photo');
+            if (portrait) portrait.src = a.data;
+          }
+        }
+      }
+      if (data.siteInfo) {
+        await dbPut('siteInfo', data.siteInfo);
+        applySiteDetailsToDOM(data.siteInfo);
+      }
+      renderAdminProjectsList();
+      showAdminToast('Portfolio backup restored successfully!');
+    } catch(err) {
+      showAdminToast('Failed to parse backup JSON file.');
+    }
+  };
+  reader.readAsText(file);
+}
+
+async function handleResetPortfolio() {
+  if (!confirm('Are you sure you want to reset custom renders and text to defaults?')) return;
+  await dbClear('projects');
+  await dbClear('assets');
+  await dbClear('siteInfo');
+  showAdminToast('Reset complete! Reloading default portfolio...');
+  setTimeout(() => window.location.reload(), 1000);
+}
+
+// Hydrate saved data on page load
+async function loadPersistedPortfolio() {
+  await initDominionDB();
+
+  // 1. Assets (Portrait)
+  const portraitAsset = await dbGet('assets', 'about-portrait');
+  if (portraitAsset && portraitAsset.data) {
+    const portraitEl = document.getElementById('about-portrait-photo');
+    if (portraitEl) portraitEl.src = portraitAsset.data;
+  }
+
+  // 2. Custom Projects & Images
+  const savedProjects = await dbGetAll('projects');
+  if (savedProjects && savedProjects.length) {
+    savedProjects.forEach(sp => {
+      const existing = portfolioWorksData.find(w => w.id === sp.id);
+      if (existing) {
+        Object.assign(existing, sp);
+        const thumb = document.getElementById(`work-thumb-${sp.id}`);
+        if (thumb) thumb.src = sp.image;
+        const titleEl = document.getElementById(`work-title-${sp.id}`);
+        if (titleEl) titleEl.textContent = sp.title;
+      } else {
+        portfolioWorksData.push(sp);
+        appendProjectCardToDOM(sp);
+      }
+    });
+  }
+
+  // 3. Site Details
+  const savedSiteInfo = await dbGet('siteInfo', 'current');
+  if (savedSiteInfo) {
+    applySiteDetailsToDOM(savedSiteInfo);
+  }
+}
+
+// Initialize on DOM ready
+document.addEventListener('DOMContentLoaded', () => {
+  loadPersistedPortfolio();
+});
+
+// Dropzone drag-and-drop listener setup
+document.addEventListener('dragover', (e) => {
+  const dropzone = document.getElementById('quick-dropzone');
+  if (dropzone && dropzone.contains(e.target)) {
+    e.preventDefault();
+    dropzone.classList.add('dragover');
+  }
+});
+document.addEventListener('dragleave', (e) => {
+  const dropzone = document.getElementById('quick-dropzone');
+  if (dropzone && !dropzone.contains(e.relatedTarget)) {
+    dropzone.classList.remove('dragover');
+  }
+});
+document.addEventListener('drop', (e) => {
+  const dropzone = document.getElementById('quick-dropzone');
+  if (dropzone && dropzone.contains(e.target)) {
+    e.preventDefault();
+    dropzone.classList.remove('dragover');
+    if (e.dataTransfer.files && e.dataTransfer.files.length) {
+      handleDirectFileUpload({ target: { files: e.dataTransfer.files } });
+    }
+  }
+});
 </script>
+
+<!-- Interactive Lightbox Theater Modal -->
+<div id="lightbox-theater-modal" class="lightbox-modal" onclick="if(event.target === this) closeLightbox()">
+  <div class="lightbox-container">
+    <button type="button" class="lightbox-close-btn" onclick="closeLightbox()" title="Close Viewer">✕</button>
+    <button type="button" class="lightbox-nav-btn prev" onclick="navigateLightbox(-1)" title="Previous Work">‹</button>
+    <button type="button" class="lightbox-nav-btn next" onclick="navigateLightbox(1)" title="Next Work">›</button>
+
+    <!-- Left Media Viewport -->
+    <div id="lightbox-media-container" class="lightbox-media-wrap"></div>
+
+    <!-- Right Metadata & Production Breakdown -->
+    <div class="lightbox-content">
+      <div id="lightbox-category" style="font-size:0.6rem;letter-spacing:2.5px;color:var(--muted);text-transform:uppercase;margin-bottom:8px;font-weight:600;"></div>
+      <h3 id="lightbox-title" style="font-family:'Barlow Condensed',sans-serif;font-size:1.8rem;font-weight:700;color:var(--white);line-height:1.2;margin-bottom:12px;"></h3>
+      <div id="lightbox-role" style="font-size:0.75rem;color:var(--white-soft);font-weight:500;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--border);"></div>
+      
+      <div style="margin-bottom:18px;">
+        <div style="font-size:0.6rem;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase;margin-bottom:8px;">Workflow &amp; Software</div>
+        <div id="lightbox-tags" class="project-tags-row"></div>
+      </div>
+
+      <div style="margin-bottom:24px;">
+        <div style="font-size:0.6rem;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase;margin-bottom:8px;">Production Technical Breakdown</div>
+        <div id="lightbox-specs" style="background:rgba(0,0,0,0.4);border:1px solid var(--border);padding:10px 14px;"></div>
+      </div>
+
+      <div id="lightbox-actions" style="display:flex;gap:12px;flex-wrap:wrap;margin-top:auto;padding-top:14px;border-top:1px solid var(--border);"></div>
+    </div>
+  </div>
+</div>
+
+<!-- DYNAMIC FLUID SCROLL TRACKER WIDGET -->
+<div id="dynamic-scroll-widget" class="dynamic-scroll-widget" onclick="handleDynamicScrollClick()" aria-label="Dynamic Scroll Tracker - Tap to advance section" role="button" tabindex="0">
+  <div class="dynamic-scroll-inner">
+    <div class="dynamic-scroll-arrow-box">
+      <svg id="dynamic-scroll-arrow" class="dynamic-scroll-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="12" y1="5" x2="12" y2="19"></line>
+        <polyline points="19 12 12 19 5 12"></polyline>
+      </svg>
+    </div>
+    <div class="dynamic-scroll-meta">
+      <span id="dynamic-scroll-section" class="dynamic-scroll-section">HOME</span>
+      <span id="dynamic-scroll-pct" class="dynamic-scroll-pct">0%</span>
+    </div>
+  </div>
+  <!-- Dynamic blurred loading/progress fill strip -->
+  <div class="dynamic-scroll-bar-wrap">
+    <div id="dynamic-scroll-bar-fill" class="dynamic-scroll-bar-fill"></div>
+  </div>
+</div>
+
+<!-- ADMIN CREATOR STUDIO MODAL -->
+<div id="admin-studio-modal" class="admin-modal" role="dialog" aria-modal="true" aria-labelledby="admin-dialog-heading">
+  <div class="admin-dialog">
+    <div class="admin-dialog-header">
+      <div class="admin-dialog-title-wrap">
+        <h2 id="admin-dialog-heading" class="admin-dialog-title">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+          </svg>
+          Dominion Creator Studio
+        </h2>
+        <span id="admin-dialog-sub" class="admin-dialog-sub">Upload 3D Renders, Customize Works &amp; Update Portfolio Live</span>
+      </div>
+      <button type="button" class="admin-dialog-close" onclick="closeAdminModal()" aria-label="Close Creator Studio">✕</button>
+    </div>
+
+    <!-- VIEW 1: AUTHENTICATION (SIGN UP & SIGN IN) -->
+    <div id="admin-auth-view" class="admin-dialog-body" style="display:block;">
+      <div class="admin-auth-card">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;font-weight:700;letter-spacing:2px;color:var(--white);margin-bottom:6px;text-transform:uppercase;">
+          Admin Access
+        </div>
+        <p style="font-size:0.75rem;color:var(--muted2);margin-bottom:20px;line-height:1.6;">
+          Sign up or sign in to your creator portal to upload high-resolution renders and manage website content.
+        </p>
+
+        <div class="admin-auth-tabs">
+          <button type="button" id="auth-tab-signup" class="admin-auth-tab active" onclick="switchAuthMode('signup')">Sign Up</button>
+          <button type="button" id="auth-tab-signin" class="admin-auth-tab" onclick="switchAuthMode('signin')">Sign In</button>
+        </div>
+
+        <form id="admin-auth-form" onsubmit="handleAdminAuth(event)">
+          <div class="admin-form-group">
+            <label class="admin-label" for="admin-auth-email">Admin Email</label>
+            <input type="email" id="admin-auth-email" class="admin-input" value="igedominion09@gmail.com" required placeholder="name@domain.com">
+          </div>
+
+          <div class="admin-form-group">
+            <label class="admin-label" for="admin-auth-password">Password</label>
+            <input type="password" id="admin-auth-password" class="admin-input" required placeholder="Enter password (minimum 6 characters)" minlength="6">
+          </div>
+
+          <button type="submit" id="admin-auth-submit-btn" class="admin-btn admin-btn-primary" style="width:100%;margin-top:8px;">
+            Create Admin Account &amp; Enter
+          </button>
+        </form>
+
+        <div style="margin-top:18px;padding-top:16px;border-top:1px solid var(--border);">
+          <button type="button" onclick="handleQuickAdminAccess()" class="admin-btn admin-btn-secondary" style="width:100%;font-size:0.68rem;">
+            ⚡ Quick Access as Dominion Ige
+          </button>
+        </div>
+        <div style="margin-top:12px;font-size:0.62rem;color:var(--muted);letter-spacing:0.5px;">
+          🔒 All images and modifications are saved persistently in your browser's IndexedDB.
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW 2: LOGGED-IN CREATOR STUDIO DASHBOARD -->
+    <div id="admin-dashboard-view" class="admin-dialog-body" style="display:none;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:8px;">
+        <div style="display:flex;align-items:center;gap:8px;">
+          <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#4ade80;"></span>
+          <span id="admin-user-display" style="font-size:0.75rem;color:var(--white);letter-spacing:1px;font-weight:600;">igedominion09@gmail.com</span>
+        </div>
+        <button type="button" onclick="handleAdminSignOut()" class="admin-btn admin-btn-secondary" style="padding:6px 12px;font-size:0.65rem;">
+          Sign Out
+        </button>
+      </div>
+
+      <!-- Studio Navigation Tabs -->
+      <div class="admin-nav-tabs">
+        <button type="button" class="admin-tab-btn active" id="tab-btn-projects" onclick="switchStudioTab('projects')">🎨 Manage Works &amp; Renders</button>
+        <button type="button" class="admin-tab-btn" id="tab-btn-quickupload" onclick="switchStudioTab('quickupload')">📤 Quick Image Uploader</button>
+        <button type="button" class="admin-tab-btn" id="tab-btn-details" onclick="switchStudioTab('details')">✏️ Edit Site Info</button>
+        <button type="button" class="admin-tab-btn" id="tab-btn-backup" onclick="switchStudioTab('backup')">💾 Backup &amp; Reset</button>
+      </div>
+
+      <!-- TAB 1: PROJECTS & RENDERS -->
+      <div id="studio-tab-projects" style="display:block;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:8px;">
+          <span style="font-size:0.75rem;color:var(--muted2);letter-spacing:1px;">Click 'Upload Render Image' on any work to replace the image with your own file:</span>
+          <button type="button" class="admin-btn admin-btn-primary" onclick="toggleAddProjectForm()">
+            ➕ Add New Project
+          </button>
+        </div>
+
+        <!-- Add Project Collapsible Form -->
+        <div id="add-project-box" style="display:none;background:#141414;border:1px solid rgba(255,255,255,0.2);padding:18px;margin-bottom:20px;border-radius:2px;">
+          <h4 style="font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;color:var(--white);letter-spacing:1.5px;margin-bottom:12px;text-transform:uppercase;">Add New 3D Project</h4>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <div class="admin-form-group">
+              <label class="admin-label">Project Title</label>
+              <input type="text" id="new-proj-title" class="admin-input" placeholder="e.g. Cyberpunk Hoverbike Sequence">
+            </div>
+            <div class="admin-form-group">
+              <label class="admin-label">Category</label>
+              <select id="new-proj-cat" class="admin-select">
+                <option value="reels">Reel / Animation</option>
+                <option value="renders">3D Render</option>
+                <option value="commercial">Commercial Asset</option>
+                <option value="3d">Interactive 3D</option>
+              </select>
+            </div>
+          </div>
+          <div class="admin-form-group">
+            <label class="admin-label">Upload Render Artwork Image</label>
+            <input type="file" id="new-proj-file" accept="image/*" class="admin-input" style="padding:6px;">
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <div class="admin-form-group">
+              <label class="admin-label">YouTube Shorts / Video URL (Optional)</label>
+              <input type="url" id="new-proj-yt" class="admin-input" placeholder="https://youtube.com/shorts/...">
+            </div>
+            <div class="admin-form-group">
+              <label class="admin-label">Tools &amp; Software (comma separated)</label>
+              <input type="text" id="new-proj-tools" class="admin-input" placeholder="Blender, Cycles, Cascadeur">
+            </div>
+          </div>
+          <div class="admin-form-group">
+            <label class="admin-label">Project Description</label>
+            <textarea id="new-proj-desc" class="admin-textarea" rows="2" placeholder="Describe the creative direction, physics, lighting..."></textarea>
+          </div>
+          <div style="display:flex;gap:10px;">
+            <button type="button" onclick="handleCreateProject()" class="admin-btn admin-btn-primary">Create &amp; Publish</button>
+            <button type="button" onclick="toggleAddProjectForm(false)" class="admin-btn admin-btn-secondary">Cancel</button>
+          </div>
+        </div>
+
+        <!-- Project Items List -->
+        <div id="admin-projects-list">
+          <!-- Dynamically populated by JS -->
+        </div>
+      </div>
+
+      <!-- TAB 2: QUICK IMAGE UPLOADER -->
+      <div id="studio-tab-quickupload" style="display:none;">
+        <div class="admin-dropzone" id="quick-dropzone" onclick="document.getElementById('quick-file-input').click()">
+          <input type="file" id="quick-file-input" accept="image/*" onchange="handleDirectFileUpload(event)" style="display:none;">
+          <div style="font-size:2rem;margin-bottom:8px;">📁</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;letter-spacing:1.5px;color:var(--white);text-transform:uppercase;margin-bottom:4px;">
+            Drop Your High-Res 3D Render Here
+          </div>
+          <p style="font-size:0.75rem;color:var(--muted2);">Supports PNG, JPG, WebP, GIF • Click to browse files from your device</p>
+        </div>
+
+        <div id="quick-preview-box" style="display:none;background:#141414;border:1px solid var(--border);padding:18px;margin-top:16px;">
+          <h4 style="font-size:0.75rem;letter-spacing:1.5px;color:var(--muted2);text-transform:uppercase;margin-bottom:12px;">Uploaded Image Preview</h4>
+          <div style="display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap;">
+            <img id="quick-preview-img" src="" alt="Uploaded Preview" style="max-width:240px;max-height:180px;object-fit:cover;border:1px solid var(--border);border-radius:2px;">
+            <div style="flex-grow:1;min-width:200px;">
+              <div id="quick-preview-info" style="font-size:0.75rem;color:var(--white);margin-bottom:14px;"></div>
+              <div style="font-size:0.68rem;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase;margin-bottom:8px;">Assign this uploaded image to:</div>
+              <div style="display:flex;flex-direction:column;gap:8px;">
+                <button type="button" onclick="assignUploadedImageToTarget('about-portrait')" class="admin-btn admin-btn-secondary" style="justify-content:flex-start;">
+                  👤 Dominion's Portrait ("The Eye Behind The Mask")
+                </button>
+                <button type="button" onclick="assignUploadedImageToTarget('work-0')" class="admin-btn admin-btn-secondary" style="justify-content:flex-start;">
+                  🎬 Work 01: Night Alley 3D Sequence
+                </button>
+                <button type="button" onclick="assignUploadedImageToTarget('work-1')" class="admin-btn admin-btn-secondary" style="justify-content:flex-start;">
+                  👟 Work 02: Buddy Green Spark Footwear
+                </button>
+                <button type="button" onclick="assignUploadedImageToTarget('work-2')" class="admin-btn admin-btn-secondary" style="justify-content:flex-start;">
+                  🏃 Work 03: YAPPI Character Parkour Rig
+                </button>
+                <button type="button" onclick="assignUploadedImageToTarget('work-3')" class="admin-btn admin-btn-secondary" style="justify-content:flex-start;">
+                  🍲 Work 04: Valued Tasty Foods Commercial
+                </button>
+                <button type="button" onclick="assignUploadedImageToTarget('work-4')" class="admin-btn admin-btn-secondary" style="justify-content:flex-start;">
+                  🤖 Work 05: OwlUp Cybernetic Mech Owl
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 3: EDIT SITE INFO -->
+      <div id="studio-tab-details" style="display:none;">
+        <form onsubmit="handleSaveSiteDetails(event)">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+            <div class="admin-form-group">
+              <label class="admin-label" for="edit-artist-name">Artist Name</label>
+              <input type="text" id="edit-artist-name" class="admin-input" value="IGE DOMINION">
+            </div>
+            <div class="admin-form-group">
+              <label class="admin-label" for="edit-artist-title">Tagline / Professional Title</label>
+              <input type="text" id="edit-artist-title" class="admin-input" value="Visual Storyteller &amp; 3D Animator">
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+            <div class="admin-form-group">
+              <label class="admin-label" for="edit-contact-email">Contact Email</label>
+              <input type="email" id="edit-contact-email" class="admin-input" value="igedominion09@gmail.com">
+            </div>
+            <div class="admin-form-group">
+              <label class="admin-label" for="edit-contact-phone">Contact Phone / WhatsApp</label>
+              <input type="text" id="edit-contact-phone" class="admin-input" value="+234 810 610 8274">
+            </div>
+          </div>
+
+          <div class="admin-form-group">
+            <label class="admin-label" for="edit-contact-location">Location</label>
+            <input type="text" id="edit-contact-location" class="admin-input" value="Abuja, Nigeria">
+          </div>
+
+          <div class="admin-form-group">
+            <label class="admin-label" for="edit-bio-quote">Hero / About Bio Quote</label>
+            <textarea id="edit-bio-quote" class="admin-textarea" rows="3">Crafting cinematic 3D motion, physics-driven choreography, and high-impact visual stories that command attention.</textarea>
+          </div>
+
+          <button type="submit" class="admin-btn admin-btn-primary" style="margin-top:8px;">
+            💾 Save &amp; Apply Changes to Live Website
+          </button>
+        </form>
+      </div>
+
+      <!-- TAB 4: BACKUP & DATA -->
+      <div id="studio-tab-backup" style="display:none;">
+        <div style="background:#141414;border:1px solid var(--border);padding:20px;border-radius:2px;margin-bottom:16px;">
+          <h4 style="font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;color:var(--white);letter-spacing:1.5px;margin-bottom:8px;text-transform:uppercase;">Download / Export Changes</h4>
+          <p style="font-size:0.75rem;color:var(--muted2);margin-bottom:14px;line-height:1.6;">
+            Save a backup file of your uploaded image references, project updates, and text customizations:
+          </p>
+          <button type="button" onclick="handleExportPortfolioData()" class="admin-btn admin-btn-primary">
+            📥 Download Portfolio Backup (.json)
+          </button>
+        </div>
+
+        <div style="background:#141414;border:1px solid var(--border);padding:20px;border-radius:2px;margin-bottom:16px;">
+          <h4 style="font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;color:var(--white);letter-spacing:1.5px;margin-bottom:8px;text-transform:uppercase;">Restore From Backup</h4>
+          <p style="font-size:0.75rem;color:var(--muted2);margin-bottom:14px;line-height:1.6;">
+            Import a previously exported JSON backup file:
+          </p>
+          <input type="file" id="import-backup-file" accept=".json" onchange="handleImportPortfolioData(event)" class="admin-input" style="padding:6px;max-width:320px;">
+        </div>
+
+        <div style="background:rgba(220,53,69,0.06);border:1px solid rgba(220,53,69,0.25);padding:20px;border-radius:2px;">
+          <h4 style="font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;color:#ff6b6b;letter-spacing:1.5px;margin-bottom:8px;text-transform:uppercase;">Reset Portfolio</h4>
+          <p style="font-size:0.75rem;color:var(--muted2);margin-bottom:14px;line-height:1.6;">
+            Restore all original works, images, and text back to Dominion's default portfolio settings:
+          </p>
+          <button type="button" onclick="handleResetPortfolio()" class="admin-btn admin-btn-danger">
+            ↺ Reset to Default Settings
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- FLOATING TOAST NOTIFICATION -->
+<div id="admin-toast" class="admin-toast"></div>
 
 </body>
 </html>

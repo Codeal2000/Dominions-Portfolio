@@ -43,7 +43,19 @@ This project is already pre-configured with **relative path resolution (`base: '
 
 ---
 
-### Option 2: Deploying to Custom User Domain (`username.github.io`)
+### Option 2: Zero-Build Instant Hosting (Easiest — No Node.js / No Actions)
+
+Because this website is built with universal **HTML5, CSS3, and JavaScript**, you don't even need Node.js or build scripts:
+
+1. Push or upload your files (`index.html`, `public/`, images, and `shoe_model.glb`) directly to your repository's `main` branch.
+2. Go to **Settings -> Pages**.
+3. Under **Build and deployment -> Source**, select **Deploy from a branch**.
+4. Set Branch to **`main`** and folder to **`/ (root)`**, then click **Save**.
+5. Your site is live immediately!
+
+---
+
+### Option 3: Deploying to Custom User Domain (`username.github.io`)
 
 If you want your website to be your primary personal domain on GitHub:
 1. Name your repository exactly: `YOUR_GITHUB_USERNAME.github.io`
