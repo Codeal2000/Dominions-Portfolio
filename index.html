@@ -9,7 +9,8 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="format-detection" content="telephone=no">
 <meta name="google-site-verification" content="P7RHXUT2PxFNodFLhMnYBNHiipeA6gmp6KHkdikQPME">
-<title>Ige Dominion | Visual Storyteller, 3D Animator & Motion Designer</title>
+<title>Ige Dominion | Visual Storyteller, 3D Animator, Motion Designer & Web Developer</title>
+<meta name="description" content="Portfolio of Ige Dominion — Visual Storyteller, 3D Animator, Motion Designer, and Web Developer based in Abuja, Nigeria. Featuring interactive 3D model viewer, GLB upload, and production reels.">
 
 <script>
 // Error resilience shield for third-party CDNs and iframe fetch calls
@@ -188,11 +189,16 @@ section{padding:100px 56px}
 /* ── 3D MODEL SHOWCASE (INTERACTIVE) */
 .showcase-3d{background:var(--dark);border-top:1px solid var(--border);border-bottom:1px solid var(--border);position:relative}
 .showcase-3d-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
-.showcase-3d-viewer-wrap{position:relative;border:1px solid var(--border);background:var(--dark3);overflow:hidden}
+.showcase-3d-viewer-wrap{position:relative;border:1px solid var(--border);background:var(--dark3);overflow:hidden;transition:border-color .25s ease}
+.showcase-3d-viewer-wrap.drag-over{border-color:var(--white);box-shadow:0 0 25px rgba(255,255,255,0.15)}
+.showcase-3d-drop-overlay{position:absolute;inset:0;background:rgba(5,5,5,0.92);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;flex-direction:column;gap:12px;z-index:15;pointer-events:none;border:2px dashed var(--white)}
+.showcase-3d-viewer-wrap.drag-over .showcase-3d-drop-overlay{display:flex}
 .showcase-3d-corner{position:absolute;top:12px;left:12px;width:20px;height:20px;border-top:2px solid var(--white);border-left:2px solid var(--white);z-index:5;pointer-events:none}
 .showcase-3d-corner2{position:absolute;bottom:12px;right:12px;width:20px;height:20px;border-bottom:2px solid var(--white);border-right:2px solid var(--white);z-index:5;pointer-events:none}
 .showcase-3d-hint{position:absolute;bottom:14px;left:14px;background:rgba(5,5,5,.88);border:1px solid var(--border);padding:6px 14px;font-size:.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--white);z-index:5;pointer-events:none}
-.showcase-3d-info p{font-size:1rem;color:var(--muted2);line-height:1.9;margin-bottom:24px}
+.showcase-upload-btn{background:var(--white);color:var(--dark);border:1px solid var(--white);font-family:'Barlow',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:9px 18px;border-radius:2px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:all .2s ease;text-decoration:none}
+.showcase-upload-btn:hover{background:#d4d4d4;border-color:#d4d4d4;transform:translateY(-1px)}
+.showcase-3d-info p{font-size:1rem;color:var(--muted2);line-height:1.9;margin-bottom:20px}
 .showcase-3d-specs{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:28px}
 .showcase-spec-box{background:var(--dark2);border:1px solid var(--border);padding:18px 16px}
 .showcase-spec-title{font-size:.58rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
@@ -538,9 +544,23 @@ section{padding:100px 56px}
   display:flex;
   gap:8px;
   align-items:center;
-  margin-top:auto;
-  padding-top:14px;
-  border-top:1px solid var(--border);
+  margin-top:16px;
+  padding-top:0;
+  border-top:none;
+}
+.project-action-btn.btn-accent{
+  background:var(--white);
+  border-color:var(--white);
+  color:var(--dark);
+  font-weight:700;
+  letter-spacing:1.2px;
+  padding:8px 18px;
+  border-radius:2px;
+}
+.project-action-btn.btn-accent:hover{
+  background:#d4d4d4;
+  border-color:#d4d4d4;
+  color:var(--dark);
 }
 .project-action-btn{
   background:transparent;
@@ -1374,6 +1394,63 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:36px 56
   border-color:var(--white);
 }
 
+
+/* Media Type Selector Tabs in Admin */
+.admin-type-tabs {
+  display: flex;
+  gap: 4px;
+  background: #090909;
+  border: 1px solid var(--border);
+  padding: 3px;
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+.admin-type-btn {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 8px 12px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.admin-type-btn.active {
+  background: var(--white);
+  color: var(--dark);
+  font-weight: 700;
+}
+.admin-type-btn:hover:not(.active) {
+  color: var(--white);
+  background: rgba(255,255,255,0.06);
+}
+.admin-media-subpanel {
+  background: #0d0d0d;
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 14px;
+  border-radius: 2px;
+  margin-bottom: 12px;
+}
+.online-icon-preview {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  color: var(--white);
+  background: rgba(255,255,255,0.06);
+  padding: 4px 8px;
+  border-radius: 2px;
+  border: 1px solid var(--border);
+}
+
 /* Buttons */
 .admin-btn{
   padding:10px 18px;
@@ -1523,9 +1600,9 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:36px 56
 <div id="mobile-nav-drawer" class="mobile-nav-drawer" aria-hidden="true">
   <div class="mobile-nav-header">
     <span class="mobile-nav-brand">IGE · DOMINION</span>
-    <button type="button" class="mobile-nav-close" aria-label="Close Navigation Menu" onclick="toggleMobileNav(false)">✕</button>
+    <button type="button" class="mobile-nav-close" aria-label="Close Navigation Menu" onclick="toggleMobileNav(false)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
   </div>
-  <div class="mobile-nav-tag">Visual Storyteller &amp; 3D Animator</div>
+  <div class="mobile-nav-tag">Visual Storyteller, 3D Animator &amp; Web Developer</div>
   <ul class="mobile-nav-list">
     <li><a href="#about" onclick="toggleMobileNav(false)"><span>01</span> About The Artist</a></li>
     <li><a href="#skills" onclick="toggleMobileNav(false)"><span>02</span> Production Skills</a></li>
@@ -1533,7 +1610,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:36px 56
     <li><a href="#projects" onclick="toggleMobileNav(false)"><span>04</span> Selected Works &amp; Reels</a></li>
     <li><a href="#testimonials" onclick="toggleMobileNav(false)"><span>05</span> Client Testimonials</a></li>
     <li><a href="#contact" onclick="toggleMobileNav(false)"><span>06</span> Contact &amp; Enquiries</a></li>
-    <li><a href="javascript:void(0)" onclick="toggleMobileNav(false); openAdminModal();" style="color:var(--white);border-top:1px solid rgba(255,255,255,0.15);margin-top:8px;padding-top:14px;"><span style="color:var(--white);">⚙️</span> Admin Studio (Uploads)</a></li>
+    <li><a href="javascript:void(0)" onclick="toggleMobileNav(false); openAdminModal();" style="color:var(--white);border-top:1px solid rgba(255,255,255,0.15);margin-top:8px;padding-top:14px;display:flex;align-items:center;gap:8px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg> Admin Studio (Uploads)</a></li>
   </ul>
   <div class="mobile-nav-footer">
     <a href="mailto:igedominion09@gmail.com?subject=Project%20Enquiry" class="btn-white mobile-nav-cta">Hire Me • Send Email</a>
@@ -1548,7 +1625,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:36px 56
   <div class="hero-inner">
     <div class="hero-tag">
       <span class="hero-tag-line"></span>
-      <span class="hero-tag-text">Visual Storyteller &amp; 3D Animator</span>
+      <span class="hero-tag-text">Visual Storyteller, 3D Animator &amp; Web Developer</span>
       <span class="hero-tag-line"></span>
     </div>
     <h1 class="hero-name">IGE<em>DOMINION</em></h1>
@@ -1559,6 +1636,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:36px 56
       <span class="role-chip">3D Animator</span>
       <span class="role-chip">Motion Graphics</span>
       <span class="role-chip">VFX Artist</span>
+      <span class="role-chip">Web Developer</span>
     </div>
     <div class="hero-btns">
       <a href="#3d-showcase" class="btn-white">Interactive 3D Model</a>
@@ -1585,7 +1663,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:36px 56
       <div class="about-img-frame">
         <img id="about-portrait-photo" src="dominion_portrait_mask.jpg" alt="Ige Dominion - The eye behind the mask" class="about-img-photo" onerror="this.src='dominion_portrait_1786703205408,jpg-1.jpg'; this.onerror=function(){this.src='dominion_real_photo.jpg';};">
         <div class="about-img-inner" style="display:none;">
-          <span class="about-img-icon">📷</span>
+          <span class="about-img-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg></span>
           <span class="about-img-text">Ige Dominion</span>
         </div>
         <div class="about-img-corner"></div>
@@ -1601,7 +1679,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:36px 56
     <div class="about-text reveal in">
       <div class="s-label"><div class="s-label-line"></div><span class="s-label-text">About Me</span></div>
       <h2 class="s-title">The Eye<br>Behind<br><span style="color:var(--white)">The Mask</span></h2>
-      <p>I am <strong>Ige Dominion</strong> — <em>the eye behind the mask</em> — a visual artist, 3D animator, and motion designer based in <strong>Abuja, Nigeria</strong>. My craft centers on telling captivating stories through 3D worldbuilding, physics-accurate character animation, dynamic motion graphics, and cinematic video production.</p>
+      <p>I am <strong>Ige Dominion</strong> — <em>the eye behind the mask</em> — a visual artist, 3D animator, motion designer, and web developer based in <strong>Abuja, Nigeria</strong>. My craft centers on telling captivating stories through 3D worldbuilding, physics-accurate character animation, dynamic motion graphics, and interactive web experiences.</p>
       <p>My production workflow is specialized and laser-focused on <strong>Blender 3D</strong>, <strong>Adobe After Effects</strong>, and <strong>Cascadeur</strong> — allowing me to deliver industry-grade 3D assets, physics-driven character rigs, and polished motion compositing with exceptional speed and visual precision.</p>
       <p>Whether creating high-impact brand commercials, complex 3D product animations, or training aspiring creatives — the standard is always uncompromising quality.</p>
       <div class="about-quote">
@@ -1620,7 +1698,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:36px 56
   <div class="skills-list reveal in">
     <div class="skill-row">
       <span class="skill-num">01</span>
-      <div class="skill-icon-wrap">🎬</div>
+      <div class="skill-icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg></div>
       <div class="skill-info">
         <div class="skill-name">Cinematography</div>
         <div class="skill-desc">Expert camera operation, lighting design, and visual framing that turns every scene into a cinematic masterpiece. From concept to final shot.</div>
@@ -1629,7 +1707,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:36px 56
     </div>
     <div class="skill-row">
       <span class="skill-num">02</span>
-      <div class="skill-icon-wrap">✂️</div>
+      <div class="skill-icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><line x1="20" y1="4" x2="8.12" y2="15.88"></line><line x1="14.47" y1="14.48" x2="20" y2="20"></line><line x1="8.12" y1="8.12" x2="12" y2="12"></line></svg></div>
       <div class="skill-info">
         <div class="skill-name">Video Editing</div>
         <div class="skill-desc">Precision editing, colour grading, and narrative pacing that creates seamless, emotionally compelling stories audiences remember.</div>
@@ -1638,7 +1716,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:36px 56
     </div>
     <div class="skill-row">
       <span class="skill-num">03</span>
-      <div class="skill-icon-wrap">🌟</div>
+      <div class="skill-icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg></div>
       <div class="skill-info">
         <div class="skill-name">3D Animation</div>
         <div class="skill-desc">Full 3D pipeline in Blender &amp; Cascadeur — modeling, texturing, physics-based posing, rigging, and photoreal rendering.</div>
@@ -1647,19 +1725,28 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:36px 56
     </div>
     <div class="skill-row">
       <span class="skill-num">04</span>
-      <div class="skill-icon-wrap">✨</div>
+      <div class="skill-icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></div>
       <div class="skill-info">
         <div class="skill-name">Motion Graphics</div>
         <div class="skill-desc">Dynamic animated typography, brand motion packages, title design, and promotional motion sequences in Adobe After Effects.</div>
       </div>
       <span class="skill-arrow">→</span>
     </div>
-    <div class="skill-row" style="border-bottom:none">
+    <div class="skill-row">
       <span class="skill-num">05</span>
-      <div class="skill-icon-wrap">🌀</div>
+      <div class="skill-icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg></div>
       <div class="skill-info">
         <div class="skill-name">VFX &amp; Compositing</div>
         <div class="skill-desc">Seamless multi-layer compositing, visual effects, tracking, and post-production polish integrating live-action with 3D elements.</div>
+      </div>
+      <span class="skill-arrow">→</span>
+    </div>
+    <div class="skill-row" style="border-bottom:none">
+      <span class="skill-num">06</span>
+      <div class="skill-icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></div>
+      <div class="skill-info">
+        <div class="skill-name">Web Development</div>
+        <div class="skill-desc">Modern responsive web applications, interactive 3D WebGL experiences, clean UI/UX design, and fast full-stack solutions.</div>
       </div>
       <span class="skill-arrow">→</span>
     </div>
@@ -1675,9 +1762,9 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:36px 56
       <div class="tool-card software-badge">
         <div class="tool-card-head">
           <span class="tool-card-name">Blender 3D</span>
-          <span class="tool-card-badge">Core 3D</span>
+          <span class="tool-card-badge">Core 3D Production</span>
         </div>
-        <p class="tool-card-desc">3D Modeling, Quad Topology, UV Unwrapping, Procedural Shading, Cycles &amp; Eevee Photoreal Rendering.</p>
+        <p class="tool-card-desc">High-End 3D Product &amp; Character Modeling, Realistic Textures, Cinematic Lighting, and Photorealistic Visuals.</p>
       </div>
 
       <!-- Tool 2: Adobe After Effects -->
@@ -1686,16 +1773,16 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:36px 56
           <span class="tool-card-name">Adobe After Effects</span>
           <span class="tool-card-badge">Motion &amp; VFX</span>
         </div>
-        <p class="tool-card-desc">Kinetic Typography, Motion Graphics, Visual Effects Compositing, Color Grading &amp; Broadcast Packaging.</p>
+        <p class="tool-card-desc">Kinetic Typography, Commercial Motion Graphics, Visual Effects Compositing, and High-Impact Video Grading.</p>
       </div>
 
       <!-- Tool 3: Cascadeur -->
       <div class="tool-card software-badge">
         <div class="tool-card-head">
           <span class="tool-card-name">Cascadeur</span>
-          <span class="tool-card-badge">Physics Animation</span>
+          <span class="tool-card-badge">Character Animation</span>
         </div>
-        <p class="tool-card-desc">AI-assisted Physics-based Character Animation, AutoPosing, Rigging, Center of Mass Tracking &amp; Keyframing.</p>
+        <p class="tool-card-desc">Dynamic Character Choreography, Natural Physics Motion, Action Staging, and Cinematic Movement.</p>
       </div>
     </div>
   </div>
@@ -1708,52 +1795,25 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:36px 56
     <h2 class="s-title">Interactive 3D<br><span style="color:var(--white)">Model Showcase</span></h2>
   </div>
 
-  <div class="showcase-3d-grid reveal in">
-    <!-- Left: 3D Model Viewer Container -->
-    <div class="showcase-3d-viewer-wrap">
-      <div class="showcase-3d-corner"></div>
-      <div class="showcase-3d-corner2"></div>
+  <div class="showcase-3d-viewer-wrap reveal in" id="showcase-viewer-dropzone" style="max-width:1100px;margin:32px auto 0;">
+    <div class="showcase-3d-corner"></div>
+    <div class="showcase-3d-corner2"></div>
 
-      <model-viewer 
-        src="./shoe_model.glb" 
-        alt="3D Shoe Model - Buddy Green Spark Initiative" 
-        auto-rotate 
-        camera-controls 
-        touch-action="pan-y"
-        shadow-intensity="1" 
-        loading="lazy"
-        reveal="auto"
-        style="width: 100%; height: 500px; background-color: #0d0d0d; border: 1px solid #242426;">
-      </model-viewer>
+    <model-viewer 
+      id="main-3d-model-viewer"
+      src="./shoe_model.glb" 
+      alt="3D Shoe Model - Buddy Green Spark Initiative" 
+      auto-rotate 
+      camera-controls 
+      touch-action="pan-y"
+      shadow-intensity="1" 
+      loading="lazy"
+      reveal="auto"
+      style="width: 100%; height: 560px; background-color: #0d0d0d; border: 1px solid #242426;">
+    </model-viewer>
 
-      <div class="showcase-3d-hint">
-        <span>🖱️ Drag to orbit 360° • 📱 Swipe to scroll • 2 fingers to rotate</span>
-      </div>
-    </div>
-
-    <!-- Right: Technical Details & Description -->
-    <div class="showcase-3d-info">
-      <p>Explore this high-fidelity 3D footwear asset created for the <strong>Buddy Green Spark Initiative</strong>. Dissect the precise quad topology, PBR materials, and dynamic silhouette rendered in real-time WebGL.</p>
-      <p style="font-size:0.95rem;color:var(--white-soft);">Click and drag with your cursor to orbit <strong>360°</strong> around the entire model, zoom in on stitch details, or pan across the geometry in full 3D space.</p>
-      
-      <div class="showcase-3d-specs">
-        <div class="showcase-spec-box">
-          <div class="showcase-spec-title">Asset Source</div>
-          <div class="showcase-spec-val">shoe_model.glb</div>
-        </div>
-        <div class="showcase-spec-box">
-          <div class="showcase-spec-title">Workflow Suite</div>
-          <div class="showcase-spec-val">Blender 3D</div>
-        </div>
-        <div class="showcase-spec-box">
-          <div class="showcase-spec-title">Topology</div>
-          <div class="showcase-spec-val">Clean Sub-D Quad</div>
-        </div>
-        <div class="showcase-spec-box">
-          <div class="showcase-spec-title">Interaction</div>
-          <div class="showcase-spec-val">360° Real-Time Orbit</div>
-        </div>
-      </div>
+    <div class="showcase-3d-hint">
+      <span>Drag to orbit 360° • Swipe to rotate • Two fingers to zoom</span>
     </div>
   </div>
 </section>
@@ -1768,70 +1828,17 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:36px 56
     </p>
   </div>
 
-  <!-- Featured Video Showcase: Direct Embedded Player -->
-  <div class="video-showcase-card reveal in">
-    <div style="width:100%;max-width:380px;margin:0 auto;">
-      <div class="video-frame-wrap">
-        <div id="video-player-el" style="width:100%;height:100%;">
-          <iframe 
-            src="https://www.youtube-nocookie.com/embed/aH4QwrYtMQE?rel=0&amp;modestbranding=1&amp;playsinline=1" 
-            title="Night Alley 3D Narrative Sequence - Ige Dominion" 
-            loading="lazy"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            allowfullscreen>
-          </iframe>
-        </div>
-      </div>
-    </div>
-
-    <div class="video-showcase-info">
-      <span class="video-tag">Featured Video Animation</span>
-      <h3>Night Alley 3D Narrative Sequence</h3>
-
-      <div class="video-meta-list">
-        <div class="video-meta-item">
-          <div class="video-meta-label">Animation Physics</div>
-          <div class="video-meta-val">Cascadeur 3D</div>
-        </div>
-        <div class="video-meta-item">
-          <div class="video-meta-label">Shading &amp; Lighting</div>
-          <div class="video-meta-val">Blender Cycles</div>
-        </div>
-        <div class="video-meta-item">
-          <div class="video-meta-label">Compositing</div>
-          <div class="video-meta-val">After Effects</div>
-        </div>
-        <div class="video-meta-item">
-          <div class="video-meta-label">Format</div>
-          <div class="video-meta-val">9:16 Vertical Reel</div>
-        </div>
-      </div>
-
-      <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
-        <button type="button" onclick="openLightbox(0)" class="btn-white" style="padding:12px 28px;font-size:0.65rem;">
-          🎬 Play Reel &amp; Inspect Render
-        </button>
-        <a href="https://youtube.com/shorts/aH4QwrYtMQE?si=Un02SImaXU-jiqBP" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="padding:12px 28px;font-size:0.65rem;">
-          Watch on YouTube ↗
-        </a>
-      </div>
-    </div>
-  </div>
-
   <!-- Interactive Toolbar: Category Filters + View Mode Switcher -->
   <div class="works-toolbar reveal in">
     <div class="works-filters">
       <button type="button" class="filter-btn active" data-filter="all" onclick="filterWorks('all')">
         All Works <span class="filter-count">5</span>
       </button>
-      <button type="button" class="filter-btn" data-filter="renders" onclick="filterWorks('renders')">
-        🖼️ 3D Renders &amp; Stills <span class="filter-count">4</span>
-      </button>
       <button type="button" class="filter-btn" data-filter="reels" onclick="filterWorks('reels')">
-        🎬 Animation Reels &amp; Videos <span class="filter-count">2</span>
+        Videos &amp; Reels
       </button>
-      <button type="button" class="filter-btn" data-filter="3d" onclick="filterWorks('3d')">
-        🌐 Interactive 3D Model <span class="filter-count">1</span>
+      <button type="button" class="filter-btn" data-filter="renders" onclick="filterWorks('renders')">
+        Images &amp; Pictures
       </button>
     </div>
 
@@ -1848,77 +1855,49 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:36px 56
   <!-- Projects Grid: 100% Authentic Dominion Assets -->
   <div class="projects-grid reveal in" id="projects-grid-container">
 
-    <!-- Work 01: Night Alley 3D Narrative Sequence -->
+    <!-- Work 01: Night Alley 3D Sequence -->
     <div class="project-card work-card-item" data-category="renders reels" onclick="openLightbox(0)">
       <div class="project-thumb">
         <img id="work-thumb-0" src="https://img.youtube.com/vi/aH4QwrYtMQE/hqdefault.jpg" alt="Night Alley 3D Sequence - Ige Dominion" loading="lazy" decoding="async">
         <div class="project-thumb-bg"></div>
-        <div class="project-badge reel-badge">🎬 3D Narrative Reel</div>
         <div class="project-play-icon">▶</div>
-        <span class="project-zoom-icon">Inspect ↗</span>
+        <span class="project-zoom-icon">Play Reel ↗</span>
       </div>
       <div class="project-body">
-        <div class="project-num">01 / ANIMATION REEL &amp; STAGING</div>
         <div class="project-name" id="work-title-0">Night Alley 3D Sequence</div>
-        <div class="project-tags-row" id="work-tags-0">
-          <span class="project-tag-pill">Cascadeur 3D</span>
-          <span class="project-tag-pill">Blender Cycles</span>
-          <span class="project-tag-pill">After Effects</span>
-          <span class="project-tag-pill">9:16 Reel</span>
-        </div>
         <div class="project-actions-row" onclick="event.stopPropagation()">
-          <button type="button" class="project-action-btn btn-accent" onclick="openLightbox(0)">🎬 Play Reel</button>
-          <a href="https://youtube.com/shorts/aH4QwrYtMQE?si=Un02SImaXU-jiqBP" target="_blank" rel="noopener noreferrer" class="project-action-btn">YouTube ↗</a>
+          <button type="button" class="project-action-btn btn-accent" onclick="openLightbox(0)"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:-1px;margin-right:4px;"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg> Play Reel</button>
         </div>
       </div>
     </div>
 
-    <!-- Work 02: Buddy Green Spark Initiative (Footwear) -->
+    <!-- Work 02: Buddy Green Spark Initiative -->
     <div class="project-card work-card-item" data-category="renders 3d" onclick="openLightbox(1)">
       <div class="project-thumb">
         <img id="work-thumb-1" src="shoe_animation_still.jpg" alt="Buddy Green Spark Footwear 3D Animation Still - Ige Dominion" loading="lazy" decoding="async" onerror="this.src='public/shoe_animation_still.jpg';">
         <div class="project-thumb-bg"></div>
-        <div class="project-badge model-badge">👟 3D Footwear &amp; Model</div>
-        <div class="project-play-icon" style="background:#00d2ff;color:#000;">🌐</div>
-        <span class="project-zoom-icon">360° View ↗</span>
+        <span class="project-zoom-icon">View Image ↗</span>
       </div>
       <div class="project-body">
-        <div class="project-num">02 / PRODUCT COMMERCIAL &amp; 3D ASSET</div>
         <div class="project-name" id="work-title-1">Buddy Green Spark Initiative</div>
-        <div class="project-tags-row" id="work-tags-1">
-          <span class="project-tag-pill">Blender 4.2</span>
-          <span class="project-tag-pill">Cycles X</span>
-          <span class="project-tag-pill">Substance 3D</span>
-          <span class="project-tag-pill">Interactive GLB</span>
-        </div>
         <div class="project-actions-row" onclick="event.stopPropagation()">
-          <button type="button" class="project-action-btn btn-accent" onclick="openLightbox(1)">🔍 Inspect Render</button>
-          <a href="#3d-showcase" class="project-action-btn">Orbit 3D Model ↓</a>
+          <button type="button" class="project-action-btn btn-accent" onclick="openLightbox(1)">View Image</button>
         </div>
       </div>
     </div>
 
-    <!-- Work 03: YAPPI Character Animation & Rig -->
+    <!-- Work 03: YAPPI Character Animation -->
     <div class="project-card work-card-item" data-category="renders reels" onclick="openLightbox(2)">
       <div class="project-thumb">
-        <img id="work-thumb-2" src="character_rig_still.jpg" alt="YAPPI Character Rig & Physics Animation - Ige Dominion" loading="lazy" decoding="async" onerror="this.src='public/character_rig_still.jpg';">
+        <img id="work-thumb-2" src="character_rig_still.jpg" alt="YAPPI Character Animation - Ige Dominion" loading="lazy" decoding="async" onerror="this.src='public/character_rig_still.jpg';">
         <div class="project-thumb-bg"></div>
-        <div class="project-badge reel-badge">🏃 Action Rig Reel</div>
         <div class="project-play-icon">▶</div>
-        <span class="project-zoom-icon">Inspect ↗</span>
+        <span class="project-zoom-icon">Play Reel ↗</span>
       </div>
       <div class="project-body">
-        <div class="project-num">03 / PHYSICS RIGGING &amp; ACTION</div>
-        <div class="project-name" id="work-title-2">YAPPI Character Parkour Rig</div>
-        <div class="project-tags-row" id="work-tags-2">
-          <span class="project-tag-pill">Cascadeur</span>
-          <span class="project-tag-pill">Blender</span>
-          <span class="project-tag-pill">Mixamo</span>
-          <span class="project-tag-pill">Auto-Physics</span>
-        </div>
+        <div class="project-name" id="work-title-2">YAPPI Character Animation</div>
         <div class="project-actions-row" onclick="event.stopPropagation()">
-          <button type="button" class="project-action-btn btn-accent" onclick="openLightbox(2)">▶ Watch Action</button>
-          <a href="https://youtube.com/shorts/PyTLJwkbYds" target="_blank" rel="noopener noreferrer" class="project-action-btn">YouTube ↗</a>
+          <button type="button" class="project-action-btn btn-accent" onclick="openLightbox(2)"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:-1px;margin-right:4px;"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg> Play Reel</button>
         </div>
       </div>
     </div>
@@ -1926,45 +1905,29 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:36px 56
     <!-- Work 04: Valued Tasty Foods Commercial -->
     <div class="project-card work-card-item" data-category="renders" onclick="openLightbox(3)">
       <div class="project-thumb">
-        <img id="work-thumb-3" src="food_product_still.jpg" alt="Valued Tasty Foods 3D Fluid Simulation - Ige Dominion" loading="lazy" decoding="async" onerror="this.src='public/food_product_still.jpg';">
+        <img id="work-thumb-3" src="food_product_still.jpg" alt="Valued Tasty Foods 3D Commercial - Ige Dominion" loading="lazy" decoding="async" onerror="this.src='public/food_product_still.jpg';">
         <div class="project-thumb-bg"></div>
-        <div class="project-badge">🍯 3D Fluid Simulation</div>
-        <span class="project-zoom-icon">Zoom Render ↗</span>
+        <span class="project-zoom-icon">View Image ↗</span>
       </div>
       <div class="project-body">
-        <div class="project-num">04 / COMMERCIAL &amp; FLUID VISUALIZATION</div>
         <div class="project-name" id="work-title-3">Valued Tasty Foods Commercial</div>
-        <div class="project-tags-row" id="work-tags-3">
-          <span class="project-tag-pill">Blender</span>
-          <span class="project-tag-pill">FLIP Fluids</span>
-          <span class="project-tag-pill">Substance Painter</span>
-          <span class="project-tag-pill">Macro DOF</span>
-        </div>
         <div class="project-actions-row" onclick="event.stopPropagation()">
-          <button type="button" class="project-action-btn btn-accent" onclick="openLightbox(3)">🔍 High-Res Render</button>
+          <button type="button" class="project-action-btn btn-accent" onclick="openLightbox(3)">View Image</button>
         </div>
       </div>
     </div>
 
-    <!-- Work 05: OwlUp Tech Identity -->
+    <!-- Work 05: OwlUp Cybernetic Mech Owl -->
     <div class="project-card work-card-item" data-category="renders" onclick="openLightbox(4)">
       <div class="project-thumb">
-        <img id="work-thumb-4" src="owlup_motion_still.jpg" alt="OwlUp Cybernetic Mech Owl 3D Motion - Ige Dominion" loading="lazy" decoding="async" onerror="this.src='public/owlup_motion_still.jpg';">
+        <img id="work-thumb-4" src="owlup_motion_still.jpg" alt="OwlUp Cybernetic Mech Owl - Ige Dominion" loading="lazy" decoding="async" onerror="this.src='public/owlup_motion_still.jpg';">
         <div class="project-thumb-bg"></div>
-        <div class="project-badge">🤖 Mech Motion Design</div>
-        <span class="project-zoom-icon">Zoom Render ↗</span>
+        <span class="project-zoom-icon">View Image ↗</span>
       </div>
       <div class="project-body">
-        <div class="project-num">05 / HARD-SURFACE MECH DESIGN</div>
         <div class="project-name" id="work-title-4">OwlUp Cybernetic Mech Owl</div>
-        <div class="project-tags-row" id="work-tags-4">
-          <span class="project-tag-pill">Blender 4.1</span>
-          <span class="project-tag-pill">Eevee Next</span>
-          <span class="project-tag-pill">Cinema 4D</span>
-          <span class="project-tag-pill">Kinematic Rig</span>
-        </div>
         <div class="project-actions-row" onclick="event.stopPropagation()">
-          <button type="button" class="project-action-btn btn-accent" onclick="openLightbox(4)">🔍 High-Res Render</button>
+          <button type="button" class="project-action-btn btn-accent" onclick="openLightbox(4)">View Image</button>
         </div>
       </div>
     </div>
@@ -1982,18 +1945,18 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:36px 56
     <!-- Featured -->
     <div class="t-featured">
       <div class="t-mark">"</div>
-      <div class="t-stars">★★★★★</div>
+      <div class="t-stars" aria-label="5 out of 5 stars"><svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
       <p class="t-quote">Working with Dominion was an absolute game-changer for Jabbok Radio. His ability to translate our vision into a compelling visual story was extraordinary. The production quality, attention to detail, and professionalism he brought to every session set a new standard for what we now expect from creative partners. I wholeheartedly recommend him to any organisation looking for top-tier cinematography and video production.</p>
       <div class="t-author">
         <div class="t-avatar">OI</div>
         <div><div class="t-name">Oluwaseyi Ige</div><div class="t-role">Owner, Jabbok Radio</div></div>
-        <div class="t-stars-right">★★★★★</div>
+        <div class="t-stars-right" aria-label="5 out of 5 stars"><svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
       </div>
     </div>
     <!-- Card 2 -->
     <div class="t-card">
       <div class="t-mark">"</div>
-      <div class="t-stars">★★★★★</div>
+      <div class="t-stars" aria-label="5 out of 5 stars"><svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
       <p class="t-quote">Dominion brought our brand to life in ways we didn't think were possible. His motion graphics work for Buddy Greenspark elevated our entire visual identity. Creative, fast, and deeply talented — he is the kind of professional every growing business needs on their team.</p>
       <div class="t-author">
         <div class="t-avatar">CO</div>
@@ -2003,7 +1966,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:36px 56
     <!-- Card 3 -->
     <div class="t-card">
       <div class="t-mark">"</div>
-      <div class="t-stars">★★★★★</div>
+      <div class="t-stars" aria-label="5 out of 5 stars"><svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
       <p class="t-quote">Dominion is not just skilled — he is a patient and gifted teacher. He taught me video editing with clarity and passion. Because of him I now create professionally. Truly an exceptional mentor and a genuine inspiration to anyone learning this craft.</p>
       <div class="t-author">
         <div class="t-avatar">EG</div>
@@ -2013,12 +1976,12 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:36px 56
     <!-- Card 4 – full width -->
     <div class="t-featured" style="grid-column:span 2;border-top-color:rgba(255,255,255,.3)">
       <div class="t-mark">"</div>
-      <div class="t-stars">★★★★★</div>
+      <div class="t-stars" aria-label="5 out of 5 stars"><svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
       <p class="t-quote">The one-week cinematography training by Ige Dominion was the best creative experience our students have ever had. He was engaging, knowledgeable, and incredibly inspiring. Students left with real, applicable skills in camera work and visual storytelling. We hope to have him back very soon.</p>
       <div class="t-author">
         <div class="t-avatar" style="font-size:.65rem">GSS</div>
         <div><div class="t-name">Students &amp; Staff — GSS Kubwa</div><div class="t-role">One-Week Cinematography Training Programme · Abuja</div></div>
-        <div class="t-stars-right">★★★★★</div>
+        <div class="t-stars-right" aria-label="5 out of 5 stars"><svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
       </div>
     </div>
   </div>
@@ -2033,21 +1996,21 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:36px 56
       <p>Have a project in mind? Looking for a creative partner to bring your vision to life through the power of cinematography, animation, or VFX? Reach out directly — let's create something extraordinary together.</p>
       <div class="contact-links">
         <a href="mailto:igedominion09@gmail.com" class="contact-link">
-          <span class="contact-link-icon">✉️</span>
+          <span class="contact-link-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></span>
           <div><span class="contact-link-label">Email</span><span class="contact-link-val">igedominion09@gmail.com</span></div>
           <span class="contact-link-arrow">→</span>
         </a>
         <a href="https://wa.me/2349126055946" target="_blank" rel="noopener noreferrer" class="contact-link">
-          <span class="contact-link-icon">💬</span>
+          <span class="contact-link-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg></span>
           <div><span class="contact-link-label">WhatsApp / Phone</span><span class="contact-link-val">+234 912 605 5946</span></div>
           <span class="contact-link-arrow">→</span>
         </a>
         <div class="contact-link">
-          <span class="contact-link-icon">📍</span>
+          <span class="contact-link-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></span>
           <div><span class="contact-link-label">Location</span><span class="contact-link-val">Abuja, Nigeria</span></div>
         </div>
         <div class="contact-link">
-          <span class="contact-link-icon">📱</span>
+          <span class="contact-link-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></span>
           <div><span class="contact-link-label">Social</span><span class="contact-link-val">@igedominion</span></div>
         </div>
       </div>
@@ -2084,7 +2047,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:36px 56
     <a href="#projects">Work</a>
     <a href="#testimonials">Reviews</a>
     <a href="#contact">Contact</a>
-    <a href="javascript:void(0)" onclick="openAdminModal()" style="color:var(--white);font-weight:600;">⚙️ Admin Studio</a>
+    <a href="javascript:void(0)" onclick="openAdminModal()" style="color:var(--white);font-weight:600;display:inline-flex;align-items:center;gap:6px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg> Admin Studio</a>
   </div>
 </footer>
 
@@ -2239,12 +2202,17 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
 })
 
 // Model-viewer safety handlers
-const mv = document.querySelector('model-viewer')
-if (mv) {
-  mv.addEventListener('error', (event) => {
-    console.warn('3D Model loading warning:', event)
-  })
-}
+window.addEventListener('error', (event) => {
+  if (event && event.message && event.message.includes('DataView')) {
+    console.warn('Suppressed 3D parser buffer warning:', event.message);
+    event.preventDefault();
+  }
+});
+document.addEventListener('error', (event) => {
+  if (event.target && event.target.tagName === 'MODEL-VIEWER') {
+    console.warn('3D Model viewer asset loading notice:', event);
+  }
+}, true);
 
 // ── Interactive Works Showcase Data & Modal Engine
 const portfolioWorksData = [
@@ -2259,13 +2227,7 @@ const portfolioWorksData = [
     tools: ["Cascadeur 3D", "Blender Cycles", "After Effects"],
     role: "Visual Storyteller, Character Modeling, Physics & Lighting",
     description: "A high-stakes cinematic narrative sequence set in an atmospheric urban alleyway. Created with custom character modeling, African print garment texturing, and physics-driven multi-character choreography.",
-    specs: {
-      "Physics Engine": "Cascadeur 3D Auto-Physics",
-      "Render Engine": "Blender Cycles X",
-      "Compositing": "Adobe After Effects",
-      "Format": "9:16 Vertical Reel"
-    }
-  },
+      },
   {
     id: 1,
     title: "Buddy Green Spark Initiative",
@@ -2276,13 +2238,7 @@ const portfolioWorksData = [
     tools: ["Blender 4.2", "Cycles X", "Substance 3D Painter"],
     role: "Lead 3D Artist, Modeling, Texturing & Animation",
     description: "Futuristic eco-footwear commercial sequence showcasing sustainable engineering, layered sole unit deconstruction, bioluminescent spark particle simulations, and real-time 360° asset inspection.",
-    specs: {
-      "Asset Format": "GLTF / GLB Real-time WebGL",
-      "Topology": "Clean Sub-D Quad Flow",
-      "Texturing": "Substance 3D PBR Materials",
-      "Client": "Chima Okoli — Buddy Greenspark"
-    }
-  },
+      },
   {
     id: 2,
     title: "YAPPI Character Animation & Parkour Rig",
@@ -2294,13 +2250,7 @@ const portfolioWorksData = [
     tools: ["Cascadeur", "Blender", "Mixamo", "After Effects"],
     role: "Character Animator & Physics Technical Director",
     description: "High-octane character parkour choreography utilizing Cascadeur auto-physics, center-of-mass trajectory tracking, and expressive secondary muscle and clothing simulation.",
-    specs: {
-      "Physics Engine": "Cascadeur Center-of-Mass",
-      "Rig Type": "Custom Bipedal Action Rig",
-      "Platform": "YouTube Shorts Reel",
-      "Production": "YAPPI Training & Action Reel"
-    }
-  },
+      },
   {
     id: 3,
     title: "Valued Tasty Foods Commercial",
@@ -2310,13 +2260,7 @@ const portfolioWorksData = [
     tools: ["Blender", "FLIP Fluids", "Substance Painter"],
     role: "Fluid Simulation, Shading & Lighting",
     description: "Appetizing 3D product commercial featuring viscous golden honey ribbons, floating fresh organic ingredients colliding in ultra-slow motion, and macro condensation droplets on packaging.",
-    specs: {
-      "Simulation": "FLIP Fluids High-Viscosity Ribbons",
-      "Materials": "Translucent Subsurface Scattering",
-      "Render Engine": "Blender Cycles Macro DOF",
-      "Grade": "DaVinci Resolve"
-    }
-  },
+      },
   {
     id: 4,
     title: "OwlUp Cybernetic Mech Owl",
@@ -2326,13 +2270,7 @@ const portfolioWorksData = [
     tools: ["Blender 4.1", "Eevee Next", "Cinema 4D"],
     role: "Hard Surface Modeling & Kinematic Rigging",
     description: "Intricate hard-surface mech character animation depicting an autonomous robotic owl taking flight with multi-segmented carbon-fiber feather articulation and glowing amber optical sensors.",
-    specs: {
-      "Geometry": "120+ Interlocking Mechanical Plates",
-      "Rigging": "Kinematic Feather Articulation",
-      "Lighting": "Emissive Amber Optical Sensors",
-      "Client": "OwlUp Technologies Brand Identity"
-    }
-  }
+      }
 ];
 
 let activeLightboxIndex = 0;
@@ -2385,7 +2323,6 @@ function openLightbox(index){
   const categoryEl = document.getElementById('lightbox-category');
   const roleEl = document.getElementById('lightbox-role');
   const descEl = document.getElementById('lightbox-desc');
-  const tagsEl = document.getElementById('lightbox-tags');
   const specsEl = document.getElementById('lightbox-specs');
   const actionsEl = document.getElementById('lightbox-actions');
 
@@ -2395,26 +2332,15 @@ function openLightbox(index){
   if(roleEl) roleEl.textContent = work.role;
   if(descEl) descEl.textContent = work.description;
 
-  // Render tags
-  if(tagsEl){
-    tagsEl.innerHTML = work.tools.map(tool => `<span class="project-tag-pill">${tool}</span>`).join('');
-  }
-
-  // Render specs
-  if(specsEl){
-    specsEl.innerHTML = Object.entries(work.specs).map(([key, val]) => `
-      <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.06);font-size:0.75rem;">
-        <span style="color:var(--muted2);">${key}</span>
-        <span style="color:var(--white);font-weight:600;">${val}</span>
-      </div>
-    `).join('');
-  }
-
   // Render actions
   if(actionsEl){
     let actHtml = '';
+    if(work.type === 'link' && work.linkUrl){
+      const pIcon = getPlatformIconMarkup(work.linkIcon, work.customIconUrl);
+      actHtml += `<a href="${work.linkUrl}" target="_blank" rel="noopener noreferrer" class="btn-white" style="display:inline-flex;align-items:center;gap:8px;padding:12px 24px;font-size:0.7rem;">${pIcon} ${work.linkLabel || 'Open External Project'} ↗</a>`;
+    }
     if(work.youtubeUrl){
-      actHtml += `<a href="${work.youtubeUrl}" target="_blank" rel="noopener noreferrer" class="btn-white" style="padding:10px 20px;font-size:0.65rem;">Watch on YouTube ↗</a>`;
+      actHtml += `<a href="${work.youtubeUrl}" target="_blank" rel="noopener noreferrer" class="btn-white" style="padding:10px 20px;font-size:0.65rem;">Watch Video ↗</a>`;
     }
     if(work.type === '3d-model'){
       actHtml += `<a href="#3d-showcase" onclick="closeLightbox()" class="btn-ghost" style="padding:10px 20px;font-size:0.65rem;">Explore in 3D Stage ↓</a>`;
@@ -2449,7 +2375,7 @@ function openLightbox(index){
             style="width:100%;height:100%;min-height:360px;">
           </model-viewer>
           <div style="position:absolute;bottom:14px;left:14px;background:rgba(0,0,0,0.7);padding:6px 12px;font-size:0.65rem;color:var(--white);letter-spacing:1px;border:1px solid rgba(255,255,255,0.2);">
-            🖱️ 360° Drag Orbit • 📱 2 fingers rotate
+            360° Drag Orbit • Two fingers to rotate
           </div>
         </div>
       `;
@@ -2852,12 +2778,47 @@ function renderAdminLoggedIn() {
 
 // Studio Tabs
 function switchStudioTab(tabId) {
-  const tabs = ['projects', 'quickupload', 'details', 'backup'];
+  const tabs = ['projects', 'quickupload', 'glbupload', 'details', 'backup'];
   tabs.forEach(t => {
     const btn = document.getElementById(`tab-btn-${t}`);
     const panel = document.getElementById(`studio-tab-${t}`);
     if (btn) btn.classList.toggle('active', t === tabId);
     if (panel) panel.style.display = t === tabId ? 'block' : 'none';
+  });
+}
+
+// Online Platform Icons Dictionary (SVGs & Online Image URLs, Zero Emojis)
+const PLATFORM_ICONS = {
+  link: `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:4px;"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>`,
+  artstation: `<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:-2px;margin-right:4px;"><path d="M0 17.723l2.027 3.505h.001a2.424 2.424 0 0 0 2.164 1.334h13.252l-2.61-4.522H0v-.317zm24 .012a2.399 2.399 0 0 0-.323-1.203L15.344 2.438a2.424 2.424 0 0 0-2.122-1.338H8.815l10.87 18.824 3.738-2.189H24zm-12.75-2.88L6.402 6.452l-4.848 8.403h9.696z"/></svg>`,
+  behance: `<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:-2px;margin-right:4px;"><path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.171 3-3.455 0-5.555-2.188-5.555-5.5 0-3.376 2.158-5.5 5.37-5.5 3.327 0 5.172 2.158 5.172 5.5 0 .398-.044.836-.089 1.141h-7.857c.133 1.77 1.349 2.766 2.941 2.766 1.327 0 2.167-.664 2.61-1.407h2.619zm-7.697-3.234h5.105c-.133-1.504-1.062-2.344-2.522-2.344-1.504 0-2.433.84-2.583 2.344zm-9.029 3.234c1.261 0 2.058-.642 2.058-1.748 0-.819-.509-1.416-1.416-1.637.752-.288 1.217-.863 1.217-1.615 0-1.283-.973-1.92-2.257-1.92h-4.617v6.92h4.015zm-2.013-4.934h1.726c.553 0 .907.243.907.686 0 .442-.354.686-.907.686h-1.726v-1.372zm0 3.031h1.925c.619 0 1.018.265 1.018.73 0 .465-.399.73-1.018.73h-1.925v-1.46z"/></svg>`,
+  sketchfab: `<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:-2px;margin-right:4px;"><path d="M12 1.83L2.4 7.37v11.08L12 23.99l9.6-5.54V7.37L12 1.83zm0 2.31l7.6 4.39-7.6 4.39-7.6-4.39 7.6-4.39zm-8 6.69l7 4.04v8.08l-7-4.04V10.83zm9 12.12v-8.08l7-4.04v8.08l-7-4.04z"/></svg>`,
+  youtube: `<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:-2px;margin-right:4px;"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>`,
+  vimeo: `<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:-2px;margin-right:4px;"><path d="M23.977 6.416c-.105 2.338-1.739 5.543-4.894 9.609-3.268 4.247-6.026 6.37-8.29 6.37-1.409 0-2.578-1.294-3.553-3.881L5.322 11.4C4.603 8.816 3.834 7.525 3.01 7.525c-.179 0-.806.378-1.881 1.131L0 7.25c1.178-1.034 2.34-2.068 3.492-3.104 1.583-1.372 2.766-2.094 3.553-2.169 1.859-.18 3.011.97 3.456 3.452.477 2.656.804 4.304.981 4.943.535 2.457 1.125 3.686 1.77 3.686.5 0 1.258-.788 2.274-2.366 1.015-1.577 1.564-2.776 1.644-3.593.143-1.332-.39-1.999-1.597-1.999-.571 0-1.161.131-1.77.391 1.176-3.85 3.411-5.719 6.707-5.608 2.452.079 3.613 1.679 3.483 4.8z"/></svg>`,
+  instagram: `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:4px;"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>`,
+  video: `<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:-2px;margin-right:4px;"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>`,
+  image: `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:4px;"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>`
+};
+
+function getPlatformIconMarkup(iconKey, customUrl) {
+  if (iconKey === 'custom' && customUrl) {
+    return `<img src="${customUrl}" alt="icon" style="width:14px;height:14px;object-fit:contain;vertical-align:-2px;display:inline-block;margin-right:4px;" onerror="this.style.display='none'">`;
+  }
+  return PLATFORM_ICONS[iconKey] || PLATFORM_ICONS.link;
+}
+
+function toggleCustomIconInput(val, wrapId) {
+  const wrap = document.getElementById(wrapId);
+  if (wrap) wrap.style.display = (val === 'custom') ? 'block' : 'none';
+}
+
+function setNewProjectMediaType(type) {
+  document.getElementById('new-proj-type').value = type;
+  ['image', 'video', 'link'].forEach(t => {
+    const btn = document.getElementById(`btn-add-type-${t}`);
+    const panel = document.getElementById(`new-proj-panel-${t}`);
+    if (btn) btn.classList.toggle('active', t === type);
+    if (panel) panel.style.display = (t === type) ? 'block' : 'none';
   });
 }
 
@@ -2868,36 +2829,255 @@ function renderAdminProjectsList() {
   listContainer.innerHTML = '';
 
   portfolioWorksData.forEach((work, index) => {
+    const currentType = work.type === 'video' ? 'video' : (work.type === 'link' ? 'link' : 'image');
     const card = document.createElement('div');
     card.className = 'admin-project-item';
+    card.id = `admin-card-${work.id}`;
+
     card.innerHTML = `
       <div class="admin-project-header">
         <img src="${work.image}" alt="${work.title}" class="admin-project-thumb-preview" id="admin-thumb-preview-${work.id}">
         <div style="flex-grow:1;">
-          <div style="font-size:0.65rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;">Work 0${index + 1} • ${work.category}</div>
-          <div style="font-size:1rem;color:var(--white);font-weight:700;margin:3px 0 8px;">${work.title}</div>
-          <div style="display:flex;gap:8px;flex-wrap:wrap;">
-            <label class="admin-btn admin-btn-secondary" style="font-size:0.65rem;cursor:pointer;padding:6px 12px;">
-              📤 Upload Render Image
-              <input type="file" accept="image/*" style="display:none;" onchange="handleWorkImageUpload(${work.id}, this)">
-            </label>
-            ${work.youtubeUrl ? `<a href="${work.youtubeUrl}" target="_blank" class="admin-btn admin-btn-secondary" style="font-size:0.65rem;padding:6px 12px;">▶ YouTube</a>` : ''}
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+            <div style="font-size:0.65rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;">
+              Work 0${index + 1} • <span id="admin-cat-label-${work.id}">${work.category}</span>
+            </div>
+            <span class="online-icon-preview" id="admin-type-badge-${work.id}">
+              ${currentType === 'video' ? PLATFORM_ICONS.video + ' Video Reel' : (currentType === 'link' ? getPlatformIconMarkup(work.linkIcon, work.customIconUrl) + ' External Link' : PLATFORM_ICONS.image + ' Image Render')}
+            </span>
+          </div>
+          <div style="font-size:1.05rem;color:var(--white);font-weight:700;margin:0 0 10px;" id="admin-title-heading-${work.id}">
+            ${work.title}
+          </div>
+
+          <!-- Media Type Selector for this Work -->
+          <div style="font-size:0.65rem;color:var(--muted2);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;font-weight:600;">
+            Media Format:
+          </div>
+          <div class="admin-type-tabs" style="margin-bottom:12px;">
+            <button type="button" class="admin-type-btn ${currentType === 'image' ? 'active' : ''}" id="tab-type-img-${work.id}" onclick="setWorkMediaType(${work.id}, 'image')">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+              Image Render
+            </button>
+            <button type="button" class="admin-type-btn ${currentType === 'video' ? 'active' : ''}" id="tab-type-vid-${work.id}" onclick="setWorkMediaType(${work.id}, 'video')">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              Video Reel
+            </button>
+            <button type="button" class="admin-type-btn ${currentType === 'link' ? 'active' : ''}" id="tab-type-link-${work.id}" onclick="setWorkMediaType(${work.id}, 'link')">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              External Link
+            </button>
           </div>
         </div>
       </div>
+
+      <!-- Dynamic Section: Image Controls -->
+      <div id="panel-edit-image-${work.id}" class="admin-media-subpanel" style="display:${currentType === 'image' ? 'block' : 'none'};">
+        <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+          <label class="admin-btn admin-btn-secondary" style="font-size:0.68rem;cursor:pointer;padding:8px 14px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+            Upload Render Image
+            <input type="file" accept="image/*" style="display:none;" onchange="handleWorkImageUpload(${work.id}, this)">
+          </label>
+          <div style="flex-grow:1;min-width:220px;">
+            <input type="url" class="admin-input" placeholder="Or paste image web URL (https://...)" value="${work.image && work.image.startsWith('http') ? work.image : ''}" onchange="updateWorkImageFromUrl(${work.id}, this.value)">
+          </div>
+        </div>
+      </div>
+
+      <!-- Dynamic Section: Video Controls -->
+      <div id="panel-edit-video-${work.id}" class="admin-media-subpanel" style="display:${currentType === 'video' ? 'block' : 'none'};">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:8px;">
+          <div>
+            <label class="admin-label">YouTube Shorts / Video URL</label>
+            <input type="url" class="admin-input" id="edit-work-yt-${work.id}" placeholder="https://youtube.com/shorts/..." value="${work.youtubeUrl || ''}" onchange="updateWorkVideoUrl(${work.id}, this.value)">
+          </div>
+          <div>
+            <label class="admin-label">Cover Artwork / Thumbnail</label>
+            <div style="display:flex;gap:6px;">
+              <label class="admin-btn admin-btn-secondary" style="font-size:0.65rem;cursor:pointer;flex:1;padding:8px 10px;">
+                Upload Custom Cover
+                <input type="file" accept="image/*" style="display:none;" onchange="handleWorkImageUpload(${work.id}, this)">
+              </label>
+              <button type="button" class="admin-btn admin-btn-secondary" style="font-size:0.65rem;padding:8px 10px;" onclick="autoFetchYoutubeThumbForWork(${work.id})">
+                Auto-Fetch Cover
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dynamic Section: Link Controls -->
+      <div id="panel-edit-link-${work.id}" class="admin-media-subpanel" style="display:${currentType === 'link' ? 'block' : 'none'};">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:8px;">
+          <div>
+            <label class="admin-label">Destination URL</label>
+            <input type="url" class="admin-input" id="edit-work-link-${work.id}" placeholder="https://artstation.com/... or Behance" value="${work.linkUrl || ''}" onchange="updateWorkField(${work.id}, 'linkUrl', this.value)">
+          </div>
+          <div>
+            <label class="admin-label">Action Button Label</label>
+            <input type="text" class="admin-input" id="edit-work-label-${work.id}" placeholder="e.g. View on ArtStation" value="${work.linkLabel || 'View on ArtStation'}" onchange="updateWorkField(${work.id}, 'linkLabel', this.value)">
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:8px;">
+          <div>
+            <label class="admin-label">Platform Icon</label>
+            <select class="admin-select" id="edit-work-icon-${work.id}" onchange="updateWorkLinkIcon(${work.id}, this.value)">
+              <option value="artstation" ${work.linkIcon === 'artstation' ? 'selected' : ''}>ArtStation (Online Icon)</option>
+              <option value="behance" ${work.linkIcon === 'behance' ? 'selected' : ''}>Behance (Online Icon)</option>
+              <option value="sketchfab" ${work.linkIcon === 'sketchfab' ? 'selected' : ''}>Sketchfab 3D (Online Icon)</option>
+              <option value="youtube" ${work.linkIcon === 'youtube' ? 'selected' : ''}>YouTube (Online Icon)</option>
+              <option value="vimeo" ${work.linkIcon === 'vimeo' ? 'selected' : ''}>Vimeo (Online Icon)</option>
+              <option value="instagram" ${work.linkIcon === 'instagram' ? 'selected' : ''}>Instagram (Online Icon)</option>
+              <option value="link" ${(!work.linkIcon || work.linkIcon === 'link') ? 'selected' : ''}>External Link (SVG Icon)</option>
+              <option value="custom" ${work.linkIcon === 'custom' ? 'selected' : ''}>Custom Online Icon URL</option>
+            </select>
+          </div>
+          <div id="wrap-edit-custom-icon-${work.id}" style="display:${work.linkIcon === 'custom' ? 'block' : 'none'};">
+            <label class="admin-label">Custom Online Icon URL</label>
+            <input type="url" class="admin-input" placeholder="https://.../icon.svg or .png" value="${work.customIconUrl || ''}" onchange="updateWorkField(${work.id}, 'customIconUrl', this.value)">
+          </div>
+        </div>
+        <div>
+          <label class="admin-btn admin-btn-secondary" style="font-size:0.65rem;cursor:pointer;padding:8px 12px;">
+            Upload Artwork Cover Image
+            <input type="file" accept="image/*" style="display:none;" onchange="handleWorkImageUpload(${work.id}, this)">
+          </label>
+        </div>
+      </div>
+
+      <!-- Metadata Fields -->
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
         <div>
           <label class="admin-label">Edit Title</label>
-          <input type="text" class="admin-input" id="edit-work-title-${work.id}" value="${work.title.replace(/"/g, '&quot;')}" onchange="updateWorkField(${work.id}, 'title', this.value)">
+          <input type="text" class="admin-input" id="edit-work-title-${work.id}" value="${(work.title || '').replace(/"/g, '&quot;')}" onchange="updateWorkField(${work.id}, 'title', this.value)">
         </div>
         <div>
           <label class="admin-label">Edit Category</label>
-          <input type="text" class="admin-input" id="edit-work-cat-${work.id}" value="${work.category.replace(/"/g, '&quot;')}" onchange="updateWorkField(${work.id}, 'category', this.value)">
+          <input type="text" class="admin-input" id="edit-work-cat-${work.id}" value="${(work.category || '').replace(/"/g, '&quot;')}" onchange="updateWorkField(${work.id}, 'category', this.value)">
         </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+        <div>
+          <label class="admin-label">Tools &amp; Software (comma separated)</label>
+          <input type="text" class="admin-input" id="edit-work-tools-${work.id}" value="${(work.tools ? work.tools.join(', ') : '').replace(/"/g, '&quot;')}" onchange="updateWorkTools(${work.id}, this.value)">
+        </div>
+        <div>
+          <label class="admin-label">Description / Synopsis</label>
+          <input type="text" class="admin-input" id="edit-work-desc-${work.id}" value="${(work.description || '').replace(/"/g, '&quot;')}" onchange="updateWorkField(${work.id}, 'description', this.value)">
+        </div>
+      </div>
+
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:4px;">
+        <button type="button" class="admin-btn admin-btn-primary" style="font-size:0.65rem;padding:7px 14px;" onclick="syncWorkToDOMAndStorage(${work.id})">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          Save &amp; Update Live
+        </button>
+        <button type="button" class="admin-btn admin-btn-danger" style="font-size:0.65rem;padding:7px 12px;" onclick="handleDeleteWork(${work.id})">
+          Remove Work
+        </button>
       </div>
     `;
     listContainer.appendChild(card);
   });
+}
+
+function setWorkMediaType(workId, newType) {
+  const work = portfolioWorksData.find(w => w.id === workId);
+  if (!work) return;
+  work.type = newType;
+
+  // Update tabs visual
+  ['image', 'video', 'link'].forEach(t => {
+    const btn = document.getElementById(`tab-type-${t === 'image' ? 'img' : (t === 'video' ? 'vid' : 'link')}-${workId}`);
+    const panel = document.getElementById(`panel-edit-${t}-${workId}`);
+    if (btn) btn.classList.toggle('active', t === newType);
+    if (panel) panel.style.display = (t === newType) ? 'block' : 'none';
+  });
+
+  // Update badge
+  const badge = document.getElementById(`admin-type-badge-${workId}`);
+  if (badge) {
+    if (newType === 'video') {
+      badge.innerHTML = PLATFORM_ICONS.video + ' Video Reel';
+    } else if (newType === 'link') {
+      badge.innerHTML = getPlatformIconMarkup(work.linkIcon, work.customIconUrl) + ' External Link';
+    } else {
+      badge.innerHTML = PLATFORM_ICONS.image + ' Image Render';
+    }
+  }
+
+  syncWorkToDOMAndStorage(workId);
+  showAdminToast(`Work 0${workId + 1} switched to ${newType.toUpperCase()}`);
+}
+
+function updateWorkLinkIcon(workId, iconVal) {
+  const work = portfolioWorksData.find(w => w.id === workId);
+  if (!work) return;
+  work.linkIcon = iconVal;
+  const customWrap = document.getElementById(`wrap-edit-custom-icon-${workId}`);
+  if (customWrap) customWrap.style.display = (iconVal === 'custom') ? 'block' : 'none';
+  syncWorkToDOMAndStorage(workId);
+}
+
+function updateWorkVideoUrl(workId, url) {
+  const work = portfolioWorksData.find(w => w.id === workId);
+  if (!work) return;
+  work.youtubeUrl = url;
+  if (url.includes('shorts/')) {
+    work.videoId = url.split('shorts/')[1].split('?')[0];
+  } else if (url.includes('v=')) {
+    work.videoId = url.split('v=')[1].split('&')[0];
+  } else if (url.includes('youtu.be/')) {
+    work.videoId = url.split('youtu.be/')[1].split('?')[0];
+  }
+  syncWorkToDOMAndStorage(workId);
+}
+
+function autoFetchYoutubeThumbForWork(workId) {
+  const work = portfolioWorksData.find(w => w.id === workId);
+  if (!work || !work.videoId) {
+    showAdminToast('Please provide a valid YouTube URL first.');
+    return;
+  }
+  const hqThumb = `https://img.youtube.com/vi/${work.videoId}/hqdefault.jpg`;
+  applyWorkImage(workId, hqThumb);
+  showAdminToast('YouTube cover thumbnail loaded!');
+}
+
+function updateWorkImageFromUrl(workId, url) {
+  if (!url) return;
+  applyWorkImage(workId, url.trim());
+  showAdminToast(`Updated image URL for Work 0${workId + 1}!`);
+}
+
+function updateWorkTools(workId, toolsStr) {
+  const work = portfolioWorksData.find(w => w.id === workId);
+  if (!work) return;
+  work.tools = toolsStr.split(',').map(s => s.trim()).filter(Boolean);
+  syncWorkToDOMAndStorage(workId);
+}
+
+async function syncWorkToDOMAndStorage(workId) {
+  const work = portfolioWorksData.find(w => w.id === workId);
+  if (!work) return;
+  await dbPut('projects', work);
+
+  // Update card in live grid if present
+  renderAllProjectsToDOM();
+}
+
+async function handleDeleteWork(workId) {
+  if (!confirm('Are you sure you want to remove this project?')) return;
+  const idx = portfolioWorksData.findIndex(w => w.id === workId);
+  if (idx !== -1) {
+    portfolioWorksData.splice(idx, 1);
+    await dbPut('projects_deleted', { id: workId });
+    renderAdminProjectsList();
+    renderAllProjectsToDOM();
+    showAdminToast('Project removed from portfolio.');
+  }
 }
 
 function handleWorkImageUpload(workId, input) {
@@ -2907,29 +3087,25 @@ function handleWorkImageUpload(workId, input) {
   reader.onload = async (e) => {
     const dataUrl = e.target.result;
     applyWorkImage(workId, dataUrl);
-    showAdminToast(`Updated render for Work 0${workId + 1}!`);
+    showAdminToast(`Updated artwork for Work 0${workId + 1}!`);
   };
   reader.readAsDataURL(file);
 }
 
 async function applyWorkImage(workId, dataUrl) {
-  // Update in array
   const work = portfolioWorksData.find(w => w.id === workId);
   if (work) {
     work.image = dataUrl;
     await dbPut('projects', work);
   }
 
-  // Update in DOM card
+  // Update in live DOM thumb
   const thumbEl = document.getElementById(`work-thumb-${workId}`);
-  if (thumbEl) {
-    thumbEl.src = dataUrl;
-  }
+  if (thumbEl) thumbEl.src = dataUrl;
+
   // Update in admin preview
   const adminPreview = document.getElementById(`admin-thumb-preview-${workId}`);
-  if (adminPreview) {
-    adminPreview.src = dataUrl;
-  }
+  if (adminPreview) adminPreview.src = dataUrl;
 }
 
 async function updateWorkField(workId, field, value) {
@@ -2941,8 +3117,13 @@ async function updateWorkField(workId, field, value) {
   if (field === 'title') {
     const titleEl = document.getElementById(`work-title-${workId}`);
     if (titleEl) titleEl.textContent = value;
+    const adminHeading = document.getElementById(`admin-title-heading-${workId}`);
+    if (adminHeading) adminHeading.textContent = value;
+  } else if (field === 'category') {
+    const catLabel = document.getElementById(`admin-cat-label-${workId}`);
+    if (catLabel) catLabel.textContent = value;
   }
-  showAdminToast(`Saved changes to Work ${workId + 1}!`);
+  showAdminToast(`Saved changes to Work 0${workId + 1}!`);
 }
 
 function toggleAddProjectForm(show) {
@@ -2954,9 +3135,9 @@ function toggleAddProjectForm(show) {
 async function handleCreateProject() {
   const title = document.getElementById('new-proj-title').value.trim();
   const cat = document.getElementById('new-proj-cat').value;
-  const fileInput = document.getElementById('new-proj-file');
-  const yt = document.getElementById('new-proj-yt').value.trim();
+  const type = document.getElementById('new-proj-type').value || 'image';
   const tools = document.getElementById('new-proj-tools').value.trim();
+  const role = document.getElementById('new-proj-role').value.trim();
   const desc = document.getElementById('new-proj-desc').value.trim();
 
   if (!title) {
@@ -2965,83 +3146,167 @@ async function handleCreateProject() {
   }
 
   const newId = portfolioWorksData.length;
-  let imageUrl = 'https://img.youtube.com/vi/aH4QwrYtMQE/hqdefault.jpg';
+  let imageUrl = 'shoe_animation_still.jpg';
 
-  if (fileInput.files && fileInput.files[0]) {
-    imageUrl = await new Promise((resolve) => {
-      const reader = new FileReader();
-      reader.onload = (e) => resolve(e.target.result);
-      reader.readAsDataURL(fileInput.files[0]);
-    });
+  // Handle image upload based on type
+  if (type === 'image') {
+    const fileInput = document.getElementById('new-proj-file');
+    const webUrl = document.getElementById('new-proj-img-url').value.trim();
+    if (fileInput && fileInput.files && fileInput.files[0]) {
+      imageUrl = await new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onload = (e) => resolve(e.target.result);
+        reader.readAsDataURL(fileInput.files[0]);
+      });
+    } else if (webUrl) {
+      imageUrl = webUrl;
+    }
+  } else if (type === 'video') {
+    const yt = document.getElementById('new-proj-yt').value.trim();
+    const coverFile = document.getElementById('new-proj-video-cover');
+    if (coverFile && coverFile.files && coverFile.files[0]) {
+      imageUrl = await new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onload = (e) => resolve(e.target.result);
+        reader.readAsDataURL(coverFile.files[0]);
+      });
+    } else if (yt) {
+      let vid = '';
+      if (yt.includes('shorts/')) vid = yt.split('shorts/')[1].split('?')[0];
+      else if (yt.includes('v=')) vid = yt.split('v=')[1].split('&')[0];
+      else if (yt.includes('youtu.be/')) vid = yt.split('youtu.be/')[1].split('?')[0];
+      if (vid) imageUrl = `https://img.youtube.com/vi/${vid}/hqdefault.jpg`;
+    }
+  } else if (type === 'link') {
+    const coverFile = document.getElementById('new-proj-link-cover');
+    if (coverFile && coverFile.files && coverFile.files[0]) {
+      imageUrl = await new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onload = (e) => resolve(e.target.result);
+        reader.readAsDataURL(coverFile.files[0]);
+      });
+    }
   }
+
+  let videoId = '';
+  let youtubeUrl = '';
+  if (type === 'video') {
+    youtubeUrl = document.getElementById('new-proj-yt').value.trim();
+    if (youtubeUrl.includes('shorts/')) videoId = youtubeUrl.split('shorts/')[1].split('?')[0];
+    else if (youtubeUrl.includes('v=')) videoId = youtubeUrl.split('v=')[1].split('&')[0];
+    else if (youtubeUrl.includes('youtu.be/')) videoId = youtubeUrl.split('youtu.be/')[1].split('?')[0];
+  }
+
+  let linkUrl = '';
+  let linkLabel = '';
+  let linkIcon = 'link';
+  let customIconUrl = '';
+  if (type === 'link') {
+    linkUrl = document.getElementById('new-proj-link-url').value.trim();
+    linkLabel = document.getElementById('new-proj-link-label').value.trim() || 'View Project';
+    linkIcon = document.getElementById('new-proj-link-icon').value || 'link';
+    customIconUrl = document.getElementById('new-proj-custom-icon-url').value.trim();
+  }
+
+  const categoryNames = {
+    'renders': '3D Renders & Stills',
+    'reels': '3D Animation & Cinematic Reel',
+    'commercial': 'Commercial 3D Asset',
+    '3d': 'Interactive 3D Asset'
+  };
 
   const newProject = {
     id: newId,
     title: title,
-    category: cat === 'reels' ? '3D Animation & Cinematic Reel' : (cat === 'renders' ? '3D Render & Still' : 'Commercial 3D Asset'),
-    type: yt ? 'video' : 'still',
-    videoId: yt.includes('shorts/') ? yt.split('shorts/')[1].split('?')[0] : '',
-    youtubeUrl: yt,
+    category: categoryNames[cat] || 'Production & 3D Works',
+    type: type,
+    videoId: videoId,
+    youtubeUrl: youtubeUrl,
+    linkUrl: linkUrl,
+    linkLabel: linkLabel,
+    linkIcon: linkIcon,
+    customIconUrl: customIconUrl,
     image: imageUrl,
-    tools: tools ? tools.split(',').map(s => s.trim()) : ['Blender', 'Cycles'],
-    role: 'Visual Storyteller & 3D Artist',
-    description: desc || 'Custom 3D narrative project crafted by Ige Dominion.',
-    specs: {
-      "Render Engine": "Blender Cycles X",
-      "Software": tools || "Blender 3D",
-      "Artist": "Ige Dominion"
-    }
+    tools: tools ? tools.split(',').map(s => s.trim()) : ['Blender 4.2', 'Cycles'],
+    role: role || 'Visual Storyteller & 3D Artist',
+    description: desc || 'Original 3D production work authored by Ige Dominion.'
   };
 
   portfolioWorksData.push(newProject);
   await dbPut('projects', newProject);
 
-  // Append new card to grid in DOM
-  appendProjectCardToDOM(newProject);
-
-  // Re-render admin list
+  renderAllProjectsToDOM();
   renderAdminProjectsList();
   toggleAddProjectForm(false);
-  showAdminToast(`Project "${title}" added to portfolio!`);
+  showAdminToast(`"${title}" published to portfolio!`);
 
-  // Clear inputs
+  // Reset inputs
   document.getElementById('new-proj-title').value = '';
-  document.getElementById('new-proj-file').value = '';
-  document.getElementById('new-proj-yt').value = '';
-  document.getElementById('new-proj-tools').value = '';
   document.getElementById('new-proj-desc').value = '';
 }
 
-function appendProjectCardToDOM(project) {
+function renderAllProjectsToDOM() {
   const container = document.getElementById('projects-grid-container');
   if (!container) return;
+  container.innerHTML = '';
 
-  const card = document.createElement('div');
-  card.className = 'project-card work-card-item';
-  card.setAttribute('data-category', project.type === 'video' ? 'renders reels' : 'renders');
-  card.setAttribute('onclick', `openLightbox(${project.id})`);
+  portfolioWorksData.forEach((project, index) => {
+    const card = document.createElement('div');
+    card.className = 'project-card work-card-item';
+    
+    let catAttr = 'renders';
+    if (project.type === 'video') catAttr = 'reels';
+    else if (project.type === 'link') catAttr = 'links';
+    card.setAttribute('data-category', catAttr);
+    card.setAttribute('onclick', `openLightbox(${index})`);
 
-  card.innerHTML = `
-    <div class="project-thumb">
-      <img id="work-thumb-${project.id}" src="${project.image}" alt="${project.title} - Ige Dominion" loading="lazy">
-      <div class="project-thumb-bg"></div>
-      <div class="project-badge">${project.type === 'video' ? '🎬 Reel' : '🖼️ 3D Render'}</div>
-      <div class="project-play-icon">▶</div>
-      <span class="project-zoom-icon">Inspect ↗</span>
-    </div>
-    <div class="project-body">
-      <div class="project-num">0${project.id + 1} / NEW PRODUCTION</div>
-      <div class="project-name" id="work-title-${project.id}">${project.title}</div>
-      <div class="project-tags-row">
-        ${project.tools.map(t => `<span class="project-tag-pill">${t}</span>`).join('')}
+    let playIconHtml = '';
+    let actionsHtml = '';
+
+    if (project.type === 'video') {
+      playIconHtml = `<div class="project-play-icon">▶</div>`;
+      actionsHtml = `
+        <button type="button" class="project-action-btn btn-accent" onclick="openLightbox(${index})">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:-1px;margin-right:4px;"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+          Play Reel
+        </button>
+      `;
+    } else if (project.type === 'link') {
+      const pIcon = getPlatformIconMarkup(project.linkIcon, project.customIconUrl);
+      playIconHtml = `<div class="project-play-icon" style="background:var(--white);color:var(--dark);">${pIcon}</div>`;
+      actionsHtml = `
+        <a href="${project.linkUrl || '#'}" target="_blank" rel="noopener noreferrer" class="project-action-btn btn-accent" onclick="event.stopPropagation()">
+          ${pIcon} ${project.linkLabel || 'View Project'} ↗
+        </a>
+      `;
+    } else {
+      actionsHtml = `
+        <button type="button" class="project-action-btn btn-accent" onclick="openLightbox(${index})">
+          View Image
+        </button>
+      `;
+    }
+
+    card.innerHTML = `
+      <div class="project-thumb">
+        <img id="work-thumb-${project.id}" src="${project.image}" alt="${project.title} - Ige Dominion" loading="lazy" decoding="async">
+        <div class="project-thumb-bg"></div>
+        ${playIconHtml}
+        <span class="project-zoom-icon">${project.type === 'video' ? 'Play Reel ↗' : 'View Image ↗'}</span>
       </div>
-      <div class="project-actions-row" onclick="event.stopPropagation()">
-        <button type="button" class="project-action-btn btn-accent" onclick="openLightbox(${project.id})">🔍 Inspect</button>
-        ${project.youtubeUrl ? `<a href="${project.youtubeUrl}" target="_blank" rel="noopener noreferrer" class="project-action-btn">YouTube ↗</a>` : ''}
+      <div class="project-body">
+        <div class="project-name" id="work-title-${project.id}">${project.title}</div>
+        <div class="project-actions-row" onclick="event.stopPropagation()">
+          ${actionsHtml}
+        </div>
       </div>
-    </div>
-  `;
-  container.appendChild(card);
+    `;
+    container.appendChild(card);
+  });
+}
+
+function appendProjectCardToDOM(project) {
+  renderAllProjectsToDOM();
 }
 
 // Quick Uploader
@@ -3076,11 +3341,210 @@ async function assignUploadedImageToTarget(target) {
       portraitEl.src = latestUploadedImageData;
     }
     await dbPut('assets', { key: 'about-portrait', data: latestUploadedImageData });
-    showAdminToast('Updated Dominion’s About Portrait photo!');
+    showAdminToast("Updated Dominion's Portrait photo!");
   } else if (target.startsWith('work-')) {
     const workIndex = parseInt(target.replace('work-', ''), 10);
     await applyWorkImage(workIndex, latestUploadedImageData);
     showAdminToast(`Assigned image to Work 0${workIndex + 1}!`);
+  }
+}
+
+// ── GLB 3D MODEL UPLOADER & MANAGER
+let activeGlbObjectUrl = null;
+
+async function handleGlbFileSelect(e) {
+  const file = e.target && e.target.files && e.target.files[0];
+  if (!file) return;
+  await processAndSaveGlbFile(file);
+}
+
+async function processAndSaveGlbFile(file) {
+  const fileName = file.name;
+  const ext = fileName.toLowerCase();
+  if (!ext.endsWith('.glb') && !ext.endsWith('.gltf')) {
+    showAdminToast('Please select a 3D model with .glb or .gltf extension.');
+    return;
+  }
+
+  showAdminToast(`Processing 3D model "${fileName}"...`);
+
+  // Instant viewer preview using Blob URL
+  applyCustomGlbModel(file, fileName, file.size);
+
+  // Persist the 3D model in IndexedDB assets store
+  try {
+    await dbPut('assets', {
+      key: 'custom-glb-model',
+      data: file,
+      filename: fileName,
+      size: file.size,
+      updatedAt: new Date().toISOString()
+    });
+    showAdminToast(`3D Model "${fileName}" saved and active!`);
+  } catch(err) {
+    console.warn('Direct File storage in IndexedDB failed, fallback to ArrayBuffer...', err);
+    try {
+      const buffer = await file.arrayBuffer();
+      const blob = new Blob([buffer], { type: 'model/gltf-binary' });
+      await dbPut('assets', {
+        key: 'custom-glb-model',
+        data: blob,
+        filename: fileName,
+        size: file.size,
+        updatedAt: new Date().toISOString()
+      });
+      showAdminToast(`3D Model "${fileName}" saved and active!`);
+    } catch(bufErr) {
+      console.error('Failed to persist GLB model:', bufErr);
+      showAdminToast(`Loaded "${fileName}" for this session.`);
+    }
+  }
+}
+
+function applyCustomGlbModel(modelSource, filename, size) {
+  let modelUrl = '';
+  if (typeof modelSource === 'string') {
+    modelUrl = modelSource;
+  } else if (modelSource instanceof Blob || modelSource instanceof File) {
+    if (activeGlbObjectUrl) {
+      URL.revokeObjectURL(activeGlbObjectUrl);
+    }
+    activeGlbObjectUrl = URL.createObjectURL(modelSource);
+    modelUrl = activeGlbObjectUrl;
+  }
+
+  if (!modelUrl) return;
+
+  // 1. Update main showcase model-viewer
+  const mainMv = document.getElementById('main-3d-model-viewer');
+  if (mainMv) {
+    mainMv.setAttribute('src', modelUrl);
+    if (filename) {
+      mainMv.setAttribute('alt', `3D Model - ${filename}`);
+    }
+  }
+
+  // 2. Update portfolioWorksData 3D item (work ID 1)
+  const work3d = portfolioWorksData.find(w => w.type === '3d-model');
+  if (work3d) {
+    work3d.modelUrl = modelUrl;
+    if (filename) {
+      work3d.title = `3D Model: ${filename.replace(/\.(glb|gltf)$/i, '')}`;
+    }
+  }
+
+  // 3. Update status badges in on-page 3D showcase
+  const statusEl = document.getElementById('glb-active-status');
+  const resetBtn = document.getElementById('glb-reset-btn');
+  const deliverableLabel = document.getElementById('glb-deliverable-label');
+  if (statusEl) {
+    const sizeStr = size ? ` • ${(size / (1024 * 1024)).toFixed(2)} MB` : '';
+    statusEl.innerHTML = `<span style="color:var(--white);">Active Custom 3D Model:</span> <strong>${filename || 'Custom Model'}</strong>${sizeStr}`;
+    statusEl.style.display = 'block';
+  }
+  if (resetBtn) resetBtn.style.display = 'inline-flex';
+  if (deliverableLabel && filename) {
+    deliverableLabel.textContent = filename.length > 25 ? filename.slice(0, 22) + '...' : filename;
+  }
+
+  // 4. Update admin modal 3D preview box
+  const adminGlbPreview = document.getElementById('admin-glb-preview-box');
+  const adminGlbName = document.getElementById('admin-glb-active-name');
+  const adminGlbMeta = document.getElementById('admin-glb-active-meta');
+  if (adminGlbPreview) adminGlbPreview.style.display = 'block';
+  if (adminGlbName) adminGlbName.textContent = filename || 'Custom 3D Model';
+  if (adminGlbMeta && size) {
+    adminGlbMeta.textContent = `File Size: ${(size / (1024 * 1024)).toFixed(2)} MB • Ready and loaded in 3D Viewport`;
+  }
+}
+
+async function resetGlbToDefault() {
+  await dbPut('assets', { key: 'custom-glb-model', data: null, filename: null });
+
+  if (activeGlbObjectUrl) {
+    URL.revokeObjectURL(activeGlbObjectUrl);
+    activeGlbObjectUrl = null;
+  }
+
+  const mainMv = document.getElementById('main-3d-model-viewer');
+  if (mainMv) {
+    mainMv.setAttribute('src', './shoe_model.glb');
+    mainMv.setAttribute('alt', '3D Shoe Model - Buddy Green Spark Initiative');
+  }
+
+  const work3d = portfolioWorksData.find(w => w.type === '3d-model');
+  if (work3d) {
+    work3d.modelUrl = './shoe_model.glb';
+    work3d.title = 'Buddy Green Spark Footwear';
+  }
+
+  const statusEl = document.getElementById('glb-active-status');
+  const resetBtn = document.getElementById('glb-reset-btn');
+  const deliverableLabel = document.getElementById('glb-deliverable-label');
+  if (statusEl) statusEl.style.display = 'none';
+  if (resetBtn) resetBtn.style.display = 'none';
+  if (deliverableLabel) deliverableLabel.textContent = 'Commercial 3D Product Asset';
+
+  const adminGlbPreview = document.getElementById('admin-glb-preview-box');
+  if (adminGlbPreview) adminGlbPreview.style.display = 'none';
+
+  showAdminToast('Reset 3D showcase to default footwear model.');
+}
+
+function setup3DViewerDropzone() {
+  const dropzone = document.getElementById('showcase-viewer-dropzone');
+  if (dropzone) {
+    ['dragenter', 'dragover'].forEach(eventName => {
+      dropzone.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        dropzone.classList.add('drag-over');
+      }, false);
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+      dropzone.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        dropzone.classList.remove('drag-over');
+      }, false);
+    });
+
+    dropzone.addEventListener('drop', (e) => {
+      const dt = e.dataTransfer;
+      const files = dt && dt.files;
+      if (files && files.length) {
+        processAndSaveGlbFile(files[0]);
+      }
+    });
+  }
+
+  // Admin Studio GLB Dropzone
+  const adminDropzone = document.getElementById('glb-admin-dropzone');
+  if (adminDropzone) {
+    ['dragenter', 'dragover'].forEach(eventName => {
+      adminDropzone.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        adminDropzone.classList.add('dragover');
+      }, false);
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+      adminDropzone.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        adminDropzone.classList.remove('dragover');
+      }, false);
+    });
+
+    adminDropzone.addEventListener('drop', (e) => {
+      const dt = e.dataTransfer;
+      const files = dt && dt.files;
+      if (files && files.length) {
+        processAndSaveGlbFile(files[0]);
+      }
+    });
   }
 }
 
@@ -3227,7 +3691,17 @@ async function loadPersistedPortfolio() {
     });
   }
 
-  // 3. Site Details
+  // 3. Custom 3D Model (.GLB)
+  try {
+    const glbAsset = await dbGet('assets', 'custom-glb-model');
+    if (glbAsset && glbAsset.data) {
+      applyCustomGlbModel(glbAsset.data, glbAsset.filename, glbAsset.size);
+    }
+  } catch(e) {
+    console.warn('Could not load custom GLB model from storage:', e);
+  }
+
+  // 4. Site Details
   const savedSiteInfo = await dbGet('siteInfo', 'current');
   if (savedSiteInfo) {
     applySiteDetailsToDOM(savedSiteInfo);
@@ -3237,6 +3711,7 @@ async function loadPersistedPortfolio() {
 // Initialize on DOM ready
 document.addEventListener('DOMContentLoaded', () => {
   loadPersistedPortfolio();
+  setup3DViewerDropzone();
 });
 
 // Dropzone drag-and-drop listener setup
@@ -3268,7 +3743,7 @@ document.addEventListener('drop', (e) => {
 <!-- Interactive Lightbox Theater Modal -->
 <div id="lightbox-theater-modal" class="lightbox-modal" onclick="if(event.target === this) closeLightbox()">
   <div class="lightbox-container">
-    <button type="button" class="lightbox-close-btn" onclick="closeLightbox()" title="Close Viewer">✕</button>
+    <button type="button" class="lightbox-close-btn" onclick="closeLightbox()" title="Close Viewer" aria-label="Close"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
     <button type="button" class="lightbox-nav-btn prev" onclick="navigateLightbox(-1)" title="Previous Work">‹</button>
     <button type="button" class="lightbox-nav-btn next" onclick="navigateLightbox(1)" title="Next Work">›</button>
 
@@ -3281,14 +3756,9 @@ document.addEventListener('drop', (e) => {
       <h3 id="lightbox-title" style="font-family:'Barlow Condensed',sans-serif;font-size:1.8rem;font-weight:700;color:var(--white);line-height:1.2;margin-bottom:12px;"></h3>
       <div id="lightbox-role" style="font-size:0.75rem;color:var(--white-soft);font-weight:500;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--border);"></div>
       
-      <div style="margin-bottom:18px;">
-        <div style="font-size:0.6rem;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase;margin-bottom:8px;">Workflow &amp; Software</div>
-        <div id="lightbox-tags" class="project-tags-row"></div>
-      </div>
-
-      <div style="margin-bottom:24px;">
-        <div style="font-size:0.6rem;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase;margin-bottom:8px;">Production Technical Breakdown</div>
-        <div id="lightbox-specs" style="background:rgba(0,0,0,0.4);border:1px solid var(--border);padding:10px 14px;"></div>
+      <div style="margin-bottom:20px;">
+        <div style="font-size:0.6rem;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase;margin-bottom:8px;font-weight:600;">Project Overview &amp; Creative Story</div>
+        <p id="lightbox-desc" style="font-size:0.88rem;color:var(--white-soft);line-height:1.75;margin:0;"></p>
       </div>
 
       <div id="lightbox-actions" style="display:flex;gap:12px;flex-wrap:wrap;margin-top:auto;padding-top:14px;border-top:1px solid var(--border);"></div>
@@ -3330,7 +3800,7 @@ document.addEventListener('drop', (e) => {
         </h2>
         <span id="admin-dialog-sub" class="admin-dialog-sub">Upload 3D Renders, Customize Works &amp; Update Portfolio Live</span>
       </div>
-      <button type="button" class="admin-dialog-close" onclick="closeAdminModal()" aria-label="Close Creator Studio">✕</button>
+      <button type="button" class="admin-dialog-close" onclick="closeAdminModal()" aria-label="Close Creator Studio"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
     </div>
 
     <!-- VIEW 1: AUTHENTICATION (SIGN UP & SIGN IN) -->
@@ -3366,11 +3836,11 @@ document.addEventListener('drop', (e) => {
 
         <div style="margin-top:18px;padding-top:16px;border-top:1px solid var(--border);">
           <button type="button" onclick="handleQuickAdminAccess()" class="admin-btn admin-btn-secondary" style="width:100%;font-size:0.68rem;">
-            ⚡ Quick Access as Dominion Ige
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path></svg> Quick Access as Dominion Ige
           </button>
         </div>
         <div style="margin-top:12px;font-size:0.62rem;color:var(--muted);letter-spacing:0.5px;">
-          🔒 All images and modifications are saved persistently in your browser's IndexedDB.
+          <span style="display:inline-flex;align-items:center;gap:6px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg> All media and modifications are saved persistently in browser storage.</span>
         </div>
       </div>
     </div>
@@ -3389,10 +3859,11 @@ document.addEventListener('drop', (e) => {
 
       <!-- Studio Navigation Tabs -->
       <div class="admin-nav-tabs">
-        <button type="button" class="admin-tab-btn active" id="tab-btn-projects" onclick="switchStudioTab('projects')">🎨 Manage Works &amp; Renders</button>
-        <button type="button" class="admin-tab-btn" id="tab-btn-quickupload" onclick="switchStudioTab('quickupload')">📤 Quick Image Uploader</button>
-        <button type="button" class="admin-tab-btn" id="tab-btn-details" onclick="switchStudioTab('details')">✏️ Edit Site Info</button>
-        <button type="button" class="admin-tab-btn" id="tab-btn-backup" onclick="switchStudioTab('backup')">💾 Backup &amp; Reset</button>
+        <button type="button" class="admin-tab-btn active" id="tab-btn-projects" onclick="switchStudioTab('projects')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:4px;"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg> Manage Works &amp; Media</button>
+        <button type="button" class="admin-tab-btn" id="tab-btn-quickupload" onclick="switchStudioTab('quickupload')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:4px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg> Quick Media Uploader</button>
+        <button type="button" class="admin-tab-btn" id="tab-btn-glbupload" onclick="switchStudioTab('glbupload')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:4px;"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg> 3D Model (.GLB) Uploader</button>
+        <button type="button" class="admin-tab-btn" id="tab-btn-details" onclick="switchStudioTab('details')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:4px;"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg> Edit Site Info</button>
+        <button type="button" class="admin-tab-btn" id="tab-btn-backup" onclick="switchStudioTab('backup')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:4px;"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg> Backup &amp; Reset</button>
       </div>
 
       <!-- TAB 1: PROJECTS & RENDERS -->
@@ -3400,48 +3871,148 @@ document.addEventListener('drop', (e) => {
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:8px;">
           <span style="font-size:0.75rem;color:var(--muted2);letter-spacing:1px;">Click 'Upload Render Image' on any work to replace the image with your own file:</span>
           <button type="button" class="admin-btn admin-btn-primary" onclick="toggleAddProjectForm()">
-            ➕ Add New Project
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:4px;"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg> Add New Work
           </button>
         </div>
 
-        <!-- Add Project Collapsible Form -->
-        <div id="add-project-box" style="display:none;background:#141414;border:1px solid rgba(255,255,255,0.2);padding:18px;margin-bottom:20px;border-radius:2px;">
-          <h4 style="font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;color:var(--white);letter-spacing:1.5px;margin-bottom:12px;text-transform:uppercase;">Add New 3D Project</h4>
+        <!-- Add Project Collapsible Form with Media Selection -->
+        <div id="add-project-box" style="display:none;background:#141414;border:1px solid rgba(255,255,255,0.2);padding:20px;margin-bottom:20px;border-radius:3px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+            <h4 style="font-family:'Barlow Condensed',sans-serif;font-size:1.15rem;color:var(--white);letter-spacing:1.5px;text-transform:uppercase;margin:0;">
+              Add New Portfolio Work
+            </h4>
+            <span style="font-size:0.68rem;color:var(--muted2);letter-spacing:1px;">Select Media Type Below:</span>
+          </div>
+
+          <!-- Media Type Selector -->
+          <div class="admin-type-tabs">
+            <button type="button" class="admin-type-btn active" id="btn-add-type-image" onclick="setNewProjectMediaType('image')">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+              Image Render
+            </button>
+            <button type="button" class="admin-type-btn" id="btn-add-type-video" onclick="setNewProjectMediaType('video')">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              Video Reel
+            </button>
+            <button type="button" class="admin-type-btn" id="btn-add-type-link" onclick="setNewProjectMediaType('link')">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              External / 3D Link
+            </button>
+          </div>
+          <input type="hidden" id="new-proj-type" value="image">
+
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
             <div class="admin-form-group">
               <label class="admin-label">Project Title</label>
-              <input type="text" id="new-proj-title" class="admin-input" placeholder="e.g. Cyberpunk Hoverbike Sequence">
+              <input type="text" id="new-proj-title" class="admin-input" placeholder="e.g. Cyberpunk Hoverbike Sequence" required>
             </div>
             <div class="admin-form-group">
               <label class="admin-label">Category</label>
               <select id="new-proj-cat" class="admin-select">
-                <option value="reels">Reel / Animation</option>
-                <option value="renders">3D Render</option>
+                <option value="renders">3D Renders &amp; Stills</option>
+                <option value="reels">Animation Reels &amp; Videos</option>
                 <option value="commercial">Commercial Asset</option>
-                <option value="3d">Interactive 3D</option>
+                <option value="3d">Interactive 3D / WebGL</option>
               </select>
             </div>
           </div>
-          <div class="admin-form-group">
-            <label class="admin-label">Upload Render Artwork Image</label>
-            <input type="file" id="new-proj-file" accept="image/*" class="admin-input" style="padding:6px;">
-          </div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-            <div class="admin-form-group">
-              <label class="admin-label">YouTube Shorts / Video URL (Optional)</label>
-              <input type="url" id="new-proj-yt" class="admin-input" placeholder="https://youtube.com/shorts/...">
+
+          <!-- Dynamic Panel: Image Fields -->
+          <div id="new-proj-panel-image" class="admin-media-subpanel" style="display:block;">
+            <div style="font-size:0.68rem;letter-spacing:1px;color:var(--white);font-weight:700;text-transform:uppercase;margin-bottom:10px;">
+              Image Render Configuration
             </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+              <div class="admin-form-group">
+                <label class="admin-label">Upload Artwork File (PNG, JPG, WebP)</label>
+                <input type="file" id="new-proj-file" accept="image/*" class="admin-input" style="padding:6px;">
+              </div>
+              <div class="admin-form-group">
+                <label class="admin-label">Or Image Web URL</label>
+                <input type="url" id="new-proj-img-url" class="admin-input" placeholder="https://images.example.com/render.jpg">
+              </div>
+            </div>
+          </div>
+
+          <!-- Dynamic Panel: Video Fields -->
+          <div id="new-proj-panel-video" class="admin-media-subpanel" style="display:none;">
+            <div style="font-size:0.68rem;letter-spacing:1px;color:var(--white);font-weight:700;text-transform:uppercase;margin-bottom:10px;">
+              Video Reel Configuration
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+              <div class="admin-form-group">
+                <label class="admin-label">Video / YouTube / Shorts URL</label>
+                <input type="url" id="new-proj-yt" class="admin-input" placeholder="https://youtube.com/shorts/... or Vimeo / MP4">
+              </div>
+              <div class="admin-form-group">
+                <label class="admin-label">Custom Cover Thumbnail (Optional)</label>
+                <input type="file" id="new-proj-video-cover" accept="image/*" class="admin-input" style="padding:6px;">
+              </div>
+            </div>
+            <div style="font-size:0.68rem;color:var(--muted2);">If no custom cover is uploaded, the YouTube high-resolution thumbnail will be automatically fetched.</div>
+          </div>
+
+          <!-- Dynamic Panel: Link Fields -->
+          <div id="new-proj-panel-link" class="admin-media-subpanel" style="display:none;">
+            <div style="font-size:0.68rem;letter-spacing:1px;color:var(--white);font-weight:700;text-transform:uppercase;margin-bottom:10px;">
+              External Destination &amp; Online Icon Configuration
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+              <div class="admin-form-group">
+                <label class="admin-label">Destination URL</label>
+                <input type="url" id="new-proj-link-url" class="admin-input" placeholder="https://artstation.com/artwork/... or Behance / Sketchfab">
+              </div>
+              <div class="admin-form-group">
+                <label class="admin-label">Link Button Label</label>
+                <input type="text" id="new-proj-link-label" class="admin-input" value="View on ArtStation" placeholder="e.g. View on ArtStation / Sketchfab">
+              </div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+              <div class="admin-form-group">
+                <label class="admin-label">Platform Icon</label>
+                <select id="new-proj-link-icon" class="admin-select" onchange="toggleCustomIconInput(this.value, 'new-proj-custom-icon-wrap')">
+                  <option value="artstation">ArtStation (Online Icon)</option>
+                  <option value="behance">Behance (Online Icon)</option>
+                  <option value="sketchfab">Sketchfab 3D (Online Icon)</option>
+                  <option value="youtube">YouTube (Online Icon)</option>
+                  <option value="vimeo">Vimeo (Online Icon)</option>
+                  <option value="instagram">Instagram (Online Icon)</option>
+                  <option value="link" selected>External Link (SVG Icon)</option>
+                  <option value="custom">Custom Online Icon URL (SVG/PNG)</option>
+                </select>
+              </div>
+              <div class="admin-form-group" id="new-proj-custom-icon-wrap" style="display:none;">
+                <label class="admin-label">Custom Online Icon URL</label>
+                <input type="url" id="new-proj-custom-icon-url" class="admin-input" placeholder="https://.../icon.svg or .png">
+              </div>
+            </div>
+            <div class="admin-form-group" style="margin-bottom:0;">
+              <label class="admin-label">Upload Project Cover Artwork Image</label>
+              <input type="file" id="new-proj-link-cover" accept="image/*" class="admin-input" style="padding:6px;">
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
             <div class="admin-form-group">
               <label class="admin-label">Tools &amp; Software (comma separated)</label>
               <input type="text" id="new-proj-tools" class="admin-input" placeholder="Blender, Cycles, Cascadeur">
             </div>
+            <div class="admin-form-group">
+              <label class="admin-label">Your Role / Discipline</label>
+              <input type="text" id="new-proj-role" class="admin-input" value="Visual Storyteller &amp; 3D Artist">
+            </div>
           </div>
+
           <div class="admin-form-group">
             <label class="admin-label">Project Description</label>
-            <textarea id="new-proj-desc" class="admin-textarea" rows="2" placeholder="Describe the creative direction, physics, lighting..."></textarea>
+            <textarea id="new-proj-desc" class="admin-textarea" rows="2" placeholder="Describe the creative direction, physics, lighting, or story..."></textarea>
           </div>
+
           <div style="display:flex;gap:10px;">
-            <button type="button" onclick="handleCreateProject()" class="admin-btn admin-btn-primary">Create &amp; Publish</button>
+            <button type="button" onclick="handleCreateProject()" class="admin-btn admin-btn-primary">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              Create &amp; Publish Work
+            </button>
             <button type="button" onclick="toggleAddProjectForm(false)" class="admin-btn admin-btn-secondary">Cancel</button>
           </div>
         </div>
@@ -3456,7 +4027,7 @@ document.addEventListener('drop', (e) => {
       <div id="studio-tab-quickupload" style="display:none;">
         <div class="admin-dropzone" id="quick-dropzone" onclick="document.getElementById('quick-file-input').click()">
           <input type="file" id="quick-file-input" accept="image/*" onchange="handleDirectFileUpload(event)" style="display:none;">
-          <div style="font-size:2rem;margin-bottom:8px;">📁</div>
+          <div style="margin-bottom:10px;"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color:var(--muted2);"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg></div>
           <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;letter-spacing:1.5px;color:var(--white);text-transform:uppercase;margin-bottom:4px;">
             Drop Your High-Res 3D Render Here
           </div>
@@ -3472,24 +4043,57 @@ document.addEventListener('drop', (e) => {
               <div style="font-size:0.68rem;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase;margin-bottom:8px;">Assign this uploaded image to:</div>
               <div style="display:flex;flex-direction:column;gap:8px;">
                 <button type="button" onclick="assignUploadedImageToTarget('about-portrait')" class="admin-btn admin-btn-secondary" style="justify-content:flex-start;">
-                  👤 Dominion's Portrait ("The Eye Behind The Mask")
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:6px;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg> Dominion's Portrait ("The Eye Behind The Mask")
                 </button>
                 <button type="button" onclick="assignUploadedImageToTarget('work-0')" class="admin-btn admin-btn-secondary" style="justify-content:flex-start;">
-                  🎬 Work 01: Night Alley 3D Sequence
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="margin-right:6px;"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg> Work 01: Night Alley 3D Sequence
                 </button>
                 <button type="button" onclick="assignUploadedImageToTarget('work-1')" class="admin-btn admin-btn-secondary" style="justify-content:flex-start;">
-                  👟 Work 02: Buddy Green Spark Footwear
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:6px;"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg> Work 02: Buddy Green Spark Footwear
                 </button>
                 <button type="button" onclick="assignUploadedImageToTarget('work-2')" class="admin-btn admin-btn-secondary" style="justify-content:flex-start;">
-                  🏃 Work 03: YAPPI Character Parkour Rig
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="margin-right:6px;"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg> Work 03: YAPPI Character Parkour Rig
                 </button>
                 <button type="button" onclick="assignUploadedImageToTarget('work-3')" class="admin-btn admin-btn-secondary" style="justify-content:flex-start;">
-                  🍲 Work 04: Valued Tasty Foods Commercial
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:6px;"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg> Work 04: Valued Tasty Foods Commercial
                 </button>
                 <button type="button" onclick="assignUploadedImageToTarget('work-4')" class="admin-btn admin-btn-secondary" style="justify-content:flex-start;">
-                  🤖 Work 05: OwlUp Cybernetic Mech Owl
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:6px;"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg> Work 05: OwlUp Cybernetic Mech Owl
                 </button>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB: 3D MODEL (.GLB) UPLOADER -->
+      <div id="studio-tab-glbupload" style="display:none;">
+        <div class="admin-dropzone" id="glb-admin-dropzone" onclick="document.getElementById('glb-admin-file-input').click()">
+          <input type="file" id="glb-admin-file-input" accept=".glb,.gltf,model/gltf-binary" onchange="handleGlbFileSelect(event)" style="display:none;">
+          <div style="margin-bottom:10px;">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color:var(--white);"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+          </div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.15rem;font-weight:700;letter-spacing:1.5px;color:var(--white);text-transform:uppercase;margin-bottom:4px;">
+            Upload Custom 3D Model Asset (.GLB)
+          </div>
+          <p style="font-size:0.75rem;color:var(--muted2);">Supports .glb and .gltf binary 3D assets (exported from Blender, Maya, Cinema 4D, etc.) • Click to browse or drag &amp; drop</p>
+        </div>
+
+        <div id="admin-glb-preview-box" style="display:none;background:#141414;border:1px solid var(--border);padding:18px;margin-top:16px;">
+          <h4 style="font-size:0.75rem;letter-spacing:1.5px;color:var(--muted2);text-transform:uppercase;margin-bottom:12px;">Active 3D Model Asset</h4>
+          <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
+            <div style="background:var(--dark3);border:1px solid var(--border);padding:12px 18px;border-radius:2px;flex:1;min-width:200px;">
+              <div style="font-size:0.68rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;">Asset Name:</div>
+              <div id="admin-glb-active-name" style="font-size:0.95rem;color:var(--white);font-weight:700;margin-top:4px;">Custom Model</div>
+              <div id="admin-glb-active-meta" style="font-size:0.75rem;color:var(--muted2);margin-top:4px;">Ready and loaded in the 3D showcase viewport</div>
+            </div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;">
+              <button type="button" onclick="closeAdminModal();document.getElementById('3d-showcase').scrollIntoView({behavior:'smooth'});" class="admin-btn admin-btn-primary">
+                View in 3D Stage ↓
+              </button>
+              <button type="button" onclick="resetGlbToDefault()" class="admin-btn admin-btn-secondary">
+                Reset to Default Shoe Model
+              </button>
             </div>
           </div>
         </div>
@@ -3531,7 +4135,7 @@ document.addEventListener('drop', (e) => {
           </div>
 
           <button type="submit" class="admin-btn admin-btn-primary" style="margin-top:8px;">
-            💾 Save &amp; Apply Changes to Live Website
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:6px;"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg> Save &amp; Apply Changes to Live Website
           </button>
         </form>
       </div>
@@ -3544,7 +4148,7 @@ document.addEventListener('drop', (e) => {
             Save a backup file of your uploaded image references, project updates, and text customizations:
           </p>
           <button type="button" onclick="handleExportPortfolioData()" class="admin-btn admin-btn-primary">
-            📥 Download Portfolio Backup (.json)
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:6px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg> Download Portfolio Backup (.json)
           </button>
         </div>
 

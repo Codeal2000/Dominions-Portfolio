@@ -1,6 +1,6 @@
 {
   "name": "Dominion Ige - 3D Animator Portfolio",
-  "description": "Interactive dark & gold cinematic portfolio for Dominion Ige, 3D Animator and Visual Artist featuring Three.js 3D viewport, project breakdowns, video showreels, and skill badges.",
+  "description": "Interactive dark & gold cinematic portfolio for Dominion Ige, Visual Artist, 3D Animator, Motion Designer, and Web Developer featuring interactive 3D model viewport with GLB upload, project breakdowns, video showreels, and core skills.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
