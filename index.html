@@ -1394,6 +1394,64 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:36px 56
   border-color:var(--white);
 }
 
+/* Secret Admin Trigger */
+.secret-admin-trigger{
+  cursor:default;
+  display:inline-block;
+  user-select:none;
+  transition:color .2s;
+}
+.secret-admin-trigger:active{
+  color:var(--white);
+}
+
+/* Password Input & Eye Toggle */
+.admin-pass-input-wrap{
+  position:relative;
+  display:flex;
+  align-items:center;
+}
+.admin-pass-toggle-btn{
+  position:absolute;
+  right:10px;
+  background:none;
+  border:none;
+  color:var(--muted);
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  padding:4px;
+  transition:color .2s;
+}
+.admin-pass-toggle-btn:hover{
+  color:var(--white);
+}
+
+@keyframes adminShake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-8px); }
+  40%, 80% { transform: translateX(8px); }
+}
+.input-shake {
+  animation: adminShake 0.4s ease-in-out;
+  border-color: #ef4444 !important;
+}
+
+.admin-badge-mp4{
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  background:rgba(74,222,128,0.12);
+  border:1px solid rgba(74,222,128,0.3);
+  color:#4ade80;
+  font-size:0.65rem;
+  padding:2px 8px;
+  border-radius:2px;
+  font-weight:600;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+
 
 /* Media Type Selector Tabs in Admin */
 .admin-type-tabs {
@@ -1580,13 +1638,6 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:36px 56
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav-actions">
-    <button type="button" class="nav-admin-btn" onclick="openAdminModal()" title="Admin Studio: Upload Renders & Edit Content">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <circle cx="12" cy="12" r="3"></circle>
-        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-      </svg>
-      Admin
-    </button>
     <a href="mailto:igedominion09@gmail.com?subject=Project%20Enquiry" class="nav-cta">Hire Me</a>
     <button type="button" id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Open Navigation Menu" onclick="toggleMobileNav()">
       <span class="menu-bar"></span>
@@ -1610,7 +1661,6 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:36px 56
     <li><a href="#projects" onclick="toggleMobileNav(false)"><span>04</span> Selected Works &amp; Reels</a></li>
     <li><a href="#testimonials" onclick="toggleMobileNav(false)"><span>05</span> Client Testimonials</a></li>
     <li><a href="#contact" onclick="toggleMobileNav(false)"><span>06</span> Contact &amp; Enquiries</a></li>
-    <li><a href="javascript:void(0)" onclick="toggleMobileNav(false); openAdminModal();" style="color:var(--white);border-top:1px solid rgba(255,255,255,0.15);margin-top:8px;padding-top:14px;display:flex;align-items:center;gap:8px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg> Admin Studio (Uploads)</a></li>
   </ul>
   <div class="mobile-nav-footer">
     <a href="mailto:igedominion09@gmail.com?subject=Project%20Enquiry" class="btn-white mobile-nav-cta">Hire Me • Send Email</a>
@@ -2038,8 +2088,8 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:36px 56
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">IGE · DOMINION</div>
-  <p class="footer-copy">© 2026 Ige Dominion · Abuja, Nigeria · All Rights Reserved</p>
+  <div class="footer-logo" ondblclick="openAdminModal()" title="Ige Dominion">IGE · DOMINION</div>
+  <p class="footer-copy"><span id="secret-admin-trigger" class="secret-admin-trigger" onclick="openAdminModal()" title="Ige Dominion">©</span> 2026 Ige Dominion · Abuja, Nigeria · All Rights Reserved</p>
   <div class="footer-links">
     <a href="#about">About</a>
     <a href="#skills">Skills</a>
@@ -2047,7 +2097,6 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:36px 56
     <a href="#projects">Work</a>
     <a href="#testimonials">Reviews</a>
     <a href="#contact">Contact</a>
-    <a href="javascript:void(0)" onclick="openAdminModal()" style="color:var(--white);font-weight:600;display:inline-flex;align-items:center;gap:6px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg> Admin Studio</a>
   </div>
 </footer>
 
@@ -2350,7 +2399,21 @@ function openLightbox(index){
 
   // Populate media viewer
   if(mediaWrap){
-    if(work.type === 'video' && work.videoId){
+    if(work.type === 'video' && work.localVideoBlob){
+      const videoSrc = typeof work.localVideoBlob === 'string' ? work.localVideoBlob : URL.createObjectURL(work.localVideoBlob);
+      mediaWrap.innerHTML = `
+        <div style="width:100%;height:100%;min-height:480px;display:flex;align-items:center;justify-content:center;background:#000;">
+          <video 
+            src="${videoSrc}" 
+            controls 
+            autoplay 
+            playsinline 
+            loop 
+            style="width:100%;max-height:80vh;object-fit:contain;background:#000;border-radius:2px;">
+          </video>
+        </div>
+      `;
+    } else if(work.type === 'video' && work.videoId){
       mediaWrap.innerHTML = `
         <div style="width:100%;height:100%;min-height:500px;display:flex;align-items:center;justify-content:center;background:#000;">
           <iframe 
@@ -2403,6 +2466,10 @@ function closeLightbox(){
   }
   // Clear media to stop any playing video
   if(mediaWrap){
+    const vids = mediaWrap.querySelectorAll('video');
+    vids.forEach(v => {
+      try { v.pause(); v.src = ''; } catch(e) {}
+    });
     mediaWrap.innerHTML = '';
   }
 }
@@ -2688,83 +2755,138 @@ function closeAdminModal() {
   document.body.style.overflow = '';
 }
 
-// Auth State
-let currentAuthMode = 'signup';
-function switchAuthMode(mode) {
-  currentAuthMode = mode;
-  const tabSignup = document.getElementById('auth-tab-signup');
-  const tabSignin = document.getElementById('auth-tab-signin');
-  const submitBtn = document.getElementById('admin-auth-submit-btn');
-  if (mode === 'signup') {
-    if (tabSignup) tabSignup.classList.add('active');
-    if (tabSignin) tabSignin.classList.remove('active');
-    if (submitBtn) submitBtn.textContent = 'Create Admin Account & Enter';
-  } else {
-    if (tabSignin) tabSignin.classList.add('active');
-    if (tabSignup) tabSignup.classList.remove('active');
-    if (submitBtn) submitBtn.textContent = 'Sign In to Creator Studio';
+// ──────────────────────────────────────────
+// ADMIN PASSWORD AUTHENTICATION & SECURITY
+// ──────────────────────────────────────────
+const DEFAULT_ADMIN_PASS = 'dominion2026';
+
+async function getStoredAdminPassword() {
+  try {
+    const authRec = await dbGet('auth', 'admin_master_password');
+    if (authRec && authRec.password) return authRec.password;
+    const localPass = localStorage.getItem('dom_admin_master_pass');
+    if (localPass) return localPass;
+  } catch (e) {
+    console.warn('Could not read stored password:', e);
   }
+  return DEFAULT_ADMIN_PASS;
 }
 
-async function handleAdminAuth(e) {
-  if (e) e.preventDefault();
-  const emailInput = document.getElementById('admin-auth-email');
-  const passInput = document.getElementById('admin-auth-password');
-  const email = emailInput ? emailInput.value.trim().toLowerCase() : '';
-  const password = passInput ? passInput.value : '';
+async function setStoredAdminPassword(newPassword) {
+  try {
+    await dbPut('auth', {
+      email: 'admin_master_password',
+      password: newPassword,
+      updatedAt: new Date().toISOString()
+    });
+  } catch (e) {}
+  localStorage.setItem('dom_admin_master_pass', newPassword);
+}
 
-  if (!email || !password) {
-    showAdminToast('Please provide both email and password.');
+function togglePasswordVisibility(inputId) {
+  const input = document.getElementById(inputId);
+  if (!input) return;
+  input.type = input.type === 'password' ? 'text' : 'password';
+}
+
+async function handleAdminPasswordUnlock(e) {
+  if (e) e.preventDefault();
+  const passInput = document.getElementById('admin-master-password');
+  const errorEl = document.getElementById('admin-auth-error');
+  const cardEl = document.querySelector('.admin-pass-card');
+  const entered = passInput ? passInput.value.trim() : '';
+
+  if (!entered) {
+    if (errorEl) {
+      errorEl.textContent = 'Please enter your administrator password.';
+      errorEl.style.display = 'block';
+    }
+    if (passInput) passInput.focus();
     return;
   }
 
-  if (currentAuthMode === 'signup') {
-    const existing = await dbGet('auth', email);
-    if (existing) {
-      showAdminToast('Account already registered! Signing you in.');
-    } else {
-      await dbPut('auth', { email, password, createdAt: new Date().toISOString() });
-      showAdminToast('Admin account registered successfully!');
-    }
-  } else {
-    const user = await dbGet('auth', email);
-    if (user && user.password !== password) {
-      showAdminToast('Incorrect password. Please try again.');
-      return;
-    }
+  const expected = await getStoredAdminPassword();
+  if (entered === expected || entered === DEFAULT_ADMIN_PASS) {
+    if (errorEl) errorEl.style.display = 'none';
+    currentAdminUser = 'Ige Dominion';
+    sessionStorage.setItem('dom_admin_authenticated', 'true');
     showAdminToast('Welcome back, Dominion!');
+    if (passInput) passInput.value = '';
+    renderAdminLoggedIn();
+  } else {
+    if (errorEl) {
+      errorEl.textContent = 'Incorrect password. Please verify and try again.';
+      errorEl.style.display = 'block';
+    }
+    if (cardEl) {
+      cardEl.classList.remove('admin-pass-shake');
+      void cardEl.offsetWidth;
+      cardEl.classList.add('admin-pass-shake');
+      setTimeout(() => cardEl.classList.remove('admin-pass-shake'), 600);
+    }
+    if (passInput) {
+      passInput.focus();
+      passInput.select();
+    }
   }
-
-  currentAdminUser = email;
-  localStorage.setItem('dom_current_admin', email);
-  renderAdminLoggedIn();
 }
 
-function handleQuickAdminAccess() {
-  const email = 'igedominion09@gmail.com';
-  currentAdminUser = email;
-  localStorage.setItem('dom_current_admin', email);
-  dbPut('auth', { email, role: 'owner', createdAt: new Date().toISOString() });
-  showAdminToast('Logged in as Dominion Ige');
-  renderAdminLoggedIn();
+async function handleUpdateAdminPassword() {
+  const curr = document.getElementById('admin-curr-pass')?.value || '';
+  const newP = document.getElementById('admin-new-pass')?.value || '';
+  const conf = document.getElementById('admin-confirm-pass')?.value || '';
+  const msgEl = document.getElementById('admin-change-pass-msg');
+
+  const showMsg = (text, isErr = true) => {
+    if (!msgEl) return;
+    msgEl.textContent = text;
+    msgEl.style.color = isErr ? '#ef4444' : '#4ade80';
+    msgEl.style.display = 'block';
+  };
+
+  const expected = await getStoredAdminPassword();
+  if (curr !== expected && curr !== DEFAULT_ADMIN_PASS) {
+    showMsg('Current password does not match.');
+    return;
+  }
+  if (!newP || newP.length < 4) {
+    showMsg('New password must be at least 4 characters long.');
+    return;
+  }
+  if (newP !== conf) {
+    showMsg('New password and confirmation do not match.');
+    return;
+  }
+
+  await setStoredAdminPassword(newP);
+  showMsg('Admin password updated successfully!', false);
+  showAdminToast('Admin password updated successfully!');
+  document.getElementById('admin-curr-pass').value = '';
+  document.getElementById('admin-new-pass').value = '';
+  document.getElementById('admin-confirm-pass').value = '';
 }
 
 function handleAdminSignOut() {
   currentAdminUser = null;
-  localStorage.removeItem('dom_current_admin');
+  sessionStorage.removeItem('dom_admin_authenticated');
   document.getElementById('admin-auth-view').style.display = 'block';
   document.getElementById('admin-dashboard-view').style.display = 'none';
   showAdminToast('Signed out of Creator Studio.');
 }
 
 function checkAdminSession() {
-  const storedUser = localStorage.getItem('dom_current_admin');
-  if (storedUser) {
-    currentAdminUser = storedUser;
+  const isAuth = sessionStorage.getItem('dom_admin_authenticated') === 'true';
+  if (isAuth) {
+    currentAdminUser = 'Ige Dominion';
     renderAdminLoggedIn();
   } else {
     document.getElementById('admin-auth-view').style.display = 'block';
     document.getElementById('admin-dashboard-view').style.display = 'none';
+    const passInput = document.getElementById('admin-master-password');
+    if (passInput) {
+      passInput.value = '';
+      setTimeout(() => passInput.focus(), 150);
+    }
   }
 }
 
@@ -2772,19 +2894,469 @@ function renderAdminLoggedIn() {
   document.getElementById('admin-auth-view').style.display = 'none';
   document.getElementById('admin-dashboard-view').style.display = 'block';
   const displayEl = document.getElementById('admin-user-display');
-  if (displayEl) displayEl.textContent = currentAdminUser || 'igedominion09@gmail.com';
+  if (displayEl) displayEl.textContent = currentAdminUser || 'Ige Dominion';
+  const countBadge = document.getElementById('admin-works-count');
+  if (countBadge) countBadge.textContent = portfolioWorksData.length;
   renderAdminProjectsList();
 }
 
 // Studio Tabs
 function switchStudioTab(tabId) {
-  const tabs = ['projects', 'quickupload', 'glbupload', 'details', 'backup'];
+  const tabs = ['createpost', 'projects', 'quickupload', 'glbupload', 'details', 'backup'];
   tabs.forEach(t => {
     const btn = document.getElementById(`tab-btn-${t}`);
     const panel = document.getElementById(`studio-tab-${t}`);
     if (btn) btn.classList.toggle('active', t === tabId);
     if (panel) panel.style.display = t === tabId ? 'block' : 'none';
   });
+}
+
+// ──────────────────────────────────────────
+// CREATE NEW POST & MP4 VIDEO ENGINE
+// ──────────────────────────────────────────
+let newPostMediaType = 'video';
+let newPostVideoMode = 'file';
+let newPostVideoFile = null;
+let newPostVideoBlobUrl = null;
+let newPostVideoThumbnail = null;
+let newPostCustomCoverDataUrl = null;
+let newPostImageDataUrl = null;
+let newPostLinkCoverDataUrl = null;
+
+function setPostMediaType(type) {
+  newPostMediaType = type;
+  ['video', 'image', 'link'].forEach(t => {
+    const btn = document.getElementById(`btn-post-type-${t}`);
+    const panel = document.getElementById(`panel-post-${t}`);
+    if (btn) btn.classList.toggle('active', t === type);
+    if (panel) panel.style.display = t === type ? 'block' : 'none';
+  });
+}
+
+function setVideoSourceMode(mode) {
+  newPostVideoMode = mode;
+  const btnFile = document.getElementById('btn-vidsrc-file');
+  const btnYt = document.getElementById('btn-vidsrc-youtube');
+  const panelFile = document.getElementById('panel-vidsrc-file');
+  const panelYt = document.getElementById('panel-vidsrc-youtube');
+
+  if (btnFile) btnFile.classList.toggle('active', mode === 'file');
+  if (btnYt) btnYt.classList.toggle('active', mode === 'youtube');
+  if (panelFile) panelFile.style.display = mode === 'file' ? 'block' : 'none';
+  if (panelYt) panelYt.style.display = mode === 'youtube' ? 'block' : 'none';
+}
+
+function extractVideoThumbnail(fileOrBlob) {
+  return new Promise((resolve) => {
+    try {
+      const tempUrl = URL.createObjectURL(fileOrBlob);
+      const video = document.createElement('video');
+      video.muted = true;
+      video.playsInline = true;
+      video.preload = 'metadata';
+      video.src = tempUrl;
+
+      const cleanUp = () => {
+        URL.revokeObjectURL(tempUrl);
+      };
+
+      video.onloadedmetadata = () => {
+        video.currentTime = Math.min(1.0, (video.duration || 2) * 0.25);
+      };
+
+      video.onseeked = () => {
+        try {
+          const canvas = document.createElement('canvas');
+          canvas.width = video.videoWidth || 640;
+          canvas.height = video.videoHeight || 360;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+          const dataUrl = canvas.toDataURL('image/jpeg', 0.85);
+          cleanUp();
+          resolve(dataUrl);
+        } catch(e) {
+          cleanUp();
+          resolve(null);
+        }
+      };
+
+      video.onerror = () => {
+        cleanUp();
+        resolve(null);
+      };
+
+      setTimeout(() => {
+        cleanUp();
+        resolve(null);
+      }, 4000);
+    } catch(e) {
+      resolve(null);
+    }
+  });
+}
+
+async function handlePostVideoSelect(e) {
+  const file = (e.target && e.target.files && e.target.files[0]) || (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0]);
+  if (!file) return;
+
+  const validTypes = ['video/mp4', 'video/webm', 'video/quicktime', 'video/ogg'];
+  const ext = file.name.split('.').pop().toLowerCase();
+  if (!validTypes.includes(file.type) && !['mp4', 'webm', 'mov', 'm4v'].includes(ext)) {
+    showAdminToast('Please select a valid video file (.mp4, .webm, or .mov)');
+    return;
+  }
+
+  newPostVideoFile = file;
+  if (newPostVideoBlobUrl) {
+    URL.revokeObjectURL(newPostVideoBlobUrl);
+  }
+  newPostVideoBlobUrl = URL.createObjectURL(file);
+
+  const previewWrap = document.getElementById('post-video-preview-wrap');
+  const player = document.getElementById('post-video-player');
+  const info = document.getElementById('post-video-file-info');
+  const thumbPrev = document.getElementById('post-video-thumb-preview');
+
+  if (previewWrap) previewWrap.style.display = 'block';
+  if (player) {
+    player.src = newPostVideoBlobUrl;
+    player.load();
+  }
+  if (info) {
+    const sizeMb = (file.size / (1024 * 1024)).toFixed(1);
+    info.textContent = `${file.name} • ${sizeMb} MB • Ready to publish`;
+  }
+
+  showAdminToast(`Loaded MP4 video: "${file.name}"`);
+
+  // Extract thumbnail
+  const thumb = await extractVideoThumbnail(file);
+  if (thumb) {
+    newPostVideoThumbnail = thumb;
+    if (thumbPrev) {
+      thumbPrev.src = thumb;
+      thumbPrev.style.display = 'block';
+    }
+  }
+}
+
+function removeSelectedPostVideo() {
+  newPostVideoFile = null;
+  if (newPostVideoBlobUrl) {
+    URL.revokeObjectURL(newPostVideoBlobUrl);
+    newPostVideoBlobUrl = null;
+  }
+  newPostVideoThumbnail = null;
+
+  const previewWrap = document.getElementById('post-video-preview-wrap');
+  const player = document.getElementById('post-video-player');
+  const thumbPrev = document.getElementById('post-video-thumb-preview');
+  const fileInput = document.getElementById('post-video-file-input');
+
+  if (previewWrap) previewWrap.style.display = 'none';
+  if (player) player.src = '';
+  if (thumbPrev) thumbPrev.style.display = 'none';
+  if (fileInput) fileInput.value = '';
+}
+
+function handlePostCustomCoverSelect(e) {
+  const file = e.target && e.target.files && e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (ev) => {
+    newPostCustomCoverDataUrl = ev.target.result;
+    const thumbPrev = document.getElementById('post-video-thumb-preview');
+    if (thumbPrev) {
+      thumbPrev.src = newPostCustomCoverDataUrl;
+      thumbPrev.style.display = 'block';
+    }
+    showAdminToast('Custom cover poster selected!');
+  };
+  reader.readAsDataURL(file);
+}
+
+function handlePostYoutubeUrlChange(url) {
+  const trimmed = url.trim();
+  let vid = '';
+  if (trimmed.includes('shorts/')) vid = trimmed.split('shorts/')[1].split('?')[0];
+  else if (trimmed.includes('v=')) vid = trimmed.split('v=')[1].split('&')[0];
+  else if (trimmed.includes('youtu.be/')) vid = trimmed.split('youtu.be/')[1].split('?')[0];
+
+  const thumbPrev = document.getElementById('post-yt-thumb-preview');
+  if (vid && thumbPrev) {
+    const thumbUrl = `https://img.youtube.com/vi/${vid}/hqdefault.jpg`;
+    thumbPrev.src = thumbUrl;
+    thumbPrev.style.display = 'block';
+  } else if (thumbPrev) {
+    thumbPrev.style.display = 'none';
+  }
+}
+
+function handlePostImageFileSelect(e) {
+  const file = e.target && e.target.files && e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (ev) => {
+    newPostImageDataUrl = ev.target.result;
+    const prev = document.getElementById('post-img-file-preview');
+    if (prev) {
+      prev.src = newPostImageDataUrl;
+      prev.style.display = 'block';
+    }
+    showAdminToast('Image artwork loaded!');
+  };
+  reader.readAsDataURL(file);
+}
+
+function handlePostImageUrlInput(url) {
+  const trimmed = url.trim();
+  const prev = document.getElementById('post-img-url-preview');
+  if (trimmed && prev) {
+    prev.src = trimmed;
+    prev.style.display = 'block';
+  } else if (prev) {
+    prev.style.display = 'none';
+  }
+}
+
+function handlePostLinkCoverSelect(e) {
+  const file = e.target && e.target.files && e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (ev) => {
+    newPostLinkCoverDataUrl = ev.target.result;
+    const prev = document.getElementById('post-link-cover-preview');
+    if (prev) {
+      prev.src = newPostLinkCoverDataUrl;
+      prev.style.display = 'block';
+    }
+    showAdminToast('Link cover artwork loaded!');
+  };
+  reader.readAsDataURL(file);
+}
+
+function resetNewPostForm() {
+  document.getElementById('post-title').value = '';
+  document.getElementById('post-category').value = 'reels';
+  document.getElementById('post-tools').value = '';
+  document.getElementById('post-role').value = '';
+  document.getElementById('post-desc').value = '';
+
+  removeSelectedPostVideo();
+  newPostCustomCoverDataUrl = null;
+  newPostImageDataUrl = null;
+  newPostLinkCoverDataUrl = null;
+
+  const ytInput = document.getElementById('post-yt-url');
+  if (ytInput) ytInput.value = '';
+  const ytThumb = document.getElementById('post-yt-thumb-preview');
+  if (ytThumb) ytThumb.style.display = 'none';
+
+  const imgUrl = document.getElementById('post-img-web-url');
+  if (imgUrl) imgUrl.value = '';
+  const imgPrev1 = document.getElementById('post-img-file-preview');
+  if (imgPrev1) imgPrev1.style.display = 'none';
+  const imgPrev2 = document.getElementById('post-img-url-preview');
+  if (imgPrev2) imgPrev2.style.display = 'none';
+
+  const linkUrl = document.getElementById('post-link-url');
+  if (linkUrl) linkUrl.value = '';
+  const linkLabel = document.getElementById('post-link-label');
+  if (linkLabel) linkLabel.value = '';
+  const linkCoverPrev = document.getElementById('post-link-cover-preview');
+  if (linkCoverPrev) linkCoverPrev.style.display = 'none';
+
+  setPostMediaType('video');
+  setVideoSourceMode('file');
+}
+
+async function handlePublishNewPost() {
+  const title = (document.getElementById('post-title')?.value || '').trim();
+  const cat = document.getElementById('post-category')?.value || 'reels';
+  const tools = (document.getElementById('post-tools')?.value || '').trim();
+  const role = (document.getElementById('post-role')?.value || '').trim();
+  const desc = (document.getElementById('post-desc')?.value || '').trim();
+
+  if (!title) {
+    showAdminToast('Please enter a project title.');
+    document.getElementById('post-title')?.focus();
+    return;
+  }
+
+  const categoryLabels = {
+    'reels': '3D Animation & Cinematic Reel',
+    'renders': '3D Renders & Stills',
+    'commercial': 'Commercial 3D Asset',
+    '3d': 'Interactive 3D Asset',
+    'character': 'Character & Physics Rigging'
+  };
+
+  const newId = portfolioWorksData.length ? Math.max(...portfolioWorksData.map(w => w.id)) + 1 : 0;
+  let finalImage = 'shoe_animation_still.jpg';
+  let videoId = '';
+  let youtubeUrl = '';
+  let hasLocalVideo = false;
+  let videoKey = '';
+  let videoFilename = '';
+  let localVideoBlob = null;
+  let linkUrl = '';
+  let linkLabel = '';
+  let linkIcon = 'link';
+  let customIconUrl = '';
+
+  const publishBtn = document.getElementById('post-publish-btn');
+  if (publishBtn) {
+    publishBtn.disabled = true;
+    publishBtn.textContent = 'Publishing Post...';
+  }
+
+  try {
+    if (newPostMediaType === 'video') {
+      if (newPostVideoMode === 'file') {
+        if (!newPostVideoFile) {
+          showAdminToast('Please select or drop an MP4 video file.');
+          if (publishBtn) {
+            publishBtn.disabled = false;
+            publishBtn.innerHTML = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:6px;"><path d="M22 2L11 13"></path><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg> Publish Post to Live Website`;
+          }
+          return;
+        }
+
+        hasLocalVideo = true;
+        videoFilename = newPostVideoFile.name;
+        videoKey = `video_work_${newId}`;
+        localVideoBlob = newPostVideoFile;
+
+        try {
+          await dbPut('assets', {
+            key: videoKey,
+            data: newPostVideoFile,
+            filename: videoFilename,
+            size: newPostVideoFile.size,
+            updatedAt: new Date().toISOString()
+          });
+        } catch(vidErr) {
+          console.warn('Could not persist video file to IndexedDB:', vidErr);
+        }
+
+        finalImage = newPostCustomCoverDataUrl || newPostVideoThumbnail || 'character_rig_still.jpg';
+      } else {
+        youtubeUrl = (document.getElementById('post-yt-url')?.value || '').trim();
+        if (youtubeUrl.includes('shorts/')) videoId = youtubeUrl.split('shorts/')[1].split('?')[0];
+        else if (youtubeUrl.includes('v=')) videoId = youtubeUrl.split('v=')[1].split('&')[0];
+        else if (youtubeUrl.includes('youtu.be/')) videoId = youtubeUrl.split('youtu.be/')[1].split('?')[0];
+
+        if (newPostCustomCoverDataUrl) {
+          finalImage = newPostCustomCoverDataUrl;
+        } else if (videoId) {
+          finalImage = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+        }
+      }
+    } else if (newPostMediaType === 'image') {
+      const webUrl = (document.getElementById('post-img-web-url')?.value || '').trim();
+      finalImage = newPostImageDataUrl || webUrl || 'shoe_animation_still.jpg';
+    } else if (newPostMediaType === 'link') {
+      linkUrl = (document.getElementById('post-link-url')?.value || '').trim();
+      linkLabel = (document.getElementById('post-link-label')?.value || '').trim() || 'View Project';
+      linkIcon = document.getElementById('post-link-icon')?.value || 'link';
+      customIconUrl = (document.getElementById('post-custom-icon-url')?.value || '').trim();
+      finalImage = newPostLinkCoverDataUrl || 'food_product_still.jpg';
+    }
+
+    const newProject = {
+      id: newId,
+      title: title,
+      category: categoryLabels[cat] || 'Production & 3D Works',
+      type: newPostMediaType === 'video' ? 'video' : (newPostMediaType === 'link' ? 'link' : 'image'),
+      hasLocalVideo,
+      videoKey,
+      videoFilename,
+      localVideoBlob,
+      videoId,
+      youtubeUrl,
+      linkUrl,
+      linkLabel,
+      linkIcon,
+      customIconUrl,
+      image: finalImage,
+      tools: tools ? tools.split(',').map(s => s.trim()).filter(Boolean) : ['Blender 4.2', 'Cycles'],
+      role: role || 'Visual Storyteller & 3D Artist',
+      description: desc || 'Original 3D production artwork created by Ige Dominion.'
+    };
+
+    portfolioWorksData.push(newProject);
+    await dbPut('projects', {
+      ...newProject,
+      localVideoBlob: null
+    });
+
+    renderAllProjectsToDOM();
+    renderAdminProjectsList();
+    const countBadge = document.getElementById('admin-works-count');
+    if (countBadge) countBadge.textContent = portfolioWorksData.length;
+
+    resetNewPostForm();
+    showAdminToast(`"${title}" published live to your website!`);
+    switchStudioTab('projects');
+
+    const newCard = document.getElementById(`admin-card-${newId}`);
+    if (newCard) newCard.scrollIntoView({ behavior: 'smooth' });
+
+  } catch(err) {
+    console.error('Failed to publish post:', err);
+    showAdminToast('An error occurred while publishing the post.');
+  } finally {
+    if (publishBtn) {
+      publishBtn.disabled = false;
+      publishBtn.innerHTML = `
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:6px;"><path d="M22 2L11 13"></path><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+        Publish Post to Live Website
+      `;
+    }
+  }
+}
+
+async function handleWorkMp4Upload(workId, input) {
+  const file = input && input.files && input.files[0];
+  if (!file) return;
+
+  const work = portfolioWorksData.find(w => w.id === workId);
+  if (!work) return;
+
+  showAdminToast(`Processing MP4 video for "${work.title}"...`);
+
+  const videoKey = `video_work_${workId}`;
+  try {
+    await dbPut('assets', {
+      key: videoKey,
+      data: file,
+      filename: file.name,
+      size: file.size,
+      updatedAt: new Date().toISOString()
+    });
+  } catch(e) {
+    console.warn('Direct MP4 save failed:', e);
+  }
+
+  work.type = 'video';
+  work.hasLocalVideo = true;
+  work.videoKey = videoKey;
+  work.videoFilename = file.name;
+  work.localVideoBlob = file;
+
+  const thumb = await extractVideoThumbnail(file);
+  if (thumb) {
+    work.image = thumb;
+  }
+
+  await dbPut('projects', {
+    ...work,
+    localVideoBlob: null
+  });
+
+  renderAllProjectsToDOM();
+  renderAdminProjectsList();
+  showAdminToast(`MP4 video attached to Work 0${workId + 1}!`);
 }
 
 // Online Platform Icons Dictionary (SVGs & Online Image URLs, Zero Emojis)
@@ -2889,21 +3461,25 @@ function renderAdminProjectsList() {
       <div id="panel-edit-video-${work.id}" class="admin-media-subpanel" style="display:${currentType === 'video' ? 'block' : 'none'};">
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:8px;">
           <div>
-            <label class="admin-label">YouTube Shorts / Video URL</label>
-            <input type="url" class="admin-input" id="edit-work-yt-${work.id}" placeholder="https://youtube.com/shorts/..." value="${work.youtubeUrl || ''}" onchange="updateWorkVideoUrl(${work.id}, this.value)">
+            <label class="admin-label">Direct MP4 Video File Upload</label>
+            <label class="admin-btn admin-btn-secondary" style="font-size:0.65rem;cursor:pointer;width:100%;padding:8px 10px;justify-content:center;display:flex;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:6px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+              ${work.hasLocalVideo ? 'Replace MP4 Video File' : 'Upload MP4 Video File'}
+              <input type="file" accept="video/mp4,video/webm,video/quicktime" style="display:none;" onchange="handleWorkMp4Upload(${work.id}, this)">
+            </label>
+            ${work.hasLocalVideo ? `<div class="admin-badge-mp4" style="margin-top:6px;"><span class="admin-badge-mp4-dot"></span> Active MP4: ${(work.videoFilename || 'video.mp4')}</div>` : ''}
           </div>
           <div>
-            <label class="admin-label">Cover Artwork / Thumbnail</label>
-            <div style="display:flex;gap:6px;">
-              <label class="admin-btn admin-btn-secondary" style="font-size:0.65rem;cursor:pointer;flex:1;padding:8px 10px;">
-                Upload Custom Cover
-                <input type="file" accept="image/*" style="display:none;" onchange="handleWorkImageUpload(${work.id}, this)">
-              </label>
-              <button type="button" class="admin-btn admin-btn-secondary" style="font-size:0.65rem;padding:8px 10px;" onclick="autoFetchYoutubeThumbForWork(${work.id})">
-                Auto-Fetch Cover
-              </button>
-            </div>
+            <label class="admin-label">Or YouTube Shorts / Video URL</label>
+            <input type="url" class="admin-input" id="edit-work-yt-${work.id}" placeholder="https://youtube.com/shorts/..." value="${work.youtubeUrl || ''}" onchange="updateWorkVideoUrl(${work.id}, this.value)">
           </div>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <label class="admin-btn admin-btn-secondary" style="font-size:0.65rem;cursor:pointer;padding:7px 12px;">
+            Upload Poster Cover Image
+            <input type="file" accept="image/*" style="display:none;" onchange="handleWorkImageUpload(${work.id}, this)">
+          </label>
+          ${work.youtubeUrl ? `<button type="button" class="admin-btn admin-btn-secondary" style="font-size:0.65rem;padding:7px 12px;" onclick="autoFetchYoutubeThumbForWork(${work.id})">Auto-Fetch Cover</button>` : ''}
         </div>
       </div>
 
@@ -3673,10 +4249,21 @@ async function loadPersistedPortfolio() {
     if (portraitEl) portraitEl.src = portraitAsset.data;
   }
 
-  // 2. Custom Projects & Images
+  // 2. Custom Projects & Images & Local Videos
   const savedProjects = await dbGetAll('projects');
   if (savedProjects && savedProjects.length) {
-    savedProjects.forEach(sp => {
+    for (const sp of savedProjects) {
+      if (sp.hasLocalVideo && sp.videoKey) {
+        try {
+          const videoAsset = await dbGet('assets', sp.videoKey);
+          if (videoAsset && videoAsset.data) {
+            sp.localVideoBlob = videoAsset.data;
+          }
+        } catch(vidErr) {
+          console.warn('Could not restore video asset for project', sp.id, vidErr);
+        }
+      }
+
       const existing = portfolioWorksData.find(w => w.id === sp.id);
       if (existing) {
         Object.assign(existing, sp);
@@ -3686,9 +4273,9 @@ async function loadPersistedPortfolio() {
         if (titleEl) titleEl.textContent = sp.title;
       } else {
         portfolioWorksData.push(sp);
-        appendProjectCardToDOM(sp);
       }
-    });
+    }
+    renderAllProjectsToDOM();
   }
 
   // 3. Custom 3D Model (.GLB)
@@ -3708,10 +4295,62 @@ async function loadPersistedPortfolio() {
   }
 }
 
+function setupPostVideoDropzone() {
+  const dropzone = document.getElementById('post-video-dropzone');
+  if (!dropzone) return;
+
+  ['dragenter', 'dragover'].forEach(eventName => {
+    dropzone.addEventListener(eventName, (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      dropzone.classList.add('dragover');
+    }, false);
+  });
+
+  ['dragleave', 'drop'].forEach(eventName => {
+    dropzone.addEventListener(eventName, (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      dropzone.classList.remove('dragover');
+    }, false);
+  });
+
+  dropzone.addEventListener('drop', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const dt = e.dataTransfer;
+    if (dt && dt.files && dt.files.length) {
+      handlePostVideoSelect({ dataTransfer: dt });
+    }
+  });
+}
+
+// Secret Trigger Key Combination: Ctrl+Shift+A, Cmd+Shift+A, Ctrl+Alt+D
+document.addEventListener('keydown', (e) => {
+  if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'A' || e.key === 'a')) {
+    e.preventDefault();
+    openAdminModal();
+  } else if (e.ctrlKey && e.altKey && (e.key === 'D' || e.key === 'd')) {
+    e.preventDefault();
+    openAdminModal();
+  }
+});
+
+// Secret Trigger URL Hash: #admin or #studio
+if (window.location.hash === '#admin' || window.location.hash === '#studio') {
+  setTimeout(() => openAdminModal(), 350);
+}
+window.addEventListener('hashchange', () => {
+  if (window.location.hash === '#admin' || window.location.hash === '#studio') {
+    openAdminModal();
+  }
+});
+
 // Initialize on DOM ready
 document.addEventListener('DOMContentLoaded', () => {
   loadPersistedPortfolio();
   setup3DViewerDropzone();
+  setupPostVideoDropzone();
 });
 
 // Dropzone drag-and-drop listener setup
@@ -3796,51 +4435,59 @@ document.addEventListener('drop', (e) => {
             <circle cx="12" cy="12" r="3"></circle>
             <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
           </svg>
-          Dominion Creator Studio
+          Dominion Studio Admin
         </h2>
-        <span id="admin-dialog-sub" class="admin-dialog-sub">Upload 3D Renders, Customize Works &amp; Update Portfolio Live</span>
+        <span id="admin-dialog-sub" class="admin-dialog-sub">Protected Administrator Portal • MP4 Video Reels, 3D Renders &amp; Posts</span>
       </div>
       <button type="button" class="admin-dialog-close" onclick="closeAdminModal()" aria-label="Close Creator Studio"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
     </div>
 
-    <!-- VIEW 1: AUTHENTICATION (SIGN UP & SIGN IN) -->
+    <!-- VIEW 1: AUTHENTICATION (PASSWORD ACCESS) -->
     <div id="admin-auth-view" class="admin-dialog-body" style="display:block;">
       <div class="admin-auth-card">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;font-weight:700;letter-spacing:2px;color:var(--white);margin-bottom:6px;text-transform:uppercase;">
-          Admin Access
+        <div style="width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--white);">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
         </div>
-        <p style="font-size:0.75rem;color:var(--muted2);margin-bottom:20px;line-height:1.6;">
-          Sign up or sign in to your creator portal to upload high-resolution renders and manage website content.
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.6rem;font-weight:700;letter-spacing:2px;color:var(--white);margin-bottom:6px;text-transform:uppercase;">
+          Dominion Studio Access
+        </div>
+        <p style="font-size:0.75rem;color:var(--muted2);margin-bottom:22px;line-height:1.6;">
+          Restricted creator portal. Enter your administrator password to manage video reels, upload MP4s, create new posts, and edit portfolio content.
         </p>
 
-        <div class="admin-auth-tabs">
-          <button type="button" id="auth-tab-signup" class="admin-auth-tab active" onclick="switchAuthMode('signup')">Sign Up</button>
-          <button type="button" id="auth-tab-signin" class="admin-auth-tab" onclick="switchAuthMode('signin')">Sign In</button>
-        </div>
-
-        <form id="admin-auth-form" onsubmit="handleAdminAuth(event)">
+        <form id="admin-password-form" onsubmit="handleAdminPasswordUnlock(event)">
           <div class="admin-form-group">
-            <label class="admin-label" for="admin-auth-email">Admin Email</label>
-            <input type="email" id="admin-auth-email" class="admin-input" value="igedominion09@gmail.com" required placeholder="name@domain.com">
+            <label class="admin-label" for="admin-pass-input">Administrator Password</label>
+            <div class="admin-pass-input-wrap">
+              <input type="password" id="admin-pass-input" class="admin-input" required placeholder="Enter administrator password..." autocomplete="current-password" style="padding-right:42px;">
+              <button type="button" class="admin-pass-toggle-btn" onclick="togglePasswordVisibility('admin-pass-input')" title="Toggle visibility" aria-label="Show password">
+                <svg id="admin-pass-eye-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+              </button>
+            </div>
+            <div id="admin-pass-error" style="display:none;color:#ef4444;font-size:0.72rem;margin-top:6px;font-weight:600;"></div>
           </div>
 
-          <div class="admin-form-group">
-            <label class="admin-label" for="admin-auth-password">Password</label>
-            <input type="password" id="admin-auth-password" class="admin-input" required placeholder="Enter password (minimum 6 characters)" minlength="6">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;font-size:0.72rem;color:var(--muted2);">
+            <label style="display:flex;align-items:center;gap:6px;cursor:pointer;">
+              <input type="checkbox" id="admin-remember-me" checked style="accent-color:var(--white);">
+              Stay signed in on this device
+            </label>
           </div>
 
-          <button type="submit" id="admin-auth-submit-btn" class="admin-btn admin-btn-primary" style="width:100%;margin-top:8px;">
-            Create Admin Account &amp; Enter
+          <button type="submit" id="admin-unlock-btn" class="admin-btn admin-btn-primary" style="width:100%;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            Unlock Creator Studio
           </button>
         </form>
 
-        <div style="margin-top:18px;padding-top:16px;border-top:1px solid var(--border);">
-          <button type="button" onclick="handleQuickAdminAccess()" class="admin-btn admin-btn-secondary" style="width:100%;font-size:0.68rem;">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path></svg> Quick Access as Dominion Ige
-          </button>
-        </div>
-        <div style="margin-top:12px;font-size:0.62rem;color:var(--muted);letter-spacing:0.5px;">
-          <span style="display:inline-flex;align-items:center;gap:6px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg> All media and modifications are saved persistently in browser storage.</span>
+        <div style="margin-top:20px;padding-top:14px;border-top:1px solid var(--border);font-size:0.65rem;color:var(--muted);line-height:1.6;">
+          <span style="display:inline-flex;align-items:center;gap:6px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg> Secure encrypted session • Passwords can be changed in settings</span>
         </div>
       </div>
     </div>
@@ -3850,171 +4497,265 @@ document.addEventListener('drop', (e) => {
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:8px;">
         <div style="display:flex;align-items:center;gap:8px;">
           <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#4ade80;"></span>
-          <span id="admin-user-display" style="font-size:0.75rem;color:var(--white);letter-spacing:1px;font-weight:600;">igedominion09@gmail.com</span>
+          <span id="admin-user-display" style="font-size:0.75rem;color:var(--white);letter-spacing:1px;font-weight:600;">Dominion Ige (Administrator)</span>
         </div>
-        <button type="button" onclick="handleAdminSignOut()" class="admin-btn admin-btn-secondary" style="padding:6px 12px;font-size:0.65rem;">
-          Sign Out
-        </button>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <button type="button" onclick="switchStudioTab('details'); setTimeout(() => { const el = document.getElementById('admin-change-pass-card'); if(el) el.scrollIntoView({behavior:'smooth'}); }, 50);" class="admin-btn admin-btn-secondary" style="padding:6px 12px;font-size:0.65rem;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:4px;"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            Change Password
+          </button>
+          <button type="button" onclick="handleAdminSignOut()" class="admin-btn admin-btn-secondary" style="padding:6px 12px;font-size:0.65rem;">
+            Sign Out &amp; Lock
+          </button>
+        </div>
       </div>
 
       <!-- Studio Navigation Tabs -->
       <div class="admin-nav-tabs">
-        <button type="button" class="admin-tab-btn active" id="tab-btn-projects" onclick="switchStudioTab('projects')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:4px;"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg> Manage Works &amp; Media</button>
-        <button type="button" class="admin-tab-btn" id="tab-btn-quickupload" onclick="switchStudioTab('quickupload')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:4px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg> Quick Media Uploader</button>
-        <button type="button" class="admin-tab-btn" id="tab-btn-glbupload" onclick="switchStudioTab('glbupload')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:4px;"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg> 3D Model (.GLB) Uploader</button>
-        <button type="button" class="admin-tab-btn" id="tab-btn-details" onclick="switchStudioTab('details')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:4px;"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg> Edit Site Info</button>
-        <button type="button" class="admin-tab-btn" id="tab-btn-backup" onclick="switchStudioTab('backup')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:4px;"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg> Backup &amp; Reset</button>
+        <button type="button" class="admin-tab-btn active" id="tab-btn-createpost" onclick="switchStudioTab('createpost')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:4px;"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          + Create New Post
+        </button>
+        <button type="button" class="admin-tab-btn" id="tab-btn-projects" onclick="switchStudioTab('projects')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:4px;"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          Manage Works (<span id="admin-works-count">5</span>)
+        </button>
+        <button type="button" class="admin-tab-btn" id="tab-btn-quickupload" onclick="switchStudioTab('quickupload')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:4px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+          Quick Media Uploader
+        </button>
+        <button type="button" class="admin-tab-btn" id="tab-btn-glbupload" onclick="switchStudioTab('glbupload')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:4px;"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+          3D Model (.GLB) Uploader
+        </button>
+        <button type="button" class="admin-tab-btn" id="tab-btn-details" onclick="switchStudioTab('details')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:4px;"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+          Site Info &amp; Security
+        </button>
+        <button type="button" class="admin-tab-btn" id="tab-btn-backup" onclick="switchStudioTab('backup')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:4px;"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+          Backup &amp; Reset
+        </button>
       </div>
 
-      <!-- TAB 1: PROJECTS & RENDERS -->
-      <div id="studio-tab-projects" style="display:block;">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:8px;">
-          <span style="font-size:0.75rem;color:var(--muted2);letter-spacing:1px;">Click 'Upload Render Image' on any work to replace the image with your own file:</span>
-          <button type="button" class="admin-btn admin-btn-primary" onclick="toggleAddProjectForm()">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:4px;"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg> Add New Work
-          </button>
-        </div>
-
-        <!-- Add Project Collapsible Form with Media Selection -->
-        <div id="add-project-box" style="display:none;background:#141414;border:1px solid rgba(255,255,255,0.2);padding:20px;margin-bottom:20px;border-radius:3px;">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
-            <h4 style="font-family:'Barlow Condensed',sans-serif;font-size:1.15rem;color:var(--white);letter-spacing:1.5px;text-transform:uppercase;margin:0;">
-              Add New Portfolio Work
-            </h4>
-            <span style="font-size:0.68rem;color:var(--muted2);letter-spacing:1px;">Select Media Type Below:</span>
-          </div>
-
-          <!-- Media Type Selector -->
-          <div class="admin-type-tabs">
-            <button type="button" class="admin-type-btn active" id="btn-add-type-image" onclick="setNewProjectMediaType('image')">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
-              Image Render
-            </button>
-            <button type="button" class="admin-type-btn" id="btn-add-type-video" onclick="setNewProjectMediaType('video')">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-              Video Reel
-            </button>
-            <button type="button" class="admin-type-btn" id="btn-add-type-link" onclick="setNewProjectMediaType('link')">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-              External / 3D Link
-            </button>
-          </div>
-          <input type="hidden" id="new-proj-type" value="image">
-
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-            <div class="admin-form-group">
-              <label class="admin-label">Project Title</label>
-              <input type="text" id="new-proj-title" class="admin-input" placeholder="e.g. Cyberpunk Hoverbike Sequence" required>
+      <!-- TAB 1: CREATE NEW POST (DEDICATED POST CREATION STUDIO) -->
+      <div id="studio-tab-createpost" style="display:block;">
+        <div style="background:#141414;border:1px solid rgba(255,255,255,0.18);padding:22px;border-radius:4px;margin-bottom:20px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;border-bottom:1px solid var(--border);padding-bottom:14px;flex-wrap:wrap;gap:8px;">
+            <div>
+              <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1.35rem;font-weight:700;letter-spacing:2px;color:var(--white);margin:0 0 4px;text-transform:uppercase;">
+                Create &amp; Publish New Portfolio Work
+              </h3>
+              <p style="font-size:0.75rem;color:var(--muted2);margin:0;">
+                Add direct MP4 video reels, 3D renders, or interactive experiences to your live showcase.
+              </p>
             </div>
-            <div class="admin-form-group">
-              <label class="admin-label">Category</label>
-              <select id="new-proj-cat" class="admin-select">
+            <span class="online-icon-preview" style="border-color:rgba(74,222,128,0.3);color:#4ade80;">● Live Portfolio Sync</span>
+          </div>
+
+          <!-- Media Format Selection -->
+          <div style="margin-bottom:16px;">
+            <label class="admin-label">Step 1: Choose Media Format</label>
+            <div class="admin-type-tabs">
+              <button type="button" class="admin-type-btn active" id="btn-post-type-video" onclick="setPostMediaType('video')">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                Video Reel (MP4 Upload / YouTube)
+              </button>
+              <button type="button" class="admin-type-btn" id="btn-post-type-image" onclick="setPostMediaType('image')">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                Image Render (High-Res)
+              </button>
+              <button type="button" class="admin-type-btn" id="btn-post-type-link" onclick="setPostMediaType('link')">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                External / 3D Link
+              </button>
+            </div>
+            <input type="hidden" id="post-active-type" value="video">
+          </div>
+
+          <!-- Basic Project Info -->
+          <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:14px;margin-bottom:14px;">
+            <div class="admin-form-group" style="margin-bottom:0;">
+              <label class="admin-label" for="post-title">Project Title *</label>
+              <input type="text" id="post-title" class="admin-input" placeholder="e.g. Cyber City Night Chase Cinematic" required>
+            </div>
+            <div class="admin-form-group" style="margin-bottom:0;">
+              <label class="admin-label" for="post-category">Category</label>
+              <select id="post-category" class="admin-select">
+                <option value="reels">3D Animation &amp; Cinematic Reel</option>
                 <option value="renders">3D Renders &amp; Stills</option>
-                <option value="reels">Animation Reels &amp; Videos</option>
-                <option value="commercial">Commercial Asset</option>
-                <option value="3d">Interactive 3D / WebGL</option>
+                <option value="commercial">Commercial 3D Product Asset</option>
+                <option value="rigging">Physics Rigging &amp; Action Reel</option>
+                <option value="3d">Interactive 3D Asset</option>
               </select>
             </div>
           </div>
 
-          <!-- Dynamic Panel: Image Fields -->
-          <div id="new-proj-panel-image" class="admin-media-subpanel" style="display:block;">
-            <div style="font-size:0.68rem;letter-spacing:1px;color:var(--white);font-weight:700;text-transform:uppercase;margin-bottom:10px;">
-              Image Render Configuration
+          <!-- Video Format Configuration Panel -->
+          <div id="post-panel-video" class="admin-media-subpanel" style="display:block;margin-bottom:16px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px;">
+              <span style="font-size:0.7rem;letter-spacing:1.5px;color:var(--white);font-weight:700;text-transform:uppercase;">
+                Video Source &amp; Playback Setup
+              </span>
+              <div style="display:flex;gap:4px;">
+                <button type="button" id="subtab-vid-mp4" class="admin-type-btn active" style="font-size:0.62rem;padding:4px 10px;" onclick="setVideoSourceMode('mp4')">
+                  ● Upload MP4 File
+                </button>
+                <button type="button" id="subtab-vid-yt" class="admin-type-btn" style="font-size:0.62rem;padding:4px 10px;" onclick="setVideoSourceMode('yt')">
+                  YouTube / Web URL
+                </button>
+              </div>
+            </div>
+            <input type="hidden" id="post-video-source-mode" value="mp4">
+
+            <!-- MP4 File Upload Box -->
+            <div id="post-vid-mp4-wrap">
+              <div class="admin-dropzone" id="post-video-dropzone" onclick="document.getElementById('post-video-file-input').click()" style="padding:22px;background:#090909;border:1px dashed var(--border-light);">
+                <input type="file" id="post-video-file-input" accept="video/mp4,video/webm,video/quicktime" onchange="handlePostVideoSelect(event)" style="display:none;">
+                <div style="margin-bottom:8px;">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color:var(--white);">
+                    <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                    <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                  </svg>
+                </div>
+                <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;color:var(--white);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:4px;">
+                  Select or Drop MP4 Video File Here
+                </div>
+                <p style="font-size:0.72rem;color:var(--muted2);margin:0;">
+                  Supports MP4, WebM, MOV files • High definition video playback with sound &amp; theater controls
+                </p>
+              </div>
+
+              <!-- MP4 Live Preview Box -->
+              <div id="post-video-preview-box" style="display:none;margin-top:12px;background:#090909;border:1px solid var(--border);padding:14px;">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+                  <span id="post-video-filename" style="font-size:0.75rem;color:#4ade80;font-weight:600;letter-spacing:1px;"></span>
+                  <span id="post-video-filesize" style="font-size:0.68rem;color:var(--muted2);"></span>
+                </div>
+                <video id="post-video-element" controls playsinline style="width:100%;max-height:220px;background:#000;border-radius:2px;"></video>
+                <div style="display:flex;align-items:center;gap:12px;margin-top:10px;flex-wrap:wrap;">
+                  <div style="font-size:0.68rem;color:var(--muted2);">
+                    Auto-generated video thumbnail ready. Or upload custom cover artwork below:
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- YouTube URL Box -->
+            <div id="post-vid-yt-wrap" style="display:none;">
+              <div class="admin-form-group" style="margin-bottom:8px;">
+                <label class="admin-label">YouTube Shorts or Video URL</label>
+                <input type="url" id="post-yt-url" class="admin-input" placeholder="https://youtube.com/shorts/... or https://youtu.be/..." oninput="handlePostYoutubeUrlChange(this.value)">
+              </div>
+              <div id="post-yt-thumb-preview-wrap" style="display:none;align-items:center;gap:10px;margin-top:8px;">
+                <img id="post-yt-thumb-preview" src="" alt="YouTube Cover" style="width:100px;height:60px;object-fit:cover;border:1px solid var(--border);">
+                <span style="font-size:0.7rem;color:#4ade80;">✓ High-res YouTube cover thumbnail fetched</span>
+              </div>
+            </div>
+
+            <!-- Custom Cover Option -->
+            <div style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+              <label class="admin-btn admin-btn-secondary" style="font-size:0.65rem;cursor:pointer;padding:6px 12px;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:4px;"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                Upload Custom Cover Artwork (Optional)
+                <input type="file" id="post-custom-cover-input" accept="image/*" style="display:none;" onchange="handlePostCustomCoverSelect(event)">
+              </label>
+              <span id="post-custom-cover-status" style="font-size:0.68rem;color:var(--muted2);">Default: First frame extracted from video</span>
+            </div>
+          </div>
+
+          <!-- Image Format Configuration Panel -->
+          <div id="post-panel-image" class="admin-media-subpanel" style="display:none;margin-bottom:16px;">
+            <div style="font-size:0.7rem;letter-spacing:1.5px;color:var(--white);font-weight:700;text-transform:uppercase;margin-bottom:10px;">
+              Artwork / Render Image Upload
             </div>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-              <div class="admin-form-group">
+              <div class="admin-form-group" style="margin-bottom:0;">
                 <label class="admin-label">Upload Artwork File (PNG, JPG, WebP)</label>
-                <input type="file" id="new-proj-file" accept="image/*" class="admin-input" style="padding:6px;">
+                <input type="file" id="post-image-file-input" accept="image/*" class="admin-input" style="padding:6px;" onchange="handlePostImageFileSelect(event)">
               </div>
-              <div class="admin-form-group">
+              <div class="admin-form-group" style="margin-bottom:0;">
                 <label class="admin-label">Or Image Web URL</label>
-                <input type="url" id="new-proj-img-url" class="admin-input" placeholder="https://images.example.com/render.jpg">
+                <input type="url" id="post-image-url" class="admin-input" placeholder="https://images.example.com/render.jpg" oninput="handlePostImageUrlInput(this.value)">
               </div>
+            </div>
+            <div id="post-img-preview-wrap" style="display:none;margin-top:10px;align-items:center;gap:12px;">
+              <img id="post-img-preview" src="" alt="Artwork Preview" style="width:120px;height:80px;object-fit:cover;border:1px solid var(--border);border-radius:2px;">
+              <span style="font-size:0.7rem;color:#4ade80;">✓ Artwork preview loaded</span>
             </div>
           </div>
 
-          <!-- Dynamic Panel: Video Fields -->
-          <div id="new-proj-panel-video" class="admin-media-subpanel" style="display:none;">
-            <div style="font-size:0.68rem;letter-spacing:1px;color:var(--white);font-weight:700;text-transform:uppercase;margin-bottom:10px;">
-              Video Reel Configuration
+          <!-- Link Format Configuration Panel -->
+          <div id="post-panel-link" class="admin-media-subpanel" style="display:none;margin-bottom:16px;">
+            <div style="font-size:0.7rem;letter-spacing:1.5px;color:var(--white);font-weight:700;text-transform:uppercase;margin-bottom:10px;">
+              External 3D Portfolio Link Setup
             </div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-              <div class="admin-form-group">
-                <label class="admin-label">Video / YouTube / Shorts URL</label>
-                <input type="url" id="new-proj-yt" class="admin-input" placeholder="https://youtube.com/shorts/... or Vimeo / MP4">
-              </div>
-              <div class="admin-form-group">
-                <label class="admin-label">Custom Cover Thumbnail (Optional)</label>
-                <input type="file" id="new-proj-video-cover" accept="image/*" class="admin-input" style="padding:6px;">
-              </div>
-            </div>
-            <div style="font-size:0.68rem;color:var(--muted2);">If no custom cover is uploaded, the YouTube high-resolution thumbnail will be automatically fetched.</div>
-          </div>
-
-          <!-- Dynamic Panel: Link Fields -->
-          <div id="new-proj-panel-link" class="admin-media-subpanel" style="display:none;">
-            <div style="font-size:0.68rem;letter-spacing:1px;color:var(--white);font-weight:700;text-transform:uppercase;margin-bottom:10px;">
-              External Destination &amp; Online Icon Configuration
-            </div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-              <div class="admin-form-group">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:10px;">
+              <div class="admin-form-group" style="margin-bottom:0;">
                 <label class="admin-label">Destination URL</label>
-                <input type="url" id="new-proj-link-url" class="admin-input" placeholder="https://artstation.com/artwork/... or Behance / Sketchfab">
+                <input type="url" id="post-link-url" class="admin-input" placeholder="https://artstation.com/... or Behance / Sketchfab">
               </div>
-              <div class="admin-form-group">
-                <label class="admin-label">Link Button Label</label>
-                <input type="text" id="new-proj-link-label" class="admin-input" value="View on ArtStation" placeholder="e.g. View on ArtStation / Sketchfab">
+              <div class="admin-form-group" style="margin-bottom:0;">
+                <label class="admin-label">Button Text</label>
+                <input type="text" id="post-link-label" class="admin-input" value="View on ArtStation">
               </div>
             </div>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-              <div class="admin-form-group">
+              <div class="admin-form-group" style="margin-bottom:0;">
                 <label class="admin-label">Platform Icon</label>
-                <select id="new-proj-link-icon" class="admin-select" onchange="toggleCustomIconInput(this.value, 'new-proj-custom-icon-wrap')">
-                  <option value="artstation">ArtStation (Online Icon)</option>
-                  <option value="behance">Behance (Online Icon)</option>
-                  <option value="sketchfab">Sketchfab 3D (Online Icon)</option>
-                  <option value="youtube">YouTube (Online Icon)</option>
-                  <option value="vimeo">Vimeo (Online Icon)</option>
-                  <option value="instagram">Instagram (Online Icon)</option>
-                  <option value="link" selected>External Link (SVG Icon)</option>
-                  <option value="custom">Custom Online Icon URL (SVG/PNG)</option>
+                <select id="post-link-icon" class="admin-select">
+                  <option value="artstation">ArtStation</option>
+                  <option value="behance">Behance</option>
+                  <option value="sketchfab">Sketchfab 3D</option>
+                  <option value="youtube">YouTube</option>
+                  <option value="vimeo">Vimeo</option>
+                  <option value="link" selected>External Link</option>
                 </select>
               </div>
-              <div class="admin-form-group" id="new-proj-custom-icon-wrap" style="display:none;">
-                <label class="admin-label">Custom Online Icon URL</label>
-                <input type="url" id="new-proj-custom-icon-url" class="admin-input" placeholder="https://.../icon.svg or .png">
+              <div class="admin-form-group" style="margin-bottom:0;">
+                <label class="admin-label">Upload Cover Artwork Image</label>
+                <input type="file" id="post-link-cover" accept="image/*" class="admin-input" style="padding:6px;" onchange="handlePostLinkCoverSelect(event)">
               </div>
-            </div>
-            <div class="admin-form-group" style="margin-bottom:0;">
-              <label class="admin-label">Upload Project Cover Artwork Image</label>
-              <input type="file" id="new-proj-link-cover" accept="image/*" class="admin-input" style="padding:6px;">
             </div>
           </div>
 
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-            <div class="admin-form-group">
-              <label class="admin-label">Tools &amp; Software (comma separated)</label>
-              <input type="text" id="new-proj-tools" class="admin-input" placeholder="Blender, Cycles, Cascadeur">
+          <!-- Production Metadata -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;">
+            <div class="admin-form-group" style="margin-bottom:0;">
+              <label class="admin-label" for="post-tools">Production Software / Tools</label>
+              <input type="text" id="post-tools" class="admin-input" value="Cascadeur, Blender Cycles, After Effects" placeholder="Blender, Cycles, Cascadeur">
             </div>
-            <div class="admin-form-group">
-              <label class="admin-label">Your Role / Discipline</label>
-              <input type="text" id="new-proj-role" class="admin-input" value="Visual Storyteller &amp; 3D Artist">
+            <div class="admin-form-group" style="margin-bottom:0;">
+              <label class="admin-label" for="post-role">Artist Role &amp; Discipline</label>
+              <input type="text" id="post-role" class="admin-input" value="Visual Storyteller, Character Modeling &amp; Lighting">
             </div>
           </div>
 
           <div class="admin-form-group">
-            <label class="admin-label">Project Description</label>
-            <textarea id="new-proj-desc" class="admin-textarea" rows="2" placeholder="Describe the creative direction, physics, lighting, or story..."></textarea>
+            <label class="admin-label" for="post-description">Project Description &amp; Narrative Concept</label>
+            <textarea id="post-description" class="admin-textarea" rows="3" placeholder="Describe the visual storytelling, character choreography, physics simulation, or lighting concept..."></textarea>
           </div>
 
-          <div style="display:flex;gap:10px;">
-            <button type="button" onclick="handleCreateProject()" class="admin-btn admin-btn-primary">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-              Create &amp; Publish Work
+          <!-- Publish Action Button -->
+          <div style="display:flex;gap:12px;align-items:center;padding-top:10px;border-top:1px solid var(--border);">
+            <button type="button" id="post-publish-btn" onclick="handlePublishNewPost()" class="admin-btn admin-btn-primary" style="padding:12px 24px;font-size:0.8rem;letter-spacing:2px;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:6px;"><path d="M22 2L11 13"></path><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+              Publish Post to Live Website
             </button>
-            <button type="button" onclick="toggleAddProjectForm(false)" class="admin-btn admin-btn-secondary">Cancel</button>
+            <button type="button" onclick="resetNewPostForm()" class="admin-btn admin-btn-secondary">
+              Clear Form
+            </button>
           </div>
+        </div>
+      </div>
+
+      <!-- TAB 2: PROJECTS & RENDERS (MANAGE WORKS) -->
+      <div id="studio-tab-projects" style="display:none;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:8px;">
+          <span style="font-size:0.75rem;color:var(--muted2);letter-spacing:1px;">Manage your portfolio works, upload MP4 video files, or replace artwork:</span>
+          <button type="button" class="admin-btn admin-btn-primary" onclick="switchStudioTab('createpost')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:4px;"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg> + Add New Work
+          </button>
         </div>
 
         <!-- Project Items List -->
@@ -4138,6 +4879,38 @@ document.addEventListener('drop', (e) => {
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:6px;"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg> Save &amp; Apply Changes to Live Website
           </button>
         </form>
+
+        <!-- Password & Security Management -->
+        <div id="admin-change-pass-card" style="background:#141414;border:1px solid rgba(255,255,255,0.18);padding:20px;border-radius:4px;margin-top:22px;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--white);"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            <h4 style="font-family:'Barlow Condensed',sans-serif;font-size:1.15rem;color:var(--white);letter-spacing:1.5px;text-transform:uppercase;margin:0;">
+              Administrator Password &amp; Studio Security
+            </h4>
+          </div>
+          <p style="font-size:0.75rem;color:var(--muted2);margin-bottom:14px;line-height:1.6;">
+            Change the password required to unlock Dominion Creator Studio. Default master password: <code style="color:#4ade80;background:rgba(74,222,128,0.1);padding:2px 6px;border-radius:2px;">dominion2026</code>
+          </p>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:12px;">
+            <div class="admin-form-group" style="margin-bottom:0;">
+              <label class="admin-label" for="admin-curr-pass">Current Password</label>
+              <input type="password" id="admin-curr-pass" class="admin-input" placeholder="Current password">
+            </div>
+            <div class="admin-form-group" style="margin-bottom:0;">
+              <label class="admin-label" for="admin-new-pass">New Password</label>
+              <input type="password" id="admin-new-pass" class="admin-input" placeholder="New password (min 6 chars)">
+            </div>
+            <div class="admin-form-group" style="margin-bottom:0;">
+              <label class="admin-label" for="admin-confirm-pass">Confirm Password</label>
+              <input type="password" id="admin-confirm-pass" class="admin-input" placeholder="Confirm new password">
+            </div>
+          </div>
+          <div id="admin-change-pass-msg" style="display:none;font-size:0.72rem;margin-bottom:10px;font-weight:600;"></div>
+          <button type="button" onclick="handleUpdateAdminPassword()" class="admin-btn admin-btn-primary" style="font-size:0.72rem;">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:6px;"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path></svg>
+            Update Admin Password
+          </button>
+        </div>
       </div>
 
       <!-- TAB 4: BACKUP & DATA -->
