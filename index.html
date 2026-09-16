@@ -9,8 +9,10 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="format-detection" content="telephone=no">
 <meta name="google-site-verification" content="P7RHXUT2PxFNodFLhMnYBNHiipeA6gmp6KHkdikQPME">
-<title>Ige Dominion | Visual Storyteller, 3D Animator, Motion Designer & Web Developer</title>
-<meta name="description" content="Portfolio of Ige Dominion — Visual Storyteller, 3D Animator, Motion Designer, and Web Developer based in Abuja, Nigeria. Featuring interactive 3D model viewer, GLB upload, and production reels.">
+<title>Dominion Ige - 3D Animator Portfolio</title>
+<meta name="description" content="Interactive cinematic dark monochrome portfolio for Dominion Ige, Visual Artist, 3D Animator, Motion Designer, and Web Developer featuring interactive 3D model viewport with GLB upload, project breakdowns, video showreels, and core skills.">
+<meta property="og:title" content="Dominion Ige - 3D Animator Portfolio">
+<meta property="og:description" content="Interactive cinematic dark monochrome portfolio for Dominion Ige, Visual Artist, 3D Animator, Motion Designer, and Web Developer featuring interactive 3D model viewport with GLB upload, project breakdowns, video showreels, and core skills.">
 
 <script>
 // Error resilience shield for third-party CDNs and iframe fetch calls
@@ -41,6 +43,17 @@ window.addEventListener('error', function(event) {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
+<!-- Three.js CDN & GLTFLoader for Cinematic Hero Background & 3D Avatar -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="./GLTFLoader.js"></script>
+<script>
+if (typeof THREE !== 'undefined' && typeof THREE.GLTFLoader === 'undefined') {
+  const s = document.createElement('script');
+  s.src = 'https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js';
+  document.head.appendChild(s);
+}
+</script>
+
 <!-- Google Model Viewer CDN -->
 <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
 
@@ -60,6 +73,10 @@ window.addEventListener('error', function(event) {
   --border:#242426;
   --border-light:rgba(255,255,255,0.16);
   --border-focus:rgba(255,255,255,0.4);
+  --accent:#FFFFFF;
+  --accent-soft:rgba(255,255,255,0.08);
+  --accent-border:rgba(255,255,255,0.22);
+  --accent-glow:rgba(255,255,255,0.18);
 }
 html{scroll-behavior:smooth}
 body{background:var(--dark);color:var(--text);font-family:'Barlow',sans-serif;font-weight:300;overflow-x:hidden}
@@ -79,10 +96,20 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 
 /* ── HERO */
 .hero{min-height:100vh;display:grid;place-items:center;text-align:center;position:relative;overflow:hidden;padding:120px 24px 80px}
-.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(255,255,255,.04) 0%,transparent 70%)}
-.hero-lines{position:absolute;inset:0;overflow:hidden;pointer-events:none}
-.hero-lines::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:900px;height:900px;border:1px solid rgba(255,255,255,.03);border-radius:50%;animation:breathe 8s ease-in-out infinite}
-.hero-lines::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;border:1px solid rgba(255,255,255,.05);border-radius:50%;animation:breathe 8s ease-in-out infinite .5s}
+.hero-three-canvas{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  z-index:1;
+  pointer-events:none;
+  -webkit-mask-image:linear-gradient(to bottom, #000 0%, #000 58%, rgba(0,0,0,0.6) 74%, transparent 92%);
+  mask-image:linear-gradient(to bottom, #000 0%, #000 58%, rgba(0,0,0,0.6) 74%, transparent 92%);
+}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(255,255,255,.04) 0%,rgba(5,5,5,0) 70%);z-index:1;pointer-events:none}
+.hero-lines{display:none}
+.hero-lines::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:900px;height:900px;border:1px solid rgba(255,255,255,.04);border-radius:50%;animation:breathe 8s ease-in-out infinite}
+.hero-lines::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;border:1px solid rgba(255,255,255,.03);border-radius:50%;animation:breathe 8s ease-in-out infinite .5s}
 @keyframes breathe{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.04)}}
 .hero-inner{position:relative;z-index:2;max-width:900px}
 .hero-tag{display:inline-flex;align-items:center;gap:12px;margin-bottom:36px;opacity:1;animation:fadeUp .8s .2s forwards}
@@ -108,26 +135,183 @@ h1.hero-name em{font-style:normal;color:var(--white);display:block;letter-spacin
 }
 .role-chip.badge-in-view, .skill-badge.badge-in-view, .software-badge.badge-in-view{
   border-color:rgba(255,255,255,.3);
-  background:rgba(255,255,255,.06);
+  background:rgba(255,255,255,.05);
 }
 .role-chip:hover, .skill-badge:hover, .software-badge:hover{
   transform:translateY(-2px) !important;
   border-color:var(--white) !important;
-  background:rgba(255,255,255,.12) !important;
+  background:rgba(255,255,255,.14) !important;
   color:var(--white) !important;
 }
 
-.skills-stack-wrap{margin-top:48px;padding-top:40px;border-top:1px solid var(--border)}
-.skills-stack-title{font-size:.65rem;letter-spacing:4px;text-transform:uppercase;color:var(--white);margin-bottom:20px;display:flex;align-items:center;gap:12px}
-.skills-stack-title::after{content:'';flex:1;height:1px;background:var(--border)}
-.skills-badges-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-@media(max-width:768px){.skills-badges-grid{grid-template-columns:1fr}}
-.tool-card{background:var(--dark3);border:1px solid var(--border);padding:24px 22px;transition:border-color .3s ease,transform .3s ease;position:relative}
-.tool-card:hover{border-color:var(--border-focus);transform:translateY(-2px)}
-.tool-card-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
-.tool-card-name{font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;font-weight:700;letter-spacing:1px;color:var(--white)}
-.tool-card-badge{font-size:.55rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);padding:3px 8px}
-.tool-card-desc{font-size:.82rem;color:var(--muted2);line-height:1.7}
+/* ── SOFTWARE & SKILLS BADGES (DARK, CINEMATIC MONOCHROME WHITE & BLACK THEME) */
+.skills-stack-wrap{margin-top:56px;padding-top:44px;border-top:1px solid var(--border)}
+.skills-stack-title{font-size:.68rem;letter-spacing:4.5px;text-transform:uppercase;color:var(--white);margin-bottom:26px;display:flex;align-items:center;gap:14px;font-weight:600}
+.skills-stack-title::after{content:'';flex:1;height:1px;background:linear-gradient(90deg, rgba(255,255,255,0.3), transparent)}
+.skills-badges-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+  gap:18px;
+}
+@media(max-width:640px){
+  .skills-badges-grid{grid-template-columns:1fr}
+}
+
+.tool-card{
+  background:linear-gradient(145deg, rgba(20,20,22,0.92) 0%, rgba(10,10,12,0.96) 100%);
+  border:1px solid rgba(255,255,255,0.09);
+  border-radius:4px;
+  padding:24px 22px;
+  position:relative;
+  overflow:hidden;
+  transition:all .45s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow:0 4px 24px rgba(0,0,0,0.35);
+  /* Initial hidden state for staggered entrance */
+  opacity:0;
+  transform:translateY(28px) scale(0.97);
+  will-change:transform, opacity;
+}
+
+.tool-card::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:2px;
+  background:linear-gradient(90deg, transparent, rgba(255,255,255,0.65), transparent);
+  opacity:0;
+  transition:opacity .4s ease;
+}
+
+.tool-card::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at top right, rgba(255,255,255,0.08), transparent 65%);
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .4s ease;
+}
+
+/* Staggered entrance active class */
+.tool-card.badge-revealed{
+  opacity:1;
+  transform:translateY(0) scale(1);
+}
+
+/* Hover effect */
+.tool-card:hover{
+  border-color:rgba(255,255,255,0.45);
+  transform:translateY(-6px);
+  box-shadow:0 16px 36px rgba(0,0,0,0.7), 0 0 24px rgba(255,255,255,0.12);
+}
+
+.tool-card:hover::before,
+.tool-card:hover::after{
+  opacity:1;
+}
+
+.tool-card:hover .tool-card-icon{
+  transform:scale(1.08) rotate(3deg);
+  border-color:var(--white);
+  box-shadow:0 0 16px rgba(255,255,255,0.28);
+  color:var(--white);
+}
+
+.tool-card:hover .tool-card-name{
+  color:var(--white);
+}
+
+.tool-card-head{
+  display:flex;
+  align-items:flex-start;
+  gap:14px;
+  margin-bottom:14px;
+}
+
+.tool-card-icon{
+  width:46px;
+  height:46px;
+  border-radius:6px;
+  background:linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+  border:1px solid rgba(255,255,255,0.18);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--white);
+  flex-shrink:0;
+  transition:all .35s ease;
+}
+
+.tool-card-head-content{
+  flex:1;
+  min-width:0;
+}
+
+.tool-card-name{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:1.45rem;
+  font-weight:700;
+  letter-spacing:1px;
+  color:var(--white);
+  line-height:1.15;
+  transition:color .3s ease;
+}
+
+.tool-card-role{
+  font-size:0.6rem;
+  letter-spacing:1.8px;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-top:2px;
+}
+
+.tool-card-badge{
+  font-size:.55rem;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  color:var(--white);
+  background:rgba(255,255,255,0.07);
+  border:1px solid rgba(255,255,255,0.24);
+  padding:2px 7px;
+  border-radius:2px;
+  display:inline-block;
+  margin-top:6px;
+  font-weight:600;
+}
+
+.tool-card-desc{
+  font-size:.82rem;
+  color:var(--muted2);
+  line-height:1.7;
+  margin-bottom:14px;
+}
+
+.tool-card-footer{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding-top:10px;
+  border-top:1px solid rgba(255,255,255,0.05);
+  font-size:0.62rem;
+  color:var(--muted);
+  letter-spacing:1px;
+}
+
+.tool-card-tag{
+  color:rgba(255,255,255,0.7);
+  font-weight:500;
+}
+
+.tool-card-pill{
+  font-size:0.58rem;
+  color:var(--white);
+  border:1px solid rgba(255,255,255,0.22);
+  padding:2px 7px;
+  border-radius:2px;
+  background:rgba(255,255,255,0.06);
+}
 
 .hero-btns{display:flex;justify-content:center;gap:16px;margin-top:44px;flex-wrap:wrap;opacity:1;animation:fadeUp .9s .75s forwards}
 .btn-white{background:var(--white);color:var(--dark);padding:14px 40px;font-size:.7rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;text-decoration:none;display:inline-block;transition:background .2s,transform .2s;cursor:pointer}
@@ -1670,6 +1854,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:36px 56
 
 <!-- HERO -->
 <section class="hero" id="home">
+  <canvas id="hero-three-canvas" class="hero-three-canvas"></canvas>
   <div class="hero-bg"></div>
   <div class="hero-lines"></div>
   <div class="hero-inner">
@@ -1803,37 +1988,181 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:36px 56
   </div>
 
   <!-- Software & Pipeline Skill Badges -->
-  <div class="skills-stack-wrap reveal in">
+  <div class="skills-stack-wrap" id="software-skills-wrap">
     <div class="skills-stack-title">
-      <span>Dedicated Production Suite</span>
+      <span>Software &amp; Skills • Dedicated Production Suite</span>
     </div>
-    <div class="skills-badges-grid">
-      <!-- Tool 1: Blender -->
-      <div class="tool-card software-badge">
+    <div class="skills-badges-grid" id="software-skills-grid">
+      
+      <!-- Badge 1: Blender -->
+      <div class="tool-card software-badge" data-badge-id="blender">
         <div class="tool-card-head">
-          <span class="tool-card-name">Blender 3D</span>
-          <span class="tool-card-badge">Core 3D Production</span>
+          <div class="tool-card-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3.5"></circle>
+              <path d="M12 2a10 10 0 0 1 10 10 10 10 0 0 1-10 10c-3.2 0-6.1-1.5-8-3.9"></path>
+              <path d="M7 10C5.5 8 5 5 7 3s6 .5 8 2.5"></path>
+            </svg>
+          </div>
+          <div class="tool-card-head-content">
+            <div class="tool-card-name">Blender</div>
+            <div class="tool-card-role">Primary 3D DCC Suite</div>
+            <span class="tool-card-badge">Core Production</span>
+          </div>
         </div>
-        <p class="tool-card-desc">High-End 3D Product &amp; Character Modeling, Realistic Textures, Cinematic Lighting, and Photorealistic Visuals.</p>
+        <p class="tool-card-desc">End-to-end 3D creation pipeline: complex PBR procedural node materials, geometry nodes, asset optimization, and photorealistic raytraced rendering in Cycles X.</p>
+        <div class="tool-card-footer">
+          <span class="tool-card-tag">Cycles X • Eevee Next</span>
+          <span class="tool-card-pill">Mastery</span>
+        </div>
       </div>
 
-      <!-- Tool 2: Adobe After Effects -->
-      <div class="tool-card software-badge">
+      <!-- Badge 2: Unreal Engine -->
+      <div class="tool-card software-badge" data-badge-id="unreal-engine">
         <div class="tool-card-head">
-          <span class="tool-card-name">Adobe After Effects</span>
-          <span class="tool-card-badge">Motion &amp; VFX</span>
+          <div class="tool-card-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M8 8v5a4 4 0 0 0 8 0V8"></path>
+              <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
+          </div>
+          <div class="tool-card-head-content">
+            <div class="tool-card-name">Unreal Engine</div>
+            <div class="tool-card-role">Real-Time &amp; Cinematics</div>
+            <span class="tool-card-badge">Virtual Production</span>
+          </div>
         </div>
-        <p class="tool-card-desc">Kinetic Typography, Commercial Motion Graphics, Visual Effects Compositing, and High-Impact Video Grading.</p>
+        <p class="tool-card-desc">High-fidelity virtual environments, Lumen dynamic global illumination, Nanite micro-polygon geometry, and Sequencer timeline camera choreography for real-time storytelling.</p>
+        <div class="tool-card-footer">
+          <span class="tool-card-tag">UE5 • Lumen &amp; Nanite</span>
+          <span class="tool-card-pill">Cinematic</span>
+        </div>
       </div>
 
-      <!-- Tool 3: Cascadeur -->
-      <div class="tool-card software-badge">
+      <!-- Badge 3: Adobe After Effects -->
+      <div class="tool-card software-badge" data-badge-id="after-effects">
         <div class="tool-card-head">
-          <span class="tool-card-name">Cascadeur</span>
-          <span class="tool-card-badge">Character Animation</span>
+          <div class="tool-card-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="3"></rect>
+              <path d="M7 16l3-8 3 8"></path>
+              <line x1="8" y1="13" x2="12" y2="13"></line>
+              <path d="M15 11h2.5c.8 0 1.5.7 1.5 1.5v0c0 .8-.7 1.5-1.5 1.5H15v2h3"></path>
+            </svg>
+          </div>
+          <div class="tool-card-head-content">
+            <div class="tool-card-name">Adobe After Effects</div>
+            <div class="tool-card-role">Motion &amp; Post-Production</div>
+            <span class="tool-card-badge">Motion &amp; VFX</span>
+          </div>
         </div>
-        <p class="tool-card-desc">Dynamic Character Choreography, Natural Physics Motion, Action Staging, and Cinematic Movement.</p>
+        <p class="tool-card-desc">Commercial kinetic typography, multi-pass 3D EXR compositing, motion tracking, chromatic aberration styling, and high-impact cinematic color grading.</p>
+        <div class="tool-card-footer">
+          <span class="tool-card-tag">Motion Design • Grading</span>
+          <span class="tool-card-pill">Advanced</span>
+        </div>
       </div>
+
+      <!-- Badge 4: 3D Modeling -->
+      <div class="tool-card software-badge" data-badge-id="3d-modeling">
+        <div class="tool-card-head">
+          <div class="tool-card-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+              <line x1="12" y1="22.08" x2="12" y2="12"></line>
+            </svg>
+          </div>
+          <div class="tool-card-head-content">
+            <div class="tool-card-name">3D Modeling</div>
+            <div class="tool-card-role">Geometry &amp; Asset Creation</div>
+            <span class="tool-card-badge">Topology &amp; Form</span>
+          </div>
+        </div>
+        <p class="tool-card-desc">Hard-surface mechanical modeling, organic mesh detailing, non-destructive subdivision workflows, high-to-low poly normal baking, and clean unwrapped UV layouts.</p>
+        <div class="tool-card-footer">
+          <span class="tool-card-tag">Clean Quads • Sub-D</span>
+          <span class="tool-card-pill">Production</span>
+        </div>
+      </div>
+
+      <!-- Badge 5: Rigging -->
+      <div class="tool-card software-badge" data-badge-id="rigging">
+        <div class="tool-card-head">
+          <div class="tool-card-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="5" cy="6" r="3"></circle>
+              <circle cx="19" cy="6" r="3"></circle>
+              <circle cx="12" cy="18" r="3"></circle>
+              <line x1="7.5" y1="7.5" x2="10.5" y2="15.5"></line>
+              <line x1="16.5" y1="7.5" x2="13.5" y2="15.5"></line>
+              <line x1="8" y1="6" x2="16" y2="6"></line>
+            </svg>
+          </div>
+          <div class="tool-card-head-content">
+            <div class="tool-card-name">Rigging</div>
+            <div class="tool-card-role">Armatures &amp; Kinematics</div>
+            <span class="tool-card-badge">Technical Art</span>
+          </div>
+        </div>
+        <p class="tool-card-desc">Robust dual-chain IK/FK skeletal armatures, facial blendshapes &amp; morph targets, bendy-bone facial deformation, and physics-assisted character movement choreography.</p>
+        <div class="tool-card-footer">
+          <span class="tool-card-tag">IK / FK • Cascadeur Physics</span>
+          <span class="tool-card-pill">Dynamic</span>
+        </div>
+      </div>
+
+      <!-- Badge 6: Lighting -->
+      <div class="tool-card software-badge" data-badge-id="lighting">
+        <div class="tool-card-head">
+          <div class="tool-card-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v4"></path>
+              <path d="M12 18v4"></path>
+              <path d="M4.93 4.93l2.83 2.83"></path>
+              <path d="M16.24 16.24l2.83 2.83"></path>
+              <path d="M2 12h4"></path>
+              <path d="M18 12h4"></path>
+              <path d="M4.93 19.07l2.83-2.83"></path>
+              <path d="M16.24 7.76l2.83-2.83"></path>
+              <circle cx="12" cy="12" r="3.5"></circle>
+            </svg>
+          </div>
+          <div class="tool-card-head-content">
+            <div class="tool-card-name">Lighting</div>
+            <div class="tool-card-role">Atmosphere &amp; Cinematography</div>
+            <span class="tool-card-badge">Mood &amp; Optics</span>
+          </div>
+        </div>
+        <p class="tool-card-desc">Dramatic three-point studio lighting, chiaroscuro narrative contrast, physical volumetric fog, atmospheric Rayleigh scattering, and custom HDRI environmental calibration.</p>
+        <div class="tool-card-footer">
+          <span class="tool-card-tag">Volumetrics • Chiaroscuro</span>
+          <span class="tool-card-pill">Cinematic</span>
+        </div>
+      </div>
+
+      <!-- Badge 7: VFX -->
+      <div class="tool-card software-badge" data-badge-id="vfx">
+        <div class="tool-card-head">
+          <div class="tool-card-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2l2.4 6.8L21 10.5l-5.5 4.5 1.8 7-5.3-3.8-5.3 3.8 1.8-7L3 10.5l6.6-1.7L12 2z"></path>
+            </svg>
+          </div>
+          <div class="tool-card-head-content">
+            <div class="tool-card-name">VFX</div>
+            <div class="tool-card-role">Simulations &amp; Polish</div>
+            <span class="tool-card-badge">Visual Effects</span>
+          </div>
+        </div>
+        <p class="tool-card-desc">Dynamic particle systems, viscous FLIP fluid simulations, atmospheric smoke plumes, collision sparks, realistic camera flares, and seamless live-action composite integration.</p>
+        <div class="tool-card-footer">
+          <span class="tool-card-tag">Particles • Fluid Dynamics</span>
+          <span class="tool-card-pill">Simulation</span>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -2171,74 +2500,356 @@ const obs=new IntersectionObserver((entries)=>{
 },{threshold:.1})
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el))
 
-// GSAP + ScrollTrigger for Skill Badges (refined subtle entrance transition, no harsh glow)
-function initSkillBadgeAnimations(){
-  const badges = document.querySelectorAll('.role-chip, .tool-card')
-  
-  if (window.gsap && window.ScrollTrigger) {
-    gsap.registerPlugin(ScrollTrigger)
-    
-    // Animate Hero role chips
-    gsap.utils.toArray('.hero-roles .role-chip').forEach((badge, idx) => {
-      gsap.fromTo(badge, 
+// ─────────────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────
+// CINEMATIC THREE.JS HERO 3D AVATAR ENGINE
+// Clean Minimalist Dark Canvas • Hero 3D Character • Lifelike Skeletal Breathing • Mouse Parallax
+// ─────────────────────────────────────────────────────────
+function initHeroThreeScene() {
+  const canvas = document.getElementById('hero-three-canvas');
+  if (!canvas || typeof THREE === 'undefined') return;
+
+  const heroSection = document.getElementById('home');
+  if (!heroSection) return;
+
+  let scene, camera, renderer;
+  let avatarGroup = null;
+  let avatarModel = null;
+  let mixer = null;
+  let isAvatarLoaded = false;
+  let width = heroSection.clientWidth || window.innerWidth;
+  let height = heroSection.clientHeight || window.innerHeight;
+  let mouseX = 0, mouseY = 0, targetX = 0, targetY = 0;
+  let isHeroVisible = true;
+  let animationFrameId = null;
+
+  try {
+    scene = new THREE.Scene();
+    camera = new THREE.PerspectiveCamera(52, width / height, 0.1, 1000);
+    camera.position.set(0, 0, 40);
+
+    renderer = new THREE.WebGLRenderer({
+      canvas: canvas,
+      alpha: true,
+      antialias: true,
+      powerPreference: 'high-performance'
+    });
+    renderer.setSize(width, height);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.75));
+    if (THREE.sRGBEncoding) {
+      renderer.outputEncoding = THREE.sRGBEncoding;
+    }
+    if (THREE.ACESFilmicToneMapping) {
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.05;
+    }
+
+    // Studio Lighting for photoreal 3D character portrait sculpting
+    const ambLight = new THREE.AmbientLight(0xffffff, 0.95);
+    scene.add(ambLight);
+
+    const dirLight = new THREE.DirectionalLight(0xffffff, 1.4);
+    dirLight.position.set(18, 26, 32);
+    scene.add(dirLight);
+
+    const fillLight = new THREE.DirectionalLight(0xe2e8f0, 0.85);
+    fillLight.position.set(-22, 14, 24);
+    scene.add(fillLight);
+
+    const rimLight = new THREE.DirectionalLight(0xffffff, 0.9);
+    rimLight.position.set(0, 28, -26);
+    scene.add(rimLight);
+
+    // ─────────────────────────────────────────────────────────
+    // 3D AVATAR MODEL (Dominion's Uploaded Character)
+    // Scaled large, commanding presence, bottom smoothly anchored into fade mask
+    // ─────────────────────────────────────────────────────────
+    avatarGroup = new THREE.Group();
+    avatarGroup.position.set(0, 0, 0);
+    scene.add(avatarGroup);
+
+    function loadAvatarModel(customUrl) {
+      const urlToLoad = customUrl || './dominion_avatar.glb';
+      if (typeof THREE.GLTFLoader === 'undefined') {
+        setTimeout(() => loadAvatarModel(customUrl), 120);
+        return;
+      }
+
+      const loader = new THREE.GLTFLoader();
+      loader.load(
+        urlToLoad,
+        (gltf) => {
+          while (avatarGroup.children.length > 0) {
+            avatarGroup.remove(avatarGroup.children[0]);
+          }
+          if (mixer) {
+            mixer.stopAllAction();
+            mixer = null;
+          }
+
+          const model = gltf.scene;
+
+          // Compute bounding box
+          const box = new THREE.Box3().setFromObject(model);
+          const size = box.getSize(new THREE.Vector3());
+          const center = box.getCenter(new THREE.Vector3());
+
+          // Check if humanoid (standard ~1.78m height) or bust
+          const isHumanoid = size.y > 1.2 && size.y < 2.5;
+          const targetHeight = isHumanoid ? 50 : 36; // Big, commanding portrait framing
+          const scale = targetHeight / (size.y || 1);
+          model.scale.set(scale, scale, scale);
+
+          model.position.x = -center.x * scale;
+          model.position.z = -center.z * scale;
+
+          if (isHumanoid) {
+            // Position face at natural eye level (Y = 1.2 to 2.0), chest & arms prominently visible
+            // while hips/waist extend smoothly into the bottom gradient mask
+            const headApexY = box.max.y * scale;
+            model.position.y = 1.5 - (headApexY * 0.90);
+          } else {
+            // Fallback for custom busts
+            model.position.y = -box.min.y * scale - 20.0;
+          }
+
+          // Preserve the model's native high-resolution PBR textures & materials
+          model.traverse((child) => {
+            if (child.isMesh) {
+              child.castShadow = true;
+              child.receiveShadow = true;
+              if (child.material) {
+                child.material.needsUpdate = true;
+                if (child.material.map) {
+                  child.material.map.encoding = THREE.sRGBEncoding;
+                }
+              }
+            }
+          });
+
+          // Play embedded Avaturn skeletal idle breathing animation if available
+          if (gltf.animations && gltf.animations.length > 0) {
+            mixer = new THREE.AnimationMixer(model);
+            const idleAction = mixer.clipAction(gltf.animations[0]);
+            idleAction.setEffectiveTimeScale(0.85); // Organic gentle breathing tempo
+            idleAction.play();
+          }
+
+          avatarGroup.add(model);
+          avatarModel = model;
+          isAvatarLoaded = true;
+
+          // Smooth entrance scale-in
+          avatarGroup.scale.set(0.01, 0.01, 0.01);
+          if (typeof gsap !== 'undefined') {
+            gsap.to(avatarGroup.scale, { x: 1, y: 1, z: 1, duration: 1.1, ease: 'power2.out' });
+          } else {
+            avatarGroup.scale.set(1, 1, 1);
+          }
+        },
+        undefined,
+        (err) => {
+          console.warn('Hero 3D avatar load notice:', err);
+          if (urlToLoad !== './Weeebsite model.glb') {
+            loadAvatarModel('./Weeebsite model.glb');
+          }
+        }
+      );
+    }
+
+    // Expose global hook for live updates from admin portal
+    window.updateHeroAvatarModel = function(newModelUrl) {
+      loadAvatarModel(newModelUrl);
+    };
+
+    // Trigger asynchronous load of Dominion's uploaded avatar
+    loadAvatarModel();
+
+    // Mouse & Touch Reactive Listeners
+    window.addEventListener('mousemove', (e) => {
+      targetX = (e.clientX / window.innerWidth - 0.5) * 2;
+      targetY = (e.clientY / window.innerHeight - 0.5) * 2;
+    }, { passive: true });
+
+    window.addEventListener('touchmove', (e) => {
+      if (e.touches && e.touches.length > 0) {
+        targetX = (e.touches[0].clientX / window.innerWidth - 0.5) * 2;
+        targetY = (e.touches[0].clientY / window.innerHeight - 0.5) * 2;
+      }
+    }, { passive: true });
+
+    // Debounced Resize Observer
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        if (!heroSection) return;
+        width = heroSection.clientWidth || window.innerWidth;
+        height = heroSection.clientHeight || window.innerHeight;
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+        renderer.setSize(width, height);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.75));
+      }, 100);
+    }, { passive: true });
+
+    // Visibility Observer: Pause WebGL Render Loop when Hero is out of viewport
+    const visObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        isHeroVisible = entry.isIntersecting;
+        if (isHeroVisible && !animationFrameId) {
+          clock.start();
+          animate();
+        }
+      });
+    }, { threshold: 0.05 });
+    visObserver.observe(heroSection);
+
+    // Animation Render Loop
+    const clock = new THREE.Clock();
+
+    function animate() {
+      if (!isHeroVisible) {
+        animationFrameId = null;
+        return;
+      }
+      animationFrameId = requestAnimationFrame(animate);
+
+      const delta = clock.getDelta();
+      const elapsed = clock.getElapsedTime();
+
+      // Update skeletal animation mixer (breathing & natural stance)
+      if (mixer) {
+        mixer.update(delta);
+      }
+
+      // Smooth lerp mouse coordinates
+      mouseX += (targetX - mouseX) * 0.045;
+      mouseY += (targetY - mouseY) * 0.045;
+
+      // Interactive 3D Model: head and torso track cursor with natural tilt
+      // STRICT CLAMP on vertical tilt so the camera never peers under the character
+      if (isAvatarLoaded && avatarGroup) {
+        avatarGroup.rotation.y = mouseX * 0.32;
+        const clampedPitch = Math.max(-0.16, Math.min(0.06, -mouseY * 0.12));
+        avatarGroup.rotation.x = clampedPitch;
+      }
+
+      // Subtle camera parallax
+      camera.position.x = mouseX * 3.2;
+      camera.position.y = -mouseY * 1.8;
+      camera.lookAt(0, -1.0, 0);
+
+      renderer.render(scene, camera);
+    }
+
+    animate();
+  } catch (err) {
+    console.warn('Hero Three.js scene initialization notice:', err);
+  }
+}
+
+// ─────────────────────────────────────────────────────────
+// STAGGERED SKILL BADGES SCROLL TRIGGER ANIMATION
+// ─────────────────────────────────────────────────────────
+function initSkillBadgeAnimations() {
+  const badgeWrap = document.getElementById('software-skills-wrap') || document.getElementById('software-skills-grid');
+  const badges = document.querySelectorAll('.skills-badges-grid .tool-card');
+  const roleChips = document.querySelectorAll('.hero-roles .role-chip');
+
+  if (!badges || badges.length === 0) return;
+
+  // Animate Hero role chips on initial load
+  if (window.gsap) {
+    roleChips.forEach((chip, idx) => {
+      gsap.fromTo(chip,
         { scale: 0.92, opacity: 0, y: 12 },
         {
           scale: 1,
           opacity: 1,
           y: 0,
           duration: 0.6,
-          delay: 0.5 + idx * 0.06,
+          delay: 0.4 + idx * 0.06,
           ease: 'power2.out',
-          onComplete: () => badge.classList.add('badge-in-view')
+          onComplete: () => chip.classList.add('badge-in-view')
         }
-      )
-    })
+      );
+    });
+  }
 
-    // Animate tool stack cards when scrolling into view
-    gsap.utils.toArray('.skills-badges-grid .tool-card').forEach((card, idx) => {
-      gsap.fromTo(card,
-        { 
-          y: 20,
-          opacity: 0,
-          scale: 0.96
-        },
-        {
-          y: 0,
-          opacity: 1,
-          scale: 1,
-          duration: 0.6,
-          delay: idx * 0.1,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: card,
-            start: 'top 88%',
-            toggleActions: 'play none none reverse',
-            onEnter: () => card.classList.add('badge-in-view'),
-            onLeaveBack: () => card.classList.remove('badge-in-view')
-          }
+  // Stagger reveal runner function
+  function revealBadgesStaggered() {
+    badges.forEach((card, idx) => {
+      card.style.transitionDelay = `${idx * 75}ms`;
+      setTimeout(() => {
+        card.classList.add('badge-revealed');
+      }, idx * 75);
+    });
+  }
+
+  // If GSAP & ScrollTrigger available, bind coordinated scroll trigger
+  if (window.gsap && window.ScrollTrigger) {
+    try {
+      gsap.registerPlugin(ScrollTrigger);
+
+      ScrollTrigger.create({
+        trigger: badgeWrap || '#skills',
+        start: 'top 82%',
+        once: true,
+        onEnter: () => {
+          gsap.fromTo(badges,
+            {
+              y: 28,
+              opacity: 0,
+              scale: 0.96
+            },
+            {
+              y: 0,
+              opacity: 1,
+              scale: 1,
+              duration: 0.65,
+              stagger: 0.08,
+              ease: 'power2.out',
+              onComplete: () => {
+                badges.forEach(card => card.classList.add('badge-revealed'));
+              }
+            }
+          );
         }
-      )
-    })
+      });
+      return;
+    } catch (e) {
+      console.warn('ScrollTrigger fallback triggered:', e);
+    }
+  }
+
+  // Resilient IntersectionObserver Fallback
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        revealBadgesStaggered();
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  if (badgeWrap) {
+    observer.observe(badgeWrap);
   } else {
-    // Fallback IntersectionObserver
-    const badgeObs = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => {
-            entry.target.classList.add('badge-in-view')
-          }, i * 80)
-        }
-      })
-    }, { threshold: 0.15 })
-    badges.forEach(b => badgeObs.observe(b))
+    badges.forEach(b => observer.observe(b));
   }
 }
 
-// Initialise animations
+// Initialise animations & 3D background
+function bootPortfolioInteractiveExperience() {
+  initHeroThreeScene();
+  initSkillBadgeAnimations();
+}
+
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initSkillBadgeAnimations)
+  document.addEventListener('DOMContentLoaded', bootPortfolioInteractiveExperience);
 } else {
-  initSkillBadgeAnimations()
+  bootPortfolioInteractiveExperience();
 }
 
 // Smooth scroll
@@ -4079,6 +4690,11 @@ function applyCustomGlbModel(modelSource, filename, size) {
   if (adminGlbMeta && size) {
     adminGlbMeta.textContent = `File Size: ${(size / (1024 * 1024)).toFixed(2)} MB • Ready and loaded in 3D Viewport`;
   }
+
+  // 5. Update Hero 3D Avatar if available
+  if (window.updateHeroAvatarModel) {
+    window.updateHeroAvatarModel(modelUrl);
+  }
 }
 
 async function resetGlbToDefault() {
@@ -4093,6 +4709,10 @@ async function resetGlbToDefault() {
   if (mainMv) {
     mainMv.setAttribute('src', './shoe_model.glb');
     mainMv.setAttribute('alt', '3D Shoe Model - Buddy Green Spark Initiative');
+  }
+
+  if (window.updateHeroAvatarModel) {
+    window.updateHeroAvatarModel('./avatar_model.glb');
   }
 
   const work3d = portfolioWorksData.find(w => w.type === '3d-model');
@@ -4509,7 +5129,7 @@ document.addEventListener('drop', (e) => {
           <div class="admin-form-group">
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
               <label class="admin-label" for="admin-pass-input" style="margin-bottom:0;">Administrator Password</label>
-              <button type="button" onclick="fillDefaultPassword()" style="background:none;border:none;color:var(--gold,#d4af37);cursor:pointer;font-size:0.68rem;text-decoration:underline;padding:0;">Auto-Fill Default</button>
+              <button type="button" onclick="fillDefaultPassword()" style="background:none;border:none;color:var(--white);cursor:pointer;font-size:0.68rem;text-decoration:underline;padding:0;">Auto-Fill Default</button>
             </div>
             <div class="admin-pass-input-wrap">
               <input type="password" id="admin-pass-input" class="admin-input" required placeholder="Enter administrator password..." autocomplete="current-password" style="padding-right:42px;" onkeydown="if(event.key==='Enter'){event.preventDefault();handleAdminPasswordUnlock(event);}">
@@ -4522,7 +5142,7 @@ document.addEventListener('drop', (e) => {
             </div>
             <div id="admin-pass-error" style="display:none;color:#ef4444;font-size:0.72rem;margin-top:8px;font-weight:600;line-height:1.5;"></div>
             <div style="margin-top:8px;font-size:0.68rem;color:var(--muted2);display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,0.03);padding:6px 10px;border-radius:4px;border:1px solid rgba(255,255,255,0.08);">
-              <span>Default password: <strong style="color:var(--gold,#d4af37);letter-spacing:1px;">dominion2026</strong></span>
+              <span>Default password: <strong style="color:var(--white);letter-spacing:1px;">dominion2026</strong></span>
               <button type="button" onclick="fillDefaultPassword()" class="admin-btn admin-btn-secondary" style="font-size:0.62rem;padding:3px 8px;">Use Default</button>
             </div>
           </div>
