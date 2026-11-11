@@ -2,11 +2,12 @@ import React from 'react';
 import { ARTIST_INFO } from '../data/portfolioData';
 import { ArrowUp, Sparkles, Heart } from 'lucide-react';
 import { playUiSound } from '../utils/audioSynth';
+import { smoothScrollTo } from '../utils/smoothScroll';
 
 export const Footer: React.FC = () => {
   const scrollToTop = () => {
     playUiSound('click');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    smoothScrollTo('#top');
   };
 
   return (

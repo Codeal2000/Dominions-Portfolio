@@ -3,18 +3,26 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
 import { VideoShowreel } from './components/VideoShowreel';
 import { WorkShowcase } from './components/WorkShowcase';
 import { ModelViewer3D, ModelCategory } from './components/ModelViewer3D';
-import { SkillsSection } from './components/SkillsSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
+import { ScrollProgress } from './components/ScrollProgress';
+import { SectionTransition } from './components/SectionTransition';
+import { initSmoothScroll } from './utils/smoothScroll';
 
 export default function App() {
   const [selected3DModel, setSelected3DModel] = useState<ModelCategory>('shoe');
+
+  // Initialize global smooth scrolling engine
+  useEffect(() => {
+    const cleanup = initSmoothScroll();
+    return cleanup;
+  }, []);
 
   const handleOpen3DLab = (modelType: string) => {
     if (['shoe', 'mech', 'gem', 'character'].includes(modelType)) {
@@ -24,6 +32,9 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#050505] text-[#f5f5f5] selection:bg-[#D4AF37] selection:text-[#050505] font-sans antialiased relative overflow-x-hidden">
+      {/* Top subtle golden scroll progress bar */}
+      <ScrollProgress />
+
       {/* Elegant Dark ambient radial gold light bloom */}
       <div
         className="fixed top-0 right-0 w-[600px] h-[600px] rounded-full opacity-15 blur-[140px] pointer-events-none z-0"
@@ -38,23 +49,28 @@ export default function App() {
       <Navbar />
 
       <main className="w-full relative z-10">
-        {/* 1. Hero Section with High-Impact Typography & Interactive Three.js Background */}
+        {/* 1. Hero Section with 3D Avatar & Interactive Three.js Background */}
         <HeroSection />
 
         {/* 2. Featured Video Showreel & 4K Reel Player */}
-        <VideoShowreel />
+        <SectionTransition direction="up" delay={50}>
+          <VideoShowreel />
+        </SectionTransition>
 
-        {/* 3. Featured Work Showcase Gallery (Buddy Green, Valued Tasty Foods, OwlUp, YAPPI, Jabbok Media) */}
-        <WorkShowcase onOpen3DLab={handleOpen3DLab} />
+        {/* 3. My Works Showcase Gallery */}
+        <SectionTransition direction="up" delay={50}>
+          <WorkShowcase onOpen3DLab={handleOpen3DLab} />
+        </SectionTransition>
 
-        {/* 4. Interactive 3D Model Studio & WebGL Viewport (Orbit, Materials, Shaders, Lighting) */}
-        <ModelViewer3D key={selected3DModel} initialModel={selected3DModel} />
+        {/* 4. Interactive 3D Model Studio & WebGL Viewport */}
+        <SectionTransition direction="up" delay={50}>
+          <ModelViewer3D key={selected3DModel} initialModel={selected3DModel} />
+        </SectionTransition>
 
-        {/* 5. Software & Skills Badges (Blender, Cascadeur, After Effects, Rigging, VFX) */}
-        <SkillsSection />
-
-        {/* 6. Direct Contact & Project Inquiry Estimator (Dominion Ige) */}
-        <ContactSection />
+        {/* 5. Direct Contact & Project Inquiry Estimator */}
+        <SectionTransition direction="up" delay={50}>
+          <ContactSection />
+        </SectionTransition>
       </main>
 
       {/* Footer */}

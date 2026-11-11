@@ -8,10 +8,11 @@ import {
   ChevronDown,
 } from 'lucide-react';
 import { playUiSound } from '../utils/audioSynth';
+import { smoothScrollTo } from '../utils/smoothScroll';
 
 export const HeroSection: React.FC = () => {
   return (
-    <section className="relative w-full min-h-[96vh] flex items-center justify-center bg-[#050505] text-[#f5f5f5] overflow-hidden pt-28 pb-16">
+    <section id="top" className="relative w-full min-h-[96vh] flex items-center justify-center bg-[#050505] text-[#f5f5f5] overflow-hidden pt-28 pb-16">
       {/* 3D Interactive Three.js Canvas Background (responds to cursor) */}
       <Hero3DCanvas />
 
@@ -45,7 +46,7 @@ export const HeroSection: React.FC = () => {
 
           {/* Primary Expertise Tags */}
           <div className="flex flex-wrap items-center justify-center gap-2 mb-10">
-            {['Blender 3D', 'Cascadeur', 'After Effects', 'Substance 3D', '3D Rigging', 'Fluid & VFX'].map((skill) => (
+            {['Blender', 'Unreal Engine', 'After Effects', '3D Modeling', 'Rigging', 'Cinematic Lighting'].map((skill) => (
               <span
                 key={skill}
                 className="px-3.5 py-1 bg-[#111] border border-[#222] text-[9px] sm:text-[10px] uppercase tracking-wider text-zinc-400 font-medium"
@@ -61,7 +62,11 @@ export const HeroSection: React.FC = () => {
             <a
               href="#showreel"
               id="hero-watch-showreel-btn"
-              onClick={() => playUiSound('click')}
+              onClick={(e) => {
+                e.preventDefault();
+                playUiSound('click');
+                smoothScrollTo('#showreel');
+              }}
               className="w-full sm:w-auto px-8 py-3.5 bg-[#D4AF37] text-black text-[10px] sm:text-xs font-bold uppercase tracking-widest hover:bg-white transition-all flex items-center justify-center gap-2.5 shadow-lg shadow-[#D4AF37]/15"
             >
               <Play className="w-3.5 h-3.5 fill-current" />
@@ -72,7 +77,11 @@ export const HeroSection: React.FC = () => {
             <a
               href="#interactive-3d-lab"
               id="hero-orbit-3d-lab-btn"
-              onClick={() => playUiSound('switch')}
+              onClick={(e) => {
+                e.preventDefault();
+                playUiSound('switch');
+                smoothScrollTo('#interactive-3d-lab');
+              }}
               className="w-full sm:w-auto px-8 py-3.5 bg-[#111] border border-[#222] text-zinc-200 hover:text-[#D4AF37] hover:border-[#D4AF37] text-[10px] sm:text-xs font-bold uppercase tracking-widest transition-all flex items-center justify-center gap-2"
             >
               <Layers className="w-3.5 h-3.5 text-[#D4AF37]" />
@@ -83,7 +92,11 @@ export const HeroSection: React.FC = () => {
             <a
               href="#contact"
               id="hero-get-in-touch-btn"
-              onClick={() => playUiSound('click')}
+              onClick={(e) => {
+                e.preventDefault();
+                playUiSound('click');
+                smoothScrollTo('#contact');
+              }}
               className="w-full sm:w-auto px-8 py-3.5 border border-zinc-700 text-zinc-300 hover:text-[#D4AF37] hover:border-[#D4AF37] text-[10px] sm:text-xs font-bold uppercase tracking-widest transition-all flex items-center justify-center gap-2"
             >
               <Mail className="w-3.5 h-3.5 text-[#D4AF37]" />
@@ -106,10 +119,15 @@ export const HeroSection: React.FC = () => {
 
           {/* Scroll Down Indicator */}
           <a
-            href="#showreel"
-            className="mt-12 text-zinc-600 hover:text-[#D4AF37] transition-colors flex flex-col items-center gap-1 text-[10px] uppercase tracking-widest font-medium"
+            href="#work"
+            onClick={(e) => {
+              e.preventDefault();
+              playUiSound('click');
+              smoothScrollTo('#work');
+            }}
+            className="mt-12 text-zinc-500 hover:text-[#D4AF37] transition-colors flex flex-col items-center gap-1 text-[10px] uppercase tracking-widest font-medium group"
           >
-            <span>Explore Works</span>
+            <span className="group-hover:tracking-[0.25em] transition-all">Explore My Works</span>
             <ChevronDown className="w-3.5 h-3.5 animate-bounce text-[#D4AF37]" />
           </a>
         </div>

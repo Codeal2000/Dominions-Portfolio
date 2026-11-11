@@ -37,13 +37,13 @@ export const WorkShowcase: React.FC<WorkShowcaseProps> = ({ onOpen3DLab }) => {
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#111] border border-[#222] text-[#D4AF37] text-[10px] uppercase tracking-[0.3em] font-semibold mb-3">
               <Grid className="w-3.5 h-3.5" />
-              Selected Projects
+              Featured Production & Works
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#fdfdfd] font-serif-heading">
-              Commercial <span className="text-[#D4AF37]">Visual Works</span>
+              My <span className="text-[#D4AF37]">Works</span>
             </h2>
             <p className="text-zinc-400 mt-2 max-w-2xl text-xs sm:text-sm">
-              A curated portfolio of high-impact 3D product animations, physics-grounded character rigging, and commercial visual effects.
+              Explore authentic production 3D animations, physics-grounded character choreography, fluid simulations, and real-time WebGL assets created in Blender, Cascadeur, and After Effects.
             </p>
           </div>
 

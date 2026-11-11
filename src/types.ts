@@ -24,7 +24,10 @@ export interface Project {
 
 export interface SkillItem {
   name: string;
-  category: 'Software' | 'Core Discipline' | 'Rendering & VFX';
+  category: string;
+  subtitle?: string;
+  discipline?: string;
+  badgeLevel?: string;
   level: number; // percentage
   experience: string;
   iconName: string;

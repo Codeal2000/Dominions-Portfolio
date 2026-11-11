@@ -199,67 +199,76 @@ export const PROJECTS: Project[] = [
 
 export const SKILLS: SkillItem[] = [
   {
-    name: 'Blender 3D (Cycles & Eevee)',
+    name: 'Blender',
+    subtitle: 'Primary 3D DCC Suite',
+    discipline: 'Core Production',
     category: 'Software',
-    level: 95,
-    experience: '4+ Years',
+    level: 98,
+    experience: 'Core Production',
+    badgeLevel: 'Mastery',
     iconName: 'Box',
-    description: 'Expertise across full production pipeline: Sub-D hard surface modeling, procedural Geometry Nodes, shader graphs, and photorealistic GPU rendering.',
-    tags: ['Modeling', 'Geometry Nodes', 'Cycles X', 'Eevee', 'UV Unwrapping']
+    description: 'End-to-end 3D creation pipeline: complex PBR procedural node materials, geometry nodes, asset optimization, and photorealistic raytraced rendering in Cycles X.',
+    tags: ['Cycles X • Eevee Next', 'Mastery']
   },
   {
-    name: 'Cascadeur',
+    name: 'Unreal Engine',
+    subtitle: 'Real-Time & Cinematics',
+    discipline: 'Virtual Production',
     category: 'Software',
-    level: 90,
-    experience: '3+ Years',
-    iconName: 'Activity',
-    description: 'Physics-based character animation, center-of-mass trajectory balance, ballistic flight curves, and keyframe motion enhancement.',
-    tags: ['Physics Motion', 'AutoPosing', 'Action Choreography', 'Fulcrum Points']
+    level: 92,
+    experience: 'Virtual Production',
+    badgeLevel: 'Cinematic',
+    iconName: 'Cpu',
+    description: 'High-fidelity virtual environments, Lumen dynamic global illumination, Nanite micro-polygon geometry, and Sequencer timeline camera choreography for real-time storytelling.',
+    tags: ['UE5 • Lumen & Nanite', 'Cinematic']
   },
   {
     name: 'Adobe After Effects',
+    subtitle: 'Motion & Post-Production',
+    discipline: 'Motion & VFX',
     category: 'Software',
-    level: 92,
-    experience: '4+ Years',
-    iconName: 'Film',
-    description: 'Multipass EXR compositing, optical flares, glow dynamics, 3D camera tracking, sound sync, and broadcast color correction.',
-    tags: ['Compositing', 'VFX', 'Multipass EXR', 'Color Grading', 'Motion Graphics']
-  },
-  {
-    name: '3D Rigging & Kinematics',
-    category: 'Core Discipline',
-    level: 88,
-    experience: '3+ Years',
-    iconName: 'Cpu',
-    description: 'Custom FK/IK switchable skeletal systems, mechanical constraint hierarchies, driver networks, and facial morph blendshapes.',
-    tags: ['IK/FK Switch', 'Bone Constraints', 'Weight Painting', 'Facial Blendshapes']
-  },
-  {
-    name: 'Lighting, Shading & PBR Materials',
-    category: 'Core Discipline',
     level: 94,
-    experience: '4+ Years',
+    experience: 'Motion & VFX',
+    badgeLevel: 'Advanced',
+    iconName: 'Film',
+    description: 'Commercial kinetic typography, multi-pass 3D EXR compositing, motion tracking, chromatic aberration styling, and high-impact cinematic color grading.',
+    tags: ['Motion Design • Grading', 'Advanced']
+  },
+  {
+    name: '3D Modeling',
+    subtitle: 'Geometry & Asset Creation',
+    discipline: 'Topology & Form',
+    category: 'Core Discipline',
+    level: 96,
+    experience: 'Topology & Form',
+    badgeLevel: 'Production',
+    iconName: 'Layers',
+    description: 'Hard-surface mechanical modeling, organic mesh detailing, non-destructive subdivision workflows, high-to-low poly normal baking, and clean unwrapped UV layouts.',
+    tags: ['Clean Quads • Sub-D', 'Production']
+  },
+  {
+    name: 'Rigging',
+    subtitle: 'Armatures & Kinematics',
+    discipline: 'Technical Art',
+    category: 'Core Discipline',
+    level: 90,
+    experience: 'Technical Art',
+    badgeLevel: 'Dynamic',
+    iconName: 'Activity',
+    description: 'Robust dual-chain IK/FK skeletal armatures, facial blendshapes & morph targets, bendy-bone facial deformation, and physics-assisted character movement choreography.',
+    tags: ['IK / FK • Cascadeur Physics', 'Dynamic']
+  },
+  {
+    name: 'Lighting',
+    subtitle: 'Atmosphere & Cinematography',
+    discipline: 'Mood & Optics',
+    category: 'Core Discipline',
+    level: 95,
+    experience: 'Mood & Optics',
+    badgeLevel: 'Cinematic',
     iconName: 'SunMedium',
-    description: 'Cinematic studio 3-point setups, HDRI environment balancing, ray-traced subsurface scattering, and anisotropic metal shaders.',
-    tags: ['PBR Shading', 'Subsurface Scattering', 'Studio Lighting', 'Volumetrics']
-  },
-  {
-    name: 'Substance 3D Painter',
-    category: 'Software',
-    level: 86,
-    experience: '3+ Years',
-    iconName: 'Sparkles',
-    description: 'Baking 8K high-to-low poly normal maps, procedural edge-wear masks, fabric micro-details, and realistic weathering.',
-    tags: ['Texture Baking', 'Smart Materials', 'Roughness Maps', 'PBR Workflows']
-  },
-  {
-    name: 'Fluid & Particle Dynamics',
-    category: 'Rendering & VFX',
-    level: 85,
-    experience: '2+ Years',
-    iconName: 'Flame',
-    description: 'Viscous liquid simulations, explosive particle sparks, smoke dissipation, and aerodynamic cloth physics.',
-    tags: ['FLIP Fluids', 'Particle Emitters', 'Cloth Sim', 'Micro Splashes']
+    description: 'Dramatic three-point studio lighting, chiaroscuro narrative contrast, physical volumetric fog, atmospheric Rayleigh scattering, and custom HDRI environmental calibration.',
+    tags: ['Volumetrics • Chiaroscuro', 'Cinematic']
   }
 ];
 
